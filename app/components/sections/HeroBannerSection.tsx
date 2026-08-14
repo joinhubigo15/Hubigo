@@ -55,11 +55,11 @@ export default function HeroBannerSection() {
   }, [user?.name]);
 
   return (
-    <section className="px-2 sm:px-4 lg:px-6 mt-0 mb-1 lg:mb-4 shrink-0">
+    <section className="px-4 sm:px-4 lg:px-6 mt-2 lg:mt-0 mb-1 lg:mb-4 shrink-0">
       <div className="max-w-6xl mx-auto relative">
 
         {/* Top Header Row in Mobile View */}
-        <div className="lg:hidden flex items-center justify-between mb-3">
+        <div className="lg:hidden flex items-center justify-between mb-3 pt-1">
           {/* Logo */}
           <div className="flex items-center gap-1.5">
             <Image src="/logo.png" alt="Hubigo" width={24} height={24} className="w-6 h-6 object-contain" />
@@ -69,7 +69,7 @@ export default function HeroBannerSection() {
           </div>
 
           {/* Location & Menu */}
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 mt-0.5">
             <CityPickerPill size="xs" />
           </div>
         </div>
@@ -77,7 +77,7 @@ export default function HeroBannerSection() {
         {/* Hero Grid Content — Scaled & Compact Per UI Rules */}
         <div className="grid grid-cols-12 gap-3 items-start pt-2 lg:pt-0">
           {/* Left Text Column */}
-          <div className="col-span-8 sm:col-span-7 space-y-2">
+          <div className="col-span-7 space-y-2">
             {/* Greeting Badge */}
             <div className="inline-flex items-center gap-1.5 px-2.5 lg:px-3 py-1 rounded-full bg-white/90 border border-purple-200/80 text-purple-900 text-[10px] sm:text-xs font-extrabold shadow-2xs">
               <Sparkles className="w-3 h-3 lg:w-3.5 lg:h-3.5 text-purple-600 shrink-0" />
@@ -99,11 +99,11 @@ export default function HeroBannerSection() {
 
           {/* Right Hero Image — hosted on R2 (profile-pics bucket), pure white background
               blended flat via mix-blend-multiply against the page's off-white background. */}
-          <div className="col-span-4 sm:col-span-5 relative flex items-center justify-center overflow-visible">
+          <div className="col-span-5 relative flex items-center justify-center overflow-visible">
             <img
               src="https://pub-e457284fdd7844e5b0bcc12b89e4a198.r2.dev/whitehero-crop.jpeg"
               alt="Discover local businesses"
-              className="w-full h-auto max-h-[140px] sm:max-h-[200px] lg:max-h-[300px] object-contain mix-blend-multiply lg:scale-110 lg:translate-x-2 transition-transform duration-300"
+              className="w-full h-auto max-h-[170px] sm:max-h-[200px] lg:max-h-[300px] object-contain mix-blend-multiply lg:scale-110 lg:translate-x-2 transition-transform duration-300"
             />
           </div>
         </div>
