@@ -54,6 +54,35 @@ export default function HeroBannerSection() {
     return () => clearInterval(interval);
   }, [user?.name]);
 
+  const searchBarCard = (
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-slate-200/90 p-1.5 sm:p-2 flex items-center gap-1.5">
+      <div className="flex-1 flex items-center px-3.5 py-1">
+        <input
+          type="text"
+          placeholder="Search for businesses, services..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyDown={handleSearchKeyDown}
+          className="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none"
+        />
+      </div>
+
+      <div className="h-5 w-px bg-slate-200 shrink-0 hidden sm:block" />
+
+      <div className="shrink-0 hidden sm:block">
+        <CityPickerPill size="sm" />
+      </div>
+
+      <button
+        onClick={handleSearch}
+        className="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-3.5 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center gap-1.5 shadow-sm shadow-purple-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
+      >
+        <Search className="w-3.5 h-3.5 stroke-[2.5]" />
+        <span className="hidden sm:inline">Search</span>
+      </button>
+    </div>
+  );
+
   return (
     <section className="px-4 sm:px-4 lg:px-6 mt-2 lg:mt-0 mb-1 lg:mb-4 shrink-0">
       <div className="max-w-6xl mx-auto relative">
@@ -95,6 +124,13 @@ export default function HeroBannerSection() {
                 Discover trusted local businesses and services near you.
               </p>
             </div>
+
+            {/* Desktop-only search bar — lives directly under the paragraph in normal document
+                flow (not a separate grid row), so it isn't pushed down by the taller image
+                column on the right. See the lg:hidden copy below for mobile/tablet. */}
+            <div className="hidden lg:block max-w-2xl mt-6">
+              {searchBarCard}
+            </div>
           </div>
 
           {/* Right Hero Image — hosted on R2 (profile-pics bucket), pure white background
@@ -106,39 +142,12 @@ export default function HeroBannerSection() {
               className="w-full h-auto max-h-[170px] sm:max-h-[200px] lg:max-h-[300px] object-contain mix-blend-multiply lg:scale-110 lg:translate-x-2 transition-transform duration-300"
             />
           </div>
+        </div>
 
-          {/* Floating Search Bar — own grid row, capped to the text column's width on desktop
-              (col-span-7) so it sits right under the paragraph instead of under the taller
-              image column, which was leaving a large gap. Mobile/tablet unaffected — it still
-              spans the full row (col-span-12) there. */}
-          <div className="col-span-12 lg:col-span-7 mt-3 sm:mt-4 lg:mt-2 max-w-2xl">
-            <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-slate-200/90 p-1.5 sm:p-2 flex items-center gap-1.5">
-              <div className="flex-1 flex items-center px-3.5 py-1">
-                <input
-                  type="text"
-                  placeholder="Search for businesses, services..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  onKeyDown={handleSearchKeyDown}
-                  className="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none"
-                />
-              </div>
-
-              <div className="h-5 w-px bg-slate-200 shrink-0 hidden sm:block" />
-
-              <div className="shrink-0 hidden sm:block">
-                <CityPickerPill size="sm" />
-              </div>
-
-              <button
-                onClick={handleSearch}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-3.5 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center gap-1.5 shadow-sm shadow-purple-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
-              >
-                <Search className="w-3.5 h-3.5 stroke-[2.5]" />
-                <span className="hidden sm:inline">Search</span>
-              </button>
-            </div>
-          </div>
+        {/* Floating Search Bar — Mobile/Tablet only (own full-width row below the grid);
+            desktop uses the copy nested under the paragraph above. */}
+        <div className="lg:hidden mt-3 sm:mt-4 max-w-2xl">
+          {searchBarCard}
         </div>
 
       </div>
