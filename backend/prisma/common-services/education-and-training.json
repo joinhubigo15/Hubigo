@@ -1,0 +1,317 @@
+[
+  {
+    "subcategorySlug": "coaching-center",
+    "subcategoryName": "Coaching Center",
+    "services": [
+      {
+        "name": "Secondary Board Exam Coaching",
+        "description": "Comprehensive subject tuition for CBSE, ICSE, and State Board exams",
+        "icon": "book-open"
+      },
+      {
+        "name": "Regular Mock Test Series",
+        "description": "Weekly chapter tests, mock exams, performance analysis, and feedback",
+        "icon": "file-text"
+      },
+      {
+        "name": "Small Batch Size Classes",
+        "description": "Interactive classroom sessions ensuring individual attention for every student",
+        "icon": "users"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "school",
+    "subcategoryName": "School",
+    "services": [
+      {
+        "name": "Holistic Academic Curriculum",
+        "description": "CBSE ICSE affiliated education from primary grades to higher secondary",
+        "icon": "award"
+      },
+      {
+        "name": "Sports and Extracurricular Infrastructure",
+        "description": "Playgrounds, indoor sports halls, science labs, and arts clubs for students",
+        "icon": "activity"
+      },
+      {
+        "name": "GPS Tracked Bus Transport",
+        "description": "Safe, monitored school bus services covering major city routes",
+        "icon": "bus"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tution-and-s-english-service",
+    "subcategoryName": "Tution & S.English Service",
+    "services": [
+      {
+        "name": "Spoken English Fluency Course",
+        "description": "Grammar foundation, vocabulary building, and public speaking confidence",
+        "icon": "message-square"
+      },
+      {
+        "name": "School Subject Home Tuition",
+        "description": "One-on-one personal home tutors for Maths, Science, and English support",
+        "icon": "user-check"
+      },
+      {
+        "name": "Personality Development Workshops",
+        "description": "Group discussions, interview prep, and soft skill grooming classes",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "play-school",
+    "subcategoryName": "Play School",
+    "services": [
+      {
+        "name": "Montessori Preschool Learning",
+        "description": "Activity-based early childhood education fostering cognitive and motor skills",
+        "icon": "smile"
+      },
+      {
+        "name": "Day Care and Creche",
+        "description": "Safe, hygienic full-day and half-day childcare with trained caregivers",
+        "icon": "heart"
+      },
+      {
+        "name": "CCTV Monitored Play Area",
+        "description": "Child-safe indoor play zones with real-time mobile app camera access for parents",
+        "icon": "eye"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "computer-training-school",
+    "subcategoryName": "Computer Training School",
+    "services": [
+      {
+        "name": "Full Stack Web Development",
+        "description": "Hands-on coding bootcamps covering HTML, CSS, JavaScript, React, and Node",
+        "icon": "code"
+      },
+      {
+        "name": "Python and Data Science",
+        "description": "Data analysis, machine learning algorithms, SQL, and Python programming",
+        "icon": "cpu"
+      },
+      {
+        "name": "Tally and Financial Accounting",
+        "description": "Practical training in Tally Prime, GST accounting, and MS Excel formulas",
+        "icon": "calculator"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "dance-and-music-school",
+    "subcategoryName": "Dance and Music School",
+    "services": [
+      {
+        "name": "Classical and Western Dance",
+        "description": "Training in Bharatanatyam, Kathak, Hip-Hop, Contemporary, and Salsa styles",
+        "icon": "music"
+      },
+      {
+        "name": "Instrumental Music Classes",
+        "description": "Keyboard, acoustic guitar, violin, and drums lessons for all skill levels",
+        "icon": "disc"
+      },
+      {
+        "name": "Vocal Singing Lessons",
+        "description": "Hindustani, Carnatic, and Light Western vocal training with pitch exercises",
+        "icon": "mic"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "college",
+    "subcategoryName": "College",
+    "services": [
+      {
+        "name": "Undergraduate Degree Programs",
+        "description": "B.Sc, B.Com, B.A, and BBA degree courses with experienced faculty",
+        "icon": "book-open"
+      },
+      {
+        "name": "Campus Placement Assistance",
+        "description": "Dedicated placement cell organizing campus drives with top hiring companies",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Modern Science Research Labs",
+        "description": "Equipped chemistry, physics, and computer laboratories for practical learning",
+        "icon": "flask-conical"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "vocational-training-school",
+    "subcategoryName": "Vocational Training School",
+    "services": [
+      {
+        "name": "Electrician and Plumbing Trade",
+        "description": "Practical hands-on technical skill certification for industrial and domestic work",
+        "icon": "wrench"
+      },
+      {
+        "name": "Beautician and Hair Styling Course",
+        "description": "Professional salon skill training, makeup artistry, and diploma certification",
+        "icon": "scissors"
+      },
+      {
+        "name": "Mobile Laptop Hardware Repair",
+        "description": "Chip-level troubleshooting, soldering, and gadget repair vocational training",
+        "icon": "smartphone"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "library",
+    "subcategoryName": "Library",
+    "services": [
+      {
+        "name": "Quiet Study Hall Space",
+        "description": "Silent, air-conditioned reading rooms equipped with individual study cubicles",
+        "icon": "book-open"
+      },
+      {
+        "name": "Academic Book Borrowing",
+        "description": "Vast catalog of competitive exam books, fiction, reference journals, and research",
+        "icon": "layers"
+      },
+      {
+        "name": "High Speed Wi-Fi Access",
+        "description": "Unlimited internet access for online research, video lectures, and e-learning",
+        "icon": "wifi"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "university",
+    "subcategoryName": "University",
+    "services": [
+      {
+        "name": "Postgraduate and Doctorate Degrees",
+        "description": "M.Tech, MBA, M.Sc, and Ph.D programs offering advanced research specialization",
+        "icon": "award"
+      },
+      {
+        "name": "Global Student Exchange",
+        "description": "Academic partnerships with international universities for credit exchange",
+        "icon": "globe"
+      },
+      {
+        "name": "On Campus Hostel Facility",
+        "description": "Residential hall facilities for male and female students with mess dining",
+        "icon": "home"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tuition",
+    "subcategoryName": "Tuition",
+    "services": [
+      {
+        "name": "Mathematics and Science Coaching",
+        "description": "Concept-oriented problem solving tuition for middle and high school students",
+        "icon": "calculator"
+      },
+      {
+        "name": "One on One Private Tutors",
+        "description": "Personalized home and online tutoring tailored to individual learning speeds",
+        "icon": "user-check"
+      },
+      {
+        "name": "Exam Revision Crash Course",
+        "description": "Intensive last-minute exam revision sessions focusing on key scoring topics",
+        "icon": "clock"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "jee-and-neet",
+    "subcategoryName": "JEE and NEET",
+    "services": [
+      {
+        "name": "IIT JEE Main Advanced Prep",
+        "description": "Rigorous coaching in Physics, Chemistry, and Maths for engineering aspirants",
+        "icon": "target"
+      },
+      {
+        "name": "NEET Medical Entrance Coaching",
+        "description": "In-depth Biology, Organic Chemistry, and Physics preparation for MBBS entry",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "National Rank Test Series",
+        "description": "Computer-based mock exams simulating real JEE and NEET exam patterns",
+        "icon": "bar-chart-2"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ca",
+    "subcategoryName": "CA",
+    "services": [
+      {
+        "name": "CA Foundation Course Coaching",
+        "description": "Accounting, Business Laws, and Quantitative Aptitude foundational preparation",
+        "icon": "calculator"
+      },
+      {
+        "name": "CA Intermediate Final Training",
+        "description": "Advanced Financial Reporting, Auditing, and Direct Indirect Tax coaching",
+        "icon": "file-text"
+      },
+      {
+        "name": "Articleship Skill Training",
+        "description": "Practical audit software skills and exam technique guidance for CA articles",
+        "icon": "briefcase"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ielts-and-spoken-english",
+    "subcategoryName": "IELTS and Spoken English",
+    "services": [
+      {
+        "name": "IELTS Band 8 Coaching",
+        "description": "Targeted strategies for Listening, Reading, Writing, and Speaking modules",
+        "icon": "globe"
+      },
+      {
+        "name": "One on One Speaking Mock",
+        "description": "Live practice interviews with instant feedback on pronunciation and vocabulary",
+        "icon": "mic"
+      },
+      {
+        "name": "PTE and TOEFL Test Prep",
+        "description": "Computer-based practice sessions for PTE Academic and TOEFL English tests",
+        "icon": "monitor"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "civil-services",
+    "subcategoryName": "Civil Services",
+    "services": [
+      {
+        "name": "UPSC IAS Prelims Mains Coaching",
+        "description": "Comprehensive General Studies, Current Affairs, and CSAT preparation",
+        "icon": "award"
+      },
+      {
+        "name": "Optional Subject Specialization",
+        "description": "In-depth coaching for History, Geography, Public Administration, and Sociology",
+        "icon": "book-open"
+      },
+      {
+        "name": "IAS Interview Guidance Panel",
+        "description": "Mock interview panels with retired bureaucrats and personality evaluation",
+        "icon": "users"
+      }
+    ]
+  }
+]

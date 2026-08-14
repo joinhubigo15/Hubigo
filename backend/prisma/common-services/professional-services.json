@@ -1,0 +1,212 @@
+[
+  {
+    "subcategorySlug": "lawyer",
+    "subcategoryName": "Lawyer",
+    "services": [
+      {
+        "name": "Property Legal Documentation Review",
+        "description": "Title verification, sale deed drafting, and encumbrance certificate checking",
+        "icon": "file-text"
+      },
+      {
+        "name": "Civil Court Litigation Advocacy",
+        "description": "Legal representation for land disputes, contract breaches, and recovery suits",
+        "icon": "scale"
+      },
+      {
+        "name": "Corporate Agreement Drafting",
+        "description": "NDA creation, employment contracts, partnership deeds, and compliance advice",
+        "icon": "briefcase"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "chartered-accountant",
+    "subcategoryName": "Chartered Accountant",
+    "services": [
+      {
+        "name": "Income Tax Filing Services",
+        "description": "ITR computation, e-filing, and tax audit compliance for individuals and firms",
+        "icon": "calculator"
+      },
+      {
+        "name": "GST Registration and Filing",
+        "description": "Monthly GSTR-1 GSTR-3B filings, input tax credit reconciliation, and advice",
+        "icon": "receipt"
+      },
+      {
+        "name": "Company Incorporation Registration",
+        "description": "Private Limited, LLP, and One Person Company ROC registration and filing",
+        "icon": "building"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tax-consultant",
+    "subcategoryName": "Tax Consultant",
+    "services": [
+      {
+        "name": "Tax Planning and Advisory",
+        "description": "Strategies for capital gains tax saving, Section 80C deductions, and wealth",
+        "icon": "pie-chart"
+      },
+      {
+        "name": "TDS Return Filing Services",
+        "description": "Quarterly Form 26Q and 24Q filing, TDS certificate generation, and correction",
+        "icon": "file-check"
+      },
+      {
+        "name": "Tax Notice Response Legal",
+        "description": "Drafting formal replies and representation for income tax scrutiny notices",
+        "icon": "mail"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "financial-consultant",
+    "subcategoryName": "Financial Consultant",
+    "services": [
+      {
+        "name": "Mutual Fund Wealth Management",
+        "description": "SIP portfolio creation, asset allocation, and goal-based investment planning",
+        "icon": "trending-up"
+      },
+      {
+        "name": "Retirement Corpus Planning",
+        "description": "Pension scheme evaluation, annuity planning, and retirement fund management",
+        "icon": "shield"
+      },
+      {
+        "name": "Business Loan Advisory Services",
+        "description": "Project report preparation, MSME loan assistance, and debt restructuring",
+        "icon": "dollar-sign"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "insurance",
+    "subcategoryName": "Insurance",
+    "services": [
+      {
+        "name": "Health Insurance Policy Quotes",
+        "description": "Cashless hospitalization coverage plans, family floaters, and top-up policies",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "Motor Insurance Policy Renewal",
+        "description": "Comprehensive third-party and zero-depreciation coverage for cars and bikes",
+        "icon": "car"
+      },
+      {
+        "name": "Term Life Insurance Advisory",
+        "description": "High coverage financial protection plans with critical illness rider benefits",
+        "icon": "umbrella"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "real-estate",
+    "subcategoryName": "Real Estate",
+    "services": [
+      {
+        "name": "Residential Property Buying Selling",
+        "description": "Apartments, villas, and residential plots matching buyer requirements and budget",
+        "icon": "home"
+      },
+      {
+        "name": "Commercial Office Space Rental",
+        "description": "IT park offices, retail shops, and commercial land leasing services",
+        "icon": "building-2"
+      },
+      {
+        "name": "Property Valuation Consultation",
+        "description": "Accurate market price assessment and site visit guidance for buyers and sellers",
+        "icon": "map-pin"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "architect",
+    "subcategoryName": "Architect",
+    "services": [
+      {
+        "name": "3D Architectural Elevation Design",
+        "description": "Photorealistic 3D exterior building designs, floor plans, and structural drawings",
+        "icon": "box"
+      },
+      {
+        "name": "Building Plan Sanction Approval",
+        "description": "Municipal authority blueprint drafting and sanction approval processing",
+        "icon": "file-text"
+      },
+      {
+        "name": "Structural Engineering Design",
+        "description": "Foundation layout, column beam design, and load-bearing structural plans",
+        "icon": "layers"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "interior-design",
+    "subcategoryName": "Interior Design",
+    "services": [
+      {
+        "name": "Modular Kitchen Interior Design",
+        "description": "Ergonomic kitchen layouts, soft-close cabinets, and chimney countertop setup",
+        "icon": "layout"
+      },
+      {
+        "name": "Complete Home Interior Turnkey",
+        "description": "Living room false ceiling, wardrobes, lighting, and custom woodwork solutions",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Office Commercial Interior Styling",
+        "description": "Modern workstation layouts, reception desks, conference room glass partition",
+        "icon": "briefcase"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "marketing-agency",
+    "subcategoryName": "Marketing Agency",
+    "services": [
+      {
+        "name": "Social Media Management Package",
+        "description": "Content calendar planning, daily posting, and audience engagement across platforms",
+        "icon": "share-2"
+      },
+      {
+        "name": "SEO and Website Optimization",
+        "description": "Keyword research, on-page fixes, and monthly organic search ranking reports",
+        "icon": "search"
+      },
+      {
+        "name": "Paid Ad Campaign Management",
+        "description": "Google and Meta ad setup, budget optimization, and performance tracking",
+        "icon": "trending-up"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "import-and-export-service",
+    "subcategoryName": "Import and Export Service",
+    "services": [
+      {
+        "name": "Customs Clearance Documentation",
+        "description": "Import-export paperwork preparation, duty calculation, and customs filing",
+        "icon": "file-check"
+      },
+      {
+        "name": "Freight Forwarding Coordination",
+        "description": "Sea, air, and land shipment booking with carrier and schedule management",
+        "icon": "ship"
+      },
+      {
+        "name": "Trade Compliance Consulting",
+        "description": "Licensing guidance, tariff classification, and regulatory compliance support",
+        "icon": "clipboard-check"
+      }
+    ]
+  }
+]

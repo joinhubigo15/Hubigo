@@ -1,0 +1,44 @@
+[
+  {
+    "subcategorySlug": "tailoring-service",
+    "subcategoryName": "Tailoring Service",
+    "services": [
+      {
+        "name": "Custom Suit Stitching",
+        "description": "Bespoke suits, tuxedos, and formal trousers tailored to exact measurements",
+        "icon": "scissors"
+      },
+      {
+        "name": "Dress Alterations and Fitting",
+        "description": "Resizing, hemming, and precision fitting for ethnic and western garments",
+        "icon": "ruler"
+      },
+      {
+        "name": "Designer Blouse Stitching",
+        "description": "Custom necklines, embroidery, and pattern work for saree blouses",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "fashion-designer",
+    "subcategoryName": "Fashion Designer",
+    "services": [
+      {
+        "name": "Custom Couture Designing",
+        "description": "Exclusive high-fashion outfit creation for weddings and red-carpet events",
+        "icon": "shirt"
+      },
+      {
+        "name": "Personal Styling Consultation",
+        "description": "Expert guidance on wardrobe curation, body shape styling, and trends",
+        "icon": "user-check"
+      },
+      {
+        "name": "Bridal Wear Customization",
+        "description": "Handcrafted bridal lehengas, gowns, and sherwanis with intricate detailing",
+        "icon": "crown"
+      }
+    ]
+  }
+]

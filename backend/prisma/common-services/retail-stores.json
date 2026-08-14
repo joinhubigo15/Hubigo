@@ -1,0 +1,1220 @@
+[
+  {
+    "subcategorySlug": "childrens-clothing-store",
+    "subcategoryName": "Children's Clothing Store",
+    "services": [
+      {
+        "name": "Infant Kids Wear Collection",
+        "description": "Soft cotton rompers, onesies, and nightwear for newborn babies and toddlers",
+        "icon": "smile"
+      },
+      {
+        "name": "Kids Party Wear Dresses",
+        "description": "Festive lehengas, suits, frocks, and gowns for birthdays and events",
+        "icon": "sparkles"
+      },
+      {
+        "name": "School Uniform Fitting",
+        "description": "Complete school uniforms, ties, belts, and sports kits for all age groups",
+        "icon": "shirt"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cosmetics-store",
+    "subcategoryName": "Cosmetics Store",
+    "services": [
+      {
+        "name": "Skincare and Makeup Products",
+        "description": "Foundations, lipsticks, serums, moisturizers, and sunscreens from top brands",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Organic Beauty Products",
+        "description": "Paraben-free vegan skincare, ayurvedic face packs, and essential oils",
+        "icon": "leaf"
+      },
+      {
+        "name": "In Store Shade Matching",
+        "description": "Beauty advisor consultation for skin tone foundation matching and makeup tips",
+        "icon": "user-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "gift-store",
+    "subcategoryName": "Gift Store",
+    "services": [
+      {
+        "name": "Personalized Gift Items",
+        "description": "Customized photo mugs, engraved plaques, cushions, and keychains",
+        "icon": "gift"
+      },
+      {
+        "name": "Festive Hamper Packing",
+        "description": "Decorative gift wrapping, ribbon bow detailing, and festive gift baskets",
+        "icon": "package"
+      },
+      {
+        "name": "Greeting Cards and Novelties",
+        "description": "Birthday, anniversary, and holiday greeting cards with unique gift novelties",
+        "icon": "file-text"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "grocery-store",
+    "subcategoryName": "Grocery Store",
+    "services": [
+      {
+        "name": "Daily Ration Staples",
+        "description": "Premium quality rice, wheat flour, lentils, spices, and cooking oils",
+        "icon": "shopping-bag"
+      },
+      {
+        "name": "Fresh Dairy and Bakery",
+        "description": "Daily fresh milk, curd, butter, paneer, and sandwich bread supplies",
+        "icon": "coffee"
+      },
+      {
+        "name": "Local Home Delivery",
+        "description": "Convenient doorstep delivery of monthly household groceries",
+        "icon": "truck"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "hardware-store",
+    "subcategoryName": "Hardware Store",
+    "services": [
+      {
+        "name": "Power and Hand Tools",
+        "description": "Drill machines, hammers, screwdrivers, pliers, and saw blades",
+        "icon": "wrench"
+      },
+      {
+        "name": "Fasteners and Door Fittings",
+        "description": "Screws, bolts, hinges, door locks, handles, and tower bolts",
+        "icon": "lock"
+      },
+      {
+        "name": "Plumbing and Construction Hardware",
+        "description": "PVC fittings, pipe cement, sealants, wire mesh, and tarpaulins",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "mens-clothing-store",
+    "subcategoryName": "Men's Clothing Store",
+    "services": [
+      {
+        "name": "Formal Suits and Shirts",
+        "description": "Crisp formal cotton shirts, trousers, blazers, and ties for work and events",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Casual Denim Wear",
+        "description": "Trendy jeans, t-shirts, polo shirts, jackets, and casual trousers",
+        "icon": "shirt"
+      },
+      {
+        "name": "Ethnic Kurta Sherwani Wear",
+        "description": "Traditional wedding kurtas, Modi jackets, and embroidered sherwanis",
+        "icon": "crown"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "shoe-store",
+    "subcategoryName": "Shoe Store",
+    "services": [
+      {
+        "name": "Formal Leather Footwear",
+        "description": "Genuine leather Oxfords, Derbies, loafers, and formal dress shoes",
+        "icon": "footprints"
+      },
+      {
+        "name": "Sports Running Shoes",
+        "description": "Cushioned athletic sneakers, running shoes, and gym trainers",
+        "icon": "zap"
+      },
+      {
+        "name": "Casual Sandals and Slippers",
+        "description": "Comfortable daily wear sandals, flip-flops, and orthopedic footwear",
+        "icon": "smile"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "stationery-store",
+    "subcategoryName": "Stationery Store",
+    "services": [
+      {
+        "name": "School Student Supplies",
+        "description": "Notebooks, pens, pencils, geometry boxes, and drawing books",
+        "icon": "book-open"
+      },
+      {
+        "name": "Office Paper and Files",
+        "description": "A4 printer paper, lever arch files, folders, and sticky notes",
+        "icon": "file-text"
+      },
+      {
+        "name": "Art Craft Material",
+        "description": "Acrylic paints, canvases, brushes, sketchbooks, and craft accessories",
+        "icon": "palette"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "supermarket",
+    "subcategoryName": "Supermarket",
+    "services": [
+      {
+        "name": "All in One Grocery Shopping",
+        "description": "Wide aisles stocking packaged foods, beverages, toiletries, and cleaning items",
+        "icon": "shopping-cart"
+      },
+      {
+        "name": "Fresh Produce Section",
+        "description": "Organized fresh fruit, vegetable, bakery, and chilled dairy counters",
+        "icon": "apple"
+      },
+      {
+        "name": "Household Goods Section",
+        "description": "Cookware, plastic containers, mops, and everyday home essential items",
+        "icon": "home"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "womens-clothing-store",
+    "subcategoryName": "Women's Clothing Store",
+    "services": [
+      {
+        "name": "Designer Ethnic Wear",
+        "description": "Anarkalis, salwar suits, kurtis, and designer ethnic ensembles",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Western Tops and Dresses",
+        "description": "Casual tops, denim, skirts, jumpsuit, and formal office wear for women",
+        "icon": "shirt"
+      },
+      {
+        "name": "Bridal Lehenga Collections",
+        "description": "Heavy embroidered bridal lehengas, dupattas, and party wear gowns",
+        "icon": "crown"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "antique-store",
+    "subcategoryName": "Antique Store",
+    "services": [
+      {
+        "name": "Vintage Furniture Collectibles",
+        "description": "Restored teakwood tables, armchairs, clocks, and period home furniture",
+        "icon": "clock"
+      },
+      {
+        "name": "Rare Coin Artifact Sales",
+        "description": "Historical coins, brass statues, ancient maps, and vintage memorabilia",
+        "icon": "award"
+      },
+      {
+        "name": "Antique Appraisal Consultation",
+        "description": "Expert authentication, valuation, and restoration advice for vintage items",
+        "icon": "search"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "bag-store",
+    "subcategoryName": "Bag Store",
+    "services": [
+      {
+        "name": "Travel Luggage Suitcases",
+        "description": "Durable trolley bags, hard-shell spinners, and travel duffel bags",
+        "icon": "package"
+      },
+      {
+        "name": "School College Backpacks",
+        "description": "Ergonomic laptop backpacks, school bags, and trekking rucksacks",
+        "icon": "user-check"
+      },
+      {
+        "name": "Leather Executive Briefcases",
+        "description": "Premium leather office bags, laptop sleeves, and messenger bags",
+        "icon": "briefcase"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "boutique",
+    "subcategoryName": "Boutique",
+    "services": [
+      {
+        "name": "Custom Tailored Fashion",
+        "description": "One-of-a-kind designer outfits created to individual style and measurements",
+        "icon": "scissors"
+      },
+      {
+        "name": "Curated Designer Wear",
+        "description": "Exclusive seasonal collections of ethnic fusion and western boutique apparel",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Personal Style Fitting",
+        "description": "Private fitting sessions with fashion consultants for special occasions",
+        "icon": "user-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "building-materials-store",
+    "subcategoryName": "Building Materials Store",
+    "services": [
+      {
+        "name": "Cement Steel Rod Supplies",
+        "description": "High-grade OPC PPC cement bags and TMT steel rebar for construction",
+        "icon": "building"
+      },
+      {
+        "name": "Bricks Sand Aggregates",
+        "description": "Red clay bricks, AAC blocks, M-sand, and gravel delivered to site",
+        "icon": "truck"
+      },
+      {
+        "name": "Waterproofing Construction Chemical",
+        "description": "Liquid waterproofing additives, tile adhesives, and grouting compounds",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "meat-store",
+    "subcategoryName": "Meat Store",
+    "services": [
+      {
+        "name": "Fresh Cut Chicken",
+        "description": "Hygienically processed curry cut, boneless breast, and drumstick fresh chicken",
+        "icon": "shopping-bag"
+      },
+      {
+        "name": "Fresh Mutton Cuts",
+        "description": "Tender goat and lamb meat cuts cleaned and packed under hygienic standards",
+        "icon": "package"
+      },
+      {
+        "name": "Marinated Ready Cooked Items",
+        "description": "Pre-marinated chicken tikka, kebabs, and wings ready for grilling",
+        "icon": "flame"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "costume-jewelry-store",
+    "subcategoryName": "Costume Jewelry Store",
+    "services": [
+      {
+        "name": "Imitation Bridal Jewelry Sets",
+        "description": "Kundan, Polki, and temple design necklace sets for weddings",
+        "icon": "crown"
+      },
+      {
+        "name": "Fashion Earrings Bangles",
+        "description": "Trendy jhumkas, hoop earrings, brass bangles, and statement rings",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Event Jewelry Rental",
+        "description": "Affordable rental packages for heavy bridal and party fashion jewelry",
+        "icon": "gift"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "craft-store",
+    "subcategoryName": "Craft Store",
+    "services": [
+      {
+        "name": "DIY Craft Art Supplies",
+        "description": "Resin art kits, macrame cords, wooden cutouts, and decoupage materials",
+        "icon": "palette"
+      },
+      {
+        "name": "Knitting Embroidery Supplies",
+        "description": "Yarn skeins, crochet hooks, embroidery threads, and cross-stitch kits",
+        "icon": "scissors"
+      },
+      {
+        "name": "School Science Project Material",
+        "description": "Styrofoam balls, chart papers, clay, LEDs, and craft tools for projects",
+        "icon": "book-open"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "curtain-store",
+    "subcategoryName": "Curtain Store",
+    "services": [
+      {
+        "name": "Readymade Door Window Curtains",
+        "description": "Blackout, sheer, and eyelet curtains in cotton, velvet, and linen fabrics",
+        "icon": "layout"
+      },
+      {
+        "name": "Custom Curtain Stitching",
+        "description": "Measurement-based custom stitching with eyelets, pleats, and valances",
+        "icon": "scissors"
+      },
+      {
+        "name": "Curtain Rod Blinds Installation",
+        "description": "Fitting metal curtain rods, roller blinds, and zebra blinds at home",
+        "icon": "wrench"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "dairy-store",
+    "subcategoryName": "Dairy Store",
+    "services": [
+      {
+        "name": "Fresh Cow Milk Curd",
+        "description": "Pure pasteurized milk, thick dahi, and fresh buttermilk delivered daily",
+        "icon": "droplet"
+      },
+      {
+        "name": "Fresh Cottage Cheese Paneer",
+        "description": "Soft malai paneer, fresh butter, khoya, and desi ghee prepared daily",
+        "icon": "package"
+      },
+      {
+        "name": "Traditional Dairy Sweets",
+        "description": "Fresh rabri, basundi, rasgulla, and lassi made with pure dairy",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "electrical-wholesale-supply-store",
+    "subcategoryName": "Electrical wholesale Supply Store",
+    "services": [
+      {
+        "name": "Industrial Wire Cable Wholesale",
+        "description": "Copper and aluminum armored cables, house wires, and conduits in bulk",
+        "icon": "zap"
+      },
+      {
+        "name": "Bulk Switch Distribution Boards",
+        "description": "Modular switches, MCBs, RCCBs, and industrial switchgear distribution",
+        "icon": "power"
+      },
+      {
+        "name": "Commercial LED Lighting Supply",
+        "description": "High-bay LED lights, floodlights, tube lights, and panel lights for business",
+        "icon": "sun"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "fabric-store",
+    "subcategoryName": "Fabric Store",
+    "services": [
+      {
+        "name": "Unstitched Cotton Silk Fabrics",
+        "description": "Pure cotton, Chanderi, Banarasi silk, and organza fabric dress materials",
+        "icon": "scissors"
+      },
+      {
+        "name": "Suiting and Shirting Material",
+        "description": "Premium linen, wool blend, and terry-cotton fabrics for men's suits and shirts",
+        "icon": "shirt"
+      },
+      {
+        "name": "Embroidered Lace Borders",
+        "description": "Decorative zari laces, borders, patches, and embellished dress trims",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "farm-store",
+    "subcategoryName": "Farm Store",
+    "services": [
+      {
+        "name": "Agricultural Seeds Fertilizers",
+        "description": "Certified crop seeds, bio-fertilizers, and organic soil nutrients",
+        "icon": "leaf"
+      },
+      {
+        "name": "Farming Tools Equipment",
+        "description": "Hand sprayers, irrigation pipes, sickles, spades, and garden tools",
+        "icon": "wrench"
+      },
+      {
+        "name": "Organic Pest Control Products",
+        "description": "Neem-based biopesticides, traps, and crop protection sprays",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "fashion-accessories-store",
+    "subcategoryName": "Fashion Accessories Store",
+    "services": [
+      {
+        "name": "Belts Wallets Collection",
+        "description": "Genuine leather men's belts, formal wallets, and keyholders",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Trendy Sunglasses Eyewear",
+        "description": "UV protected aviator, wayfarer, and cat-eye sunglasses for men and women",
+        "icon": "eye"
+      },
+      {
+        "name": "Hair Clips Scarves Ties",
+        "description": "Silk neckties, pocket squares, hair bands, clips, and fashion scarves",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "frozen-food-store",
+    "subcategoryName": "Frozen Food Store",
+    "services": [
+      {
+        "name": "Frozen Veg NonVeg Snacks",
+        "description": "Ready-to-fry french fries, veg nuggets, chicken nuggets, and momos",
+        "icon": "package"
+      },
+      {
+        "name": "Frozen Green Peas Corn",
+        "description": "Hygienically flash-frozen sweet corn, green peas, and mixed vegetables",
+        "icon": "snowflake"
+      },
+      {
+        "name": "Frozen Seafood Meat Items",
+        "description": "Cleaned frozen prawns, fish fillets, and chicken cuts stored sub-zero",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "fruit-and-vegetable-store",
+    "subcategoryName": "Fruit & Vegetable Store",
+    "services": [
+      {
+        "name": "Fresh Farm Vegetables",
+        "description": "Sourced daily leafy greens, tomatoes, potatoes, onions, and exotic veggies",
+        "icon": "leaf"
+      },
+      {
+        "name": "Seasonal Fresh Fruits",
+        "description": "Sweet apples, bananas, mangoes, oranges, and imported berries",
+        "icon": "apple"
+      },
+      {
+        "name": "Cut Fruit Basket Order",
+        "description": "Hygienically washed, cut fruit bowls and custom fruit gift baskets",
+        "icon": "gift"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "game-store",
+    "subcategoryName": "Game Store",
+    "services": [
+      {
+        "name": "Console Video Game Discs",
+        "description": "Latest PS5, Xbox, and Nintendo Switch game titles and pre-orders",
+        "icon": "gamepad-2"
+      },
+      {
+        "name": "Board Games and Puzzles",
+        "description": "Monopoly, Catan, chess sets, jigsaw puzzles, and family card games",
+        "icon": "circle"
+      },
+      {
+        "name": "Gaming Controller Accessories",
+        "description": "DualSense controllers, gaming headsets, charging docks, and skin covers",
+        "icon": "headphones"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "glass-and-mirror-store",
+    "subcategoryName": "Glass & Mirror Store",
+    "services": [
+      {
+        "name": "Toughened Glass Installation",
+        "description": "Clear toughened glass partitions, balcony railings, and shopfronts",
+        "icon": "layout"
+      },
+      {
+        "name": "Custom Cut Decorative Mirrors",
+        "description": "LED vanity mirrors, bevelled wall mirrors, and custom framed mirrors",
+        "icon": "sun"
+      },
+      {
+        "name": "Glass Table Top Cutting",
+        "description": "Precision edge-polished glass tops for dining and coffee tables",
+        "icon": "scissors"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "handbag-store",
+    "subcategoryName": "Handbag Store",
+    "services": [
+      {
+        "name": "Women Designer Handbags",
+        "description": "Stylish tote bags, shoulder bags, and satchels from popular brands",
+        "icon": "shopping-bag"
+      },
+      {
+        "name": "Evening Clutches Potlis",
+        "description": "Embellished party clutches, wedding potlis, and sling bags",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Leather Crossbody Sling Bags",
+        "description": "Compact daily-use leather crossbody bags with adjustable straps",
+        "icon": "package"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "internet-cafe",
+    "subcategoryName": "Internet Cafe",
+    "services": [
+      {
+        "name": "High Speed Web Browsing",
+        "description": "Dedicated computer terminals with high-speed fiber internet access",
+        "icon": "wifi"
+      },
+      {
+        "name": "Document Printout Scanning",
+        "description": "Color and black-white laser printing, document scanning, and photocopy",
+        "icon": "printer"
+      },
+      {
+        "name": "Online Form Application Help",
+        "description": "Assistance with passport, exam, job, and government portal online applications",
+        "icon": "file-text"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "kitchen-supply-store",
+    "subcategoryName": "Kitchen Supply Store",
+    "services": [
+      {
+        "name": "Non Stick Pressure Cookware",
+        "description": "Stainless steel pressure cookers, non-stick pans, kadai, and pots",
+        "icon": "flame"
+      },
+      {
+        "name": "Mixer Grinders Juicers",
+        "description": "Heavy-duty mixer grinders, blenders, food processors, and air fryers",
+        "icon": "zap"
+      },
+      {
+        "name": "Crockery and Cutlery Sets",
+        "description": "Ceramic dinner sets, glass tumblers, water bottles, and cutlery boxes",
+        "icon": "coffee"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "mattress-store",
+    "subcategoryName": "Mattress Store",
+    "services": [
+      {
+        "name": "Orthopedic Memory Foam Mattress",
+        "description": "Spinal alignment memory foam and pocket spring mattresses for sleep care",
+        "icon": "bed"
+      },
+      {
+        "name": "Custom Size Mattress Order",
+        "description": "Custom length and width mattress tailoring for unique bed frames",
+        "icon": "ruler"
+      },
+      {
+        "name": "Pillows and Mattress Protectors",
+        "description": "Waterproof mattress covers, cervical pillows, and microfiber toppers",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "automobiles-body-parts-store",
+    "subcategoryName": "Automobiles body Parts Store",
+    "services": [
+      {
+        "name": "Car Bumpers Body Panels",
+        "description": "OEM replacement bumpers, fenders, doors, and bonnet body parts",
+        "icon": "car"
+      },
+      {
+        "name": "Car Headlights Rear Tail Lamps",
+        "description": "Halogen and LED headlight assemblies, fog lights, and tail light lenses",
+        "icon": "sun"
+      },
+      {
+        "name": "Side Rear Mirrors Assembly",
+        "description": "Electric adjustable side mirrors, mirror glass, and rear-view mirrors",
+        "icon": "eye"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "musical-instrument-store",
+    "subcategoryName": "Musical Instrument Store",
+    "services": [
+      {
+        "name": "Acoustic Electric Guitars",
+        "description": "Guitars, ukuleles, amplifiers, guitar strings, and picks for musicians",
+        "icon": "music"
+      },
+      {
+        "name": "Digital Keyboards Synthesizers",
+        "description": "Casio and Yamaha electronic keyboards, MIDI controllers, and sustain pedals",
+        "icon": "disc"
+      },
+      {
+        "name": "Traditional Indian Instruments",
+        "description": "Tablas, harmoniums, sitars, and flutes crafted for classical music",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "office-supply-store",
+    "subcategoryName": "Office Supply Store",
+    "services": [
+      {
+        "name": "Corporate Office Stationery",
+        "description": "Bulk printer paper, pens, staplers, registers, and desk organizers",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Printer Toner Ink Cartridges",
+        "description": "Genuine and compatible HP, Canon, and Epson toner cartridges",
+        "icon": "printer"
+      },
+      {
+        "name": "Whiteboards and Display Boards",
+        "description": "Magnetic whiteboards, pin-up cork boards, markers, and dusters",
+        "icon": "layout"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "paint-store",
+    "subcategoryName": "Paint Store",
+    "services": [
+      {
+        "name": "Computerized Color Shade Tinting",
+        "description": "Instant custom paint shade mixing using automated tinting machines",
+        "icon": "palette"
+      },
+      {
+        "name": "Interior Exterior Paint Buckets",
+        "description": "Emulsion paints, enamel paints, primers, and damp-proof wall coatings",
+        "icon": "paint-bucket"
+      },
+      {
+        "name": "Painter Tools Accessories",
+        "description": "Paint rollers, brushes, masking tapes, wall putty, and sandpaper",
+        "icon": "wrench"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "perfume-store",
+    "subcategoryName": "Perfume Store",
+    "services": [
+      {
+        "name": "Imported Eau De Parfum",
+        "description": "Luxury French and international long-lasting designer perfume sprays",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Traditional Concentrated Attar Oils",
+        "description": "Alcohol-free pure rose, oud, jasmine, and musk attar oils",
+        "icon": "droplet"
+      },
+      {
+        "name": "Body Sprays Deodorants",
+        "description": "Daily refresh body mists, sprays, and compact pocket perfumes",
+        "icon": "wind"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "pet-store",
+    "subcategoryName": "Pet Store",
+    "services": [
+      {
+        "name": "Dog and Cat Premium Food",
+        "description": "Nutritional dry kibble, wet food cans, and healthy pet treats",
+        "icon": "package"
+      },
+      {
+        "name": "Pet Leashes Collars Toys",
+        "description": "Durable dog harnesses, cat scratching posts, chew toys, and beds",
+        "icon": "smile"
+      },
+      {
+        "name": "Aquarium Fish Tanks Accessories",
+        "description": "Glass fish tanks, water filters, air pumps, fish food, and live plants",
+        "icon": "waves"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "photo-store",
+    "subcategoryName": "Photo Store",
+    "services": [
+      {
+        "name": "Instant Passport Photo Print",
+        "description": "Quick high-quality passport, visa, and stamp size photograph prints",
+        "icon": "camera"
+      },
+      {
+        "name": "Custom Wall Photo Framing",
+        "description": "Wooden, synthetic, and glass photo frames with custom matte borders",
+        "icon": "image"
+      },
+      {
+        "name": "Personalized Canvas Photo Printing",
+        "description": "Large format canvas wall art and photo gift mugs printing",
+        "icon": "gift"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "plant-nursery",
+    "subcategoryName": "Plant Nursery",
+    "services": [
+      {
+        "name": "Indoor and Outdoor Plants",
+        "description": "Air-purifying indoor plants, flowering shrubs, succulents, and bonsai trees",
+        "icon": "leaf"
+      },
+      {
+        "name": "Ceramic Terra Cotta Pots",
+        "description": "Decorative ceramic planters, plastic pots, hanging baskets, and saucers",
+        "icon": "box"
+      },
+      {
+        "name": "Potting Soil and Fertilizers",
+        "description": "Enriched vermicompost, coco peat, organic manure, and plant sprays",
+        "icon": "droplet"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "printer-shop",
+    "subcategoryName": "Printer Shop",
+    "services": [
+      {
+        "name": "Laser and Inkjet Printers",
+        "description": "Home and office all-in-one print, scan, and copy machine sales",
+        "icon": "printer"
+      },
+      {
+        "name": "Toner Cartridge Refilling",
+        "description": "Cost-effective laser printer toner refilling and drum replacement",
+        "icon": "refresh-cw"
+      },
+      {
+        "name": "Printer Repair Maintenance",
+        "description": "Fixing paper jams, printhead clogs, scanner errors, and connectivity",
+        "icon": "wrench"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "saree-store",
+    "subcategoryName": "Saree Store",
+    "services": [
+      {
+        "name": "Kanjeevaram Banarasi Silk Sarees",
+        "description": "Pure handloom silk sarees with rich zari work for weddings and pujas",
+        "icon": "crown"
+      },
+      {
+        "name": "Daily Wear Chiffon Cotton Sarees",
+        "description": "Lightweight printed chiffon, georgette, and linen sarees for daily wear",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Fall Pico Saree Finishing",
+        "description": "In-store saree fall stitching, edge pico finishing, and tassel work",
+        "icon": "scissors"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "seafood-market",
+    "subcategoryName": "Seafood Market",
+    "services": [
+      {
+        "name": "Fresh Sea River Fish",
+        "description": "Daily catch of Kingfish, Pomfret, Salmon, Rohu, and Katla cleaned and cut",
+        "icon": "shopping-bag"
+      },
+      {
+        "name": "Fresh Prawns and Crabs",
+        "description": "De-veined prawns, jumbo tiger prawns, and live crabs packed fresh",
+        "icon": "package"
+      },
+      {
+        "name": "Custom Fish Cut Options",
+        "description": "Cleaned, scaled, and sliced as steaks, curry cuts, or boneless fillets",
+        "icon": "scissors"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "second-hand-store",
+    "subcategoryName": "Second Hand Store",
+    "services": [
+      {
+        "name": "Pre Owned Furniture Sales",
+        "description": "Inspected used wooden sofas, study tables, beds, and office chairs",
+        "icon": "armchair"
+      },
+      {
+        "name": "Used Electronics Home Appliances",
+        "description": "Tested second-hand TV, refrigerators, washing machines, and microwave ovens",
+        "icon": "tv"
+      },
+      {
+        "name": "Used Household Item Buyback",
+        "description": "Selling or trading in your pre-owned home items for instant cash",
+        "icon": "repeat"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "shopping-mall",
+    "subcategoryName": "Shopping Mall",
+    "services": [
+      {
+        "name": "Multibrand Retail Outlets",
+        "description": "Air-conditioned shopping levels featuring national and global fashion brands",
+        "icon": "building"
+      },
+      {
+        "name": "Food Court and Dining",
+        "description": "Spacious food court with quick service restaurants, cafes, and dessert kiosks",
+        "icon": "utensils"
+      },
+      {
+        "name": "Multiplex and Arcade Entertainment",
+        "description": "Multi-screen movie theaters, gaming zones, and children play areas",
+        "icon": "film"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "furniture-store",
+    "subcategoryName": "Furniture Store",
+    "services": [
+      {
+        "name": "Living Room Sofa Sets",
+        "description": "Fabric, leatherette, and recliner sofas, L-shaped sectionals, and coffee tables",
+        "icon": "armchair"
+      },
+      {
+        "name": "Bedroom Sets and Wardrobes",
+        "description": "King and queen size wooden beds, bedside tables, and 3-door wardrobes",
+        "icon": "bed"
+      },
+      {
+        "name": "Dining Table Sets",
+        "description": "4-seater and 6-seater solid wood and glass top dining tables with chairs",
+        "icon": "layout"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "sporting-goods-store",
+    "subcategoryName": "Sporting Goods Store",
+    "services": [
+      {
+        "name": "Cricket Equipment Gear",
+        "description": "English willow bats, leather balls, batting pads, helmets, and kit bags",
+        "icon": "trophy"
+      },
+      {
+        "name": "Badminton Tennis Rackets",
+        "description": "Lightweight graphite rackets, shuttlecocks, grip tapes, and racket stringing",
+        "icon": "activity"
+      },
+      {
+        "name": "Fitness Accessories Dumbbells",
+        "description": "Yoga mats, resistance bands, dumbbells, skipping ropes, and gym gloves",
+        "icon": "dumbbell"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "sportswear-store",
+    "subcategoryName": "Sportswear Store",
+    "services": [
+      {
+        "name": "Performance Athletic Apparel",
+        "description": "Dry-fit t-shirts, track pants, shorts, and compression wear for workouts",
+        "icon": "shirt"
+      },
+      {
+        "name": "Sports Team Football Jerseys",
+        "description": "Official and replica club football jerseys, cricket kits, and tracksuits",
+        "icon": "award"
+      },
+      {
+        "name": "Athletic Socks and Wristbands",
+        "description": "Cushioned sports socks, sweatbands, caps, and hydration water bottles",
+        "icon": "smile"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "supplement-store",
+    "subcategoryName": "Supplement Store",
+    "services": [
+      {
+        "name": "Whey Protein Isolate Powder",
+        "description": "Authentic branded whey protein, mass gainers, and plant-based protein",
+        "icon": "zap"
+      },
+      {
+        "name": "Pre Workout Creatine BCAA",
+        "description": "Performance amino acids, creatine monohydrate, and pre-workout energy drinks",
+        "icon": "activity"
+      },
+      {
+        "name": "Multivitamins and Fish Oil",
+        "description": "Daily multivitamins, Omega-3 fish oil capsules, and joint health supplements",
+        "icon": "pill"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tile-store",
+    "subcategoryName": "Tile Store",
+    "services": [
+      {
+        "name": "Vitrified Floor Tiles",
+        "description": "High-gloss, matte, and wooden finish vitrified floor tiles in modern sizes",
+        "icon": "grid"
+      },
+      {
+        "name": "Bathroom Wall Ceramic Tiles",
+        "description": "Waterproof glazed ceramic wall tiles, highlighter tiles, and mosaic concepts",
+        "icon": "layout"
+      },
+      {
+        "name": "Outdoor Parking Elevation Tiles",
+        "description": "Heavy-duty anti-skid parking tiles and stone texture exterior wall cladding",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tobacco-store",
+    "subcategoryName": "Tobacco Store",
+    "services": [
+      {
+        "name": "Imported Cigars Accessories",
+        "description": "Premium hand-rolled cigars, humidor storage cases, and cigar cutters",
+        "icon": "package"
+      },
+      {
+        "name": "Hookah Shisha Flavor Pipes",
+        "description": "Glass hookah pots, herbal shisha flavors, coconut charcoal, and hoses",
+        "icon": "flame"
+      },
+      {
+        "name": "Pipe Tobacco Lighters",
+        "description": "Refillable windproof lighters, pipe tobacco blends, and rolling papers",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "toy-store",
+    "subcategoryName": "Toy Store",
+    "services": [
+      {
+        "name": "Educational STEM Learning Toys",
+        "description": "Building block sets, science experiment kits, and interactive learning toys",
+        "icon": "smile"
+      },
+      {
+        "name": "Remote Control Cars Drones",
+        "description": "RC cars, helicopter toys, battery ride-on cars, and track sets for kids",
+        "icon": "gamepad-2"
+      },
+      {
+        "name": "Soft Toys and Dolls",
+        "description": "Plush teddy bears, Disney character dolls, action figures, and playsets",
+        "icon": "heart"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "vegetable-market",
+    "subcategoryName": "Vegetable Market",
+    "services": [
+      {
+        "name": "Fresh Daily Greens Herbs",
+        "description": "Direct-from-farm coriander, mint, spinach, fenugreek, and seasonal greens",
+        "icon": "leaf"
+      },
+      {
+        "name": "Bulk Kitchen Vegetable Bags",
+        "description": "Wholesale and retail bags of potatoes, onions, tomatoes, and garlic",
+        "icon": "shopping-bag"
+      },
+      {
+        "name": "Exotic Organic Vegetables",
+        "description": "Broccoli, zucchini, colored bell peppers, cherry tomatoes, and mushrooms",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "watch-store",
+    "subcategoryName": "Watch Store",
+    "services": [
+      {
+        "name": "Branded Wristwatches Collection",
+        "description": "Analog, chronograph, and luxury automatic watches for men and women",
+        "icon": "clock"
+      },
+      {
+        "name": "Smartwatches Fitness Bands",
+        "description": "AMOLED touch screen smartwatches tracking heart rate, steps, and notifications",
+        "icon": "watch"
+      },
+      {
+        "name": "Watch Battery Strap Replacement",
+        "description": "Watch cell replacement, leather/metal strap changes, and water resistance test",
+        "icon": "settings"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "electronic-store",
+    "subcategoryName": "Electronic Store",
+    "services": [
+      {
+        "name": "Smart TVs Home Entertainment",
+        "description": "4K Ultra HD smart TVs, soundbars, home theater speakers, and streaming devices",
+        "icon": "tv"
+      },
+      {
+        "name": "Laptops Tablets Accessories",
+        "description": "Core i5 i7 laptops, iPads, Android tablets, keyboards, and wireless mice",
+        "icon": "monitor"
+      },
+      {
+        "name": "Refrigerators Washing Machines",
+        "description": "Energy-efficient inverter refrigerators, front load washers, and split ACs",
+        "icon": "box"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "animal-feed-store",
+    "subcategoryName": "Animal Feed Store",
+    "services": [
+      {
+        "name": "Cattle and Poultry Feed",
+        "description": "Nutritional cattle feed pellets, mineral mixtures, and poultry layer feed",
+        "icon": "package"
+      },
+      {
+        "name": "Pet Animal Nutrition Feed",
+        "description": "High-protein dog food bags, cat kibble, bird seeds, and fish food flakes",
+        "icon": "heart"
+      },
+      {
+        "name": "Livestock Health Supplements",
+        "description": "Calcium supplements, deworming bolus, and milk boosting tonic for livestock",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "appliance-store",
+    "subcategoryName": "Appliance Store",
+    "services": [
+      {
+        "name": "Kitchen Home Appliances",
+        "description": "Juicer mixer grinders, induction cooktops, microwave ovens, and chimneys",
+        "icon": "flame"
+      },
+      {
+        "name": "Water Purifiers Geysers",
+        "description": "RO UV water purifiers, storage electric geysers, and instant water heaters",
+        "icon": "droplet"
+      },
+      {
+        "name": "Air Coolers and Ceiling Fans",
+        "description": "Desert air coolers, BLDC energy-saving ceiling fans, and pedestal fans",
+        "icon": "wind"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "baby-store",
+    "subcategoryName": "Baby Store",
+    "services": [
+      {
+        "name": "Newborn Baby Clothing Essentials",
+        "description": "Pure cotton jhablas, caps, mittens, booties, and swaddle wraps for infants",
+        "icon": "smile"
+      },
+      {
+        "name": "Baby Strollers and Car Seats",
+        "description": "Foldable pram strollers, convertible car seats, high chairs, and walkers",
+        "icon": "package"
+      },
+      {
+        "name": "Diapers Feeding Skincare Products",
+        "description": "Tape and pant diapers, anti-colic feeding bottles, baby wipes, and lotions",
+        "icon": "heart"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "agricultural-products",
+    "subcategoryName": "Agricultural Products",
+    "services": [
+      {
+        "name": "Seed and Fertilizer Supply",
+        "description": "Quality seeds, saplings, and soil nutrient products for various crops",
+        "icon": "sprout"
+      },
+      {
+        "name": "Farming Equipment and Tools",
+        "description": "Hand tools, irrigation equipment, and farm machinery for daily operations",
+        "icon": "wrench"
+      },
+      {
+        "name": "Bulk Agricultural Order Fulfillment",
+        "description": "Wholesale grain, feed, and produce supply with delivery coordination",
+        "icon": "truck"
+      }
+    ]
+  }
+]

@@ -1,0 +1,233 @@
+[
+  {
+    "subcategorySlug": "salon",
+    "subcategoryName": "Salon",
+    "services": [
+      {
+        "name": "Haircut and Beard Styling",
+        "description": "Precision hair trims, fade cuts, hot towel shaves, and beard grooming",
+        "icon": "scissors"
+      },
+      {
+        "name": "Hair Coloring and Highlights",
+        "description": "Global hair color, balayage, highlights, and root touch-up treatments",
+        "icon": "palette"
+      },
+      {
+        "name": "Keratin and Smoothening Hair Care",
+        "description": "Frizz-control keratin, hair spa, and cysteine straightening treatments",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "massage-and-spa",
+    "subcategoryName": "Massage & Spa",
+    "services": [
+      {
+        "name": "Full Body Swedish Massage",
+        "description": "Relaxing deep-tissue oil massage relieving muscle tension and stress",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "Aromatherapy Body Spa",
+        "description": "Essential oil therapeutic massage followed by a warm herbal steam bath",
+        "icon": "flower-2"
+      },
+      {
+        "name": "Foot Reflexology Therapy",
+        "description": "Pressure-point foot massage stimulating nerve pathways and circulation",
+        "icon": "footprints"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "beauty-parlour",
+    "subcategoryName": "Beauty Parlour",
+    "services": [
+      {
+        "name": "Bridal Makeup Package",
+        "description": "HD and Airbrush bridal makeup, hair styling, and saree draping",
+        "icon": "crown"
+      },
+      {
+        "name": "Facial and Clean Up Treatment",
+        "description": "Gold, diamond, and hydra facials for skin brightening and blackhead removal",
+        "icon": "smile"
+      },
+      {
+        "name": "Manicure and Pedicure Care",
+        "description": "Nail shaping, cuticle cleaning, exfoliation scrub, and nail polish",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "meditation-center",
+    "subcategoryName": "Meditation Center",
+    "services": [
+      {
+        "name": "Guided Mindfulness Classes",
+        "description": "Breathing techniques, stress reduction exercises, and mental clarity coaching",
+        "icon": "sun"
+      },
+      {
+        "name": "Sound Bath Healing Sessions",
+        "description": "Therapeutic Tibetan singing bowl vibrations for deep mental relaxation",
+        "icon": "volume-2"
+      },
+      {
+        "name": "Chakra Balancing Workshops",
+        "description": "Energy alignment techniques and guided visualization for inner harmony",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tattoo-shop",
+    "subcategoryName": "Tattoo Shop",
+    "services": [
+      {
+        "name": "Custom Permanent Tattooing",
+        "description": "Sterilized needle tattooing for custom blackwork, watercolor, and line art",
+        "icon": "pen-tool"
+      },
+      {
+        "name": "Body Piercing Service",
+        "description": "Safe, hygienic ear, nose, and body piercings with titanium jewelry",
+        "icon": "shield-check"
+      },
+      {
+        "name": "Old Tattoo Cover Up",
+        "description": "Artistic redesign and ink camouflage for outdated or faded tattoos",
+        "icon": "refresh-cw"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "weight-loss-service",
+    "subcategoryName": "Weight Loss Service",
+    "services": [
+      {
+        "name": "Body Fat Reduction Treatment",
+        "description": "Non-invasive lipo-laser and inch loss therapy targeting stubborn fat",
+        "icon": "activity"
+      },
+      {
+        "name": "Customized Diet Weight Management",
+        "description": "Calorie-counted personalized meal plans designed for sustainable weight loss",
+        "icon": "pie-chart"
+      },
+      {
+        "name": "Body Composition Analysis",
+        "description": "BMI, muscle mass, visceral fat, and metabolic rate assessment testing",
+        "icon": "bar-chart-2"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "wellness-center",
+    "subcategoryName": "Wellness Center",
+    "services": [
+      {
+        "name": "Detox Therapy Program",
+        "description": "Comprehensive body detox, colon hydrotherapy, and organic juice cleanses",
+        "icon": "droplet"
+      },
+      {
+        "name": "Stress Management Therapy",
+        "description": "Holistic mind-body wellness programs combining counseling and biofeedback",
+        "icon": "heart"
+      },
+      {
+        "name": "Postural Correction Exercises",
+        "description": "Ergonomic alignment guidance and targeted spinal flexibility training",
+        "icon": "user-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cosmetic-service",
+    "subcategoryName": "cosmetic service",
+    "services": [
+      {
+        "name": "Laser Hair Removal Treatment",
+        "description": "Painless diode laser sessions for permanent unwanted hair reduction",
+        "icon": "zap"
+      },
+      {
+        "name": "Anti Aging Skin Rejuvenation",
+        "description": "Botox, dermal fillers, and microneedling collagen boost treatments",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Chemical Peel Skin Treatment",
+        "description": "Dermatological exfoliation peels treating acne scars and hyperpigmentation",
+        "icon": "layers"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "life-coach",
+    "subcategoryName": "Life Coach",
+    "services": [
+      {
+        "name": "Career Growth Coaching",
+        "description": "Identifying professional goals, building leadership skills, and transition guidance",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Relationship and Alignment Counseling",
+        "description": "Communication strategies, conflict resolution, and personal boundary building",
+        "icon": "users"
+      },
+      {
+        "name": "Confidence and Mindset Training",
+        "description": "Overcoming self-doubt, building resilience, and achieving personal clarity",
+        "icon": "target"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "nutritionist",
+    "subcategoryName": "Nutritionist",
+    "services": [
+      {
+        "name": "Clinical Disease Diet Planning",
+        "description": "Medical nutrition therapy for diabetes, thyroid, PCOS, and cholesterol",
+        "icon": "file-text"
+      },
+      {
+        "name": "Sports Nutrition Consultation",
+        "description": "Macro-nutrient meal planning for athletes, bodybuilders, and endurance runners",
+        "icon": "dumbbell"
+      },
+      {
+        "name": "Pediatric Child Nutrition Guide",
+        "description": "Balanced diet strategies ensuring healthy growth and immunity for children",
+        "icon": "smile"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tanning-studio",
+    "subcategoryName": "Tanning Studio",
+    "services": [
+      {
+        "name": "UV Tanning Bed Sessions",
+        "description": "State-of-the-art tanning sunbeds providing an even golden bronze glow",
+        "icon": "sun"
+      },
+      {
+        "name": "Airbrush Spray Tan Application",
+        "description": "Customized organic spray tan giving an instant streak-free sunless tan",
+        "icon": "wind"
+      },
+      {
+        "name": "Skin Hydration Tanning Lotion",
+        "description": "Pre-tanning bronzers and post-tan hydrating skin lotions for color longevity",
+        "icon": "droplet"
+      }
+    ]
+  }
+]

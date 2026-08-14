@@ -1,0 +1,149 @@
+[
+  {
+    "subcategorySlug": "movie-theater",
+    "subcategoryName": "Movie Theater",
+    "services": [
+      {
+        "name": "IMAX 3D Movie Screening",
+        "description": "State-of-the-art laser projection and Dolby Atmos immersive surround sound",
+        "icon": "film"
+      },
+      {
+        "name": "Recliner Seat Ticket Booking",
+        "description": "Luxury pushback and motorized leather recliner seating reservations",
+        "icon": "armchair"
+      },
+      {
+        "name": "Food and Beverage Ordering",
+        "description": "Gourmet popcorn, nachos, sodas, and seat-side concession delivery",
+        "icon": "coffee"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tourist-attraction",
+    "subcategoryName": "Tourist Attraction",
+    "services": [
+      {
+        "name": "Guided Sightseeing Tours",
+        "description": "Expert commentary on historical monuments, architecture, and local culture",
+        "icon": "map-pin"
+      },
+      {
+        "name": "Entry Pass Reservations",
+        "description": "Fast-track online ticket booking to skip long queue wait times",
+        "icon": "ticket"
+      },
+      {
+        "name": "Photography and Souvenir Spots",
+        "description": "Scenic viewpoint access, photo zones, and official souvenir gift shops",
+        "icon": "camera"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "nightclub",
+    "subcategoryName": "Nightclub",
+    "services": [
+      {
+        "name": "VIP Table Reservation",
+        "description": "Exclusive lounge tables with dedicated butler service and premium drinks",
+        "icon": "glass-water"
+      },
+      {
+        "name": "Live DJ Performance Nights",
+        "description": "Top national and international DJs spinning EDM, Hip-Hop, and Commercial hits",
+        "icon": "music"
+      },
+      {
+        "name": "Guest List Entry Booking",
+        "description": "Couple and stag guest list entry reservations for weekend party nights",
+        "icon": "user-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "pool-hall",
+    "subcategoryName": "Pool Hall",
+    "services": [
+      {
+        "name": "Billiards Table Hourly Rental",
+        "description": "Tournament-grade 8-ball and 9-ball pool tables equipped with pro cues",
+        "icon": "circle"
+      },
+      {
+        "name": "Snooker Coaching Sessions",
+        "description": "One-on-one cue sport technique, ball control, and break building coaching",
+        "icon": "target"
+      },
+      {
+        "name": "Tournament Event Hosting",
+        "description": "Organizing weekend amateur cue leagues, knockouts, and prize tournaments",
+        "icon": "trophy"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "amusement-park",
+    "subcategoryName": "Amusement Park",
+    "services": [
+      {
+        "name": "Roller Coaster Thrill Rides",
+        "description": "High-speed loops, gravity drops, and adrenaline-pumping rides for thrill-seekers",
+        "icon": "zap"
+      },
+      {
+        "name": "Family Theme Park Passes",
+        "description": "All-access day passes covering children's rides, mini-trains, and carnival games",
+        "icon": "smile"
+      },
+      {
+        "name": "Live Stunt Show Performances",
+        "description": "Action-packed stunt shows, musical parades, and theatrical character meet-and-greets",
+        "icon": "star"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "water-park",
+    "subcategoryName": "Water Park",
+    "services": [
+      {
+        "name": "Wave Pool Experience",
+        "description": "Artificial ocean wave lagoon with sandy beach entry and lounge chairs",
+        "icon": "waves"
+      },
+      {
+        "name": "High Speed Water Slides",
+        "description": "Multi-lane racer slides, funnel drops, and raft rides for all age groups",
+        "icon": "trending-down"
+      },
+      {
+        "name": "Lazy River Tube Floating",
+        "description": "Relaxing continuous water current river for peaceful tube floating",
+        "icon": "sun"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "gaming-zone",
+    "subcategoryName": "Gaming Zone",
+    "services": [
+      {
+        "name": "VR Motion Simulator Games",
+        "description": "Immersive 360-degree virtual reality headsets with motion seats and haptics",
+        "icon": "glasses"
+      },
+      {
+        "name": "PlayStation PC Arcade Stations",
+        "description": "High-spec gaming PCs, PS5 consoles, and racing wheel setups for multiplayer",
+        "icon": "gamepad-2"
+      },
+      {
+        "name": "Arcade Ticket Prize Redemption",
+        "description": "Classic claw machines, basketball hoops, and ticket exchange prize counters",
+        "icon": "gift"
+      }
+    ]
+  }
+]

@@ -1,0 +1,170 @@
+[
+  {
+    "subcategorySlug": "catering-service",
+    "subcategoryName": "Catering Service",
+    "services": [
+      {
+        "name": "Wedding Buffet Catering",
+        "description": "Multi-cuisine buffet setups, live cooking counters, and welcome drinks",
+        "icon": "utensils"
+      },
+      {
+        "name": "Corporate Lunch Catering",
+        "description": "Boxed executive meals, packed lunches, and corporate seminar dining",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Live Food Counter Setup",
+        "description": "Interactive live chaat, pasta, barbecue, and dessert stations",
+        "icon": "flame"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "event-planner",
+    "subcategoryName": "Event Planner",
+    "services": [
+      {
+        "name": "Destination Wedding Planning",
+        "description": "End-to-end theme conceptualization, vendor coordination, and guest management",
+        "icon": "heart"
+      },
+      {
+        "name": "Corporate Conference Management",
+        "description": "Stage design, audio-visual technical setup, and guest registration desks",
+        "icon": "calendar"
+      },
+      {
+        "name": "Birthday Party Decoration",
+        "description": "Themed balloon arches, custom backdrops, and entertainment activity planning",
+        "icon": "party-popper"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "photography-studio",
+    "subcategoryName": "Photography Studio",
+    "services": [
+      {
+        "name": "Pre Wedding Shoot",
+        "description": "Cinematic outdoor location photography, drone shots, and video teasers",
+        "icon": "camera"
+      },
+      {
+        "name": "Candid Wedding Photography",
+        "description": "High-definition emotional moments, ceremony coverage, and photo albums",
+        "icon": "image"
+      },
+      {
+        "name": "Corporate Headshot Studio",
+        "description": "Professional indoor studio portraits for LinkedIn, websites, and portfolios",
+        "icon": "user"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "dj",
+    "subcategoryName": "DJ",
+    "services": [
+      {
+        "name": "Wedding Sangeet DJ Setup",
+        "description": "High-energy Bollywood, Punjabi, and International tracks with concert speakers",
+        "icon": "disc"
+      },
+      {
+        "name": "Intelligent Stage Lighting",
+        "description": "Moving heads, laser beams, fog machines, and LED dance floor effects",
+        "icon": "zap"
+      },
+      {
+        "name": "Private Party DJ Services",
+        "description": "Customized playlists, sound system installation, and MC hosting for events",
+        "icon": "music"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "event-venue",
+    "subcategoryName": "Event Venue",
+    "services": [
+      {
+        "name": "Open Air Lawn Booking",
+        "description": "Spacious manicured gardens for large wedding receptions and outdoor galas",
+        "icon": "sun"
+      },
+      {
+        "name": "AC Banquet Venue Rental",
+        "description": "Fully air-conditioned indoor halls with built-in stage and dining area",
+        "icon": "building"
+      },
+      {
+        "name": "Bridal Suite Dressing Rooms",
+        "description": "Private air-conditioned suites with attached baths for bridal party prep",
+        "icon": "key"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "flower-designer",
+    "subcategoryName": "Flower Designer",
+    "services": [
+      {
+        "name": "Mandap Floral Decoration",
+        "description": "Exotic orchid, rose, and marigold floral archways for traditional weddings",
+        "icon": "flower-2"
+      },
+      {
+        "name": "Bridal Car Flower Styling",
+        "description": "Elegant car hood floral arrangements and ribbon detailing",
+        "icon": "car"
+      },
+      {
+        "name": "Stage Floral Backdrop Setup",
+        "description": "Custom wall floral hangings, aisle pathway flowers, and table centerpieces",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "hall",
+    "subcategoryName": "Hall",
+    "services": [
+      {
+        "name": "Community Function Hall Rental",
+        "description": "Affordable spacious hall booking for engagements, pujas, and social meets",
+        "icon": "users"
+      },
+      {
+        "name": "Dining Hall Seating Booking",
+        "description": "Separate structured traditional banana-leaf or table seating facilities",
+        "icon": "layout"
+      },
+      {
+        "name": "In House Catering Option",
+        "description": "Customizable vegetarian and non-vegetarian event menu packages",
+        "icon": "utensils"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "event-rental-service",
+    "subcategoryName": "Event Rental Service",
+    "services": [
+      {
+        "name": "Sound and LED Screen Rental",
+        "description": "Concert JBL line arrays, wireless mics, and large LED video wall screens",
+        "icon": "speaker"
+      },
+      {
+        "name": "Event Furniture Chair Rental",
+        "description": "Chiavari chairs, sofa lounges, banquet tables, and waterproof canopies",
+        "icon": "armchair"
+      },
+      {
+        "name": "Generator and Power Backup",
+        "description": "Heavy-duty diesel silent generator rentals for uninterrupted event power",
+        "icon": "battery-charging"
+      }
+    ]
+  }
+]

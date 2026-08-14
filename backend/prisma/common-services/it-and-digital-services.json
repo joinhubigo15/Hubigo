@@ -1,0 +1,107 @@
+[
+  {
+    "subcategorySlug": "web-designer",
+    "subcategoryName": "Web Designer",
+    "services": [
+      {
+        "name": "Responsive Website Design",
+        "description": "Mobile-friendly, modern layouts tailored for business branding and conversions",
+        "icon": "layout"
+      },
+      {
+        "name": "UI UX Interface Design",
+        "description": "User research, wireframing, and intuitive design prototypes for web products",
+        "icon": "figma"
+      },
+      {
+        "name": "Website Redesign and Revamp",
+        "description": "Upgrading legacy web layouts with modern aesthetics and fast performance",
+        "icon": "refresh-cw"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "digital-marketing",
+    "subcategoryName": "Digital Marketing",
+    "services": [
+      {
+        "name": "Search Engine Optimization",
+        "description": "On-page, technical, and local SEO strategies to boost organic search rankings",
+        "icon": "search"
+      },
+      {
+        "name": "Social Media Management",
+        "description": "Content strategy, campaign planning, and audience engagement across platforms",
+        "icon": "share-2"
+      },
+      {
+        "name": "Pay Per Click Advertising",
+        "description": "Targeted Google Ads and social media ad campaigns designed for high ROI",
+        "icon": "target"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "software-company",
+    "subcategoryName": "Software Company",
+    "services": [
+      {
+        "name": "Custom Enterprise Software",
+        "description": "Scalable web applications, CRM systems, and workflow automation solutions",
+        "icon": "code"
+      },
+      {
+        "name": "Cloud Architecture Solutions",
+        "description": "AWS, Azure, and Google Cloud infrastructure setup and migration management",
+        "icon": "cloud"
+      },
+      {
+        "name": "API Integration Services",
+        "description": "Connecting third-party services, payment gateways, and databases securely",
+        "icon": "link"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "app-developer",
+    "subcategoryName": "App Developer",
+    "services": [
+      {
+        "name": "iOS App Development",
+        "description": "Native Swift and iOS applications built for iPhone and iPad ecosystems",
+        "icon": "smartphone"
+      },
+      {
+        "name": "Android App Development",
+        "description": "High-performance Kotlin and Android mobile apps optimized for Google Play",
+        "icon": "play"
+      },
+      {
+        "name": "Cross Platform Mobile Apps",
+        "description": "React Native and Flutter app development for seamless iOS and Android launch",
+        "icon": "layers"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "graphic-designer",
+    "subcategoryName": "Graphic Designer",
+    "services": [
+      {
+        "name": "Brand Logo Design",
+        "description": "Unique, memorable brand logos and complete corporate identity guidelines",
+        "icon": "palette"
+      },
+      {
+        "name": "Marketing Material Design",
+        "description": "Brochures, flyers, banners, and business cards designed for printing",
+        "icon": "file-text"
+      },
+      {
+        "name": "Social Media Graphics",
+        "description": "Custom visual posts, banners, stories, and infographics for digital platforms",
+        "icon": "image"
+      }
+    ]
+  }
+]

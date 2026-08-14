@@ -1,0 +1,8 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": "."
+  },
+  "include": ["prisma/seed.ts", "prisma/seed-mock-businesses.ts", "scripts/**/*.ts"]
+}

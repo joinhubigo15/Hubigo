@@ -1,0 +1,296 @@
+[
+  {
+    "subcategorySlug": "carpenter",
+    "subcategoryName": "Carpenter",
+    "services": [
+      {
+        "name": "Custom Furniture Woodwork",
+        "description": "Making bespoke wooden beds, dining tables, bookshelves, and TV units",
+        "icon": "hammer"
+      },
+      {
+        "name": "Door and Window Frame Repair",
+        "description": "Fixing jammed doors, replacing hinges, latches, and wooden window frames",
+        "icon": "door-closed"
+      },
+      {
+        "name": "Modular Wardrobe Repair Assembly",
+        "description": "Assembling, repairing, and adjusting sliding wardrobe doors and drawers",
+        "icon": "box"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cleaning-service",
+    "subcategoryName": "Cleaning Service",
+    "services": [
+      {
+        "name": "Deep Home Cleaning Service",
+        "description": "Comprehensive kitchen scrubbing, bathroom sanitization, and floor polishing",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Sofa and Mattress Shampooing",
+        "description": "High-suction steam extraction and stain removal for upholstered furniture",
+        "icon": "droplets"
+      },
+      {
+        "name": "Water Tank Cleaning Service",
+        "description": "Mechanized dewatering, sludge removal, and UV sanitization for home tanks",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "electrician",
+    "subcategoryName": "Electrician",
+    "services": [
+      {
+        "name": "Electrical Wiring and Fitting",
+        "description": "Installing circuit breakers, switchboards, concealed wiring, and DB boxes",
+        "icon": "zap"
+      },
+      {
+        "name": "Fan and Light Installation",
+        "description": "Fitting ceiling fans, chandeliers, LED panel lights, and outdoor fixtures",
+        "icon": "sun"
+      },
+      {
+        "name": "Inverter Generator Wiring Repair",
+        "description": "Inverter battery setup, changeover switch installation, and short-circuit fix",
+        "icon": "battery-charging"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "painter",
+    "subcategoryName": "Painter",
+    "services": [
+      {
+        "name": "Interior Wall House Painting",
+        "description": "Smooth putty application, primer coating, and premium emulsion wall paint",
+        "icon": "paint-bucket"
+      },
+      {
+        "name": "Exterior Weatherproof Painting",
+        "description": "Durable anti-fungal exterior wall coating protecting against rain and heat",
+        "icon": "shield"
+      },
+      {
+        "name": "Textured Wall Stencil Painting",
+        "description": "Decorative wall textures, metallic finishes, and artistic stencil designs",
+        "icon": "palette"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "plumber",
+    "subcategoryName": "Plumber",
+    "services": [
+      {
+        "name": "Water Leak Repair Fixing",
+        "description": "Locating and repairing hidden pipe leaks, dripping taps, and valve faults",
+        "icon": "droplet"
+      },
+      {
+        "name": "Bathroom Pipe Installation",
+        "description": "Installing CPVC pipes, shower mixers, flush tanks, and sanitaryware",
+        "icon": "wrench"
+      },
+      {
+        "name": "Drain Unclogging Cleaning",
+        "description": "Clearing blocked kitchen sinks, sewage pipes, and floor drains efficiently",
+        "icon": "refresh-cw"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "laundry-service",
+    "subcategoryName": "Laundry Service",
+    "services": [
+      {
+        "name": "Garment Dry Cleaning Service",
+        "description": "Professional chemical stain removal and fabric care for suits and sarees",
+        "icon": "shirt"
+      },
+      {
+        "name": "Wash and Fold Laundry",
+        "description": "Hygienic machine washing, tumble drying, and neat folding for daily wear",
+        "icon": "package"
+      },
+      {
+        "name": "Steam Ironing Press Service",
+        "description": "Crisp wrinkle-free steam pressing for formal shirts, trousers, and dresses",
+        "icon": "flame"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "pest-control-service",
+    "subcategoryName": "Pest Control Service",
+    "services": [
+      {
+        "name": "Termite Treatment Spray",
+        "description": "Drill-fill-seal chemical barrier treatment protecting wooden structures",
+        "icon": "shield-alert"
+      },
+      {
+        "name": "Cockroach Control Gel Treatment",
+        "description": "Odorless herbal gel baiting and spray for kitchen and home pest elimination",
+        "icon": "bug"
+      },
+      {
+        "name": "Bed Bug Eradication Service",
+        "description": "Two-stage heat and chemical spray treatment ensuring total bug removal",
+        "icon": "target"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "interior-decorator",
+    "subcategoryName": "Interior Decorator",
+    "services": [
+      {
+        "name": "Custom Curtain Drapes Installation",
+        "description": "Fabric selection, motorized tracking, and curtain tailoring for windows",
+        "icon": "layout"
+      },
+      {
+        "name": "Wallpaper and Wall Panel Styling",
+        "description": "Installing 3D wallpapers, wooden fluted panels, and PVC wall cladding",
+        "icon": "image"
+      },
+      {
+        "name": "Lighting and Decor Accent Selection",
+        "description": "Curating floor lamps, art pieces, rugs, and decorative room accents",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "landscaper",
+    "subcategoryName": "Landscaper",
+    "services": [
+      {
+        "name": "Lawn Mowing and Maintenance",
+        "description": "Grass trimming, weed removal, soil aeration, and organic lawn fertilizing",
+        "icon": "scissors"
+      },
+      {
+        "name": "Garden Landscape Design Layout",
+        "description": "Planning outdoor garden pathways, rockeries, flower beds, and water fountains",
+        "icon": "trees"
+      },
+      {
+        "name": "Vertical Garden Wall Installation",
+        "description": "Designing automated drip-irrigated green walls for balconies and facades",
+        "icon": "leaf"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "borewell-contractor",
+    "subcategoryName": "Borewell Contractor",
+    "services": [
+      {
+        "name": "Borewell Drilling and Installation",
+        "description": "Site survey, rig drilling, casing fitting, and submersible pump setup",
+        "icon": "drill"
+      },
+      {
+        "name": "Borewell Cleaning and Flushing",
+        "description": "Sediment removal and water jetting to restore reduced borewell yield",
+        "icon": "droplet"
+      },
+      {
+        "name": "Pump Motor Repair Service",
+        "description": "Diagnosis and repair of submersible pump motors and electrical faults",
+        "icon": "wrench"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "security-service",
+    "subcategoryName": "Security Service",
+    "services": [
+      {
+        "name": "Residential Guard Deployment",
+        "description": "Trained security personnel for homes and gated communities on shift rotation",
+        "icon": "shield"
+      },
+      {
+        "name": "CCTV Installation and Monitoring",
+        "description": "Camera setup, cabling, and continuous surveillance monitoring service",
+        "icon": "video"
+      },
+      {
+        "name": "Event Security Staffing",
+        "description": "Trained guards and bouncers for weddings, corporate events, and gatherings",
+        "icon": "users"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "packers-and-movers",
+    "subcategoryName": "Packers and Movers",
+    "services": [
+      {
+        "name": "Household Packing and Moving",
+        "description": "Full-home packing, loading, transport, and unloading for local relocation",
+        "icon": "package"
+      },
+      {
+        "name": "Office Relocation Service",
+        "description": "Business equipment, furniture, and document moving with minimal downtime",
+        "icon": "briefcase"
+      },
+      {
+        "name": "Furniture Disassembly Reassembly",
+        "description": "Dismantling bulky furniture for transport and rebuilding at the new site",
+        "icon": "tool"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "civil-contractor",
+    "subcategoryName": "Civil Contractor",
+    "services": [
+      {
+        "name": "Residential Construction Service",
+        "description": "Foundation, structural framing, and complete home construction management",
+        "icon": "home"
+      },
+      {
+        "name": "Renovation and Remodeling",
+        "description": "Structural assessment, extension work, and interior remodeling projects",
+        "icon": "hammer"
+      },
+      {
+        "name": "Site Supervision and Quality Control",
+        "description": "On-site inspection and quality checks throughout the construction phases",
+        "icon": "clipboard-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "water-suppliers",
+    "subcategoryName": "Water Suppliers",
+    "services": [
+      {
+        "name": "Drinking Water Can Delivery",
+        "description": "Scheduled sealed water can delivery for homes and offices",
+        "icon": "droplet"
+      },
+      {
+        "name": "Bulk Water Tanker Supply",
+        "description": "Large-volume tanker delivery for construction sites and events",
+        "icon": "truck"
+      },
+      {
+        "name": "RO Purified Water Supply",
+        "description": "Reverse osmosis filtered water with regular quality testing",
+        "icon": "shield-check"
+      }
+    ]
+  }
+]

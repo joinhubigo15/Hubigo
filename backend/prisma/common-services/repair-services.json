@@ -1,0 +1,128 @@
+[
+  {
+    "subcategorySlug": "computer-repair-shop",
+    "subcategoryName": "Computer Repair Shop",
+    "services": [
+      {
+        "name": "Laptop Screen Replacement",
+        "description": "Fixing cracked display panels, hinges, and backlights with genuine parts",
+        "icon": "monitor"
+      },
+      {
+        "name": "Hard Drive Data Recovery",
+        "description": "Retrieving lost files from damaged SSDs, hard drives, and flash storage",
+        "icon": "hard-drive"
+      },
+      {
+        "name": "Motherboard Chip Level Repair",
+        "description": "Micro-soldering, power IC replacement, and short circuit troubleshooting",
+        "icon": "cpu"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "electronics-repair-shop",
+    "subcategoryName": "Electronics Repair Shop",
+    "services": [
+      {
+        "name": "Smart TV Screen Repair",
+        "description": "Display panel, LED backlight, and motherboard fixing for LED and OLED TVs",
+        "icon": "tv"
+      },
+      {
+        "name": "Audio System Repairs",
+        "description": "Speaker coil replacement, amplifier fixing, and home theater servicing",
+        "icon": "volume-2"
+      },
+      {
+        "name": "Microwave and Oven Repair",
+        "description": "Magnetron replacement, heating fault repairs, and PCB board servicing",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "mobile-phone-repair-shop",
+    "subcategoryName": "Mobile Phone Repair Shop",
+    "services": [
+      {
+        "name": "Smartphone Screen Replacement",
+        "description": "Express touchscreen and OLED display glass replacement for all brands",
+        "icon": "smartphone"
+      },
+      {
+        "name": "Battery Replacement Service",
+        "description": "Installing original OEM batteries to restore full daily battery life",
+        "icon": "battery-charging"
+      },
+      {
+        "name": "Water Damage Diagnostics",
+        "description": "Ultrasonic board cleaning, corrosion removal, and IC repair for wet phones",
+        "icon": "droplet"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "air-conditioning-repair-service",
+    "subcategoryName": "Air Conditioning Repair Service",
+    "services": [
+      {
+        "name": "AC Gas Leak Refilling",
+        "description": "Nitrogen pressure testing, copper pipe brazing, and R32 R410 gas topping",
+        "icon": "wind"
+      },
+      {
+        "name": "Split AC Jet Servicing",
+        "description": "High-pressure water pump cleaning for filters, cooling coils, and blower fans",
+        "icon": "droplets"
+      },
+      {
+        "name": "Compressor Replacement Repair",
+        "description": "Outdoor unit compressor fixing, capacitor replacement, and wiring overhaul",
+        "icon": "power"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "refrigerator-repair-service",
+    "subcategoryName": "Refrigerator Repair Service",
+    "services": [
+      {
+        "name": "Fridge Cooling Fault Repair",
+        "description": "Thermostat testing, fan motor replacement, and gas refilling for cool temp",
+        "icon": "thermometer-snowflake"
+      },
+      {
+        "name": "Single and Double Door Service",
+        "description": "Comprehensive maintenance for frost-free and direct-cool refrigerators",
+        "icon": "box"
+      },
+      {
+        "name": "Compressor Relay Replacement",
+        "description": "Replacing faulty starter relays, overload protectors, and power boards",
+        "icon": "cpu"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ro-and-geyser-repair-service",
+    "subcategoryName": "RO AND Geyser Repair Service",
+    "services": [
+      {
+        "name": "RO Water Purifier Filter Change",
+        "description": "Replacing sediment filters, activated carbon, and RO membranes for clean water",
+        "icon": "filter"
+      },
+      {
+        "name": "Geyser Heating Element Repair",
+        "description": "Replacing burnt heating coils, thermostats, and pressure valve check",
+        "icon": "flame"
+      },
+      {
+        "name": "Water Purifier Tank Sanitization",
+        "description": "Deep chemical cleaning of storage tanks and UV lamp replacement",
+        "icon": "shield-check"
+      }
+    ]
+  }
+]

@@ -12,6 +12,10 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # next.js
 /.next/
@@ -36,6 +40,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# backend admin-import uploads (raw CSVs, not source-controlled)
+/backend/uploads/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local dev logs / scratch backups
+_dev_server.log
+*.backup-*

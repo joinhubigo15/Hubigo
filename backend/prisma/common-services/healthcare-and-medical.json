@@ -1,0 +1,758 @@
+[
+  {
+    "subcategorySlug": "dental-clinic",
+    "subcategoryName": "Dental Clinic",
+    "services": [
+      {
+        "name": "Painless Root Canal Treatment",
+        "description": "Single-sitting endodontic root canal therapy using rotary instruments",
+        "icon": "activity"
+      },
+      {
+        "name": "Teeth Whitening and Scaling",
+        "description": "Ultrasonic plaque removal, polishing, and laser teeth whitening for a bright smile",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Dental Implant Restoration",
+        "description": "Permanent titanium implants and ceramic crown placement for missing teeth",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "diagnostic-center",
+    "subcategoryName": "Diagnostic Center",
+    "services": [
+      {
+        "name": "Full Body Health Checkup",
+        "description": "Comprehensive screening packages including CBC, lipid profile, thyroid, and sugar",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "Digital X Ray Ultrasound",
+        "description": "High-resolution radiography and 3D 4D abdominal ultrasound diagnostics",
+        "icon": "monitor"
+      },
+      {
+        "name": "ECG and Treadmill Test",
+        "description": "Cardiac electrogram monitoring and stress test evaluation for heart health",
+        "icon": "activity"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "eye-care-clinic",
+    "subcategoryName": "Eye Care Clinic",
+    "services": [
+      {
+        "name": "Computerized Vision Testing",
+        "description": "Automated refraction testing for spectacle power prescription and astigmatism",
+        "icon": "eye"
+      },
+      {
+        "name": "Cataract Micro Surgery",
+        "description": "Blade-free phacoemulsification surgery with intraocular lens implantation",
+        "icon": "sparkles"
+      },
+      {
+        "name": "LASIK Laser Eye Surgery",
+        "description": "Advanced laser vision correction procedures eliminating dependence on glasses",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "medical-clinic",
+    "subcategoryName": "Medical Clinic",
+    "services": [
+      {
+        "name": "General Physician Consultation",
+        "description": "Diagnosis and treatment for fever, respiratory infections, and seasonal ailments",
+        "icon": "stethoscope"
+      },
+      {
+        "name": "Diabetes and BP Management",
+        "description": "Routine blood sugar monitoring, hypertension control, and lifestyle guidance",
+        "icon": "heart"
+      },
+      {
+        "name": "Preventive Vaccination Services",
+        "description": "Adult and pediatric immunization for flu, hepatitis, tetanus, and pneumonia",
+        "icon": "syringe"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "multi-specialist",
+    "subcategoryName": "Multi specialist",
+    "services": [
+      {
+        "name": "Multi Specialty Doctor Consultation",
+        "description": "Access to cardiologists, neurologists, orthopedics, and ENT specialists in one place",
+        "icon": "users"
+      },
+      {
+        "name": "Outpatient Department OPD Care",
+        "description": "Streamlined specialist OPD appointments, diagnostic referrals, and prescriptions",
+        "icon": "calendar"
+      },
+      {
+        "name": "Day Care Minor Surgery",
+        "description": "Short-stay outpatient procedures, wound dressing, and minor surgical care",
+        "icon": "activity"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "pharmacy",
+    "subcategoryName": "Pharmacy",
+    "services": [
+      {
+        "name": "Prescription Medicine Sales",
+        "description": "Stocking authentic branded and generic medicines across all therapeutic categories",
+        "icon": "pill"
+      },
+      {
+        "name": "Doorstep Medicine Delivery",
+        "description": "Fast home delivery of monthly prescription refills and healthcare essentials",
+        "icon": "truck"
+      },
+      {
+        "name": "Surgical and Wellness Supplies",
+        "description": "Availability of blood pressure monitors, glucometers, bandages, and supplements",
+        "icon": "package"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "physiotherapy-center",
+    "subcategoryName": "Physiotherapy Center",
+    "services": [
+      {
+        "name": "Back and Joint Pain Therapy",
+        "description": "Targeted spinal mobilization, spinal traction, and posture correction exercises",
+        "icon": "activity"
+      },
+      {
+        "name": "Post Surgery Rehabilitation",
+        "description": "Guided physical therapy accelerating recovery after knee or hip replacement",
+        "icon": "user-check"
+      },
+      {
+        "name": "Sports Injury Recovery",
+        "description": "Ultrasound therapy, dry needling, and muscle strengthening for athletes",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ayurvedic-clinic",
+    "subcategoryName": "Ayurvedic Clinic",
+    "services": [
+      {
+        "name": "Panchakarma Detox Therapy",
+        "description": "Traditional 5-stage body purification treatment eliminating deep toxins",
+        "icon": "flower-2"
+      },
+      {
+        "name": "Abhyanga Herbal Oil Massage",
+        "description": "Therapeutic full-body warm herbal oil massage boosting circulation and joint flexibility",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Nadi Pariksha Pulse Diagnosis",
+        "description": "Ancient Ayurvedic pulse reading to determine Vata, Pitta, and Kapha dosha imbalances",
+        "icon": "heart-pulse"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cardiology-clinic",
+    "subcategoryName": "Cardiology Clinic",
+    "services": [
+      {
+        "name": "Echocardiogram 2D Echo Test",
+        "description": "Ultrasound imaging of heart valves, chambers, and pumping efficiency",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "Holter Heart Rhythm Monitoring",
+        "description": "Continuous 24-hour ambulatory ECG recording to detect arrhythmias",
+        "icon": "activity"
+      },
+      {
+        "name": "Hypertension Risk Assessment",
+        "description": "Comprehensive cardiac risk evaluation, lipid management, and medication planning",
+        "icon": "stethoscope"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ent-clinic",
+    "subcategoryName": "ENT Clinic",
+    "services": [
+      {
+        "name": "Ear Wax Removal Cleaning",
+        "description": "Painless microsuction and syringing for impacted ear wax and hearing relief",
+        "icon": "volume-2"
+      },
+      {
+        "name": "Sinusitis and Allergy Treatment",
+        "description": "Nasal endoscopy, sinus relief procedures, and chronic allergy management",
+        "icon": "wind"
+      },
+      {
+        "name": "Tonsillitis and Throat Care",
+        "description": "Diagnosis and treatment for chronic sore throat, voice hoarseness, and tonsils",
+        "icon": "mic"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "gastroenterology-clinic",
+    "subcategoryName": "Gastroenterology Clinic",
+    "services": [
+      {
+        "name": "Diagnostic Upper GI Endoscopy",
+        "description": "Visual camera inspection of stomach, esophagus, and duodenum for ulcers",
+        "icon": "eye"
+      },
+      {
+        "name": "Acidity and GERD Management",
+        "description": "Treatment plans for chronic acid reflux, heartburn, and stomach gastritis",
+        "icon": "flame"
+      },
+      {
+        "name": "Fatty Liver Disease Care",
+        "description": "FibroScan evaluation and dietary interventions for liver wellness",
+        "icon": "activity"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "scan-center",
+    "subcategoryName": "Scan center",
+    "services": [
+      {
+        "name": "High Field MRI Scanning",
+        "description": "Advanced 1.5T 3T MRI scans for brain, spine, joints, and soft tissues",
+        "icon": "monitor"
+      },
+      {
+        "name": "Multi Slice CT Scan",
+        "description": "Low-radiation CT imaging for chest, abdomen, trauma, and angiography",
+        "icon": "zap"
+      },
+      {
+        "name": "DEXA Bone Density Scan",
+        "description": "Precise bone mineral density measurements for osteoporosis screening",
+        "icon": "bar-chart-2"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ivf-and-fertility-center",
+    "subcategoryName": "IVF & Fertility Center",
+    "services": [
+      {
+        "name": "In Vitro Fertilization IVF",
+        "description": "Advanced ART procedures, egg retrieval, and embryo transfer for conception",
+        "icon": "heart"
+      },
+      {
+        "name": "IUI Fertility Treatment",
+        "description": "Intrauterine insemination procedures for natural fertility enhancement",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Male Semen Analysis Testing",
+        "description": "Comprehensive sperm count, motility, and morphology diagnostic lab testing",
+        "icon": "microscope"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "hospital",
+    "subcategoryName": "Hospital",
+    "services": [
+      {
+        "name": "24 Hour Emergency ICU Care",
+        "description": "Round-the-clock emergency room, trauma care, and intensive care units",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "Inpatient Ward Admissions",
+        "description": "Comfortable single, private, and semi-private rooms for admitted patients",
+        "icon": "bed"
+      },
+      {
+        "name": "Modular Operation Theater",
+        "description": "Sterile ultra-clean surgical suites for general, orthopedic, and cardiac surgeries",
+        "icon": "activity"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "nursing-care",
+    "subcategoryName": "Nursing Care",
+    "services": [
+      {
+        "name": "In Home Post Operative Nursing",
+        "description": "Registered nurses managing surgical wound dressing, IV fluids, and medications",
+        "icon": "user-check"
+      },
+      {
+        "name": "Elderly Bedridden Care Support",
+        "description": "Compassionate daily assistance with hygiene, feeding, and mobility for seniors",
+        "icon": "heart"
+      },
+      {
+        "name": "Tracheostomy Catheter Care",
+        "description": "Specialized nursing care for ICU step-down patients requiring tube management",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "orthopedic-clinic",
+    "subcategoryName": "Orthopedic Clinic",
+    "services": [
+      {
+        "name": "Joint Replacement Surgery",
+        "description": "Total knee and hip replacement procedures restoring mobility and pain relief",
+        "icon": "user-check"
+      },
+      {
+        "name": "Fracture Cast Splinting",
+        "description": "X-ray guided bone realignment, fiberglass casting, and fracture healing care",
+        "icon": "activity"
+      },
+      {
+        "name": "Arthroscopic Knee Surgery",
+        "description": "Keyhole minimally invasive surgery for ACL ligament tears and meniscus repair",
+        "icon": "wrench"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "pediatric-clinic",
+    "subcategoryName": "Pediatric Clinic",
+    "services": [
+      {
+        "name": "Child Vaccination Schedule",
+        "description": "Government and WHO recommended immunization vaccines from birth to teenage",
+        "icon": "syringe"
+      },
+      {
+        "name": "Growth Development Assessment",
+        "description": "Tracking height, weight, milestone achievements, and child nutrition guidance",
+        "icon": "bar-chart-2"
+      },
+      {
+        "name": "Pediatric Fever Infection Care",
+        "description": "Gentle compassionate treatment for childhood colds, coughs, and infections",
+        "icon": "smile"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "psychiatric-clinic",
+    "subcategoryName": "Psychiatric Clinic",
+    "services": [
+      {
+        "name": "Depression Anxiety Consultation",
+        "description": "Evidence-based psychiatric evaluation, medication management, and support",
+        "icon": "brain"
+      },
+      {
+        "name": "Cognitive Behavioral Therapy",
+        "description": "Psychotherapy sessions for managing negative thoughts, OCD, and phobias",
+        "icon": "message-square"
+      },
+      {
+        "name": "Sleep Disorder Therapy",
+        "description": "Clinical diagnosis and treatment plans for chronic insomnia and sleep issues",
+        "icon": "moon"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "rehabilitation-center",
+    "subcategoryName": "Rehabilitation Center",
+    "services": [
+      {
+        "name": "De Addiction Recovery Program",
+        "description": "Medical detoxification, counseling, and long-term relapse prevention",
+        "icon": "shield"
+      },
+      {
+        "name": "Stroke Neurological Rehab",
+        "description": "Intensive physical and occupational therapy restoring paralyzed limb function",
+        "icon": "activity"
+      },
+      {
+        "name": "Psychosocial Support Therapy",
+        "description": "Group counseling and social reintegration assistance for recovering patients",
+        "icon": "users"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "skin-care-clinic",
+    "subcategoryName": "Skin Care Clinic",
+    "services": [
+      {
+        "name": "Acne and Scar Treatment",
+        "description": "Dermatologist-guided chemical peels, laser resurfacing, and topical therapy",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Pigmentation Melasma Care",
+        "description": "Q-switched laser treatment and skin brightening for uneven dark spots",
+        "icon": "sun"
+      },
+      {
+        "name": "Hair Fall PRP Treatment",
+        "description": "Platelet-rich plasma therapy stimulating hair follicle growth and thickness",
+        "icon": "droplet"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "veterinary-clinic",
+    "subcategoryName": "Veterinary Clinic",
+    "services": [
+      {
+        "name": "Pet Vaccination Health Check",
+        "description": "Annual rabies, DHPP, and deworming vaccines for dogs and cats",
+        "icon": "syringe"
+      },
+      {
+        "name": "Pet Surgery and Neutering",
+        "description": "Safe spaying, neutering, and soft tissue surgeries performed under anesthesia",
+        "icon": "activity"
+      },
+      {
+        "name": "Dog Cat Dental Cleaning",
+        "description": "Ultrasonic scaling and tartar removal improving pet oral hygiene",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ambulance-service",
+    "subcategoryName": "Ambulance Service",
+    "services": [
+      {
+        "name": "Emergency ICU Ambulance",
+        "description": "Advanced life support ambulances equipped with ventilators, oxygen, and paramedics",
+        "icon": "truck"
+      },
+      {
+        "name": "Inter City Patient Transfer",
+        "description": "Safe long-distance transport for bedridden or critical patients between cities",
+        "icon": "map-pin"
+      },
+      {
+        "name": "Air Ambulance Dispatch",
+        "description": "Medical charter flight evacuations with dedicated flight doctors and equipment",
+        "icon": "plane"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "blood-testing-service",
+    "subcategoryName": "Blood Testing Service",
+    "services": [
+      {
+        "name": "Home Blood Sample Collection",
+        "description": "Phlebotomists visiting your home for painless blood sample collection",
+        "icon": "home"
+      },
+      {
+        "name": "CBC Lipid Thyroid Panels",
+        "description": "Automated clinical lab analysis delivering digital test reports within hours",
+        "icon": "file-text"
+      },
+      {
+        "name": "Allergy Profile Blood Test",
+        "description": "IgE antibody blood testing identifying food, dust, and environmental allergens",
+        "icon": "search"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cancer-care-center",
+    "subcategoryName": "Cancer Care Center",
+    "services": [
+      {
+        "name": "Chemotherapy Day Care Unit",
+        "description": "Outpatient IV chemotherapy administration monitored by oncology nurses",
+        "icon": "droplet"
+      },
+      {
+        "name": "Radiation Therapy Planning",
+        "description": "Targeted IMRT and LINAC radiation treatments destroying cancer cells",
+        "icon": "zap"
+      },
+      {
+        "name": "Surgical Oncology Consultation",
+        "description": "Tumor removal surgeries evaluated by multidisciplinary tumor boards",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "lab-services",
+    "subcategoryName": "lab services",
+    "services": [
+      {
+        "name": "Pathology Diagnostic Testing",
+        "description": "Microscopic cell analysis, tissue biopsy, and fluid cytology lab testing",
+        "icon": "microscope"
+      },
+      {
+        "name": "Hormone Level Assessment",
+        "description": "Chemiluminescence testing for thyroid, insulin, reproductive, and cortisol hormones",
+        "icon": "activity"
+      },
+      {
+        "name": "Urine and Stool Routine Test",
+        "description": "Automated biochemical and microscopic examination detecting infections",
+        "icon": "flask-conical"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "home-health-care-service",
+    "subcategoryName": "Home Health Care Service",
+    "services": [
+      {
+        "name": "Doctor Visit At Home",
+        "description": "Qualified medical doctors conducting physical exams and consultations at home",
+        "icon": "stethoscope"
+      },
+      {
+        "name": "Medical Equipment Rental",
+        "description": "Renting oxygen concentrators, hospital beds, wheelchairs, and suction machines",
+        "icon": "package"
+      },
+      {
+        "name": "Physiotherapy At Home",
+        "description": "Certified physical therapists conducting personalized rehabilitation sessions at home",
+        "icon": "activity"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "neurology-clinic",
+    "subcategoryName": "Neurology Clinic",
+    "services": [
+      {
+        "name": "EEG Brain Wave Test",
+        "description": "Electroencephalogram monitoring for epilepsy, seizures, and sleep anomalies",
+        "icon": "brain"
+      },
+      {
+        "name": "Migraine Headache Management",
+        "description": "Clinical diagnosis, preventative medications, and nerve block therapy for migraines",
+        "icon": "zap"
+      },
+      {
+        "name": "Nerve Conduction Velocity Test",
+        "description": "NCV and EMG testing evaluating peripheral nerve damage and neuropathy",
+        "icon": "activity"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "pain-management-clinic",
+    "subcategoryName": "Pain Management Clinic",
+    "services": [
+      {
+        "name": "Epidural Steroid Injection",
+        "description": "Targeted image-guided spinal injections providing long-lasting back pain relief",
+        "icon": "syringe"
+      },
+      {
+        "name": "Chronic Knee Joint Therapy",
+        "description": "Viscosupplementation and radiofrequency ablation for severe joint pain",
+        "icon": "shield"
+      },
+      {
+        "name": "Nerve Block Injections",
+        "description": "Interventional nerve blocks blocking pain signals from chronic injuries",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "makeup-clinic",
+    "subcategoryName": "Makeup Clinic",
+    "services": [
+      {
+        "name": "Semi Permanent Eyebrow Microblading",
+        "description": "Fine hair-stroke pigment shading creating natural, fuller-looking eyebrows",
+        "icon": "edit-3"
+      },
+      {
+        "name": "Permanent Lip Blush Pigmentation",
+        "description": "Subtle tint shading enhancing lip color, symmetry, and youthful definition",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Scalp Micropigmentation SMP",
+        "description": "Cosmetic hair follicle replication concealing thinning hair and scalp scars",
+        "icon": "user-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "lung-clinic",
+    "subcategoryName": "lung Clinic",
+    "services": [
+      {
+        "name": "Spirometry Lung Function Test",
+        "description": "Computerized PFT measuring airflow capacity for asthma and COPD diagnosis",
+        "icon": "wind"
+      },
+      {
+        "name": "Asthma and Allergy Care",
+        "description": "Inhaler technique instruction, nebulizer therapy, and allergen avoidance plans",
+        "icon": "shield-check"
+      },
+      {
+        "name": "Sleep Apnea CPAP Consultation",
+        "description": "Polysomnography sleep study evaluation and CPAP machine titration",
+        "icon": "moon"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "speech-and-hearing-clinic",
+    "subcategoryName": "Speech & Hearing Clinic",
+    "services": [
+      {
+        "name": "Pure Tone Audiometry Hearing Test",
+        "description": "Soundproof booth hearing threshold evaluation for children and adults",
+        "icon": "volume-2"
+      },
+      {
+        "name": "Digital Hearing Aid Fitting",
+        "description": "Custom programming, trial, and fitting of invisible Bluetooth hearing aids",
+        "icon": "settings"
+      },
+      {
+        "name": "Stammering Speech Therapy",
+        "description": "Articulation, fluency exercises, and voice therapy for speech delay and stuttering",
+        "icon": "mic"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "surgical-center",
+    "subcategoryName": "Surgical Center",
+    "services": [
+      {
+        "name": "Laparoscopic Hernia Repair",
+        "description": "Minimally invasive keyhole hernia mesh repair ensuring fast recovery",
+        "icon": "activity"
+      },
+      {
+        "name": "Gallbladder Removal Surgery",
+        "description": "Laparoscopic cholecystectomy for gallstones with minimal scarring",
+        "icon": "shield-check"
+      },
+      {
+        "name": "Laser Piles and Fissure Surgery",
+        "description": "Outpatient painless laser treatment for hemorrhoids, fissures, and fistula",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "urology-clinic",
+    "subcategoryName": "Urology Clinic",
+    "services": [
+      {
+        "name": "Kidney Stone Laser Treatment",
+        "description": "RIRS and ESWL shockwave lithotripsy breaking kidney stones without surgery",
+        "icon": "zap"
+      },
+      {
+        "name": "Prostate Enlargement Care",
+        "description": "Medical management and TURP laser surgery for benign prostatic hyperplasia",
+        "icon": "activity"
+      },
+      {
+        "name": "Urinary Tract Infection Care",
+        "description": "Urine culture diagnostic evaluation and antibiotic treatment for UTIs",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "veterinary-care",
+    "subcategoryName": "Veterinary Care",
+    "services": [
+      {
+        "name": "Pet Inpatient Hospitalization",
+        "description": "24/7 veterinary ICU monitoring, IV fluid therapy, and oxygen for sick pets",
+        "icon": "heart"
+      },
+      {
+        "name": "Animal X Ray and Ultrasound",
+        "description": "Diagnostic imaging for pets identifying fractures, foreign bodies, and organ issues",
+        "icon": "monitor"
+      },
+      {
+        "name": "Pet Emergency Trauma Care",
+        "description": "Immediate critical care intervention for accidental injuries and poisoning",
+        "icon": "heart-pulse"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "womens-health-clinic",
+    "subcategoryName": "Women's Health Clinic",
+    "services": [
+      {
+        "name": "Prenatal Pregnancy Care Checkup",
+        "description": "Trimester ultrasound scans, blood tests, and obstetrician consultations",
+        "icon": "heart"
+      },
+      {
+        "name": "PCOS and Menstrual Care",
+        "description": "Hormonal evaluation, pelvic ultrasound, and dietary control for irregular cycles",
+        "icon": "calendar"
+      },
+      {
+        "name": "Pap Smear Cervical Screening",
+        "description": "Preventive cervical cancer screening, HPV vaccination, and breast exam",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "doctor",
+    "subcategoryName": "Doctor",
+    "services": [
+      {
+        "name": "General Health Consultation",
+        "description": "Symptom assessment, diagnosis, and treatment planning for common illnesses",
+        "icon": "stethoscope"
+      },
+      {
+        "name": "Routine Health Check-up",
+        "description": "Vitals check, physical examination, and preventive health screening",
+        "icon": "clipboard-check"
+      },
+      {
+        "name": "Chronic Disease Management",
+        "description": "Ongoing monitoring and treatment adjustment for diabetes, hypertension, and more",
+        "icon": "activity"
+      }
+    ]
+  }
+]

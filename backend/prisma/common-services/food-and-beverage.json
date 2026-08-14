@@ -1,0 +1,254 @@
+[
+  {
+    "subcategorySlug": "bakery",
+    "subcategoryName": "Bakery",
+    "services": [
+      {
+        "name": "Custom Birthday Cakes",
+        "description": "Wide range of designer fondant, cream, and photo cakes for all celebrations",
+        "icon": "cake"
+      },
+      {
+        "name": "Fresh Baked Breads",
+        "description": "Daily baked artisanal sourdough, baguettes, garlic bread, and buns",
+        "icon": "pie-chart"
+      },
+      {
+        "name": "Assorted Savory Pastries",
+        "description": "Crispy veg puffs, chicken rolls, quiches, and croissants fresh from the oven",
+        "icon": "cookie"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cafe",
+    "subcategoryName": "Cafe",
+    "services": [
+      {
+        "name": "Artisanal Espresso Drinks",
+        "description": "Freshly brewed cappuccinos, lattes, macchiatos, and cold brew coffees",
+        "icon": "coffee"
+      },
+      {
+        "name": "All Day Breakfast Menu",
+        "description": "Avocado toast, pancakes, waffles, omelettes, and smoothie bowls",
+        "icon": "sun"
+      },
+      {
+        "name": "Cozy Work Lounge Space",
+        "description": "High-speed Wi-Fi, power sockets, and comfortable seating for remote work",
+        "icon": "wifi"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "coffee-shop",
+    "subcategoryName": "Coffee Shop",
+    "services": [
+      {
+        "name": "Specialty Coffee Brewing",
+        "description": "Single-origin pour-over, Aeropress, and French press coffee extractions",
+        "icon": "coffee"
+      },
+      {
+        "name": "Roasted Coffee Beans Sales",
+        "description": "Whole and ground Arabica and Robusta coffee beans packaged fresh",
+        "icon": "package"
+      },
+      {
+        "name": "Iced Coffee Blends",
+        "description": "Refreshing iced lattes, frappes, mocha chillers, and flavored brews",
+        "icon": "snowflake"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "ice-cream-shop",
+    "subcategoryName": "Ice Cream Shop",
+    "services": [
+      {
+        "name": "Handcrafted Gelato Scoops",
+        "description": "Rich, creamy artisanal ice cream scoops served in freshly baked waffle cones",
+        "icon": "ice-cream"
+      },
+      {
+        "name": "Custom Sundae Desserts",
+        "description": "Multi-scoop sundaes topped with hot fudge, nuts, brownies, and cherries",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Thick Ice Cream Milkshakes",
+        "description": "Blended thick shakes made with real fruit, chocolate, and premium scoops",
+        "icon": "glass-water"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "juice-shop",
+    "subcategoryName": "Juice Shop",
+    "services": [
+      {
+        "name": "Fresh Cold Pressed Juices",
+        "description": "100% natural, sugar-free fruit and vegetable detox juice blends",
+        "icon": "citrus"
+      },
+      {
+        "name": "Nutritious Protein Smoothies",
+        "description": "Blended fruit smoothies enriched with whey protein, chia, and nuts",
+        "icon": "zap"
+      },
+      {
+        "name": "Fresh Fruit Salads",
+        "description": "Chilled bowls of seasonal cut fruits served with honey and dry fruits",
+        "icon": "apple"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "restaurant",
+    "subcategoryName": "Restaurant",
+    "services": [
+      {
+        "name": "Fine Dining Table Reservations",
+        "description": "Multi-course dining experiences with table reservations for lunch and dinner",
+        "icon": "utensils"
+      },
+      {
+        "name": "Home Food Delivery Service",
+        "description": "Hygienically packed hot meals delivered directly to your home or office",
+        "icon": "truck"
+      },
+      {
+        "name": "Private Party Dining Space",
+        "description": "Dedicated dining areas for family get-togethers, birthdays, and corporate dinners",
+        "icon": "users"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cake-shop",
+    "subcategoryName": "Cake Shop",
+    "services": [
+      {
+        "name": "Tiered Wedding Cakes",
+        "description": "Elegant multi-tier wedding cakes customized with sugar flowers and themes",
+        "icon": "crown"
+      },
+      {
+        "name": "Photo Printed Cakes",
+        "description": "Edible photo print cakes featuring custom high-resolution images",
+        "icon": "image"
+      },
+      {
+        "name": "Eggless Cake Options",
+        "description": "100% eggless cakes available in chocolate, red velvet, and fruit flavors",
+        "icon": "heart"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "tea-store",
+    "subcategoryName": "Tea Store",
+    "services": [
+      {
+        "name": "Loose Leaf Tea Blends",
+        "description": "Premium Darjeeling, Assam, Earl Grey, and Green tea leaves for brewing",
+        "icon": "leaf"
+      },
+      {
+        "name": "Herbal Wellness Teas",
+        "description": "Chamomile, peppermint, hibiscus, and digestive herbal infusion blends",
+        "icon": "flower-2"
+      },
+      {
+        "name": "Tea Tasting Experience",
+        "description": "Sample aromatic artisanal teas guided by tea sommeliers in store",
+        "icon": "cup-soda"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "chocolate-shop",
+    "subcategoryName": "Chocolate Shop",
+    "services": [
+      {
+        "name": "Handmade Belgian Truffles",
+        "description": "Rich dark, milk, and white chocolate truffles crafted with premium cocoa",
+        "icon": "gift"
+      },
+      {
+        "name": "Custom Chocolate Gift Boxes",
+        "description": "Personalized gift hampers for festivals, corporate events, and anniversaries",
+        "icon": "package"
+      },
+      {
+        "name": "Zero Sugar Dark Chocolate",
+        "description": "Keto-friendly, stevia-sweetened 70% and 85% dark chocolate bars",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "dessert-store",
+    "subcategoryName": "Dessert Store",
+    "services": [
+      {
+        "name": "Gourmet Waffles and Crepes",
+        "description": "Warm Belgian waffles and French crepes drizzled with Nutella and berries",
+        "icon": "cookie"
+      },
+      {
+        "name": "Traditional Indian Sweets",
+        "description": "Fresh gulab jamun, rasgulla, kaju katli, and seasonal halwa preparations",
+        "icon": "sparkles"
+      },
+      {
+        "name": "French Macarons Box",
+        "description": "Delicate almond meringue macaron cookies in raspberry, pistachio, and vanilla",
+        "icon": "heart"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "fast-food-store",
+    "subcategoryName": "Fast food store",
+    "services": [
+      {
+        "name": "Gourmet Burgers and Fries",
+        "description": "Juicy grilled patties, crispy french fries, and signature dipping sauces",
+        "icon": "flame"
+      },
+      {
+        "name": "Cheesy Pizza Slices",
+        "description": "Freshly baked thin-crust and pan pizzas topped with mozzarella and herbs",
+        "icon": "pie-chart"
+      },
+      {
+        "name": "Quick Takeaway Counter",
+        "description": "Speedy counter pickup for wraps, rolls, fried chicken, and soft drinks",
+        "icon": "clock"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "wine-store",
+    "subcategoryName": "Wine Store",
+    "services": [
+      {
+        "name": "Domestic and Imported Wines",
+        "description": "Curated collection of Cabernet, Merlot, Sauvignon Blanc, and sparkling wines",
+        "icon": "glass-water"
+      },
+      {
+        "name": "Craft Beer and Spirits",
+        "description": "Local craft IPAs, single malt whiskies, gins, and premium liquors",
+        "icon": "beer"
+      },
+      {
+        "name": "Temperature Controlled Cellar",
+        "description": "Optimal storage preserving wine flavor profiles and aging quality",
+        "icon": "thermometer"
+      }
+    ]
+  }
+]

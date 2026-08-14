@@ -1,0 +1,254 @@
+[
+  {
+    "subcategorySlug": "hotel",
+    "subcategoryName": "Hotel",
+    "services": [
+      {
+        "name": "Luxury Room Booking",
+        "description": "Air-conditioned rooms with king beds, flat-screen TVs, and city views",
+        "icon": "bed"
+      },
+      {
+        "name": "24 Hour Room Service",
+        "description": "In-room dining, laundry delivery, and round-the-clock front desk support",
+        "icon": "clock"
+      },
+      {
+        "name": "Complimentary Breakfast Buffet",
+        "description": "Complimentary morning breakfast featuring hot Indian and continental dishes",
+        "icon": "coffee"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "taxi-service",
+    "subcategoryName": "Taxi Service",
+    "services": [
+      {
+        "name": "Airport Pick and Drop",
+        "description": "Punctual, flat-rate airport transfer cabs available 24/7",
+        "icon": "plane"
+      },
+      {
+        "name": "Outstation Cab Rental",
+        "description": "Comfortable sedans and SUVs for inter-city road trips with professional drivers",
+        "icon": "car"
+      },
+      {
+        "name": "Hourly Local Cab Package",
+        "description": "Flexible 4-hour and 8-hour cab packages for city errands and meetings",
+        "icon": "map-pin"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "travel-agency",
+    "subcategoryName": "Travel Agency",
+    "services": [
+      {
+        "name": "International Holiday Packages",
+        "description": "All-inclusive tour packages with flights, hotels, and sightseeing itineraries",
+        "icon": "globe"
+      },
+      {
+        "name": "Flight and Train Booking",
+        "description": "Fast ticket reservations with instant confirmation and seat preference choices",
+        "icon": "ticket"
+      },
+      {
+        "name": "Visa Application Processing",
+        "description": "Expert documentation support, appointment scheduling, and visa filing",
+        "icon": "file-text"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "guest-house",
+    "subcategoryName": "Guest House",
+    "services": [
+      {
+        "name": "Homely Budget Accommodation",
+        "description": "Clean, affordable rooms providing a quiet home-like atmosphere for travelers",
+        "icon": "home"
+      },
+      {
+        "name": "Home Cooked Meal Option",
+        "description": "Freshly prepared wholesome breakfast and dinner served upon request",
+        "icon": "utensils"
+      },
+      {
+        "name": "Short Term Stay Booking",
+        "description": "Daily and weekly room rentals suitable for solo travelers and families",
+        "icon": "calendar"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "lodge",
+    "subcategoryName": "Lodge",
+    "services": [
+      {
+        "name": "Affordable Night Stay Rooms",
+        "description": "No-frills budget lodging equipped with attached bathrooms and hot water",
+        "icon": "key"
+      },
+      {
+        "name": "24 Hour Check In Out",
+        "description": "Flexible check-in times accommodating late night arrivals and early departures",
+        "icon": "clock"
+      },
+      {
+        "name": "Luggage Storage Facility",
+        "description": "Secure cloakroom storage for bags before check-in or after check-out",
+        "icon": "package"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "resort",
+    "subcategoryName": "Resort",
+    "services": [
+      {
+        "name": "Infinity Pool and Spa",
+        "description": "Scenic outdoor swimming pools, Jacuzzis, and wellness spa treatments",
+        "icon": "waves"
+      },
+      {
+        "name": "Outdoor Activity Adventures",
+        "description": "Zip-lining, trekking, ATV rides, and bonfire evenings for resort guests",
+        "icon": "compass"
+      },
+      {
+        "name": "Luxury Cottage Suites",
+        "description": "Private cottages with balconies overlooking nature, mountains, or beaches",
+        "icon": "sun"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "serviced-accommodation",
+    "subcategoryName": "Serviced Accommodation",
+    "services": [
+      {
+        "name": "Fully Furnished Suites",
+        "description": "Move-in ready apartments with sofa, smart TV, AC, and high-speed Wi-Fi",
+        "icon": "layout"
+      },
+      {
+        "name": "Daily Housekeeping Service",
+        "description": "Regular linen change, apartment cleaning, and trash disposal services",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Equipped Kitchenette Facility",
+        "description": "Private kitchen with microwave, refrigerator, stove, and cooking utensils",
+        "icon": "coffee"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "cottage",
+    "subcategoryName": "Cottage",
+    "services": [
+      {
+        "name": "Private Garden Lawn Stay",
+        "description": "Secluded wooden or stone cottages surrounded by private gardens and greenery",
+        "icon": "leaf"
+      },
+      {
+        "name": "Campfire and Barbecue Night",
+        "description": "Evening bonfire setup with outdoor seating and live grill options",
+        "icon": "flame"
+      },
+      {
+        "name": "Pet Friendly Stay Option",
+        "description": "Welcoming accommodations with open lawns suitable for pets",
+        "icon": "heart"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "service-apartment",
+    "subcategoryName": "Service Apartment",
+    "services": [
+      {
+        "name": "Extended Stay Apartment Rental",
+        "description": "Long-term monthly apartment rentals for corporate relocation and medical stays",
+        "icon": "calendar"
+      },
+      {
+        "name": "In Unit Washing Machine",
+        "description": "Private automatic laundry facilities inside the apartment for guest convenience",
+        "icon": "shirt"
+      },
+      {
+        "name": "Secure Gated Community Access",
+        "description": "24/7 security personnel, CCTV coverage, and card key access control",
+        "icon": "shield-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "hostel",
+    "subcategoryName": "Hostel",
+    "services": [
+      {
+        "name": "Dormitory Bed Booking",
+        "description": "Clean air-conditioned dorm bunks with private lockers and reading lights",
+        "icon": "users"
+      },
+      {
+        "name": "Common Community Lounge",
+        "description": "Social lounge area with board games, TV, book exchange, and high-speed Wi-Fi",
+        "icon": "gamepad-2"
+      },
+      {
+        "name": "Student Monthly PG Plans",
+        "description": "Economical monthly long-stay packages including Wi-Fi and laundry access",
+        "icon": "book-open"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "private-guest-room",
+    "subcategoryName": "Private Guest Room",
+    "services": [
+      {
+        "name": "Ensuite Private Bathroom Room",
+        "description": "Cozy single or double bedrooms with attached washroom and hot water shower",
+        "icon": "key"
+      },
+      {
+        "name": "Quiet Residential Location",
+        "description": "Peaceful neighborhood rooms ideal for business travelers and exam students",
+        "icon": "shield"
+      },
+      {
+        "name": "Self Check In Keypad",
+        "description": "Keyless digital lock entrance allowing flexible arrival times without delays",
+        "icon": "lock"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "villa",
+    "subcategoryName": "Villa",
+    "services": [
+      {
+        "name": "Private Swimming Pool Villa",
+        "description": "Exclusive multi-bedroom luxury villa with a private swimming pool and deck",
+        "icon": "waves"
+      },
+      {
+        "name": "Personal Chef On Request",
+        "description": "Dedicated in-villa chef preparing customized meals for groups and parties",
+        "icon": "utensils"
+      },
+      {
+        "name": "Large Group Party Hosting",
+        "description": "Spacious living rooms and outdoor lawns ideal for family reunions and retreats",
+        "icon": "sparkles"
+      }
+    ]
+  }
+]

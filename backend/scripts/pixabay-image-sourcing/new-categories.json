@@ -1,0 +1,992 @@
+[
+  {
+    "name": "Bakery",
+    "sector": "Food & Beverage",
+    "slug": "bakery"
+  },
+  {
+    "name": "Cafe",
+    "sector": "Food & Beverage",
+    "slug": "cafe"
+  },
+  {
+    "name": "Coffee Shop",
+    "sector": "Food & Beverage",
+    "slug": "coffee-shop"
+  },
+  {
+    "name": "Ice Cream Shop",
+    "sector": "Food & Beverage",
+    "slug": "ice-cream-shop"
+  },
+  {
+    "name": "Juice Shop",
+    "sector": "Food & Beverage",
+    "slug": "juice-shop"
+  },
+  {
+    "name": "Restaurant",
+    "sector": "Food & Beverage",
+    "slug": "restaurant"
+  },
+  {
+    "name": "Cake Shop",
+    "sector": "Food & Beverage",
+    "slug": "cake-shop"
+  },
+  {
+    "name": "Tea Store",
+    "sector": "Food & Beverage",
+    "slug": "tea-store"
+  },
+  {
+    "name": "Chocolate Shop",
+    "sector": "Food & Beverage",
+    "slug": "chocolate-shop"
+  },
+  {
+    "name": "Desert Store",
+    "sector": "Food & Beverage",
+    "slug": "desert-store"
+  },
+  {
+    "name": "Fast food store",
+    "sector": "Food & Beverage",
+    "slug": "fast-food-store"
+  },
+  {
+    "name": "Wine Store",
+    "sector": "Food & Beverage",
+    "slug": "wine-store"
+  },
+  {
+    "name": "Children's Clothing Store",
+    "sector": "Retail Stores",
+    "slug": "childrens-clothing-store"
+  },
+  {
+    "name": "Cosmetics Store",
+    "sector": "Retail Stores",
+    "slug": "cosmetics-store"
+  },
+  {
+    "name": "Gift Store",
+    "sector": "Retail Stores",
+    "slug": "gift-store"
+  },
+  {
+    "name": "Grocery Store",
+    "sector": "Retail Stores",
+    "slug": "grocery-store"
+  },
+  {
+    "name": "Hardware Store",
+    "sector": "Retail Stores",
+    "slug": "hardware-store"
+  },
+  {
+    "name": "Men's Clothing Store",
+    "sector": "Retail Stores",
+    "slug": "mens-clothing-store"
+  },
+  {
+    "name": "Shoe Store",
+    "sector": "Retail Stores",
+    "slug": "shoe-store"
+  },
+  {
+    "name": "Stationery Store",
+    "sector": "Retail Stores",
+    "slug": "stationery-store"
+  },
+  {
+    "name": "Supermarket",
+    "sector": "Retail Stores",
+    "slug": "supermarket"
+  },
+  {
+    "name": "Women's Clothing Store",
+    "sector": "Retail Stores",
+    "slug": "womens-clothing-store"
+  },
+  {
+    "name": "Antique Store",
+    "sector": "Retail Stores",
+    "slug": "antique-store"
+  },
+  {
+    "name": "Bag Store",
+    "sector": "Retail Stores",
+    "slug": "bag-store"
+  },
+  {
+    "name": "Boutique",
+    "sector": "Retail Stores",
+    "slug": "boutique"
+  },
+  {
+    "name": "Building Materials Store",
+    "sector": "Retail Stores",
+    "slug": "building-materials-store"
+  },
+  {
+    "name": "Meat Store",
+    "sector": "Retail Stores",
+    "slug": "meat-store"
+  },
+  {
+    "name": "Costume Jewelry Store",
+    "sector": "Retail Stores",
+    "slug": "costume-jewelry-store"
+  },
+  {
+    "name": "Craft Store",
+    "sector": "Retail Stores",
+    "slug": "craft-store"
+  },
+  {
+    "name": "Curtain Store",
+    "sector": "Retail Stores",
+    "slug": "curtain-store"
+  },
+  {
+    "name": "Dairy Store",
+    "sector": "Retail Stores",
+    "slug": "dairy-store"
+  },
+  {
+    "name": "Electrical wholesale Supply Store",
+    "sector": "Retail Stores",
+    "slug": "electrical-wholesale-supply-store"
+  },
+  {
+    "name": "Fabric Store",
+    "sector": "Retail Stores",
+    "slug": "fabric-store"
+  },
+  {
+    "name": "Farm Store",
+    "sector": "Retail Stores",
+    "slug": "farm-store"
+  },
+  {
+    "name": "Fashion Accessories Store",
+    "sector": "Retail Stores",
+    "slug": "fashion-accessories-store"
+  },
+  {
+    "name": "Frozen Food Store",
+    "sector": "Retail Stores",
+    "slug": "frozen-food-store"
+  },
+  {
+    "name": "Fruit & Vegetable Store",
+    "sector": "Retail Stores",
+    "slug": "fruit-and-vegetable-store"
+  },
+  {
+    "name": "Game Store",
+    "sector": "Retail Stores",
+    "slug": "game-store"
+  },
+  {
+    "name": "Glass & Mirror Store",
+    "sector": "Retail Stores",
+    "slug": "glass-and-mirror-store"
+  },
+  {
+    "name": "Handbag Store",
+    "sector": "Retail Stores",
+    "slug": "handbag-store"
+  },
+  {
+    "name": "Internet Cafe",
+    "sector": "Retail Stores",
+    "slug": "internet-cafe"
+  },
+  {
+    "name": "Kitchen Supply Store",
+    "sector": "Retail Stores",
+    "slug": "kitchen-supply-store"
+  },
+  {
+    "name": "Mattress Store",
+    "sector": "Retail Stores",
+    "slug": "mattress-store"
+  },
+  {
+    "name": "Automobiles body Parts Store",
+    "sector": "Retail Stores",
+    "slug": "automobiles-body-parts-store"
+  },
+  {
+    "name": "Musical Instrument Store",
+    "sector": "Retail Stores",
+    "slug": "musical-instrument-store"
+  },
+  {
+    "name": "Office Supply Store",
+    "sector": "Retail Stores",
+    "slug": "office-supply-store"
+  },
+  {
+    "name": "Paint Store",
+    "sector": "Retail Stores",
+    "slug": "paint-store"
+  },
+  {
+    "name": "Perfume Store",
+    "sector": "Retail Stores",
+    "slug": "perfume-store"
+  },
+  {
+    "name": "Pet Store",
+    "sector": "Retail Stores",
+    "slug": "pet-store"
+  },
+  {
+    "name": "Photo Store",
+    "sector": "Retail Stores",
+    "slug": "photo-store"
+  },
+  {
+    "name": "Plant Nursery",
+    "sector": "Retail Stores",
+    "slug": "plant-nursery"
+  },
+  {
+    "name": "Printer Shop",
+    "sector": "Retail Stores",
+    "slug": "printer-shop"
+  },
+  {
+    "name": "Saree Store",
+    "sector": "Retail Stores",
+    "slug": "saree-store"
+  },
+  {
+    "name": "Seafood Market",
+    "sector": "Retail Stores",
+    "slug": "seafood-market"
+  },
+  {
+    "name": "Second Hand Store",
+    "sector": "Retail Stores",
+    "slug": "second-hand-store"
+  },
+  {
+    "name": "Shopping Mall",
+    "sector": "Retail Stores",
+    "slug": "shopping-mall"
+  },
+  {
+    "name": "Furniture Store",
+    "sector": "Retail Stores",
+    "slug": "furniture-store"
+  },
+  {
+    "name": "Sporting Goods Store",
+    "sector": "Retail Stores",
+    "slug": "sporting-goods-store"
+  },
+  {
+    "name": "Sportswear Store",
+    "sector": "Retail Stores",
+    "slug": "sportswear-store"
+  },
+  {
+    "name": "Supplement Store",
+    "sector": "Retail Stores",
+    "slug": "supplement-store"
+  },
+  {
+    "name": "Tile Store",
+    "sector": "Retail Stores",
+    "slug": "tile-store"
+  },
+  {
+    "name": "Tobacco Store",
+    "sector": "Retail Stores",
+    "slug": "tobacco-store"
+  },
+  {
+    "name": "Toy Store",
+    "sector": "Retail Stores",
+    "slug": "toy-store"
+  },
+  {
+    "name": "Vegetable Market",
+    "sector": "Retail Stores",
+    "slug": "vegetable-market"
+  },
+  {
+    "name": "Watch Store",
+    "sector": "Retail Stores",
+    "slug": "watch-store"
+  },
+  {
+    "name": "Electronic Store",
+    "sector": "Retail Stores",
+    "slug": "electronic-store"
+  },
+  {
+    "name": "Animal Feed Store",
+    "sector": "Retail Stores",
+    "slug": "animal-feed-store"
+  },
+  {
+    "name": "Appliance Store",
+    "sector": "Retail Stores",
+    "slug": "appliance-store"
+  },
+  {
+    "name": "Baby Store",
+    "sector": "Retail Stores",
+    "slug": "baby-store"
+  },
+  {
+    "name": "Dental Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "dental-clinic"
+  },
+  {
+    "name": "Diagnostic Center",
+    "sector": "Healthcare & Medical",
+    "slug": "diagnostic-center"
+  },
+  {
+    "name": "Eye Care Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "eye-care-clinic"
+  },
+  {
+    "name": "Medical Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "medical-clinic"
+  },
+  {
+    "name": "Multi specialist",
+    "sector": "Healthcare & Medical",
+    "slug": "multi-specialist"
+  },
+  {
+    "name": "Pharmacy",
+    "sector": "Healthcare & Medical",
+    "slug": "pharmacy"
+  },
+  {
+    "name": "Physiotherapy Center",
+    "sector": "Healthcare & Medical",
+    "slug": "physiotherapy-center"
+  },
+  {
+    "name": "Ayurvedic Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "ayurvedic-clinic"
+  },
+  {
+    "name": "Cardiology Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "cardiology-clinic"
+  },
+  {
+    "name": "ENT Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "ent-clinic"
+  },
+  {
+    "name": "Gastroenterology Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "gastroenterology-clinic"
+  },
+  {
+    "name": "Scan center",
+    "sector": "Healthcare & Medical",
+    "slug": "scan-center"
+  },
+  {
+    "name": "IVF & Fertility Center",
+    "sector": "Healthcare & Medical",
+    "slug": "ivf-and-fertility-center"
+  },
+  {
+    "name": "Hospital",
+    "sector": "Healthcare & Medical",
+    "slug": "hospital"
+  },
+  {
+    "name": "Nursing Care",
+    "sector": "Healthcare & Medical",
+    "slug": "nursing-care"
+  },
+  {
+    "name": "Orthopedic Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "orthopedic-clinic"
+  },
+  {
+    "name": "Pediatric Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "pediatric-clinic"
+  },
+  {
+    "name": "Psychiatric Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "psychiatric-clinic"
+  },
+  {
+    "name": "Rehabilitation Center",
+    "sector": "Healthcare & Medical",
+    "slug": "rehabilitation-center"
+  },
+  {
+    "name": "Skin Care Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "skin-care-clinic"
+  },
+  {
+    "name": "Veterinary Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "veterinary-clinic"
+  },
+  {
+    "name": "Ambulance Service",
+    "sector": "Healthcare & Medical",
+    "slug": "ambulance-service"
+  },
+  {
+    "name": "Blood Testing Service",
+    "sector": "Healthcare & Medical",
+    "slug": "blood-testing-service"
+  },
+  {
+    "name": "Cancer Care Center",
+    "sector": "Healthcare & Medical",
+    "slug": "cancer-care-center"
+  },
+  {
+    "name": "lab services",
+    "sector": "Healthcare & Medical",
+    "slug": "lab-services"
+  },
+  {
+    "name": "Home Health Care Service",
+    "sector": "Healthcare & Medical",
+    "slug": "home-health-care-service"
+  },
+  {
+    "name": "Neurology Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "neurology-clinic"
+  },
+  {
+    "name": "Pain Management Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "pain-management-clinic"
+  },
+  {
+    "name": "Makeup Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "makeup-clinic"
+  },
+  {
+    "name": "lung Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "lung-clinic"
+  },
+  {
+    "name": "Speech & Hearing Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "speech-and-hearing-clinic"
+  },
+  {
+    "name": "Surgical Center",
+    "sector": "Healthcare & Medical",
+    "slug": "surgical-center"
+  },
+  {
+    "name": "Urology Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "urology-clinic"
+  },
+  {
+    "name": "Veterinary Care",
+    "sector": "Healthcare & Medical",
+    "slug": "veterinary-care"
+  },
+  {
+    "name": "Women's Health Clinic",
+    "sector": "Healthcare & Medical",
+    "slug": "womens-health-clinic"
+  },
+  {
+    "name": "Salon",
+    "sector": "Beauty & Wellness",
+    "slug": "salon"
+  },
+  {
+    "name": "Massage & Spa",
+    "sector": "Beauty & Wellness",
+    "slug": "massage-and-spa"
+  },
+  {
+    "name": "Beauty Parlour",
+    "sector": "Beauty & Wellness",
+    "slug": "beauty-parlour"
+  },
+  {
+    "name": "Meditation Center",
+    "sector": "Beauty & Wellness",
+    "slug": "meditation-center"
+  },
+  {
+    "name": "Tattoo Shop",
+    "sector": "Beauty & Wellness",
+    "slug": "tattoo-shop"
+  },
+  {
+    "name": "Weight Loss Service",
+    "sector": "Beauty & Wellness",
+    "slug": "weight-loss-service"
+  },
+  {
+    "name": "Wellness Center",
+    "sector": "Beauty & Wellness",
+    "slug": "wellness-center"
+  },
+  {
+    "name": "cosmetic service",
+    "sector": "Beauty & Wellness",
+    "slug": "cosmetic-service"
+  },
+  {
+    "name": "Life Coach",
+    "sector": "Beauty & Wellness",
+    "slug": "life-coach"
+  },
+  {
+    "name": "Nutritionist",
+    "sector": "Beauty & Wellness",
+    "slug": "nutritionist"
+  },
+  {
+    "name": "Tanning Studio",
+    "sector": "Beauty & Wellness",
+    "slug": "tanning-studio"
+  },
+  {
+    "name": "Carpenter",
+    "sector": "Home Services",
+    "slug": "carpenter"
+  },
+  {
+    "name": "Cleaning Service",
+    "sector": "Home Services",
+    "slug": "cleaning-service"
+  },
+  {
+    "name": "Electrician",
+    "sector": "Home Services",
+    "slug": "electrician"
+  },
+  {
+    "name": "Painter",
+    "sector": "Home Services",
+    "slug": "painter"
+  },
+  {
+    "name": "Plumber",
+    "sector": "Home Services",
+    "slug": "plumber"
+  },
+  {
+    "name": "Laundry Service",
+    "sector": "Home Services",
+    "slug": "laundry-service"
+  },
+  {
+    "name": "Pest Control Service",
+    "sector": "Home Services",
+    "slug": "pest-control-service"
+  },
+  {
+    "name": "Interior Decorator",
+    "sector": "Home Services",
+    "slug": "interior-decorator"
+  },
+  {
+    "name": "Landscaper",
+    "sector": "Home Services",
+    "slug": "landscaper"
+  },
+  {
+    "name": "Vehicle Wash",
+    "sector": "Automotive Services",
+    "slug": "vehicle-wash"
+  },
+  {
+    "name": "Mechanic",
+    "sector": "Automotive Services",
+    "slug": "mechanic"
+  },
+  {
+    "name": "Vehicle Dealer",
+    "sector": "Automotive Services",
+    "slug": "vehicle-dealer"
+  },
+  {
+    "name": "Vehicle Service Shop",
+    "sector": "Automotive Services",
+    "slug": "vehicle-service-shop"
+  },
+  {
+    "name": "Driving School",
+    "sector": "Automotive Services",
+    "slug": "driving-school"
+  },
+  {
+    "name": "Vehicle Showroom",
+    "sector": "Automotive Services",
+    "slug": "vehicle-showroom"
+  },
+  {
+    "name": "Computer Repair Shop",
+    "sector": "Repair Services",
+    "slug": "computer-repair-shop"
+  },
+  {
+    "name": "Electronics Repair Shop",
+    "sector": "Repair Services",
+    "slug": "electronics-repair-shop"
+  },
+  {
+    "name": "Mobile Phone Repair Shop",
+    "sector": "Repair Services",
+    "slug": "mobile-phone-repair-shop"
+  },
+  {
+    "name": "Air Conditioning Repair Service",
+    "sector": "Repair Services",
+    "slug": "air-conditioning-repair-service"
+  },
+  {
+    "name": "Refrigerator Repair Service",
+    "sector": "Repair Services",
+    "slug": "refrigerator-repair-service"
+  },
+  {
+    "name": "RO AND Geyser Repair Service",
+    "sector": "Repair Services",
+    "slug": "ro-and-geyser-repair-service"
+  },
+  {
+    "name": "Tailoring Service",
+    "sector": "Fashion & Tailoring",
+    "slug": "tailoring-service"
+  },
+  {
+    "name": "Fashion Designer",
+    "sector": "Fashion & Tailoring",
+    "slug": "fashion-designer"
+  },
+  {
+    "name": "Coaching Center",
+    "sector": "Education & Training",
+    "slug": "coaching-center"
+  },
+  {
+    "name": "School",
+    "sector": "Education & Training",
+    "slug": "school"
+  },
+  {
+    "name": "Tution & S.English Service",
+    "sector": "Education & Training",
+    "slug": "tution-and-s-english-service"
+  },
+  {
+    "name": "Play School",
+    "sector": "Education & Training",
+    "slug": "play-school"
+  },
+  {
+    "name": "Computer Training School",
+    "sector": "Education & Training",
+    "slug": "computer-training-school"
+  },
+  {
+    "name": "Dance and Music School",
+    "sector": "Education & Training",
+    "slug": "dance-and-music-school"
+  },
+  {
+    "name": "College",
+    "sector": "Education & Training",
+    "slug": "college"
+  },
+  {
+    "name": "Vocational Training School",
+    "sector": "Education & Training",
+    "slug": "vocational-training-school"
+  },
+  {
+    "name": "Library",
+    "sector": "Education & Training",
+    "slug": "library"
+  },
+  {
+    "name": "University",
+    "sector": "Education & Training",
+    "slug": "university"
+  },
+  {
+    "name": "Tuition",
+    "sector": "Education & Training",
+    "slug": "tuition"
+  },
+  {
+    "name": "JEE and NEET",
+    "sector": "Education & Training",
+    "slug": "jee-and-neet"
+  },
+  {
+    "name": "CA",
+    "sector": "Education & Training",
+    "slug": "ca"
+  },
+  {
+    "name": "IELTS and Spoken English",
+    "sector": "Education & Training",
+    "slug": "ielts-and-spoken-english"
+  },
+  {
+    "name": "Civil Services",
+    "sector": "Education & Training",
+    "slug": "civil-services"
+  },
+  {
+    "name": "Catering Service",
+    "sector": "Events & Wedding Services",
+    "slug": "catering-service"
+  },
+  {
+    "name": "Event Planner",
+    "sector": "Events & Wedding Services",
+    "slug": "event-planner"
+  },
+  {
+    "name": "Photography Studio",
+    "sector": "Events & Wedding Services",
+    "slug": "photography-studio"
+  },
+  {
+    "name": "DJ",
+    "sector": "Events & Wedding Services",
+    "slug": "dj"
+  },
+  {
+    "name": "Event Venue",
+    "sector": "Events & Wedding Services",
+    "slug": "event-venue"
+  },
+  {
+    "name": "Flower Designer",
+    "sector": "Events & Wedding Services",
+    "slug": "flower-designer"
+  },
+  {
+    "name": "Hall",
+    "sector": "Events & Wedding Services",
+    "slug": "hall"
+  },
+  {
+    "name": "Event Rental Service",
+    "sector": "Events & Wedding Services",
+    "slug": "event-rental-service"
+  },
+  {
+    "name": "Gym",
+    "sector": "Sports & Fitness",
+    "slug": "gym"
+  },
+  {
+    "name": "Sports Courts",
+    "sector": "Sports & Fitness",
+    "slug": "sports-courts"
+  },
+  {
+    "name": "Sports School",
+    "sector": "Sports & Fitness",
+    "slug": "sports-school"
+  },
+  {
+    "name": "Swimming Pool",
+    "sector": "Sports & Fitness",
+    "slug": "swimming-pool"
+  },
+  {
+    "name": "Stadium",
+    "sector": "Sports & Fitness",
+    "slug": "stadium"
+  },
+  {
+    "name": "Hotel",
+    "sector": "Travel & Accommodation",
+    "slug": "hotel"
+  },
+  {
+    "name": "Taxi Service",
+    "sector": "Travel & Accommodation",
+    "slug": "taxi-service"
+  },
+  {
+    "name": "Travel Agency",
+    "sector": "Travel & Accommodation",
+    "slug": "travel-agency"
+  },
+  {
+    "name": "Guest House",
+    "sector": "Travel & Accommodation",
+    "slug": "guest-house"
+  },
+  {
+    "name": "Lodge",
+    "sector": "Travel & Accommodation",
+    "slug": "lodge"
+  },
+  {
+    "name": "Resort",
+    "sector": "Travel & Accommodation",
+    "slug": "resort"
+  },
+  {
+    "name": "Serviced Accommodation",
+    "sector": "Travel & Accommodation",
+    "slug": "serviced-accommodation"
+  },
+  {
+    "name": "Cottage",
+    "sector": "Travel & Accommodation",
+    "slug": "cottage"
+  },
+  {
+    "name": "Service Apartment",
+    "sector": "Travel & Accommodation",
+    "slug": "service-apartment"
+  },
+  {
+    "name": "Hostel",
+    "sector": "Travel & Accommodation",
+    "slug": "hostel"
+  },
+  {
+    "name": "Private Guest Room",
+    "sector": "Travel & Accommodation",
+    "slug": "private-guest-room"
+  },
+  {
+    "name": "Villa",
+    "sector": "Travel & Accommodation",
+    "slug": "villa"
+  },
+  {
+    "name": "Movie Theater",
+    "sector": "Entertainment & Leisure",
+    "slug": "movie-theater"
+  },
+  {
+    "name": "Tourist Attraction",
+    "sector": "Entertainment & Leisure",
+    "slug": "tourist-attraction"
+  },
+  {
+    "name": "Nightclub",
+    "sector": "Entertainment & Leisure",
+    "slug": "nightclub"
+  },
+  {
+    "name": "Pool Hall",
+    "sector": "Entertainment & Leisure",
+    "slug": "pool-hall"
+  },
+  {
+    "name": "Amusement Park",
+    "sector": "Entertainment & Leisure",
+    "slug": "amusement-park"
+  },
+  {
+    "name": "Water Park",
+    "sector": "Entertainment & Leisure",
+    "slug": "water-park"
+  },
+  {
+    "name": "Gaming Zone",
+    "sector": "Entertainment & Leisure",
+    "slug": "gaming-zone"
+  },
+  {
+    "name": "Lawyer",
+    "sector": "Proffessional Services",
+    "slug": "lawyer"
+  },
+  {
+    "name": "Chartered Accountant",
+    "sector": "Proffessional Services",
+    "slug": "chartered-accountant"
+  },
+  {
+    "name": "Tax Consultant",
+    "sector": "Proffessional Services",
+    "slug": "tax-consultant"
+  },
+  {
+    "name": "Financial Consultant",
+    "sector": "Proffessional Services",
+    "slug": "financial-consultant"
+  },
+  {
+    "name": "Insurance",
+    "sector": "Proffessional Services",
+    "slug": "insurance"
+  },
+  {
+    "name": "Real Estate",
+    "sector": "Proffessional Services",
+    "slug": "real-estate"
+  },
+  {
+    "name": "Architect",
+    "sector": "Proffessional Services",
+    "slug": "architect"
+  },
+  {
+    "name": "Interior Designe Databaser",
+    "sector": "Proffessional Services",
+    "slug": "interior-designe-databaser"
+  },
+  {
+    "name": "Web Designer",
+    "sector": "IT & Digital Services",
+    "slug": "web-designer"
+  },
+  {
+    "name": "Digital Marketing",
+    "sector": "IT & Digital Services",
+    "slug": "digital-marketing"
+  },
+  {
+    "name": "Software Company",
+    "sector": "IT & Digital Services",
+    "slug": "software-company"
+  },
+  {
+    "name": "App Developer",
+    "sector": "IT & Digital Services",
+    "slug": "app-developer"
+  },
+  {
+    "name": "Graphic Designer",
+    "sector": "IT & Digital Services",
+    "slug": "graphic-designer"
+  }
+]

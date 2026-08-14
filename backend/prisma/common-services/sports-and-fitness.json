@@ -1,0 +1,107 @@
+[
+  {
+    "subcategorySlug": "gym",
+    "subcategoryName": "Gym",
+    "services": [
+      {
+        "name": "Personal Fitness Training",
+        "description": "One-on-one workout coaching, form correction, and custom training plans",
+        "icon": "dumbbell"
+      },
+      {
+        "name": "Cardio and Strength Workouts",
+        "description": "Access to weight stations, power racks, treadmills, and resistance gear",
+        "icon": "heart-pulse"
+      },
+      {
+        "name": "Group Fitness Classes",
+        "description": "Energetic group sessions including Zumba, HIIT, yoga, and aerobics",
+        "icon": "users"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "sports-courts",
+    "subcategoryName": "Sports Courts",
+    "services": [
+      {
+        "name": "Badminton Court Booking",
+        "description": "Synthetic and wooden court rentals for recreational and competitive play",
+        "icon": "trophy"
+      },
+      {
+        "name": "Turf Football Rental",
+        "description": "Floodlit artificial grass turfs for 5-a-side and 7-a-side matches",
+        "icon": "activity"
+      },
+      {
+        "name": "Tennis and Squash Courts",
+        "description": "Well-maintained hard and clay courts equipped with evening lighting",
+        "icon": "target"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "sports-school",
+    "subcategoryName": "Sports School",
+    "services": [
+      {
+        "name": "Cricket Coaching Academy",
+        "description": "Professional batting, bowling, and fielding training with net facilities",
+        "icon": "award"
+      },
+      {
+        "name": "Football Training Programs",
+        "description": "Structured tactical, agility, and teamwork coaching for youth players",
+        "icon": "flag"
+      },
+      {
+        "name": "Athletic Skill Development",
+        "description": "Speed, endurance, and coordination training across multiple disciplines",
+        "icon": "zap"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "swimming-pool",
+    "subcategoryName": "Swimming Pool",
+    "services": [
+      {
+        "name": "Swimming Coaching Classes",
+        "description": "Beginner to advanced stroke technique and water safety lessons",
+        "icon": "waves"
+      },
+      {
+        "name": "Hourly Pool Passes",
+        "description": "Clean, temperature-controlled pool access for leisure and lap fitness",
+        "icon": "clock"
+      },
+      {
+        "name": "Aqua Aerobics Sessions",
+        "description": "Low-impact water exercises for joint mobility and cardiovascular health",
+        "icon": "sparkles"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "stadium",
+    "subcategoryName": "Stadium",
+    "services": [
+      {
+        "name": "Match Ticket Booking",
+        "description": "Seating reservation for major sporting leagues and tournament matches",
+        "icon": "ticket"
+      },
+      {
+        "name": "Corporate Event Venue Rental",
+        "description": "Large-scale arena hosting for corporate tournaments and sports galas",
+        "icon": "building"
+      },
+      {
+        "name": "Sports Event Hosting",
+        "description": "Comprehensive logistics, floodlighting, and pitch management for sports",
+        "icon": "globe"
+      }
+    ]
+  }
+]

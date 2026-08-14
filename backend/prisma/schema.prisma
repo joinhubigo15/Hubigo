@@ -1,0 +1,1135 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  user
+  business_owner
+  admin
+  super_admin
+}
+
+enum OAuthProvider {
+  google
+  apple
+}
+
+enum VerificationTokenType {
+  email_verification
+  password_reset
+}
+
+enum PlanTier {
+  basic
+  premium
+  elite
+}
+
+enum BusinessStatus {
+  pending
+  approved
+  rejected
+}
+
+enum PriceRange {
+  budget // ₹
+  moderate // ₹₹
+  premium // ₹₹₹
+  luxury // ₹₹₹₹
+}
+
+enum DayOfWeek {
+  monday
+  tuesday
+  wednesday
+  thursday
+  friday
+  saturday
+  sunday
+}
+
+enum SubscriptionPlan {
+  FREE
+  PRO
+  PREMIUM
+  ENTERPRISE
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  EXPIRED
+  CANCELLED
+  TRIAL
+}
+
+// Shared PENDING/APPROVED/REJECTED moderation lifecycle, reused by BusinessClaim,
+// BusinessEdit, and Review so we don't hand-roll three identical enums.
+enum ApprovalStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum LeadType {
+  VIEW
+  CALL
+  EMAIL
+  WHATSAPP
+  FORM
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  CLOSED
+}
+
+// Review moderation is a superset of ApprovalStatus (FLAGGED/SPAM have no equivalent in the
+// claim/edit/verification lifecycle) so it gets its own enum rather than overloading the shared one.
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  FLAGGED
+  SPAM
+  REJECTED
+}
+
+model User {
+  id             String  @id @default(uuid())
+  name           String
+  email          String? @unique
+  phone          String? @unique
+  passwordHash   String? @map("password_hash")
+  role           Role    @default(user)
+  emailVerified  Boolean @default(false) @map("email_verified")
+  phoneVerified  Boolean @default(false) @map("phone_verified")
+  isSuspended    Boolean @default(false) @map("is_suspended")
+  avatarUrl      String? @map("avatar_url")
+  avatarPublicId String? @map("avatar_public_id")
+
+  subscriptionPlan    SubscriptionPlan @default(FREE) @map("subscription_plan")
+  onboardingCompleted Boolean          @default(false) @map("onboarding_completed")
+  lastActiveAt        DateTime?        @map("last_active_at")
+
+  // Notification preferences (FR-NOTIF-2). Kept as flat columns since it's a strict 1:1 with User.
+  emailLeadAlerts Boolean @default(true) @map("email_lead_alerts")
+  emailMarketing  Boolean @default(true) @map("email_marketing")
+  whatsappUpdates Boolean @default(true) @map("whatsapp_updates")
+  smsAlerts       Boolean @default(false) @map("sms_alerts")
+
+  // Collected once during onboarding (register/user page) — used to default the city-context
+  // switcher, personalize featured/popular sections, and route "nearby" defaults without asking
+  // for GPS. All optional; onboarding never blocks on these.
+  preferredCity       String?  @map("preferred_city") // City.slug
+  preferredCategories String[] @default([]) @map("preferred_categories") // Category.slug[], max 3
+  pincode             String?  @map("pincode")
+  referralSource      String?  @map("referral_source") // "social" | "friend" | "search" | "ad" | "other"
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  refreshTokens         RefreshToken[]
+  oauthAccounts         OAuthAccount[]
+  verificationTokens    VerificationToken[]
+  savedBusinesses       SavedBusiness[]
+  savedSearches         SavedSearch[]
+  ownedBusinesses       Business[]
+  reviews               Review[]
+  subscriptions         Subscription[]
+  businessClaims        BusinessClaim[]
+  businessEdits         BusinessEdit[]
+  otpRequests           Otp[]
+  businessVerifications BusinessVerification[]
+  leads                 Lead[]
+  notifications         Notification[]
+  contactMessages       ContactMessage[]
+  editSuggestions       BusinessEditSuggestion[]
+  listingReports        BusinessReport[]
+  pushSubscriptions     PushSubscription[]
+  activityLogs          ActivityLog[]
+  teamMemberships       BusinessTeamMember[]
+
+  @@map("users")
+}
+
+model OAuthAccount {
+  id             String        @id @default(uuid())
+  userId         String        @map("user_id")
+  provider       OAuthProvider
+  providerUserId String        @map("provider_user_id")
+  createdAt      DateTime      @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerUserId])
+  @@index([userId])
+  @@map("oauth_accounts")
+}
+
+model RefreshToken {
+  id        String    @id @default(uuid())
+  userId    String    @map("user_id")
+  tokenHash String    @unique @map("token_hash")
+  expiresAt DateTime  @map("expires_at")
+  revokedAt DateTime? @map("revoked_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("refresh_tokens")
+}
+
+model VerificationToken {
+  id        String                @id @default(uuid())
+  userId    String                @map("user_id")
+  tokenHash String                @unique @map("token_hash")
+  type      VerificationTokenType
+  expiresAt DateTime              @map("expires_at")
+  usedAt    DateTime?             @map("used_at")
+  createdAt DateTime              @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, type])
+  @@map("verification_tokens")
+}
+
+// listingId deliberately stays a plain string (Business.id), not a relation — keeping this
+// table decoupled from Business means deleting/re-importing listings later can never cascade
+// into a user's saved list unexpectedly. Denormalized display fields are snapshotted at save time.
+model SavedBusiness {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  listingId String   @map("listing_id")
+  name      String
+  category  String?
+  city      String?
+  imageUrl  String?  @map("image_url")
+  rating    Float?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Mirrors listingId (Business.id) as a real UUID column for the (userId, businessId)
+  // uniqueness constraint. Deliberately NOT a Prisma @relation to Business — the Business
+  // model is off-limits for this change, and Prisma requires a matching back-relation field
+  // (e.g. `savedBy SavedBusiness[]`) on Business to declare one, which we can't add here.
+  businessId String? @map("business_id")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, listingId])
+  @@unique([userId, businessId])
+  @@index([userId])
+  @@index([businessId])
+  @@map("saved_businesses")
+}
+
+model SavedSearch {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  label     String
+  keyword   String?
+  category  String?
+  city      String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("saved_searches")
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// Business Listing / Search domain
+//
+// The database is intentionally empty of real businesses right now — these
+// tables are populated by prisma/seed-mock-businesses.ts (isolated, easily
+// truncated) until the scraper pipeline (SRS §21) lands. Search, ranking,
+// and filtering all read through BusinessRepository, so once real rows
+// exist here nothing in the search stack needs to change.
+// ─────────────────────────────────────────────────────────────────────────
+
+model Category {
+  id          String   @id @default(uuid())
+  name        String
+  slug        String   @unique
+  parentId    String?  @map("parent_id")
+  icon        String?
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  parent   Category?  @relation("CategoryToSubcategory", fields: [parentId], references: [id], onDelete: SetNull)
+  children Category[] @relation("CategoryToSubcategory")
+
+  businessCategories   BusinessCategory[]
+  descriptionTemplates BusinessDescriptionTemplate[]
+
+  @@index([parentId])
+  @@map("categories")
+}
+
+// Pre-generated, reusable Overview-section copy for a subcategory (Category row with
+// parentId set). Exactly 20 per subcategory. Populated by scripts/seed-description-templates.ts
+// from static JSON files under prisma/description-templates/ — no runtime LLM dependency.
+// The import pipeline picks one at random per business at insert time.
+model BusinessDescriptionTemplate {
+  id            String   @id @default(uuid())
+  subcategoryId String   @map("subcategory_id")
+  description   String
+  createdAt     DateTime @default(now()) @map("created_at")
+
+  subcategory Category @relation(fields: [subcategoryId], references: [id], onDelete: Cascade)
+
+  @@index([subcategoryId])
+  @@map("business_description_templates")
+}
+
+model City {
+  id        String   @id @default(uuid())
+  name      String
+  slug      String   @unique
+  state     String
+  tier      String?
+  lat       Float?
+  lng       Float?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  // Set when a business owner self-lists in a city outside the seeded set (add-listing form's
+  // "my city isn't listed" path) instead of an admin deliberately adding it — surfaces the city
+  // in the admin console until someone acknowledges it, e.g. to add proper lat/lng or a tier.
+  isAutoCreated           Boolean @default(false) @map("is_auto_created")
+  autoCreatedAcknowledged Boolean @default(false) @map("auto_created_acknowledged")
+
+  localities   Locality[]
+  businesses   Business[]
+  pincodeAreas PincodeArea[]
+
+  @@map("cities")
+}
+
+model Locality {
+  id      String  @id @default(uuid())
+  cityId  String  @map("city_id")
+  name    String
+  slug    String
+  pincode String?
+  lat     Float?
+  lng     Float?
+
+  city       City       @relation(fields: [cityId], references: [id], onDelete: Cascade)
+  businesses Business[]
+
+  @@unique([cityId, slug])
+  @@index([cityId])
+  @@index([pincode])
+  @@map("localities")
+}
+
+// Pincode -> area-name lookup for Area-level pSEO (see Hubigo_PinToArea.xlsx, backfilled via
+// scripts/backfill-pincode-areas.ts). Deliberately NOT the same thing as Locality/Business.localityId:
+// a business's pincode can carry two distinct real area names (a "main" and an "alternate" — e.g.
+// pincode 560001 is both "Bangalore GPO" and "CBD / MG Road"), and the same area name can span
+// multiple pincodes (e.g. "Koramangala" covers both 560034 and 560095). Business.localityId is a
+// single FK and can't represent either of those, so Area-pSEO queries join on Business.pincode
+// against this table directly instead of going through Locality at all.
+model PincodeArea {
+  id        String   @id @default(uuid())
+  cityId    String   @map("city_id")
+  pincode   String
+  name      String
+  slug      String
+  // True for the pincode's "Main area", false for its "Alternate areas/localities" entry.
+  isPrimary Boolean  @default(true) @map("is_primary")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  city City @relation(fields: [cityId], references: [id], onDelete: Cascade)
+
+  @@unique([pincode, slug])
+  @@index([cityId])
+  @@index([pincode])
+  @@index([slug])
+  @@map("pincode_areas")
+}
+
+model Amenity {
+  id   String  @id @default(uuid())
+  name String
+  slug String  @unique
+  icon String?
+
+  businesses BusinessAmenity[]
+
+  @@map("amenities")
+}
+
+model Business {
+  id          String  @id @default(uuid())
+  slug        String  @unique
+  name        String
+  description String?
+
+  ownerId   String? @map("owner_id")
+  isClaimed Boolean @default(false) @map("is_claimed")
+
+  // Set once, at the moment ownership is granted (OTP: instantly on verify; GST/MSME: on admin
+  // approval of the BusinessClaim). claimVerificationMethod records which of the three methods
+  // ("phone" | "gst" | "msme") was used, mirroring the approved BusinessClaim.verificationMethod.
+  claimedAt               DateTime? @map("claimed_at")
+  claimVerificationMethod String?   @map("claim_verification_method")
+
+  cityId     String  @map("city_id")
+  localityId String? @map("locality_id")
+  address    String
+  pincode    String?
+  lat        Float?
+  lng        Float?
+
+  phone         String?
+  whatsappPhone String? @map("whatsapp_phone")
+  website       String?
+
+  planTier   PlanTier       @default(basic) @map("plan_tier")
+  status     BusinessStatus @default(approved)
+  isVerified Boolean        @default(false) @map("is_verified")
+  isTrusted  Boolean        @default(false) @map("is_trusted")
+
+  priceRange PriceRange? @map("price_range")
+
+  coverImageUrl String? @map("cover_image_url")
+  logoUrl       String? @map("logo_url")
+
+  // Verbatim source text from the scraper's open_hours field. Structured parsing into
+  // BusinessHours rows is a later version — this just preserves the raw data for now.
+  openHoursRaw String? @map("open_hours_raw")
+
+  // Free-text tags (e.g. "24 hour", "wifi", "outdoor seating") folded into search relevance
+  // alongside name/category/service names — see BusinessRepository.search().
+  keywords String[] @default([])
+
+  // Denormalized aggregates, recomputed whenever a Review is created/edited/removed
+  // (mirrors FR-REV-6). Kept on the row itself so ranking queries never need to join+aggregate
+  // Review at read time.
+  avgRating   Float @default(0) @map("avg_rating")
+  reviewCount Int   @default(0) @map("review_count")
+
+  // Simple popularity counter, incremented on business-detail views. A real analytics
+  // pipeline (profile views / CTR / lead sources, per FR-LEAD-2) supersedes this later.
+  viewCount Int @default(0) @map("view_count")
+
+  // Data-acquisition fields (SRS §21) — present now so the future scraper import can write
+  // straight into this table without a schema change.
+  externalPlaceId String? @unique @map("external_place_id")
+
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  owner    User?     @relation(fields: [ownerId], references: [id], onDelete: SetNull)
+  city     City      @relation(fields: [cityId], references: [id])
+  locality Locality? @relation(fields: [localityId], references: [id])
+
+  categories    BusinessCategory[]
+  amenities     BusinessAmenity[]
+  services      BusinessService[]
+  hours         BusinessHours[]
+  media         BusinessMedia[]
+  offers        Offer[]
+  reviews       Review[]
+  products      Product[]
+  appointments  Appointment[]
+  teamMembers   BusinessTeamMember[]
+  conversations Conversation[]
+
+  @@index([cityId])
+  @@index([localityId])
+  @@index([pincode])
+  @@index([planTier])
+  @@index([status])
+  @@index([lat, lng])
+  @@index([avgRating])
+  @@index([createdAt])
+  @@index([ownerId])
+  @@map("businesses")
+}
+
+model BusinessCategory {
+  id         String  @id @default(uuid())
+  businessId String  @map("business_id")
+  categoryId String  @map("category_id")
+  isPrimary  Boolean @default(false) @map("is_primary")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([businessId, categoryId])
+  @@index([categoryId])
+  @@map("business_categories")
+}
+
+model BusinessAmenity {
+  businessId String @map("business_id")
+  amenityId  String @map("amenity_id")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  amenity  Amenity  @relation(fields: [amenityId], references: [id], onDelete: Cascade)
+
+  @@id([businessId, amenityId])
+  @@index([amenityId])
+  @@map("business_amenities")
+}
+
+model BusinessService {
+  id          String  @id @default(uuid())
+  businessId  String  @map("business_id")
+  name        String
+  description String?
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@map("business_services")
+}
+
+model BusinessHours {
+  id         String    @id @default(uuid())
+  businessId String    @map("business_id")
+  day        DayOfWeek
+  openTime   String?   @map("open_time")
+  closeTime  String?   @map("close_time")
+  isClosed   Boolean   @default(false) @map("is_closed")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@unique([businessId, day])
+  @@map("business_hours")
+}
+
+model BusinessMedia {
+  id         String  @id @default(uuid())
+  businessId String  @map("business_id")
+  url        String
+  type       String  @default("image")
+  caption    String?
+  sortOrder  Int     @default(0) @map("sort_order")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@map("business_media")
+}
+
+model Offer {
+  id            String    @id @default(uuid())
+  businessId    String    @map("business_id")
+  title         String
+  description   String?
+  discountLabel String?   @map("discount_label")
+  startDate     DateTime? @map("start_date")
+  endDate       DateTime? @map("end_date")
+  createdAt     DateTime  @default(now()) @map("created_at")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@map("offers")
+}
+
+// Minimal review model — enough to power avgRating/reviewCount and search sorting.
+// The full Review Module (verification via tracked interaction, owner replies, moderation
+// per FR-REV-1..6) is a separate future build; this is not that.
+model Review {
+  id         String       @id @default(uuid())
+  businessId String       @map("business_id")
+  userId     String?      @map("user_id")
+  authorName String?      @map("author_name")
+  rating     Int
+  title      String?
+  comment    String?
+  status     ReviewStatus @default(PENDING)
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
+
+  // Minimal owner-reply support (not the full Review Module referenced above) — one reply per
+  // review, written by the business owner from the dashboard.
+  ownerReply     String?   @map("owner_reply")
+  ownerRepliedAt DateTime? @map("owner_replied_at")
+
+  // Set by admin review moderation when a review is flagged as spam/abuse (FR-ADMIN moderation).
+  flaggedReason String? @map("flagged_reason")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@map("reviews")
+}
+
+// Anonymized search-query log (FR-SEARCH-8), also the source for "Popular Searches".
+model SearchLog {
+  id           String   @id @default(uuid())
+  query        String?
+  categorySlug String?  @map("category_slug")
+  citySlug     String?  @map("city_slug")
+  resultCount  Int      @default(0) @map("result_count")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([query])
+  @@map("search_logs")
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// User / monetization / moderation domain (production hardening pass)
+//
+// businessId columns below are deliberately plain UUID scalars, not Prisma
+// @relation fields — Prisma requires a matching back-relation array (e.g.
+// `claims BusinessClaim[]`) on Business for every relation, and the Business
+// model is off-limits for this change. Referential integrity to businesses
+// can be added later as a raw-SQL foreign key without touching this file's
+// Business model block.
+// ─────────────────────────────────────────────────────────────────────────
+
+// Billing/plan history for a user. A user can have many Subscription rows over time
+// (renewals, upgrades, downgrades); the active one is whichever has status ACTIVE.
+model Subscription {
+  id              String             @id @default(uuid())
+  userId          String             @map("user_id")
+  plan            SubscriptionPlan
+  status          SubscriptionStatus @default(TRIAL)
+  paymentProvider String?            @map("payment_provider")
+  paymentId       String?            @map("payment_id")
+  startsAt        DateTime           @map("starts_at")
+  expiresAt       DateTime?          @map("expires_at")
+  createdAt       DateTime           @default(now()) @map("created_at")
+  updatedAt       DateTime           @updatedAt @map("updated_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@map("subscriptions")
+}
+
+// A user's request to take ownership of an unclaimed business listing.
+// verificationMethod is "phone" | "gst" | "msme". OTP ("phone") claims are auto-approved the
+// moment the OTP is verified (createdAt == reviewedAt, reviewedBy == the claiming user). GST/MSME
+// claims are created PENDING and only move to APPROVED/REJECTED via an explicit admin action —
+// the registration-number format check run at submission time (see verification-provider
+// abstraction) never auto-approves a claim, it only guards against obviously malformed input.
+model BusinessClaim {
+  id                 String         @id @default(uuid())
+  businessId         String         @map("business_id")
+  userId             String         @map("user_id")
+  status             ApprovalStatus @default(PENDING)
+  verificationMethod String         @map("verification_method")
+  contactPhone       String         @map("contact_phone")
+  contactEmail       String         @map("contact_email")
+  docType            String         @map("doc_type")
+  proofValue         String?        @map("proof_value")
+  proofUrl           String?        @map("proof_url")
+  proofFileName      String?        @map("proof_file_name")
+  adminNotes         String?        @map("admin_notes")
+  createdAt          DateTime       @default(now()) @map("created_at")
+  reviewedAt         DateTime?      @map("reviewed_at")
+  reviewedBy         String?        @map("reviewed_by")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@map("business_claims")
+}
+
+// A one-time password sent to an already-claimed business's public contact number when its
+// owner updates it from the dashboard (see business-dashboard/profile.controller.ts). Ownership
+// claims themselves no longer use OTP — see BusinessClaim for the document-upload claim flow.
+// Deliberately decoupled from any specific SMS vendor — see
+// src/services/otp/otp-provider.interface.ts for the provider abstraction that actually sends it.
+model Otp {
+  id         String    @id @default(uuid())
+  businessId String    @map("business_id")
+  userId     String    @map("user_id")
+  phone      String
+  codeHash   String    @map("code_hash")
+  expiresAt  DateTime  @map("expires_at")
+  consumedAt DateTime? @map("consumed_at")
+  attempts   Int       @default(0)
+  createdAt  DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([userId])
+  @@map("otps")
+}
+
+// STEP 2 (optional): a claimed business's owner submitting a GST/MSME registration number for
+// the "Verified" trust badge — entirely separate from BusinessClaim (ownership). Never
+// auto-approved; Business.isVerified only flips true when an admin sets status to APPROVED (see
+// verification.service.ts). method is "gst" | "msme", kept as a bare string (not an enum) so a
+// future document type never needs a migration, matching BusinessClaim.verificationMethod.
+model BusinessVerification {
+  id                 String         @id @default(uuid())
+  businessId         String         @map("business_id")
+  userId             String         @map("user_id")
+  method             String
+  registrationNumber String         @map("registration_number")
+  status             ApprovalStatus @default(PENDING)
+  providerRef        String?        @map("provider_ref")
+  adminNotes         String?        @map("admin_notes")
+  submittedAt        DateTime       @default(now()) @map("submitted_at")
+  approvedAt         DateTime?      @map("approved_at")
+  approvedBy         String?        @map("approved_by")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@map("business_verifications")
+}
+
+// A proposed edit to a business's details, queued for moderation before being applied.
+model BusinessEdit {
+  id         String         @id @default(uuid())
+  businessId String         @map("business_id")
+  userId     String         @map("user_id")
+  changes    Json
+  status     ApprovalStatus @default(PENDING)
+  createdAt  DateTime       @default(now()) @map("created_at")
+  reviewedAt DateTime?      @map("reviewed_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@map("business_edits")
+}
+
+// A contact/enquiry event against a business (call tap, email, WhatsApp click, form submit).
+// userId is nullable since anonymous visitors can generate leads too.
+model Lead {
+  id         String     @id @default(uuid())
+  businessId String     @map("business_id")
+  userId     String?    @map("user_id")
+  type       LeadType
+  phone      String?
+  email      String?
+  message    String?
+  status     LeadStatus @default(NEW)
+  createdAt  DateTime   @default(now()) @map("created_at")
+
+  // Set only on "competitor spillover" leads: the business the user actually viewed/contacted,
+  // distinct from `businessId` (the nearby paid competitor this lead was routed to instead).
+  // Null for ordinary direct leads, where the user contacted `businessId` itself.
+  sourceBusinessId String? @map("source_business_id")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@index([sourceBusinessId])
+  @@map("leads")
+}
+
+// Site-wide "Contact Us" form (/contact) submissions — distinct from Lead, which always requires
+// a businessId. Sending a message requires being logged in (enforced at the route, not here), so
+// userId is always set in practice; kept nullable only so a deleted user doesn't cascade-delete
+// the message admin still needs to see.
+model ContactMessage {
+  id        String   @id @default(uuid())
+  userId    String?  @map("user_id")
+  name      String
+  email     String
+  subject   String
+  message   String
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+  @@map("contact_messages")
+}
+
+// Customer-submitted "Suggest an Edit" from a business detail page. businessId is deliberately a
+// plain string (not a @relation) — same pattern as SavedBusiness.businessId — so this never needs
+// a back-relation array on the Business model. Submitting doesn't require login (optionalAuth),
+// so userId is nullable; SetNull on user delete keeps the suggestion visible to admins either way.
+model BusinessEditSuggestion {
+  id         String   @id @default(uuid())
+  businessId String   @map("business_id")
+  userId     String?  @map("user_id")
+  type       String
+  details    String
+  status     String   @default("pending") // pending | applied | dismissed
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("business_edit_suggestions")
+}
+
+// Customer-submitted "Report Listing" from a business detail page. Same businessId/userId
+// pattern as BusinessEditSuggestion above.
+model BusinessReport {
+  id         String   @id @default(uuid())
+  businessId String   @map("business_id")
+  userId     String?  @map("user_id")
+  reason     String
+  details    String
+  status     String   @default("pending") // pending | resolved | dismissed
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([businessId])
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+  @@map("business_reports")
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  type      String
+  title     String
+  body      String?
+  isRead    Boolean  @default(false) @map("is_read")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, isRead])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+// A browser Push API subscription (endpoint + encryption keys) registered from a user's device
+// via the frontend service worker. One row per device/browser the user has granted push
+// permission on. Used by push.service.ts to deliver web-push notifications alongside the
+// in-app Notification row.
+model PushSubscription {
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  endpoint  String   @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("push_subscriptions")
+}
+
+// Audit trail for security/compliance-relevant actions (login, logout, claim submission,
+// subscription upgrade, etc). userId is nullable so pre-auth events (e.g. failed login) can
+// still be logged.
+model ActivityLog {
+  id        String   @id @default(uuid())
+  userId    String?  @map("user_id")
+  action    String
+  entity    String?
+  entityId  String?  @map("entity_id")
+  ip        String?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([entity, entityId])
+  @@index([createdAt])
+  @@map("activity_logs")
+}
+
+enum AdminUserStatus {
+  ACTIVE
+  SUSPENDED
+  INACTIVE
+}
+
+model AdminUser {
+  id                 String          @id @default(uuid())
+  email              String          @unique
+  name               String
+  passwordHash       String          @map("password_hash")
+  avatarUrl          String?         @map("avatar_url")
+  roleId             String          @map("role_id")
+  status             AdminUserStatus @default(ACTIVE)
+  isTwoFactorEnabled Boolean         @default(false) @map("is_two_factor_enabled")
+  twoFactorSecret    String?         @map("two_factor_secret")
+  lastLoginAt        DateTime?       @map("last_login_at")
+  lastLoginIp        String?         @map("last_login_ip")
+  createdAt          DateTime        @default(now()) @map("created_at")
+  updatedAt          DateTime        @updatedAt @map("updated_at")
+
+  role      AdminRole       @relation(fields: [roleId], references: [id])
+  sessions  AdminSession[]
+  auditLogs AdminAuditLog[]
+
+  @@index([email])
+  @@index([roleId])
+  @@index([status])
+  @@map("admin_users")
+}
+
+model AdminRole {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  slug        String   @unique
+  description String?
+  permissions String[]
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  admins AdminUser[]
+
+  @@map("admin_roles")
+}
+
+model AdminSession {
+  id        String   @id @default(uuid())
+  adminId   String   @map("admin_id")
+  token     String   @unique
+  ipAddress String?  @map("ip_address")
+  userAgent String?  @map("user_agent")
+  expiresAt DateTime @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  admin AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([adminId])
+  @@map("admin_sessions")
+}
+
+model AdminAuditLog {
+  id         String   @id @default(uuid())
+  adminId    String   @map("admin_id")
+  action     String
+  targetType String   @map("target_type")
+  targetId   String?  @map("target_id")
+  details    Json?
+  ipAddress  String?  @map("ip_address")
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  admin AdminUser @relation(fields: [adminId], references: [id], onDelete: Cascade)
+
+  @@index([adminId])
+  @@index([action])
+  @@index([targetType])
+  @@index([createdAt])
+  @@map("admin_audit_logs")
+}
+
+// ── Business Dashboard: Products, Appointments, Team, Messages ────────────
+// Added to back the business-owner dashboard's real CRUD (previously mock-only UI).
+
+model Product {
+  id          String   @id @default(uuid())
+  businessId  String   @map("business_id")
+  name        String
+  description String?
+  price       Float?
+  imageUrl    String?  @map("image_url")
+  category    String?
+  isAvailable Boolean  @default(true) @map("is_available")
+  sortOrder   Int      @default(0) @map("sort_order")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@map("products")
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+model Appointment {
+  id            String            @id @default(uuid())
+  businessId    String            @map("business_id")
+  customerName  String            @map("customer_name")
+  customerPhone String            @map("customer_phone")
+  serviceName   String?           @map("service_name")
+  scheduledAt   DateTime          @map("scheduled_at")
+  status        AppointmentStatus @default(PENDING)
+  notes         String?
+  createdAt     DateTime          @default(now()) @map("created_at")
+  updatedAt     DateTime          @updatedAt @map("updated_at")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+
+  @@index([businessId])
+  @@index([status])
+  @@index([scheduledAt])
+  @@map("appointments")
+}
+
+enum TeamMemberStatus {
+  INVITED
+  ACTIVE
+  REMOVED
+}
+
+// A person with dashboard access to a business, distinct from Business.ownerId (the single
+// claiming owner). Invited by email; userId is null until they accept. The invite can't reuse
+// VerificationToken (it's User-scoped, but an invitee may not have an account yet) — instead a
+// hashed token lives directly on this row, same never-store-raw-tokens pattern as
+// RefreshToken/VerificationToken elsewhere.
+model BusinessTeamMember {
+  id              String           @id @default(uuid())
+  businessId      String           @map("business_id")
+  userId          String?          @map("user_id")
+  name            String
+  email           String
+  phone           String?
+  role            String           @default("staff")
+  status          TeamMemberStatus @default(INVITED)
+  inviteTokenHash String?          @unique @map("invite_token_hash")
+  inviteExpiresAt DateTime?        @map("invite_expires_at")
+  invitedAt       DateTime         @default(now()) @map("invited_at")
+  joinedAt        DateTime?        @map("joined_at")
+
+  business Business @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  user     User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@unique([businessId, email])
+  @@index([businessId])
+  @@index([userId])
+  @@map("business_team_members")
+}
+
+enum MessageSender {
+  BUSINESS
+  CUSTOMER
+}
+
+// A customer<->business inbox thread. customerUserId is set when the sender is a logged-in
+// consumer (via the business-detail page's "Message" button); null for anonymous/phone-only
+// contacts, matching Lead's existing nullable-userId pattern.
+model Conversation {
+  id             String   @id @default(uuid())
+  businessId     String   @map("business_id")
+  customerName   String   @map("customer_name")
+  customerPhone  String?  @map("customer_phone")
+  customerUserId String?  @map("customer_user_id")
+  lastMessageAt  DateTime @default(now()) @map("last_message_at")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  business Business  @relation(fields: [businessId], references: [id], onDelete: Cascade)
+  messages Message[]
+
+  @@index([businessId])
+  @@index([lastMessageAt])
+  @@map("conversations")
+}
+
+model Message {
+  id             String        @id @default(uuid())
+  conversationId String        @map("conversation_id")
+  sender         MessageSender
+  body           String
+  isRead         Boolean       @default(false) @map("is_read")
+  createdAt      DateTime      @default(now()) @map("created_at")
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+
+  @@index([conversationId])
+  @@map("messages")
+}
+
+// ── Admin Panel: Advertisements, Bulk Imports ──────────────────────────────
+// Added to back the admin console's real CRUD (previously mock-only UI).
+
+enum AdPlacement {
+  HOME_BANNER
+  CATEGORY_TOP
+  SEARCH_SPONSORED
+}
+
+enum AdStatus {
+  ACTIVE
+  PAUSED
+  ENDED
+}
+
+// targetCityId is a plain scalar (not a Prisma relation), matching the off-limits-Business-
+// relations convention already used by BusinessClaim/Lead/etc. above — City stays untouched.
+model Advertisement {
+  id           String      @id @default(uuid())
+  title        String
+  targetCityId String?     @map("target_city_id")
+  placement    AdPlacement
+  status       AdStatus    @default(ACTIVE)
+  impressions  Int         @default(0)
+  clicks       Int         @default(0)
+  startDate    DateTime?   @map("start_date")
+  endDate      DateTime?   @map("end_date")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  updatedAt    DateTime    @updatedAt @map("updated_at")
+
+  @@index([targetCityId])
+  @@index([status])
+  @@map("advertisements")
+}
+
+enum ImportJobStatus {
+  PENDING
+  RUNNING
+  COMPLETED
+  FAILED
+}
+
+// Tracks one run of the CSV bulk-importer (backend/src/importer/), triggered from the admin
+// console instead of the CLI. storedPath is the uploaded file's location on disk while the job
+// runs/for later inspection — not served publicly.
+model ImportJob {
+  id            String          @id @default(uuid())
+  filename      String
+  storedPath    String          @map("stored_path")
+  sector        String?
+  totalRows     Int             @default(0) @map("total_rows")
+  processedRows Int             @default(0) @map("processed_rows")
+  insertedRows  Int             @default(0) @map("inserted_rows")
+  duplicateRows Int             @default(0) @map("duplicate_rows")
+  failedRows    Int             @default(0) @map("failed_rows")
+  status        ImportJobStatus @default(PENDING)
+  errorMessage  String?         @map("error_message")
+  createdBy     String?         @map("created_by")
+  startedAt     DateTime?       @map("started_at")
+  completedAt   DateTime?       @map("completed_at")
+  createdAt     DateTime        @default(now()) @map("created_at")
+
+  @@index([status])
+  @@index([createdAt])
+  @@map("import_jobs")
+}

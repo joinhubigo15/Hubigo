@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+*.log
+public/uploads/
+uploads/
+cleaned-data/
+test-results/
+scripts/gmaps-scraper/state/
+scripts/gmaps-scraper/staging/
+# Bulk-sourced local image cache — hundreds of thousands of files, already uploaded to R2
+# (see hosting_images_r2 notes); these local copies are scratch input, not source of truth.
+scripts/pixabay-image-sourcing/output/
+scripts/pixabay-badge-images/output/

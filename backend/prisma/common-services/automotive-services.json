@@ -1,0 +1,149 @@
+[
+  {
+    "subcategorySlug": "vehicle-wash",
+    "subcategoryName": "Vehicle Wash",
+    "services": [
+      {
+        "name": "Full Body Car Wash",
+        "description": "Pressure foam wash, underbody cleaning, and microfiber streak-free drying",
+        "icon": "droplet"
+      },
+      {
+        "name": "Interior Detailing and Vacuum",
+        "description": "Deep seat shampooing, dashboard polishing, and cabin sanitization",
+        "icon": "sparkles"
+      },
+      {
+        "name": "Ceramic Coating and Polish",
+        "description": "Protective paint sealant, machine buffing, and glossy ceramic finish",
+        "icon": "shield"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "mechanic",
+    "subcategoryName": "Mechanic",
+    "services": [
+      {
+        "name": "Engine Repair and Overhaul",
+        "description": "Diagnostic troubleshooting, timing belt replacement, and engine tuning",
+        "icon": "wrench"
+      },
+      {
+        "name": "Brake System Servicing",
+        "description": "Brake pad replacement, rotor resurfacing, and fluid flush services",
+        "icon": "disc"
+      },
+      {
+        "name": "Suspension and Steering Repair",
+        "description": "Shock absorber replacement, tie rod fixing, and power steering repairs",
+        "icon": "settings"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "vehicle-dealer",
+    "subcategoryName": "Vehicle Dealer",
+    "services": [
+      {
+        "name": "Pre Owned Car Sales",
+        "description": "Verified, multi-point inspected used cars with warranty options",
+        "icon": "car"
+      },
+      {
+        "name": "Vehicle Trade In Exchange",
+        "description": "Fair market valuation and seamless trade-in offers for your old vehicle",
+        "icon": "repeat"
+      },
+      {
+        "name": "Auto Loan Assistance",
+        "description": "Hassle-free car financing, flexible EMI schemes, and loan documentation",
+        "icon": "credit-card"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "vehicle-service-shop",
+    "subcategoryName": "Vehicle Service Shop",
+    "services": [
+      {
+        "name": "Periodic Car Maintenance",
+        "description": "Scheduled engine oil change, filter replacements, and safety checks",
+        "icon": "calendar"
+      },
+      {
+        "name": "Wheel Alignment and Balancing",
+        "description": "3D computerized wheel alignment, tire rotation, and balancing",
+        "icon": "compass"
+      },
+      {
+        "name": "Air Conditioning Servicing",
+        "description": "AC gas refilling, leak detection, and cooling coil cleaning",
+        "icon": "wind"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "driving-school",
+    "subcategoryName": "Driving School",
+    "services": [
+      {
+        "name": "Four Wheeler Driving Lessons",
+        "description": "Dual-control car training sessions with experienced driving instructors",
+        "icon": "navigation"
+      },
+      {
+        "name": "Two Wheeler Riding Classes",
+        "description": "Safe scooter and motorcycle handling practice for beginners",
+        "icon": "zap"
+      },
+      {
+        "name": "Driving License Assistance",
+        "description": "RTO documentation, learner permit filing, and driving test preparation",
+        "icon": "file-check"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "vehicle-showroom",
+    "subcategoryName": "Vehicle Showroom",
+    "services": [
+      {
+        "name": "New Car Sales Display",
+        "description": "Authorized dealership showing the latest car models, variants, and colors",
+        "icon": "eye"
+      },
+      {
+        "name": "Test Drive Booking",
+        "description": "On-demand test drives at the showroom or delivered to your doorstep",
+        "icon": "key"
+      },
+      {
+        "name": "Official Accessory Sales",
+        "description": "Genuine manufacturer accessories, seat covers, and infotainment systems",
+        "icon": "package"
+      }
+    ]
+  },
+  {
+    "subcategorySlug": "towing-service",
+    "subcategoryName": "Towing Service",
+    "services": [
+      {
+        "name": "Emergency Roadside Towing",
+        "description": "24-hour breakdown and accident recovery towing to a safe location",
+        "icon": "truck"
+      },
+      {
+        "name": "Flatbed Vehicle Transport",
+        "description": "Damage-free flatbed hauling for cars, bikes, and low-clearance vehicles",
+        "icon": "truck"
+      },
+      {
+        "name": "Roadside Assistance Package",
+        "description": "Battery jump-start, flat tire change, fuel delivery, and lockout help",
+        "icon": "life-buoy"
+      }
+    ]
+  }
+]
