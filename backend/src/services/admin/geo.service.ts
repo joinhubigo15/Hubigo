@@ -1,11 +1,7 @@
-import { Prisma } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
 import { ApiError } from "../../utils/ApiError";
+import { isForeignKeyViolation } from "../../utils/prisma-errors";
 import type { CreateCityInput, UpdateCityInput, CreateAreaInput, UpdateAreaInput } from "../../schemas/admin.schema";
-
-function isForeignKeyViolation(err: unknown): boolean {
-  return err instanceof Prisma.PrismaClientKnownRequestError && (err.code === "P2003" || err.code === "P2014");
-}
 
 // ── Cities ───────────────────────────────────────────────────────────────────
 

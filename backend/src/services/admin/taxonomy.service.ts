@@ -1,17 +1,13 @@
-import { Prisma } from "@prisma/client";
 import { prisma } from "../../lib/prisma";
 import { ApiError } from "../../utils/ApiError";
 import { loadCommonServicesPool } from "../../importer/services/common-services-pool";
+import { isForeignKeyViolation } from "../../utils/prisma-errors";
 import type {
   CreateCategoryInput,
   UpdateCategoryInput,
   CreateSubcategoryInput,
   UpdateSubcategoryInput,
 } from "../../schemas/admin.schema";
-
-function isForeignKeyViolation(err: unknown): boolean {
-  return err instanceof Prisma.PrismaClientKnownRequestError && (err.code === "P2003" || err.code === "P2014");
-}
 
 // ── Categories (top-level, parentId: null) ──────────────────────────────────
 
