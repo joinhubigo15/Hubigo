@@ -77,7 +77,7 @@ export const getBusinessBySlug = asyncHandler(async (req: Request, res: Response
     console.error("[businesses] failed to record competitor-lead interaction:", err)
   );
 
-  const openStatus = computeOpenStatus(business.hours, business.openHoursRaw);
+  const openStatus = computeOpenStatus(business.hours);
   // Only the source raw text tells us whether the structured hours below were scraped for every
   // day or inferred by replicating a single known day across the week (see business-hours.ts) —
   // that distinction doesn't survive into the structured BusinessHours rows themselves.

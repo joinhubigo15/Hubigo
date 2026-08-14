@@ -153,59 +153,21 @@ export function parseWeeklyHoursFromRaw(raw: string | null | undefined): WeeklyH
   };
 }
 
-/** Prefers structured BusinessHours (24h HH:mm, exact) when present; falls back to parsing the
- * scraper's raw text otherwise — structured rows aren't populated yet for the imported dataset,
- * but this keeps the detail endpoint correct once a later phase backfills them. */
-export function computeOpenStatus(hours: StructuredHourRow[], raw: string | null | undefined): OpenStatus {
-  if (hours.length > 0) {
-    const { day, minutesOfDay } = getCurrentIstDayAndTime();
-    const today = hours.find((h) => h.day.toLowerCase() === day);
-    if (today) {
-      if (today.isClosed || !today.openTime || !today.closeTime) return { isOpenNow: false, closesAt: null };
-      const [oh, om] = today.openTime.split(":").map(Number);
-      const [ch, cm] = today.closeTime.split(":").map(Number);
-      const openMin = oh * 60 + om;
-      const closeMin = ch * 60 + cm;
-      const isOpenNow = minutesOfDay >= openMin && minutesOfDay <= closeMin;
-      return { isOpenNow, closesAt: isOpenNow ? formatMinutes(closeMin) : null };
-    }
-  }
-  return computeOpenStatusFromRaw(raw);
-}
-
-/** Best-effort open/closed status for right now, parsed from the scraper's raw hours text. */
-export function computeOpenStatusFromRaw(raw: string | null | undefined): OpenStatus {
-  if (!raw) return { isOpenNow: null, closesAt: null };
-
-  let parsed: unknown;
-  try {
-    parsed = JSON.parse(raw);
-  } catch {
-    return { isOpenNow: null, closesAt: null };
-  }
-  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) return { isOpenNow: null, closesAt: null };
+/** business_hours (structured) is the single source of truth for open/closed status — no
+ * fallback to the scraper's raw text. Returns { isOpenNow: null } when the business has no
+ * structured hours rows at all (status unavailable), never inferring open/closed from raw text. */
+export function computeOpenStatus(hours: StructuredHourRow[]): OpenStatus {
+  if (hours.length === 0) return { isOpenNow: null, closesAt: null };
 
   const { day, minutesOfDay } = getCurrentIstDayAndTime();
-  const dict = parsed as Record<string, unknown>;
-  const key = Object.keys(dict).find((k) => k.toLowerCase() === day);
-  if (!key) return { isOpenNow: null, closesAt: null };
-
-  const value = dict[key];
-  const ranges = Array.isArray(value) ? value : typeof value === "string" ? [value] : [];
-  if (ranges.length === 0) return { isOpenNow: null, closesAt: null };
-  if (ranges.some((r) => typeof r === "string" && /closed/i.test(r))) return { isOpenNow: false, closesAt: null };
-  if (ranges.some((r) => typeof r === "string" && /24\s*hours?/i.test(r))) return { isOpenNow: true, closesAt: null };
-
-  for (const r of ranges) {
-    if (typeof r !== "string") continue;
-    const range = parseRange(r);
-    if (!range) continue;
-    const { openMin, closeMin } = range;
-    const isOvernight = closeMin < openMin;
-    const within = isOvernight
-      ? minutesOfDay >= openMin || minutesOfDay <= closeMin
-      : minutesOfDay >= openMin && minutesOfDay <= closeMin;
-    if (within) return { isOpenNow: true, closesAt: formatMinutes(closeMin) };
+  const today = hours.find((h) => h.day.toLowerCase() === day);
+  if (!today || today.isClosed || !today.openTime || !today.closeTime) {
+    return { isOpenNow: false, closesAt: null };
   }
-  return { isOpenNow: false, closesAt: null };
+  const [oh, om] = today.openTime.split(":").map(Number);
+  const [ch, cm] = today.closeTime.split(":").map(Number);
+  const openMin = oh * 60 + om;
+  const closeMin = ch * 60 + cm;
+  const isOpenNow = minutesOfDay >= openMin && minutesOfDay <= closeMin;
+  return { isOpenNow, closesAt: isOpenNow ? formatMinutes(closeMin) : null };
 }

@@ -339,12 +339,19 @@ export async function searchBusinesses(params: SearchParams) {
           AND (o.end_date IS NULL OR o.end_date >= now())
           AND (o.start_date IS NULL OR o.start_date <= now())
         ) AS has_active_offer,
-        EXISTS (
-          SELECT 1 FROM business_hours bh WHERE bh.business_id = b.id
-          AND bh.day::text = ${currentDay} AND bh.is_closed = false
-          AND bh.open_time IS NOT NULL AND bh.close_time IS NOT NULL
-          AND bh.open_time <= ${currentTime} AND bh.close_time >= ${currentTime}
-        ) AS is_open_now,
+        -- NULL when the business has no structured hours at all (status unknown/unavailable),
+        -- distinct from FALSE (has hours, just not open right now) — business_hours is the single
+        -- source of truth here, never a fallback to the scraper's raw text (see business-hours.ts).
+        CASE
+          WHEN NOT EXISTS (SELECT 1 FROM business_hours bh0 WHERE bh0.business_id = b.id) THEN NULL
+          WHEN EXISTS (
+            SELECT 1 FROM business_hours bh WHERE bh.business_id = b.id
+            AND bh.day::text = ${currentDay} AND bh.is_closed = false
+            AND bh.open_time IS NOT NULL AND bh.close_time IS NOT NULL
+            AND bh.open_time <= ${currentTime} AND bh.close_time >= ${currentTime}
+          ) THEN TRUE
+          ELSE FALSE
+        END AS is_open_now,
         ${distanceExpr} AS distance_km,
         (
           COALESCE(GREATEST(

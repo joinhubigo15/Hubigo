@@ -5,7 +5,6 @@ import { z } from "zod";
 import { searchBusinesses } from "../repositories/business.repository";
 import { prisma } from "../lib/prisma";
 import { resolveImageUrl } from "../lib/storage/resolve-image-url";
-import { computeOpenStatusFromRaw } from "../utils/business-hours";
 
 const nearbyQuerySchema = z.object({
   lat: z.coerce.number().min(-90).max(90).optional(),
@@ -104,9 +103,9 @@ export const getNearbyBusinesses = asyncHandler(async (req: Request, res: Respon
       formattedDistance: formatDistance(distanceKm),
       primaryCategoryName: (row.primary_category_name as string | null) ?? "Service",
       primaryCategorySlug: (row.primary_category_slug as string | null) ?? "all",
-      // business_hours is empty for the whole imported dataset, so the SQL-computed is_open_now
-      // is always false — fall back to parsing the scraper's raw hours text.
-      isOpenNow: computeOpenStatusFromRaw(row.open_hours_raw as string | null).isOpenNow,
+      // business_hours (structured) is the single source of truth — NULL means no hours data
+      // exists for this business, not "closed". See business.repository.ts's is_open_now CASE.
+      isOpenNow: row.is_open_now as boolean | null,
       hasActiveOffer: Boolean(row.has_active_offer),
     };
   });

@@ -1,7 +1,6 @@
 import { prisma } from "../lib/prisma";
 import { searchBusinesses, hasVerifiedMatches } from "../repositories/business.repository";
 import { resolveImageUrl } from "../lib/storage/resolve-image-url";
-import { computeOpenStatusFromRaw } from "../utils/business-hours";
 import type { SearchQueryInput } from "../schemas/search.schema";
 import type { BusinessSummary, PaginatedResult, SearchParams } from "../types/search.types";
 
@@ -59,9 +58,9 @@ function mapRow(row: Record<string, unknown>): BusinessSummary {
     distanceKm: row.distance_km != null ? Number(row.distance_km) : null,
     primaryCategoryName: (row.primary_category_name as string | null) ?? null,
     primaryCategorySlug: (row.primary_category_slug as string | null) ?? null,
-    // business_hours is empty for the whole imported dataset, so the SQL-computed is_open_now
-    // (row.is_open_now) is always false — fall back to parsing the scraper's raw hours text.
-    isOpenNow: computeOpenStatusFromRaw(row.open_hours_raw as string | null).isOpenNow,
+    // business_hours (structured) is the single source of truth — NULL means no hours data
+    // exists for this business, not "closed". See business.repository.ts's is_open_now CASE.
+    isOpenNow: row.is_open_now as boolean | null,
     hasActiveOffer: Boolean(row.has_active_offer),
     score: Number(row.score),
   };

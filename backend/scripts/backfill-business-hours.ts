@@ -1,98 +1,84 @@
-/**
- * One-time backfill: business_hours is empty for the entire imported dataset (only the scraper's
- * raw text ended up in Business.openHoursRaw — see src/utils/business-hours.ts's docstring). This
- * parses that raw text into real BusinessHours rows so the search page's "Open Now" filter (which
- * queries business_hours directly in SQL) has something to match against instead of always
- * returning zero results.
- *
- * Resumable: skips any business that already has BusinessHours rows, so a re-run after a partial
- * failure only processes what's left.
- *
- * Usage (run from backend/):
- *   npx tsx scripts/backfill-business-hours.ts
- */
-import type { DayOfWeek } from "@prisma/client";
 import { prisma } from "../src/lib/prisma";
 import { parseWeeklyHoursFromRaw } from "../src/utils/business-hours";
 
-const BATCH_SIZE = 500;
-const MAX_RETRIES = 30;
+// business_hours (structured) is now the single source of truth for open/closed status —
+// see business.repository.ts's is_open_now CASE and business-hours.ts's computeOpenStatus.
+// This one-time backfill parses each business's scraper-provided openHoursRaw JSON text
+// (e.g. '{"Monday":["11 AM–10 PM"]}') into real BusinessHours rows so the imported dataset
+// (which never had structured hours) gets a real, database-backed open/closed signal instead
+// of showing "hours unavailable" for every business. A business whose raw text is missing or
+// unparseable is deliberately left with zero BusinessHours rows — the app already treats that
+// as "hours unavailable" (isOpenNow: null), which is the honest answer, not a guess.
+//
+// Idempotent: uses skipDuplicates, so re-running never overwrites hours a real user (or the
+// business-register wizard) already entered manually for a business.
 
-/** The Railway proxy connection drops mid-run occasionally (unrelated to this script) — retry
- * with backoff rather than losing the whole run to a transient blip. Outages have lasted longer
- * than a few seconds in practice, so this budgets up to several minutes of retrying (capped
- * per-attempt delay of 20s) before giving up. */
-async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
-  let lastErr: unknown;
-  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
-    try {
-      return await fn();
-    } catch (err) {
-      lastErr = err;
-      const delayMs = Math.min(1000 * 2 ** (attempt - 1), 20000);
-      console.log(`  transient error (attempt ${attempt}/${MAX_RETRIES}), retrying in ${delayMs}ms:`, (err as Error).message.split("\n")[0]);
-      await new Promise((resolve) => setTimeout(resolve, delayMs));
-    }
-  }
-  throw lastErr;
-}
+const BATCH_SIZE = 2000;
 
 async function main() {
   let cursor: string | undefined;
   let processed = 0;
-  let written = 0;
-  let unparseable = 0;
-  const startedAt = Date.now();
+  let parsedCount = 0;
+  let unparseableCount = 0;
+  let inferredSingleDayCount = 0;
+  let rowsInserted = 0;
 
   for (;;) {
-    const batch = await withRetry(() =>
-      prisma.business.findMany({
-        where: {
-          openHoursRaw: { not: null },
-          hours: { none: {} },
-        },
-        select: { id: true, openHoursRaw: true },
-        orderBy: { id: "asc" },
-        take: BATCH_SIZE,
-        ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
-      })
-    );
+    const businesses = await prisma.business.findMany({
+      // hours: { none: {} } skips businesses that already have BusinessHours rows — makes a
+      // resumed run efficient (no rescanning already-done businesses) instead of relying on
+      // skipDuplicates alone, which still requires fetching+parsing every already-done row.
+      where: { openHoursRaw: { not: null }, hours: { none: {} } },
+      select: { id: true, openHoursRaw: true },
+      take: BATCH_SIZE,
+      ...(cursor ? { cursor: { id: cursor }, skip: 1 } : {}),
+      orderBy: { id: "asc" },
+    });
 
-    if (batch.length === 0) break;
+    if (businesses.length === 0) break;
 
-    const rowsToInsert: { businessId: string; day: DayOfWeek; openTime: string | null; closeTime: string | null; isClosed: boolean }[] = [];
+    const rows: { businessId: string; day: string; openTime: string | null; closeTime: string | null; isClosed: boolean }[] = [];
 
-    for (const b of batch) {
+    for (const b of businesses) {
       const weekly = parseWeeklyHoursFromRaw(b.openHoursRaw);
-      processed++;
       if (!weekly) {
-        unparseable++;
+        unparseableCount++;
         continue;
       }
+      parsedCount++;
+      if (weekly.inferredFromSingleDay) inferredSingleDayCount++;
       for (const row of weekly.rows) {
-        rowsToInsert.push({ businessId: b.id, day: row.day, openTime: row.openTime, closeTime: row.closeTime, isClosed: row.isClosed });
+        rows.push({
+          businessId: b.id,
+          day: row.day,
+          openTime: row.openTime,
+          closeTime: row.closeTime,
+          isClosed: row.isClosed,
+        });
       }
     }
 
-    if (rowsToInsert.length > 0) {
-      const result = await withRetry(() => prisma.businessHours.createMany({ data: rowsToInsert, skipDuplicates: true }));
-      written += result.count;
+    if (rows.length > 0) {
+      const result = await prisma.businessHours.createMany({ data: rows as any, skipDuplicates: true });
+      rowsInserted += result.count;
     }
 
-    cursor = batch[batch.length - 1].id;
-
-    if (processed % 5000 < BATCH_SIZE) {
-      const elapsedSec = ((Date.now() - startedAt) / 1000).toFixed(0);
-      console.log(`processed ${processed} businesses, wrote ${written} hour-rows, ${unparseable} unparseable — ${elapsedSec}s elapsed`);
-    }
+    processed += businesses.length;
+    cursor = businesses[businesses.length - 1].id;
+    console.log(`Processed ${processed} businesses so far (${rowsInserted} hour-rows inserted)...`);
   }
 
-  console.log(`\nDone. Processed ${processed} businesses, wrote ${written} BusinessHours rows, ${unparseable} had unparseable raw hours.`);
-  await prisma.$disconnect();
+  console.log("\nDone.");
+  console.log(`  Businesses with raw hours text: ${processed}`);
+  console.log(`  Successfully parsed:            ${parsedCount}`);
+  console.log(`  Unparseable/empty:               ${unparseableCount}`);
+  console.log(`  Inferred from a single known day (flagged, not full-week accurate): ${inferredSingleDayCount}`);
+  console.log(`  BusinessHours rows inserted:     ${rowsInserted}`);
 }
 
-main().catch(async (err) => {
-  console.error(err);
-  await prisma.$disconnect();
-  process.exit(1);
-});
+main()
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  })
+  .finally(() => prisma.$disconnect());
