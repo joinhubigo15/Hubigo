@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import {
   ApiClientError,
   AuthSession,
@@ -24,15 +24,23 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<PublicUser | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [initializing, setInitializing] = useState(true);
+  // Guards against the silent-refresh-on-mount effect below clobbering a session that was
+  // established in the meantime by an explicit setSession() call (e.g. the OAuth callback page
+  // parsing its own token straight from the URL fragment) — without this, a slow or failing
+  // refreshRequest() resolving after setSession() has already run would wipe the just-completed
+  // login back to null.
+  const sessionEstablishedRef = useRef(false);
 
   useEffect(() => {
     // On first load, try to silently restore a session from the httpOnly refresh cookie.
     refreshRequest()
       .then((session) => {
+        if (sessionEstablishedRef.current) return;
         setUser(session.user);
         setAccessToken(session.accessToken);
       })
       .catch(() => {
+        if (sessionEstablishedRef.current) return;
         setUser(null);
         setAccessToken(null);
       })
@@ -40,6 +48,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setSession = useCallback((session: AuthSession) => {
+    sessionEstablishedRef.current = true;
     setUser(session.user);
     setAccessToken(session.accessToken);
   }, []);
