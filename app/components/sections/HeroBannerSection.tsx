@@ -84,7 +84,7 @@ export default function HeroBannerSection() {
   );
 
   return (
-    <section className="px-4 sm:px-4 lg:px-6 mt-2 lg:mt-0 mb-1 lg:mb-4 shrink-0">
+    <section className="px-4 sm:px-4 lg:px-6 mt-2 lg:mt-0 mb-1 lg:mb-2 shrink-0">
       <div className="max-w-6xl mx-auto relative">
 
         {/* Top Header Row in Mobile View */}
@@ -139,7 +139,7 @@ export default function HeroBannerSection() {
             <img
               src="https://pub-e457284fdd7844e5b0bcc12b89e4a198.r2.dev/whitehero-crop.jpeg"
               alt="Discover local businesses"
-              className="w-full h-auto max-h-[170px] sm:max-h-[200px] lg:max-h-[300px] object-contain mix-blend-multiply lg:scale-110 lg:translate-x-2 transition-transform duration-300"
+              className="w-full h-auto max-h-[170px] sm:max-h-[200px] lg:max-h-[250px] object-contain mix-blend-multiply lg:scale-105 lg:translate-x-2 transition-transform duration-300"
             />
           </div>
         </div>

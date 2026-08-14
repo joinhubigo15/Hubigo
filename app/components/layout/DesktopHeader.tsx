@@ -38,7 +38,7 @@ export default function DesktopHeader() {
   return (
     <header className={cn(
       "hidden lg:flex items-center justify-between gap-3 px-6 w-full z-30 shrink-0 font-sans border-b",
-      pathname === "/" ? "pt-2 pb-1" : "pt-4 pb-4",
+      pathname === "/" ? "pt-3 pb-2" : "pt-4 pb-4",
       isDarkPage ? "bg-transparent border-transparent" :
       pathname === "/search" || pathname === "/" ? "bg-white border-transparent" :
       "bg-white border-slate-200/90"
