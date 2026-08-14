@@ -56,7 +56,7 @@ export default function HeroBannerSection() {
 
   return (
     <section className="px-2 sm:px-4 lg:px-6 mt-0 mb-1 lg:mb-4 shrink-0">
-      <div className="max-w-6xl mx-auto relative lg:bg-transparent lg:border-transparent lg:shadow-none lg:p-0 lg:overflow-visible rounded-2xl border border-purple-100/80 shadow-2xs overflow-hidden bg-gradient-to-r from-purple-50/90 via-indigo-50/40 to-purple-50/30 p-3.5 sm:p-5">
+      <div className="max-w-6xl mx-auto relative">
 
         {/* Top Header Row in Mobile View */}
         <div className="lg:hidden flex items-center justify-between mb-3">
@@ -97,101 +97,14 @@ export default function HeroBannerSection() {
             </div>
           </div>
 
-          {/* Right 3D Location Pin & City Artwork */}
-          <div className="col-span-4 sm:col-span-5 relative h-24 sm:h-32 lg:h-36 flex items-center justify-center">
-            <svg viewBox="0 0 400 260" className="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMax meet">
-              <defs>
-                <radialGradient id="heroSunGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="#fda4af" stopOpacity="0.9" />
-                  <stop offset="100%" stopColor="#fda4af" stopOpacity="0" />
-                </radialGradient>
-                <linearGradient id="heroPinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#9333ea" />
-                  <stop offset="55%" stopColor="#7c3aed" />
-                  <stop offset="100%" stopColor="#6366f1" />
-                </linearGradient>
-                <linearGradient id="heroGroundGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#c4b5fd" stopOpacity="0.35" />
-                  <stop offset="100%" stopColor="#c4b5fd" stopOpacity="0.05" />
-                </linearGradient>
-              </defs>
-
-              {/* Sun glow, upper right */}
-              <circle cx="340" cy="55" r="46" fill="url(#heroSunGlow)" />
-              <circle cx="340" cy="55" r="16" fill="#fecdd3" opacity="0.9" />
-
-              {/* Birds */}
-              <path d="M110,45 q6,-8 12,0 q6,-8 12,0" stroke="#a78bfa" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.7" />
-              <path d="M260,30 q5,-7 10,0 q5,-7 10,0" stroke="#a78bfa" strokeWidth="2.5" fill="none" strokeLinecap="round" opacity="0.6" />
-
-              {/* City skyline — layered lavender buildings */}
-              <g opacity="0.85">
-                <rect x="14" y="95" width="28" height="145" rx="2" fill="#ddd6fe" />
-                <rect x="48" y="55" width="34" height="185" rx="2" fill="#c4b5fd" />
-                <rect x="86" y="110" width="24" height="130" rx="2" fill="#ddd6fe" />
-                <rect x="240" y="90" width="26" height="150" rx="2" fill="#ddd6fe" />
-                <rect x="270" y="40" width="34" height="200" rx="2" fill="#c4b5fd" />
-                <rect x="308" y="105" width="24" height="135" rx="2" fill="#ddd6fe" />
-                <rect x="336" y="65" width="28" height="175" rx="2" fill="#a78bfa" opacity="0.7" />
-                {/* windows */}
-                <g fill="#fff" opacity="0.5">
-                  <rect x="56" y="70" width="4" height="4" /><rect x="68" y="70" width="4" height="4" />
-                  <rect x="56" y="84" width="4" height="4" /><rect x="68" y="84" width="4" height="4" />
-                  <rect x="56" y="98" width="4" height="4" /><rect x="68" y="98" width="4" height="4" />
-                  <rect x="56" y="112" width="4" height="4" /><rect x="68" y="112" width="4" height="4" />
-                  <rect x="278" y="55" width="4" height="4" /><rect x="290" y="55" width="4" height="4" />
-                  <rect x="278" y="69" width="4" height="4" /><rect x="290" y="69" width="4" height="4" />
-                  <rect x="278" y="83" width="4" height="4" /><rect x="290" y="83" width="4" height="4" />
-                  <rect x="278" y="97" width="4" height="4" /><rect x="290" y="97" width="4" height="4" />
-                  <rect x="343" y="80" width="4" height="4" /><rect x="354" y="80" width="4" height="4" />
-                  <rect x="343" y="94" width="4" height="4" /><rect x="354" y="94" width="4" height="4" />
-                </g>
-              </g>
-
-              {/* Ground plaza */}
-              <ellipse cx="200" cy="240" rx="190" ry="16" fill="url(#heroGroundGrad)" />
-              <g stroke="#a78bfa" strokeWidth="1" opacity="0.35">
-                <line x1="70" y1="240" x2="140" y2="222" />
-                <line x1="130" y1="240" x2="175" y2="222" />
-                <line x1="200" y1="240" x2="200" y2="220" />
-                <line x1="270" y1="240" x2="225" y2="222" />
-                <line x1="330" y1="240" x2="260" y2="222" />
-                <line x1="50" y1="232" x2="350" y2="232" />
-              </g>
-
-              {/* Trees */}
-              <g>
-                <circle cx="55" cy="222" r="10" fill="#86efac" opacity="0.85" />
-                <rect x="53" y="230" width="4" height="10" fill="#a3a3a3" opacity="0.6" />
-                <circle cx="345" cy="222" r="10" fill="#6ee7b7" opacity="0.85" />
-                <rect x="343" y="230" width="4" height="10" fill="#a3a3a3" opacity="0.6" />
-              </g>
-            </svg>
-
-            {/* Ground shadow beneath the pin */}
-            <div className="absolute bottom-1 w-16 sm:w-20 h-3 bg-purple-500/25 rounded-full blur-sm" />
-
-            {/* 3D Glossy Purple Map Pin */}
-            <div className="relative z-10 w-11 h-14 sm:w-16 sm:h-20 lg:w-20 lg:h-24 flex items-center justify-center">
-              <svg viewBox="0 0 64 80" className="w-full h-full drop-shadow-lg">
-                <path
-                  d="M32 2C16.5 2 4 14.5 4 30c0 20 22 40 27 46.5.6.8 1.4.8 2 0C38 70 60 50 60 30 60 14.5 47.5 2 32 2Z"
-                  fill="url(#heroPinGradStandalone)"
-                  stroke="#ffffff"
-                  strokeWidth="2"
-                />
-                <defs>
-                  <linearGradient id="heroPinGradStandalone" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#9333ea" />
-                    <stop offset="55%" stopColor="#7c3aed" />
-                    <stop offset="100%" stopColor="#6366f1" />
-                  </linearGradient>
-                </defs>
-                <circle cx="32" cy="30" r="13" fill="#ffffff" />
-                {/* gloss highlight */}
-                <path d="M14 18c3-6 9-10 14-11" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" fill="none" opacity="0.35" />
-              </svg>
-            </div>
+          {/* Right Hero Image — hosted on R2 (profile-pics bucket), pure white background
+              blended flat via mix-blend-multiply against the page's off-white background. */}
+          <div className="col-span-4 sm:col-span-5 relative flex items-center justify-center overflow-visible">
+            <img
+              src="https://pub-e457284fdd7844e5b0bcc12b89e4a198.r2.dev/whitehero-crop.jpeg"
+              alt="Discover local businesses"
+              className="w-full h-auto max-h-[140px] sm:max-h-[200px] lg:max-h-[300px] object-contain mix-blend-multiply lg:scale-110 lg:translate-x-2 transition-transform duration-300"
+            />
           </div>
         </div>
 
