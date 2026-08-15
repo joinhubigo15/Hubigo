@@ -10,9 +10,9 @@ export default function DirectoryFooterSection() {
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 max-w-4xl mx-auto text-center lg:text-left">
           {/* Company & Legal */}
           <div className="space-y-3">
-            <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider">
+            <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">
               Company & Legal
-            </h4>
+            </h3>
             <ul className="space-y-2 text-xs font-semibold text-slate-500 flex flex-col lg:flex-row gap-2 lg:gap-6">
               <li>
                 <Link href="/about" className="hover:text-purple-600 transition-colors">
@@ -39,9 +39,9 @@ export default function DirectoryFooterSection() {
 
           {/* Social Media Links */}
           <div className="space-y-3 pt-2 lg:pt-0">
-            <h4 className="text-xs font-black text-slate-900 uppercase tracking-wider">
+            <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider">
               Follow Us
-            </h4>
+            </h3>
             <div className="flex items-center justify-center lg:justify-start gap-2">
               {[
                 {
@@ -91,7 +91,7 @@ export default function DirectoryFooterSection() {
         </div>
 
         {/* Bottom copyright */}
-        <div className="border-t border-slate-100 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 font-semibold gap-2">
+        <div className="border-t border-slate-100 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-semibold gap-2">
           <span>© 2026 HUBIGO Inc. All rights reserved.</span>
           <span>Made with ❤️ for Local Businesses in India</span>
         </div>

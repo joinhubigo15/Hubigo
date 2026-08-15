@@ -150,10 +150,7 @@ function BusinessCard({
         {/* Heart */}
         <button
           onClick={(e) => toggleFavorite(b.id, e)}
-          className={cn(
-            "absolute top-1 right-1 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-colors",
-            compact ? "w-4 h-4" : "w-6 h-6"
-          )}
+          className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-colors"
           aria-label="Add to favorites"
         >
           <Heart className={cn(favorites.includes(b.id) && "fill-rose-500 text-rose-500", compact ? "w-2.5 h-2.5" : "w-3.5 h-3.5")} />
@@ -164,7 +161,7 @@ function BusinessCard({
       <div className={cn("flex flex-col flex-1 justify-between gap-0.5", compact ? "p-1" : "p-2.5")}>
         <div className="space-y-0.5">
           {b.primaryCategoryName && (
-            <span className={cn("font-medium text-slate-400 block leading-none", compact ? "text-[8px]" : "text-[10px]")}>
+            <span className={cn("font-medium text-slate-500 block leading-none", compact ? "text-[8px]" : "text-[10px]")}>
               {b.primaryCategoryName}
             </span>
           )}

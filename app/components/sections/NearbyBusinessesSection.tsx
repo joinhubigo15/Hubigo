@@ -113,7 +113,7 @@ function NearbyCard({ b }: { b: BusinessSummary }) {
       {/* Info */}
       <div className="flex flex-col flex-1 justify-between gap-0.5 p-1 lg:p-2.5">
         <div className="space-y-0.5">
-          <span className="font-medium text-slate-400 block leading-none text-[8px] lg:text-[10px]">
+          <span className="font-medium text-slate-500 block leading-none text-[8px] lg:text-[10px]">
             {b.primaryCategoryName ?? "Business"}
           </span>
           <h3 className="font-bold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight line-clamp-1 text-[9px] lg:text-xs">

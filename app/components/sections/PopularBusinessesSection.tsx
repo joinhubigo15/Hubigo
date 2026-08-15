@@ -27,7 +27,7 @@ const popularBrands = [
     bgColor: "bg-white",
     borderColor: "border-slate-100",
     logo: (
-      <div className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center">
+      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center">
         <span className="text-[6px] font-black text-red-600 tracking-tighter leading-none">Reliance</span>
         <span className="text-[7px] font-extrabold text-blue-800 tracking-tight leading-none mt-0.5">SMART</span>
       </div>
@@ -39,7 +39,7 @@ const popularBrands = [
     bgColor: "bg-red-600",
     borderColor: "border-red-600",
     logo: (
-      <div className="w-full h-full flex items-center justify-center text-white font-black text-[9px] sm:text-xs tracking-wider">
+      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[9px] sm:text-xs tracking-wider">
         KFC
       </div>
     ),
@@ -50,8 +50,8 @@ const popularBrands = [
     bgColor: "bg-white",
     borderColor: "border-slate-100",
     logo: (
-      <div className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center">
-        <span className="text-[7px] font-black text-teal-600 tracking-tight leading-none">Apollo</span>
+      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center">
+        <span className="text-[7px] font-black text-teal-800 tracking-tight leading-none">Apollo</span>
         <span className="text-[5px] font-semibold text-slate-500 uppercase tracking-widest leading-none mt-0.5">PHARMACY</span>
       </div>
     ),
@@ -59,10 +59,10 @@ const popularBrands = [
   {
     name: "Decathlon",
     query: "Decathlon",
-    bgColor: "bg-[#0082C3]",
-    borderColor: "border-[#0082C3]",
+    bgColor: "bg-[#00659c]",
+    borderColor: "border-[#00659c]",
     logo: (
-      <div className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[8px] tracking-wider italic px-0.5">
+      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[8px] tracking-wider italic px-0.5">
         DECATHLON
       </div>
     ),
@@ -73,7 +73,7 @@ const popularBrands = [
     bgColor: "bg-[#00704A]",
     borderColor: "border-[#00704A]",
     logo: (
-      <div className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-widest uppercase">
+      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-widest uppercase">
         SB
       </div>
     ),
