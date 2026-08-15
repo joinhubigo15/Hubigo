@@ -102,6 +102,13 @@ export function getPopularSearches(limit = 8) {
   return request<string[]>(`/api/v1/search/popular?limit=${limit}`);
 }
 
+/** For a "top {category} in {location}" query, returns the matching pSEO page path (e.g.
+ * "/category/hotels/bangalore/whitefield"), or null if the phrasing doesn't match or resolves to
+ * no qualifying page — callers should fall back to a normal search in either case. */
+export function resolveTopSearch(q: string): Promise<string | null> {
+  return request<{ path: string | null }>(`/api/v1/pseo/resolve-search?q=${encodeURIComponent(q)}`).then((r) => r.path);
+}
+
 export interface CategoryOption {
   id: string;
   name: string;

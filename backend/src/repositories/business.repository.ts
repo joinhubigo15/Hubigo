@@ -32,6 +32,45 @@ function stripLocationStopwords(text: string): string {
   return result.replace(/\s+/g, " ").trim();
 }
 
+interface CachedLocationName {
+  id: string;
+  name: string;
+  nameLower: string;
+  kind: "city" | "locality" | "area";
+  cityId: string | null;
+}
+
+// `trimmed ILIKE '%' || name || '%'` can never use an index — the wildcard pattern is built
+// per-row from `name`, not a static literal, so Postgres has no choice but to sequentially scan
+// localities/cities/pincode_areas on EVERY search request. pincode_areas in particular is large
+// (backfilled per-pincode across all seeded cities), so this was a real, request-visible slowdown
+// in production, not just a dev-mode artifact. Caching the (small, slow-changing) set of distinct
+// location names in memory and matching in JS removes the DB round-trip from the hot path entirely.
+let locationNameCache: CachedLocationName[] | null = null;
+let locationNameCacheLoadedAt = 0;
+const LOCATION_NAME_CACHE_TTL_MS = 5 * 60 * 1000;
+
+async function getLocationNameCache(): Promise<CachedLocationName[]> {
+  const now = Date.now();
+  if (locationNameCache && now - locationNameCacheLoadedAt < LOCATION_NAME_CACHE_TTL_MS) {
+    return locationNameCache;
+  }
+
+  const rows = await prisma.$queryRaw<
+    { id: string; name: string; kind: "city" | "locality" | "area"; city_id: string | null }[]
+  >(Prisma.sql`
+    SELECT id, name, 'locality' AS kind, city_id FROM localities
+    UNION ALL
+    SELECT id, name, 'city' AS kind, NULL AS city_id FROM cities
+    UNION ALL
+    SELECT id, name, 'area' AS kind, city_id FROM pincode_areas
+  `);
+
+  locationNameCache = rows.map((r) => ({ id: r.id, name: r.name, nameLower: r.name.toLowerCase(), kind: r.kind, cityId: r.city_id }));
+  locationNameCacheLoadedAt = now;
+  return locationNameCache;
+}
+
 /**
  * Free-text queries like "Gym Koramangala" mix a keyword with a place name. This pulls out
  * the longest known city/locality name that appears in the query (if any) so it can drive a
@@ -45,29 +84,12 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
     return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, remainingQuery: "" };
   }
 
-  const candidates = await prisma.$queryRaw<
-    { id: string; name: string; kind: "city" | "locality" | "area"; city_id: string | null }[]
-  >(Prisma.sql`
-    SELECT id, name, kind, city_id FROM (
-      SELECT id, name, 'locality' AS kind, city_id
-      FROM localities
-      WHERE ${trimmed} ILIKE '%' || name || '%'
-      UNION ALL
-      SELECT id, name, 'city' AS kind, NULL AS city_id
-      FROM cities
-      WHERE ${trimmed} ILIKE '%' || name || '%'
-      UNION ALL
-      SELECT id, name, 'area' AS kind, city_id
-      FROM pincode_areas
-      WHERE ${trimmed} ILIKE '%' || name || '%'
-    ) matches
-    -- On an equal-length name tie (e.g. "Whitefield" exists as both a locality and an area row),
-    -- prefer the area match: Business.locality_id is essentially unpopulated across the dataset
-    -- (the pincode-based area backfill is the real, queryable location signal right now), so a
-    -- locality match winning the tie would silently produce zero score bonus for anyone.
-    ORDER BY length(name) DESC, (kind = 'area') DESC
-    LIMIT 1
-  `);
+  const trimmedLower = trimmed.toLowerCase();
+  const names = await getLocationNameCache();
+  const candidates = names.filter((n) => trimmedLower.includes(n.nameLower));
+  // Same tie-break as before: longest name wins; on an equal-length tie (e.g. "Whitefield" exists
+  // as both a locality and an area row), prefer the area match — see the original comment on why.
+  candidates.sort((a, b) => b.name.length - a.name.length || (b.kind === "area" ? 1 : 0) - (a.kind === "area" ? 1 : 0));
 
   const match = candidates[0];
   if (!match) {
@@ -91,7 +113,7 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
   }
 
   return {
-    matchedCityId: match.kind === "city" ? match.id : match.city_id,
+    matchedCityId: match.kind === "city" ? match.id : match.cityId,
     matchedLocalityId: match.kind === "locality" ? match.id : null,
     matchedAreaPincodes,
     remainingQuery: stripLocationStopwords(withoutMatch),

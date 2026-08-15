@@ -116,10 +116,109 @@ async function getAreaCategoryCombos(): Promise<PseoCandidate[]> {
 // All 4 pSEO templates (City x Category, City x Subcategory, Area x Category, Area x Subcategory)
 // collapse into these 2 SQL shapes, since the route itself doesn't distinguish category vs
 // subcategory level — see the comment on CANDIDATE_FLOOR above.
+//
+// Cached: this scans the whole businesses table twice (city-level, area-level) and is now called
+// not just by the hourly sitemap build but also by resolveTopSearchQuery() below on every "top X
+// in Y" search — without caching, that would mean a full-table aggregation on every such search.
+let pseoCandidatesCache: PseoCandidate[] | null = null;
+let pseoCandidatesCacheLoadedAt = 0;
+const PSEO_CANDIDATES_CACHE_TTL_MS = 5 * 60 * 1000;
+
 export async function getPseoCandidates(): Promise<PseoCandidate[]> {
+  const now = Date.now();
+  if (pseoCandidatesCache && now - pseoCandidatesCacheLoadedAt < PSEO_CANDIDATES_CACHE_TTL_MS) {
+    return pseoCandidatesCache;
+  }
   const [cityCombos, areaCombos] = await Promise.all([
     getCityCategoryCombos(),
     getAreaCategoryCombos(),
   ]);
-  return [...cityCombos, ...areaCombos];
+  pseoCandidatesCache = [...cityCombos, ...areaCombos];
+  pseoCandidatesCacheLoadedAt = now;
+  return pseoCandidatesCache;
+}
+
+// ── "Top X in Y" search-bar shortcut ──────────────────────────────────────────
+// Lets typing e.g. "top hotels in whitefield" straight into any search bar jump directly to the
+// matching pSEO page, instead of only being reachable by browsing category/city links. Deliberately
+// narrow: only the literal "top {category} in {location}" phrasing triggers this — anything else
+// (a plain keyword search, "restaurants near me", etc.) falls through to normal search untouched.
+
+interface CategoryNameCandidate {
+  name: string;
+  nameLower: string;
+  slug: string;
+}
+
+interface PseoLocationCandidate {
+  name: string;
+  nameLower: string;
+  citySlug: string;
+  areaSlug: string | null;
+}
+
+let categoryNameCache: CategoryNameCandidate[] | null = null;
+let locationNameCache: PseoLocationCandidate[] | null = null;
+let taxonomyCacheLoadedAt = 0;
+const TAXONOMY_CACHE_TTL_MS = 5 * 60 * 1000;
+
+async function getTaxonomyCandidates(): Promise<{ categories: CategoryNameCandidate[]; locations: PseoLocationCandidate[] }> {
+  const now = Date.now();
+  if (categoryNameCache && locationNameCache && now - taxonomyCacheLoadedAt < TAXONOMY_CACHE_TTL_MS) {
+    return { categories: categoryNameCache, locations: locationNameCache };
+  }
+
+  const [categories, cities, areas] = await Promise.all([
+    prisma.category.findMany({ select: { name: true, slug: true } }),
+    prisma.city.findMany({ select: { name: true, slug: true } }),
+    prisma.pincodeArea.findMany({
+      select: { name: true, slug: true, city: { select: { slug: true } } },
+      distinct: ["slug", "cityId"],
+    }),
+  ]);
+
+  categoryNameCache = categories.map((c) => ({ name: c.name, nameLower: c.name.toLowerCase(), slug: c.slug }));
+  locationNameCache = [
+    ...cities.map((c) => ({ name: c.name, nameLower: c.name.toLowerCase(), citySlug: c.slug, areaSlug: null as string | null })),
+    ...areas.map((a) => ({ name: a.name, nameLower: a.name.toLowerCase(), citySlug: a.city.slug, areaSlug: a.slug })),
+  ];
+  taxonomyCacheLoadedAt = now;
+  return { categories: categoryNameCache, locations: locationNameCache };
+}
+
+/** Picks the best (longest, i.e. most specific) name whose text appears in — or contains — the
+ * given phrase, matching either direction so "hotel" matches a stored "Hotels" and vice versa. */
+function findBestNameMatch<T extends { nameLower: string }>(phrase: string, candidates: T[]): T | null {
+  const phraseLower = phrase.toLowerCase();
+  const matches = candidates.filter((c) => phraseLower.includes(c.nameLower) || c.nameLower.includes(phraseLower));
+  if (matches.length === 0) return null;
+  matches.sort((a, b) => b.nameLower.length - a.nameLower.length);
+  return matches[0];
+}
+
+const TOP_X_IN_Y_PATTERN = /^top\s+(.+?)\s+in\s+(.+)$/i;
+
+/** Returns the matching pSEO page path for a "top {category} in {location}" query, or null if
+ * the query doesn't match that phrasing, or resolves to a category/location pair with no
+ * qualifying (gate-passing) pSEO page — callers should fall back to normal search in either case. */
+export async function resolveTopSearchQuery(rawQuery: string): Promise<string | null> {
+  const match = TOP_X_IN_Y_PATTERN.exec(rawQuery.trim());
+  if (!match) return null;
+
+  const [, categoryText, locationText] = match;
+  const [{ categories, locations }, candidates] = await Promise.all([
+    getTaxonomyCandidates(),
+    getPseoCandidates(),
+  ]);
+
+  const category = findBestNameMatch(categoryText, categories);
+  const location = findBestNameMatch(locationText, locations);
+  if (!category || !location) return null;
+
+  const path = location.areaSlug
+    ? `/category/${category.slug}/${location.citySlug}/${location.areaSlug}`
+    : `/category/${category.slug}/${location.citySlug}`;
+
+  const isRealPage = candidates.some((c) => c.path === path);
+  return isRealPage ? path : null;
 }

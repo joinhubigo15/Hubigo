@@ -254,20 +254,18 @@ function SearchPageContent() {
   // "denied"/"skipped" states carry a Bangalore DEFAULT_CENTER fallback inside useNearbyLocation
   // for other features (the homepage Nearby section), but that fallback must never leak into
   // /search — showing a fake distance to a user who never granted location, or who is nowhere
-  // near Bangalore, is exactly the bug this gate fixes. Query searches stay on relevance
-  // (score DESC) server-side with distance only as a tie-breaker between near-equally-relevant
-  // matches (e.g. multiple Apollo branches sort nearest-first; a single uniquely-named match just
-  // shows its distance) — see buildOrderBy() in business.repository.ts. Query-less browsing still
-  // defaults to an explicit "distance" sort so the homepage-style nearest-overall ordering applies.
+  // near Bangalore, is exactly the bug this gate fixes. Nearest-first is now the default sort for
+  // every search (query or query-less) once a real location resolves, unless the user explicitly
+  // picked a different sort — matches the "results should default to nearest" product decision.
   const hasExplicitSort = searchParams.get("sort") != null;
   useEffect(() => {
     if (filters.lat != null || filters.lng != null) return;
     if (!hasRealFix || location.lat == null || location.lng == null) return;
     const patch: Partial<SearchFilters> = { lat: location.lat, lng: location.lng };
-    if (!hasExplicitSort && !filters.q) patch.sort = "distance";
+    if (!hasExplicitSort) patch.sort = "distance";
     updateFilters(patch);
     // eslint-disable-next-line react-hooks/exhaustive-deps -- only re-run when a fresh, real location actually resolves
-  }, [hasExplicitSort, hasRealFix, location.lat, location.lng, filters.q]);
+  }, [hasExplicitSort, hasRealFix, location.lat, location.lng]);
 
   // Fire the browser's own native location permission prompt directly on first load — no custom
   // in-app modal in between. Only fires once, and only when nothing is known yet (a cached/real

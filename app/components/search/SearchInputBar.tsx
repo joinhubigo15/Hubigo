@@ -1,11 +1,17 @@
 "use client";
 
 import { forwardRef, useEffect, useImperativeHandle, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, Clock, TrendingUp, Store, Tag, MapPin, X } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { useDebounce } from "@/app/hooks/useDebounce";
-import { getSuggestions, getPopularSearches, type Suggestion } from "@/app/lib/search-api";
+import { getSuggestions, getPopularSearches, resolveTopSearch, type Suggestion } from "@/app/lib/search-api";
 import { getRecentSearches, addRecentSearch, clearRecentSearches } from "@/app/lib/recent-searches";
+
+// Cheap client-side pre-check so the resolve-search API call only ever fires for text that could
+// plausibly be a "top {category} in {location}" query — every other search (the vast majority)
+// skips the extra round-trip entirely.
+const TOP_X_IN_Y_PATTERN = /^top\s+.+\s+in\s+.+$/i;
 
 interface SearchInputBarProps {
   value: string;
@@ -86,6 +92,8 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const router = useRouter();
+
   function commit(query: string) {
     const trimmed = query.trim();
     setDraft(trimmed);
@@ -94,6 +102,17 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
       addRecentSearch(trimmed);
       setRecent(getRecentSearches());
     }
+
+    if (TOP_X_IN_Y_PATTERN.test(trimmed)) {
+      resolveTopSearch(trimmed)
+        .then((path) => {
+          if (path) router.push(path);
+          else onSubmit(trimmed);
+        })
+        .catch(() => onSubmit(trimmed));
+      return;
+    }
+
     onSubmit(trimmed);
   }
 
