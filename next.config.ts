@@ -26,6 +26,12 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "pub-7ff0fd1aef1643d39fabab82a94d5d66.r2.dev",
       },
+      {
+        // Cloudflare R2 "profile-pics" bucket (backend/.env's R2_PROFILE_PICS_BUCKET_URL) —
+        // hosts the homepage hero artwork alongside user avatars.
+        protocol: "https",
+        hostname: "pub-e457284fdd7844e5b0bcc12b89e4a198.r2.dev",
+      },
     ],
   },
 };
