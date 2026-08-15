@@ -196,11 +196,12 @@ function findBestNameMatch<T extends { nameLower: string }>(phrase: string, cand
   return matches[0];
 }
 
-const TOP_X_IN_Y_PATTERN = /^top\s+(.+?)\s+in\s+(.+)$/i;
+const TOP_X_IN_Y_PATTERN = /^(?:top|best)\s+(.+?)\s+in\s+(.+)$/i;
 
-/** Returns the matching pSEO page path for a "top {category} in {location}" query, or null if
- * the query doesn't match that phrasing, or resolves to a category/location pair with no
- * qualifying (gate-passing) pSEO page — callers should fall back to normal search in either case. */
+/** Returns the matching pSEO page path for a "top {category} in {location}" or "best {category}
+ * in {location}" query, or null if the query doesn't match that phrasing, or resolves to a
+ * category/location pair with no qualifying (gate-passing) pSEO page — callers should fall back
+ * to normal search in either case. */
 export async function resolveTopSearchQuery(rawQuery: string): Promise<string | null> {
   const match = TOP_X_IN_Y_PATTERN.exec(rawQuery.trim());
   if (!match) return null;

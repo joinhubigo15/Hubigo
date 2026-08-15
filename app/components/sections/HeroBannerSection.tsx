@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Search, Sparkles, Menu } from "lucide-react";
 import { useAuth } from "@/app/lib/auth-context";
 import CityPickerPill from "@/app/components/layout/CityPickerPill";
+import { resolveTopSearchOrFallback, TOP_X_IN_Y_PATTERN } from "@/app/lib/search-api";
 
 /** Strictly 3-4 words + name (if authenticated) */
 function getGreetingPhraseForTime(userName?: string | null): string {
@@ -30,12 +31,27 @@ export default function HeroBannerSection() {
   const { user } = useAuth();
   const router = useRouter();
 
-  const handleSearch = () => {
-    const query = searchQuery.trim();
+  const goToSearch = (query: string) => {
     const params = new URLSearchParams();
     if (query) params.set("q", query);
-
     router.push(`/search?${params.toString()}`);
+  };
+
+  const handleSearch = () => {
+    const query = searchQuery.trim();
+
+    // "Top X in Y" / "Best X in Y" queries route straight to the matching pSEO page instead of
+    // the search results page — this is the only entry point into those pages besides a direct
+    // link, so it has to be wired here as well as in SearchInputBar (used on the /search page).
+    if (TOP_X_IN_Y_PATTERN.test(query)) {
+      resolveTopSearchOrFallback(query).then((result) => {
+        if (result.path !== null) router.push(result.path);
+        else goToSearch(result.fallback);
+      });
+      return;
+    }
+
+    goToSearch(query);
   };
 
   const handleSearchKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -75,6 +91,7 @@ export default function HeroBannerSection() {
 
       <button
         onClick={handleSearch}
+        aria-label="Search"
         className="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-3.5 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center gap-1.5 shadow-sm shadow-purple-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
       >
         <Search className="w-3.5 h-3.5 stroke-[2.5]" />

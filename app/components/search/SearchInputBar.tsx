@@ -5,13 +5,8 @@ import { useRouter } from "next/navigation";
 import { Search, Clock, TrendingUp, Store, Tag, MapPin, X } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { useDebounce } from "@/app/hooks/useDebounce";
-import { getSuggestions, getPopularSearches, resolveTopSearch, type Suggestion } from "@/app/lib/search-api";
+import { getSuggestions, getPopularSearches, resolveTopSearchOrFallback, TOP_X_IN_Y_PATTERN, type Suggestion } from "@/app/lib/search-api";
 import { getRecentSearches, addRecentSearch, clearRecentSearches } from "@/app/lib/recent-searches";
-
-// Cheap client-side pre-check so the resolve-search API call only ever fires for text that could
-// plausibly be a "top {category} in {location}" query — every other search (the vast majority)
-// skips the extra round-trip entirely.
-const TOP_X_IN_Y_PATTERN = /^top\s+.+\s+in\s+.+$/i;
 
 interface SearchInputBarProps {
   value: string;
@@ -104,17 +99,10 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
     }
 
     if (TOP_X_IN_Y_PATTERN.test(trimmed)) {
-      // If this doesn't resolve to a real pSEO page, fall back to a normal search — but strip the
-      // leading "top" first. Left in, it becomes part of the text-match query itself (e.g. "top
-      // saree store" instead of "saree store"), which is specific enough to make the trigram/ILIKE
-      // match miss real "saree" businesses entirely rather than just being a harmless no-op word.
-      const fallbackQuery = trimmed.replace(/^top\s+/i, "");
-      resolveTopSearch(trimmed)
-        .then((path) => {
-          if (path) router.push(path);
-          else onSubmit(fallbackQuery);
-        })
-        .catch(() => onSubmit(fallbackQuery));
+      resolveTopSearchOrFallback(trimmed).then((result) => {
+        if (result.path !== null) router.push(result.path);
+        else onSubmit(result.fallback);
+      });
       return;
     }
 

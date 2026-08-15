@@ -109,6 +109,29 @@ export function resolveTopSearch(q: string): Promise<string | null> {
   return request<{ path: string | null }>(`/api/v1/pseo/resolve-search?q=${encodeURIComponent(q)}`).then((r) => r.path);
 }
 
+// Cheap client-side pre-check so the resolve-search API call only ever fires for text that could
+// plausibly be a "top {category} in {location}" or "best {category} in {location}" query — every
+// other search (the vast majority) skips the extra round-trip entirely. Shared by every search
+// entry point (the /search page's bar and the homepage hero bar) so they stay in sync.
+export const TOP_X_IN_Y_PATTERN = /^(?:top|best)\s+.+\s+in\s+.+$/i;
+
+/** Resolves a query to its pSEO page path if it matches "top/best {category} in {location}" and
+ * a qualifying page exists; otherwise resolves to `null` so the caller can fall back to a normal
+ * search. Strips the leading "top"/"best" from the query text it hands back for that fallback —
+ * left in, it pollutes the trigram/ILIKE text match (e.g. "top saree store" can miss real "saree"
+ * businesses that "saree store" would find). */
+export async function resolveTopSearchOrFallback(rawQuery: string): Promise<{ path: string; fallback: null } | { path: null; fallback: string }> {
+  const trimmed = rawQuery.trim();
+  const fallback = trimmed.replace(/^(?:top|best)\s+/i, "");
+  if (!TOP_X_IN_Y_PATTERN.test(trimmed)) return { path: null, fallback };
+  try {
+    const path = await resolveTopSearch(trimmed);
+    return path ? { path, fallback: null } : { path: null, fallback };
+  } catch {
+    return { path: null, fallback };
+  }
+}
+
 export interface CategoryOption {
   id: string;
   name: string;
