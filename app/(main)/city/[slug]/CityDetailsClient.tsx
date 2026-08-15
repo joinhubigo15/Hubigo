@@ -90,7 +90,7 @@ export default function CityDetailsPage({
             fill
             sizes="100vw"
             onError={() => setHeroImageExt((ext) => (ext === "webp" ? "jpg" : null))}
-            className="object-contain z-10"
+            className="object-cover lg:object-contain z-10"
           />
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent z-20" />

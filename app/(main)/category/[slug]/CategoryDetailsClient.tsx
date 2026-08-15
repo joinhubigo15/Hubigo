@@ -32,6 +32,18 @@ export default function CategoryDetailsPage({
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
   const [featured, setFeatured] = useState<BusinessSummary[]>(initialFeatured);
   const [loadingFeatured, setLoadingFeatured] = useState(false);
+  // On mobile, the results only show up below the (often long) subcategory list, out of view —
+  // scroll them into frame on pick so the tap doesn't look like a no-op. Desktop shows both
+  // columns side by side already, so this is a no-op there (guarded by viewport width below).
+  const featuredSectionRef = useRef<HTMLDivElement | null>(null);
+  function selectSubcategory(subSlug: string | null) {
+    setActiveSubcategory(subSlug);
+    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+      requestAnimationFrame(() => {
+        featuredSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }
   // Platform-wide totals (not this category's own, smaller numbers) — the real, trust-building
   // headline figures: total businesses on Hubigo and total distinct pincodes we cover.
   const [platformStats] = useState<PlatformStats | null>(initialPlatformStats);
@@ -98,7 +110,7 @@ export default function CategoryDetailsPage({
       {category && category.subcategories.length > 0 && (
         <div className="hidden lg:flex items-center gap-2 overflow-x-auto px-4 lg:px-6 pb-1.5 lg:pb-3 lg:py-3 lg:bg-white lg:border-b lg:border-slate-100 scrollbar-none shrink-0">
           <button
-            onClick={() => setActiveSubcategory(null)}
+            onClick={() => selectSubcategory(null)}
             className={
               activeSubcategory === null
                 ? "px-4 py-1.5 bg-purple-600 text-white text-xs font-bold rounded-none lg:rounded-none shadow-sm whitespace-nowrap"
@@ -110,7 +122,7 @@ export default function CategoryDetailsPage({
           {category.subcategories.map((sc) => (
             <button
               key={sc.id}
-              onClick={() => setActiveSubcategory(sc.slug)}
+              onClick={() => selectSubcategory(sc.slug)}
               className={
                 activeSubcategory === sc.slug
                   ? "px-4 py-1.5 bg-purple-600 text-white text-xs font-bold rounded-none lg:rounded-none shadow-sm whitespace-nowrap"
@@ -133,7 +145,7 @@ export default function CategoryDetailsPage({
               {category.subcategories.map((sc) => (
                 <button
                   key={sc.id}
-                  onClick={() => setActiveSubcategory(sc.slug)}
+                  onClick={() => selectSubcategory(sc.slug)}
                   className="w-full flex items-center justify-between py-3.5 hover:bg-slate-50/50 rounded-none lg:rounded-none px-2 transition-all cursor-pointer group text-left"
                 >
                   <div className="flex items-center gap-3">
@@ -156,7 +168,7 @@ export default function CategoryDetailsPage({
         </div>
 
         {/* Right Column: Featured Section */}
-        <div className="lg:col-span-6 bg-white rounded-none lg:rounded-none border-b lg:border-0 border-slate-100 -mt-[1px] lg:mt-0 p-4 sm:p-5 lg:p-6 shadow-xs lg:shadow-none space-y-4">
+        <div ref={featuredSectionRef} className="lg:col-span-6 bg-white rounded-none lg:rounded-none border-b lg:border-0 border-slate-100 -mt-[1px] lg:mt-0 p-4 sm:p-5 lg:p-6 shadow-xs lg:shadow-none space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Featured {title}</h3>
             <Link
