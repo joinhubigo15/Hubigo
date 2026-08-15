@@ -216,10 +216,15 @@ export async function resolveTopSearchQuery(rawQuery: string): Promise<string | 
   const location = findBestNameMatch(locationText, locations);
   if (!category || !location) return null;
 
-  const path = location.areaSlug
-    ? `/category/${category.slug}/${location.citySlug}/${location.areaSlug}`
-    : `/category/${category.slug}/${location.citySlug}`;
+  // An area-level combo (e.g. "saree store" x "Halasuru") frequently has too few businesses to
+  // clear the indexable gate even when the category and location both resolve fine — Halasuru
+  // might only have 10 saree stores against a 16-business floor, say, while Bangalore overall has
+  // hundreds. Rather than give up and dump the user into a fuzzy keyword search that ignores half
+  // their query, fall back to the city-wide page for the same category, which almost always does
+  // qualify. Only city-level queries (no areaSlug) have no further fallback to try.
+  const areaPath = location.areaSlug ? `/category/${category.slug}/${location.citySlug}/${location.areaSlug}` : null;
+  if (areaPath && candidates.some((c) => c.path === areaPath)) return areaPath;
 
-  const isRealPage = candidates.some((c) => c.path === path);
-  return isRealPage ? path : null;
+  const cityPath = `/category/${category.slug}/${location.citySlug}`;
+  return candidates.some((c) => c.path === cityPath) ? cityPath : null;
 }
