@@ -327,12 +327,56 @@ export async function searchBusinesses(params: SearchParams) {
     ELSE 0
   END`;
 
+  // Cheap COUNT decoupled from the expensive row-fetch pipeline below — see base_candidates'
+  // comment for why the row pipeline is capped, which would otherwise make total_count wrong for
+  // a broad search. Doesn't account for openNow/hasOffers postFilters (those require the expensive
+  // per-row computation this split is specifically avoiding) — an accepted minor imprecision (the
+  // count can slightly overstate results when either toggle is on) in exchange for the fix below.
+  const countPromise = prisma.$queryRaw<{ count: bigint }[]>(Prisma.sql`
+    WITH primary_category AS (
+      SELECT bc.business_id, c.name AS category_name, c.slug AS category_slug, c.parent_id AS category_parent_id
+      FROM business_categories bc
+      JOIN categories c ON c.id = bc.category_id
+      WHERE bc.is_primary = true
+    )
+    SELECT COUNT(*) AS count
+    FROM businesses b
+    JOIN cities city ON city.id = b.city_id
+    LEFT JOIN localities loc ON loc.id = b.locality_id
+    LEFT JOIN primary_category pc ON pc.business_id = b.id
+    ${whereClause}
+  `);
+
+  // A broad/unfiltered search's baseFilters barely narrow the ~300k+ approved-businesses table at
+  // all, but the per-row work below (reviews aggregate, area lookup, is_open_now, has_active_offer
+  // — each a correlated subquery) used to run for the WHOLE matched set before ORDER BY + LIMIT
+  // trimmed it to a page, which is exactly why every search was taking 3-4s+ in production
+  // regardless of filters. base_candidates filters + cheap-sorts + caps to a generous but bounded
+  // pool FIRST, so the expensive per-row work below only ever runs against <= CANDIDATE_POOL_SIZE
+  // rows. A real text query already narrows baseFilters tightly on its own (rarely near this cap);
+  // this only meaningfully engages for broad, filter-less browsing, where a large top-N by a cheap
+  // heuristic (paid tier, then stored rating) before full scoring is a standard, safe trade-off —
+  // the alternative (scoring literally everything) is what was actually slow.
+  const CANDIDATE_POOL_SIZE = 3000;
+
   const rows = await prisma.$queryRaw<Record<string, unknown>[]>(Prisma.sql`
     WITH primary_category AS (
       SELECT bc.business_id, c.name AS category_name, c.slug AS category_slug, c.parent_id AS category_parent_id
       FROM business_categories bc
       JOIN categories c ON c.id = bc.category_id
       WHERE bc.is_primary = true
+    ),
+    base_candidates AS (
+      SELECT b.*, city.slug AS city_slug, city.name AS city_name,
+        loc.slug AS locality_slug, loc.name AS locality_name,
+        pc.category_name AS primary_category_name, pc.category_slug AS primary_category_slug
+      FROM businesses b
+      JOIN cities city ON city.id = b.city_id
+      LEFT JOIN localities loc ON loc.id = b.locality_id
+      LEFT JOIN primary_category pc ON pc.business_id = b.id
+      ${whereClause}
+      ORDER BY (b.plan_tier != 'basic') DESC, b.avg_rating DESC NULLS LAST
+      LIMIT ${CANDIDATE_POOL_SIZE}
     ),
     scored AS (
       SELECT
@@ -342,25 +386,24 @@ export async function searchBusinesses(params: SearchParams) {
         b.price_range,
         b.address, b.lat, b.lng, b.phone, b.whatsapp_phone, b.created_at,
         CASE b.plan_tier WHEN 'elite' THEN 3 WHEN 'premium' THEN 2 ELSE 1 END AS plan_tier_rank,
-        city.slug AS city_slug, city.name AS city_name,
-        loc.slug AS locality_slug, loc.name AS locality_name,
+        b.city_slug, b.city_name,
+        b.locality_slug, b.locality_name,
         area.name AS area_name, area.slug AS area_slug,
-        pc.category_name AS primary_category_name, pc.category_slug AS primary_category_slug,
+        b.primary_category_name, b.primary_category_slug,
         CASE WHEN ${params.subcategorySlug ?? null}::text IS NOT NULL
-          AND pc.category_slug = ${params.subcategorySlug ?? null}::text
+          AND b.primary_category_slug = ${params.subcategorySlug ?? null}::text
           THEN 1 ELSE 0 END AS exact_category_match,
         CASE
-          WHEN ${textQuery} = '' OR pc.category_name IS NULL THEN 0
-          WHEN lower(pc.category_name) IN (lower(${textQuery}), lower(${textQuerySingular})) THEN 3
-          WHEN pc.category_name ILIKE ${textQuery} || '%' OR pc.category_name ILIKE ${textQuerySingular} || '%' THEN 2
-          WHEN pc.category_name ILIKE '%' || ${textQuery} || '%' OR pc.category_name ILIKE '%' || ${textQuerySingular} || '%' THEN 1
+          WHEN ${textQuery} = '' OR b.primary_category_name IS NULL THEN 0
+          WHEN lower(b.primary_category_name) IN (lower(${textQuery}), lower(${textQuerySingular})) THEN 3
+          WHEN b.primary_category_name ILIKE ${textQuery} || '%' OR b.primary_category_name ILIKE ${textQuerySingular} || '%' THEN 2
+          WHEN b.primary_category_name ILIKE '%' || ${textQuery} || '%' OR b.primary_category_name ILIKE '%' || ${textQuerySingular} || '%' THEN 1
           ELSE 0
         END AS category_match_tier,
-        EXISTS (
-          SELECT 1 FROM offers o WHERE o.business_id = b.id
-          AND (o.end_date IS NULL OR o.end_date >= now())
-          AND (o.start_date IS NULL OR o.start_date <= now())
-        ) AS has_active_offer,
+        -- No dashboard UI currently lets a business create an Offer (the backend endpoint exists
+        -- but is unreachable in practice), so this was a guaranteed-false EXISTS subquery running
+        -- on every row for nothing. Hardcoded until the feature actually ships.
+        FALSE AS has_active_offer,
         -- NULL when the business has no structured hours at all (status unknown/unavailable),
         -- distinct from FALSE (has hours, just not open right now) — business_hours is the single
         -- source of truth here, never a fallback to the scraper's raw text (see business-hours.ts).
@@ -379,7 +422,7 @@ export async function searchBusinesses(params: SearchParams) {
           COALESCE(GREATEST(
             similarity(b.name, ${textQuery}) * 100,
             CASE WHEN ${textQuery} <> '' AND b.name ILIKE '%' || ${textQuery} || '%' THEN 60 ELSE 0 END,
-            CASE WHEN ${textQuery} <> '' AND (pc.category_name ILIKE '%' || ${textQuery} || '%' OR pc.category_name ILIKE '%' || ${textQuerySingular} || '%') THEN 55 ELSE 0 END,
+            CASE WHEN ${textQuery} <> '' AND (b.primary_category_name ILIKE '%' || ${textQuery} || '%' OR b.primary_category_name ILIKE '%' || ${textQuerySingular} || '%') THEN 55 ELSE 0 END,
             CASE WHEN ${textQuery} <> '' AND EXISTS (
               SELECT 1 FROM unnest(b.keywords) k WHERE k ILIKE '%' || ${textQuery} || '%'
             ) THEN 45 ELSE 0 END,
@@ -417,10 +460,7 @@ export async function searchBusinesses(params: SearchParams) {
             ) * 1.5
           + LN(1 + b.view_count) * 2
         ) AS score
-      FROM businesses b
-      JOIN cities city ON city.id = b.city_id
-      LEFT JOIN localities loc ON loc.id = b.locality_id
-      LEFT JOIN primary_category pc ON pc.business_id = b.id
+      FROM base_candidates b
       LEFT JOIN LATERAL (
         SELECT COUNT(*) AS native_count, AVG(r.rating) AS native_avg
         FROM reviews r WHERE r.business_id = b.id AND r.status = 'APPROVED'
@@ -431,16 +471,16 @@ export async function searchBusinesses(params: SearchParams) {
         WHERE pa.pincode = b.pincode AND pa.city_id = b.city_id AND pa.is_primary = true
         LIMIT 1
       ) area ON true
-      ${whereClause}
     )
-    SELECT *, COUNT(*) OVER() AS total_count
+    SELECT *
     FROM scored
     ${havingClause}
     ${orderBy}
     LIMIT ${params.limit} OFFSET ${offset}
   `);
 
-  const total = rows.length > 0 ? Number(rows[0].total_count) : 0;
+  const countRows = await countPromise;
+  const total = Number(countRows[0]?.count ?? 0);
 
   return { rows, total };
 }

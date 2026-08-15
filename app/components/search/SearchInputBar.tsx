@@ -104,12 +104,17 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
     }
 
     if (TOP_X_IN_Y_PATTERN.test(trimmed)) {
+      // If this doesn't resolve to a real pSEO page, fall back to a normal search — but strip the
+      // leading "top" first. Left in, it becomes part of the text-match query itself (e.g. "top
+      // saree store" instead of "saree store"), which is specific enough to make the trigram/ILIKE
+      // match miss real "saree" businesses entirely rather than just being a harmless no-op word.
+      const fallbackQuery = trimmed.replace(/^top\s+/i, "");
       resolveTopSearch(trimmed)
         .then((path) => {
           if (path) router.push(path);
-          else onSubmit(trimmed);
+          else onSubmit(fallbackQuery);
         })
-        .catch(() => onSubmit(trimmed));
+        .catch(() => onSubmit(fallbackQuery));
       return;
     }
 
