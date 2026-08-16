@@ -163,6 +163,7 @@ export default function HeroBannerSection() {
               width={900}
               height={667}
               priority
+              fetchPriority="high"
               sizes="(min-width: 1024px) 320px, (min-width: 640px) 260px, 200px"
               className="w-full h-auto max-h-[170px] sm:max-h-[200px] lg:max-h-[250px] object-contain mix-blend-multiply lg:scale-105 lg:translate-x-2 transition-transform duration-300"
             />
