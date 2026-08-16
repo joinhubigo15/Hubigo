@@ -677,13 +677,13 @@ export default function AdaptiveBusinessDetailsPage({
                   if (el) el.scrollIntoView({ behavior: "smooth" });
                 }}
                 className={cn(
-                  "py-2.5 sm:py-3 font-extrabold capitalize transition-all border-b-2 tracking-tight cursor-pointer text-[10px] sm:text-xs px-1 text-center flex-1 rounded-none",
+                  "py-2.5 sm:py-3 font-extrabold transition-all border-b-2 tracking-tight cursor-pointer text-[10px] sm:text-xs px-1 text-center flex-1 rounded-none",
                   activeNavTab === tab
                     ? "border-blue-600 text-blue-600"
                     : "border-transparent text-slate-500 hover:text-slate-800"
                 )}
               >
-                {tab}
+                {tab === "faq" ? "FAQ" : tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
             ))}
           </div>
