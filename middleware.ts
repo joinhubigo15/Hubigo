@@ -6,7 +6,17 @@ const COOKIE_NAME = "hubigo_admin_session";
 const PUBLIC_ADMIN_ROUTES = new Set(["/admin/login", "/admin/forgot-password", "/admin/reset-password"]);
 
 export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
+  const { pathname, hostname } = request.nextUrl;
+
+  // www.findhubigo.com now serves the app directly (Railway custom domain + cert), but the
+  // canonical host everywhere else (SITE_URL, sitemap, JSON-LD) is the bare apex — redirect here
+  // so Google never sees the same content under two hostnames.
+  if (hostname === "www.findhubigo.com") {
+    const url = request.nextUrl.clone();
+    url.hostname = "findhubigo.com";
+    return NextResponse.redirect(url, 301);
+  }
+
   if (!pathname.startsWith("/admin")) return NextResponse.next();
 
   const token = request.cookies.get(COOKIE_NAME)?.value;
@@ -40,5 +50,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };
