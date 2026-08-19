@@ -71,6 +71,13 @@ const envSchema = z.object({
   // Sentry error monitoring — not a secret (DSNs are designed to be embeddable), just unset by
   // default. Sentry stays fully inert until this is set — see lib/sentry.ts.
   SENTRY_DSN: z.string().optional(),
+
+  // Shared secret injected into every request by a Cloudflare Transform Rule (2026-08-19) — the
+  // origin rejects any request missing/mismatching this header, which is what actually stops
+  // traffic that hits Railway's raw *.up.railway.app address directly instead of going through
+  // Cloudflare (Cloudflare's WAF/Bot Fight Mode only sees traffic routed through its proxy, so a
+  // known origin address bypasses it entirely without this check). See middleware/verifyOrigin.ts.
+  CF_ORIGIN_SECRET: z.string().optional(),
 });
 
 const parsed = envSchema.safeParse(process.env);
@@ -97,3 +104,4 @@ export const adminAllowedEmails = new Set(
     .filter(Boolean)
 );
 export const pushEnabled = Boolean(env.VAPID_PUBLIC_KEY && env.VAPID_PRIVATE_KEY);
+export const originVerificationEnabled = Boolean(env.CF_ORIGIN_SECRET);

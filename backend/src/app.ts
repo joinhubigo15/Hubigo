@@ -19,7 +19,7 @@ import contactRoutes from "./routes/contact.routes";
 import { categoriesRouter, citiesRouter, amenitiesRouter, statsRouter, offersRouter, popularRouter } from "./routes/taxonomy.routes";
 import { pseoRouter } from "./routes/pseo.routes";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
-// import { blockScrapers } from "./middleware/blockScrapers"; // disabled — see note below
+import { verifyOrigin } from "./middleware/verifyOrigin";
 
 const app = express();
 
@@ -45,12 +45,10 @@ app.get("/health", (_req, res) => {
   res.json({ success: true, message: "ok", data: { status: "healthy" } });
 });
 
-// Disabled (2026-08-19) — req.ip is unreliable on this infra under trust proxy: 1: /debug/ip
-// showed Express resolving a real visitor's request to one of the blocked scraper IPs instead of
-// their own (XFF: "<real client>, <scraper ip>" but reqIp came back as the scraper ip), so this
-// was blocking real traffic, not just the scraper. Needs a reliable client-IP source (a Railway-
-// specific header, or a real edge like Cloudflare) before re-enabling. See blockScrapers.ts.
-// app.use(blockScrapers);
+// Rejects any request that didn't come through Cloudflare (see verifyOrigin.ts) — placed after
+// /health so Railway's own health checks, which hit the container directly rather than through
+// the public Cloudflare-proxied hostname, are never at risk of failing this check.
+app.use(verifyOrigin);
 
 app.use(
   "/uploads",
