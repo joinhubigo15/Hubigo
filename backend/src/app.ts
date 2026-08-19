@@ -19,7 +19,7 @@ import contactRoutes from "./routes/contact.routes";
 import { categoriesRouter, citiesRouter, amenitiesRouter, statsRouter, offersRouter, popularRouter } from "./routes/taxonomy.routes";
 import { pseoRouter } from "./routes/pseo.routes";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
-import { blockScrapers } from "./middleware/blockScrapers";
+// import { blockScrapers } from "./middleware/blockScrapers"; // disabled — see note below
 
 const app = express();
 
@@ -45,20 +45,12 @@ app.get("/health", (_req, res) => {
   res.json({ success: true, message: "ok", data: { status: "healthy" } });
 });
 
-// TEMP diagnostic (2026-08-19) — remove once the req.ip flakiness behind blockScrapers is
-// root-caused. Echoes exactly what Express resolves req.ip to, plus the raw XFF header, so we can
-// see whether trust-proxy hop resolution is inconsistent request-to-request.
-app.get("/debug/ip", (req, res) => {
-  res.json({
-    reqIp: req.ip,
-    xForwardedFor: req.get("x-forwarded-for") ?? null,
-    ips: req.ips,
-  });
-});
-
-// Blocks a confirmed scraper network (see middleware/blockScrapers.ts for the evidence and IP
-// ranges) — placed after /health so Railway's own health checks are never at risk of matching.
-app.use(blockScrapers);
+// Disabled (2026-08-19) — req.ip is unreliable on this infra under trust proxy: 1: /debug/ip
+// showed Express resolving a real visitor's request to one of the blocked scraper IPs instead of
+// their own (XFF: "<real client>, <scraper ip>" but reqIp came back as the scraper ip), so this
+// was blocking real traffic, not just the scraper. Needs a reliable client-IP source (a Railway-
+// specific header, or a real edge like Cloudflare) before re-enabling. See blockScrapers.ts.
+// app.use(blockScrapers);
 
 app.use(
   "/uploads",
