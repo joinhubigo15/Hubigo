@@ -16,7 +16,12 @@ export const metadata: Metadata = {
 };
 
 export default async function AllCategoriesPage() {
-  const categories = await getCategories().catch(() => []);
+  const categories = await getCategories().catch((err) => {
+    // TEMP (2026-08-19): silent fallback was masking why this comes back empty — remove once root
+    // cause is found and fixed.
+    console.error("getCategories() failed on /category:", err);
+    return [];
+  });
 
   return <AllCategoriesClient initialCategories={categories} />;
 }
