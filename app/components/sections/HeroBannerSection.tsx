@@ -58,7 +58,11 @@ export default function HeroBannerSection() {
     if (e.key === "Enter") handleSearch();
   };
 
-  const [currentGreeting, setCurrentGreeting] = useState(() => getGreetingPhraseForTime(user?.name));
+  // Starts with a fixed, locale/time-independent value so server and client render identically on
+  // first paint — the server's clock (Railway, UTC) and the browser's (local) can disagree on
+  // which hour it is right around day/night boundaries, which caused a hydration mismatch here.
+  // The real greeting is filled in immediately after mount via the effect below.
+  const [currentGreeting, setCurrentGreeting] = useState("Welcome to Hubigo! ✨");
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing greeting to the current name/hour on mount is intentional
