@@ -45,6 +45,17 @@ app.get("/health", (_req, res) => {
   res.json({ success: true, message: "ok", data: { status: "healthy" } });
 });
 
+// TEMP diagnostic (2026-08-19) — remove once the req.ip flakiness behind blockScrapers is
+// root-caused. Echoes exactly what Express resolves req.ip to, plus the raw XFF header, so we can
+// see whether trust-proxy hop resolution is inconsistent request-to-request.
+app.get("/debug/ip", (req, res) => {
+  res.json({
+    reqIp: req.ip,
+    xForwardedFor: req.get("x-forwarded-for") ?? null,
+    ips: req.ips,
+  });
+});
+
 // Blocks a confirmed scraper network (see middleware/blockScrapers.ts for the evidence and IP
 // ranges) — placed after /health so Railway's own health checks are never at risk of matching.
 app.use(blockScrapers);
