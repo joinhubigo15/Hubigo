@@ -19,6 +19,7 @@ import contactRoutes from "./routes/contact.routes";
 import { categoriesRouter, citiesRouter, amenitiesRouter, statsRouter, offersRouter, popularRouter } from "./routes/taxonomy.routes";
 import { pseoRouter } from "./routes/pseo.routes";
 import { errorHandler, notFoundHandler } from "./middleware/errorHandler";
+import { blockScrapers } from "./middleware/blockScrapers";
 
 const app = express();
 
@@ -43,6 +44,10 @@ app.use(morgan(isProd ? "combined" : "dev"));
 app.get("/health", (_req, res) => {
   res.json({ success: true, message: "ok", data: { status: "healthy" } });
 });
+
+// Blocks a confirmed scraper network (see middleware/blockScrapers.ts for the evidence and IP
+// ranges) — placed after /health so Railway's own health checks are never at risk of matching.
+app.use(blockScrapers);
 
 app.use(
   "/uploads",
