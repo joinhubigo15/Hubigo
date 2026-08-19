@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { searchBusinesses, getCategories, getArea, type CategoryOption } from "@/app/lib/search-api";
+import { isNotFoundError } from "@/app/lib/api";
 import { buildBreadcrumbJsonLd } from "@/app/lib/json-ld";
 import JsonLd from "@/app/components/seo/JsonLd";
 import PseoBusinessGrid from "@/app/components/pseo/PseoBusinessGrid";
@@ -25,9 +26,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug, citySlug, areaSlug } = await params;
 
+  // No .catch(() => fallback) on categories/searchBusinesses — a failed fetch must propagate
+  // rather than being cached as "doesn't exist" for the whole revalidate window. getArea() is the
+  // one genuine per-resource lookup here, so it's the one place a 404 is legitimately swallowed.
   const [categories, area] = await Promise.all([
-    getCategories().catch(() => []),
-    getArea(citySlug, areaSlug).catch(() => null),
+    getCategories(),
+    getArea(citySlug, areaSlug).catch((err) => {
+      if (isNotFoundError(err)) return null;
+      throw err;
+    }),
   ]);
   const categoryName = resolveCategoryName(categories, slug);
   if (!categoryName || !area) notFound();
@@ -38,10 +45,10 @@ export async function generateMetadata({
     area: areaSlug,
     sort: "rating",
     limit: PSEO_DISPLAY_LIMIT,
-  }).catch(() => null);
+  });
 
-  const gate = evaluatePseoGate(result?.total ?? 0);
-  if (!result || !gate.exists || result.items.length === 0) {
+  const gate = evaluatePseoGate(result.total);
+  if (!gate.exists || result.items.length === 0) {
     notFound();
   }
 
@@ -69,8 +76,11 @@ export default async function CategoryCityAreaPage({
   const { slug, citySlug, areaSlug } = await params;
 
   const [categories, area] = await Promise.all([
-    getCategories().catch(() => []),
-    getArea(citySlug, areaSlug).catch(() => null),
+    getCategories(),
+    getArea(citySlug, areaSlug).catch((err) => {
+      if (isNotFoundError(err)) return null;
+      throw err;
+    }),
   ]);
   const categoryName = resolveCategoryName(categories, slug);
   if (!categoryName || !area) notFound();
@@ -81,10 +91,10 @@ export default async function CategoryCityAreaPage({
     area: areaSlug,
     sort: "rating",
     limit: PSEO_DISPLAY_LIMIT,
-  }).catch(() => null);
+  });
 
-  const gate = evaluatePseoGate(result?.total ?? 0);
-  if (!result || !gate.exists || result.items.length === 0) {
+  const gate = evaluatePseoGate(result.total);
+  if (!gate.exists || result.items.length === 0) {
     notFound();
   }
 

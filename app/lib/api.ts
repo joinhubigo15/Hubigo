@@ -65,6 +65,17 @@ export class ApiClientError extends Error {
   }
 }
 
+// A 404 from the API means the resource genuinely doesn't exist — safe to render as not-found
+// and cache. Anything else (network error, 5xx, a bad deploy window) is an infrastructure failure
+// and must NOT be treated the same way: on a `revalidate`d page, silently falling back to
+// not-found for an infra error caches that false "not found" for the whole revalidate window,
+// taking real pages down until the next successful revalidation. Callers should only swallow this
+// specific case and let everything else propagate, so ISR keeps serving the last good cache
+// instead of overwriting it with a broken one.
+export function isNotFoundError(err: unknown): boolean {
+  return err instanceof ApiClientError && err.status === 404;
+}
+
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }

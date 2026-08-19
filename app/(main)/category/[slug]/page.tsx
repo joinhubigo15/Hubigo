@@ -19,7 +19,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const categories = await getCategories().catch(() => []);
+  // No .catch() — the list itself failing to load must propagate rather than being treated as
+  // "no categories exist", which would otherwise 404 every category page and cache that for an
+  // hour. Only "list loaded fine, slug just isn't in it" is a genuine not-found case.
+  const categories = await getCategories();
   const category = categories.find((c) => c.slug === slug) ?? null;
   if (!category) notFound();
 
@@ -43,7 +46,10 @@ export default async function CategoryDetailsPage({
 }) {
   const { slug } = await params;
 
-  const categories = await getCategories().catch(() => []);
+  // No .catch() — the list itself failing to load must propagate rather than being treated as
+  // "no categories exist", which would otherwise 404 every category page and cache that for an
+  // hour. Only "list loaded fine, slug just isn't in it" is a genuine not-found case.
+  const categories = await getCategories();
   const category = categories.find((c) => c.slug === slug) ?? null;
   if (!category) notFound();
 

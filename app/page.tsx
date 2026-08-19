@@ -26,12 +26,16 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
+  // No .catch() — this page never 404s either way, but swallowing a failure here would replace a
+  // good cached render (real stats, real featured businesses) with an empty-looking one and cache
+  // that for an hour. Letting it propagate means a failed revalidation just keeps serving the last
+  // good render instead.
   const [statsResult, featuredResult] = await Promise.all([
-    request<PlatformStats>("/api/v1/stats").catch(() => null),
-    searchBusinesses({ sort: "rating", limit: 40 }).catch(() => null),
+    request<PlatformStats>("/api/v1/stats"),
+    searchBusinesses({ sort: "rating", limit: 40 }),
   ]);
   const initialStats = statsResult;
-  const initialBusinesses = featuredResult ? pickDistinctCategories(featuredResult.items, FEATURED_COUNT) : [];
+  const initialBusinesses = pickDistinctCategories(featuredResult.items, FEATURED_COUNT);
 
   return (
     <div className="min-h-screen bg-slate-50/60 font-sans text-slate-900 selection:bg-purple-100 selection:text-purple-900 flex flex-col">

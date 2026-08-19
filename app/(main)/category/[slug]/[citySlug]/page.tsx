@@ -25,7 +25,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug, citySlug } = await params;
 
-  const categories = await getCategories().catch(() => []);
+  // No .catch() on either fetch below — a failed fetch must propagate rather than being treated
+  // as "category/results don't exist", which would otherwise false-positive notFound() and cache
+  // that for the whole revalidate window. Only a real empty result should hit the pSEO gate.
+  const categories = await getCategories();
   const categoryName = resolveCategoryName(categories, slug);
   if (!categoryName) notFound();
 
@@ -34,10 +37,10 @@ export async function generateMetadata({
     city: citySlug,
     sort: "rating",
     limit: PSEO_DISPLAY_LIMIT,
-  }).catch(() => null);
+  });
 
-  const gate = evaluatePseoGate(result?.total ?? 0);
-  if (!result || !gate.exists || result.items.length === 0) {
+  const gate = evaluatePseoGate(result.total);
+  if (!gate.exists || result.items.length === 0) {
     notFound();
   }
 
@@ -65,7 +68,10 @@ export default async function CategoryCityPage({
 }) {
   const { slug, citySlug } = await params;
 
-  const categories = await getCategories().catch(() => []);
+  // No .catch() on either fetch below — a failed fetch must propagate rather than being treated
+  // as "category/results don't exist", which would otherwise false-positive notFound() and cache
+  // that for the whole revalidate window. Only a real empty result should hit the pSEO gate.
+  const categories = await getCategories();
   const categoryName = resolveCategoryName(categories, slug);
   if (!categoryName) notFound();
 
@@ -74,10 +80,10 @@ export default async function CategoryCityPage({
     city: citySlug,
     sort: "rating",
     limit: PSEO_DISPLAY_LIMIT,
-  }).catch(() => null);
+  });
 
-  const gate = evaluatePseoGate(result?.total ?? 0);
-  if (!result || !gate.exists || result.items.length === 0) {
+  const gate = evaluatePseoGate(result.total);
+  if (!gate.exists || result.items.length === 0) {
     notFound();
   }
 

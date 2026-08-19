@@ -27,10 +27,10 @@ async function buildStaticEntries(): Promise<MetadataRoute.Sitemap> {
 // API doesn't currently expose Category.updatedAt, so there's no reliable per-page lastmod source
 // here either. Omitted rather than faked.
 async function buildCityAndCategoryEntries(): Promise<MetadataRoute.Sitemap> {
-  const [cities, categories] = await Promise.all([
-    getCities().catch(() => []),
-    getCategories().catch(() => []),
-  ]);
+  // No .catch() — a failed fetch must propagate rather than silently producing a truncated
+  // sitemap that then gets cached for an hour, which reads to Google as thousands of URLs having
+  // disappeared.
+  const [cities, categories] = await Promise.all([getCities(), getCategories()]);
 
   const cityEntries: MetadataRoute.Sitemap = cities.map((c) => ({
     url: `${SITE_URL}/city/${c.slug}`,
@@ -63,7 +63,8 @@ interface PseoSitemapEntry {
  * into the sitemap — pages in the 1-15 exists-but-noindex band are real, crawlable pages
  * (internal links still reach them, robots meta says follow), just not sitemap-submitted. */
 async function buildPseoEntries(): Promise<PseoSitemapEntry[]> {
-  const candidates = await getPseoSitemapCandidates().catch(() => []);
+  // No .catch() here either — same reasoning as buildCityAndCategoryEntries above.
+  const candidates = await getPseoSitemapCandidates();
   return candidates
     .filter((c) => {
       const gate = evaluatePseoGate(c.count);

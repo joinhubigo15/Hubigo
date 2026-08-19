@@ -16,12 +16,11 @@ export const metadata: Metadata = {
 };
 
 export default async function AllCategoriesPage() {
-  const categories = await getCategories().catch((err) => {
-    // TEMP (2026-08-19): silent fallback was masking why this comes back empty — remove once root
-    // cause is found and fixed.
-    console.error("getCategories() failed on /category:", err);
-    return [];
-  });
+  // Deliberately no .catch() here — the category list should never legitimately be empty, so a
+  // failed fetch must propagate and fail this revalidation rather than getting cached as an empty
+  // list for the next hour (see lib/api.ts's isNotFoundError for the fuller reasoning; this page
+  // isn't slug-based so there's no "genuinely not found" case to distinguish, only real failures).
+  const categories = await getCategories();
 
   return <AllCategoriesClient initialCategories={categories} />;
 }

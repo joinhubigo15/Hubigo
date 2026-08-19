@@ -15,7 +15,9 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const cities = await getCities().catch(() => []);
+  // No .catch() — the list itself failing to load must propagate rather than being treated as
+  // "no cities exist", which would otherwise 404 every city page and cache that for an hour.
+  const cities = await getCities();
   const city = cities.find((c) => c.slug === slug) ?? null;
   if (!city) notFound();
 
@@ -39,7 +41,9 @@ export default async function CityDetailsPage({
 }) {
   const { slug } = await params;
 
-  const cities = await getCities().catch(() => []);
+  // No .catch() — the list itself failing to load must propagate rather than being treated as
+  // "no cities exist", which would otherwise 404 every city page and cache that for an hour.
+  const cities = await getCities();
   const city = cities.find((c) => c.slug === slug) ?? null;
   if (!city) notFound();
 

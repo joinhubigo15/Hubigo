@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { isNotFoundError } from "@/app/lib/api";
 import { getBusinessBySlug, type BusinessDetail } from "@/app/lib/search-api";
 import { buildBreadcrumbJsonLd, buildLocalBusinessJsonLd, buildFaqJsonLd } from "@/app/lib/json-ld";
 import { deriveBusinessFaqs } from "@/app/lib/business-faqs";
@@ -40,7 +41,13 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const business = await getBusinessBySlug(slug).catch(() => null);
+  // Only a genuine 404 from the API means this business doesn't exist — anything else (network
+  // blip, backend hiccup) must propagate instead of being cached as "not found" for the whole
+  // revalidate window (see isNotFoundError in lib/api.ts for why).
+  const business = await getBusinessBySlug(slug).catch((err) => {
+    if (isNotFoundError(err)) return null;
+    throw err;
+  });
   if (!business) notFound();
 
   const title = `${business.name} in ${business.city.name}`;
@@ -74,7 +81,13 @@ export default async function BusinessDetailPage({
 }) {
   const { slug } = await params;
 
-  const business = await getBusinessBySlug(slug).catch(() => null);
+  // Only a genuine 404 from the API means this business doesn't exist — anything else (network
+  // blip, backend hiccup) must propagate instead of being cached as "not found" for the whole
+  // revalidate window (see isNotFoundError in lib/api.ts for why).
+  const business = await getBusinessBySlug(slug).catch((err) => {
+    if (isNotFoundError(err)) return null;
+    throw err;
+  });
   if (!business) notFound();
 
   const primaryCategory = business.categories.find((c) => c.isPrimary)?.category ?? null;

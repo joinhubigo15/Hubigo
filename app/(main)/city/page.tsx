@@ -16,7 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default async function AllCitiesPage() {
-  const cities = await getCities().catch(() => []);
+  // No .catch() — the city list should never legitimately be empty, so a failed fetch must
+  // propagate rather than being cached as an empty list for the next hour.
+  const cities = await getCities();
 
   return <AllCitiesClient initialCities={cities} />;
 }
