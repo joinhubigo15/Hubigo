@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { getCities } from "@/app/lib/search-api";
 import AllCitiesClient from "./AllCitiesClient";
 
-export const revalidate = 3600;
+// See app/sitemap.ts for why this can't be build-time static: Railway's build sandbox can't
+// reach the backend by any path.
+export const dynamic = "force-dynamic";
 
 const title = "All Cities";
 const description = "Browse Hubigo's local business directory by city across India.";

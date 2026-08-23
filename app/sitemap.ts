@@ -9,7 +9,12 @@ import { SITE_URL } from "@/app/lib/json-ld";
 // dev` and `next build` silently produced an empty sitemap with it; a plain single-array default
 // export works correctly). buildAllEntries() below is factored so a future chunked version only
 // needs to slice its already-assembled array — revisit if indexable volume approaches ~40,000.
-export const revalidate = 3600;
+// Not build-time-static: Railway's build sandbox can't reach the backend at all (not on the
+// private network, and the public URL gets flagged by Cloudflare's abuse detection for the
+// build's rapid sequential requests) — so this must render at real request time instead, when
+// the deployed container can reach the backend over Railway's private network. `revalidate` still
+// applies to those runtime renders (cached per Next's data cache), just skips the build-time one.
+export const dynamic = "force-dynamic";
 
 const STATIC_PATHS = ["/", "/city", "/category", "/search", "/nearby"];
 

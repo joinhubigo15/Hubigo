@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { getCategories } from "@/app/lib/search-api";
 import AllCategoriesClient from "./AllCategoriesClient";
 
-export const revalidate = 3600;
+// See app/sitemap.ts for why this can't be build-time static: Railway's build sandbox can't
+// reach the backend by any path.
+export const dynamic = "force-dynamic";
 
 const title = "All Categories";
 const description = "Browse every business category listed on Hubigo, India's local discovery platform.";

@@ -17,7 +17,9 @@ import { buildOrganizationJsonLd, buildWebSiteJsonLd } from "@/app/lib/json-ld";
 import JsonLd from "@/app/components/seo/JsonLd";
 import type { Metadata } from "next";
 
-export const revalidate = 3600;
+// See app/sitemap.ts for why this can't be build-time static: Railway's build sandbox can't
+// reach the backend by any path.
+export const dynamic = "force-dynamic";
 
 // Title/description are inherited from the root layout's defaults — only the canonical needs
 // declaring here.
