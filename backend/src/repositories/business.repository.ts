@@ -151,11 +151,14 @@ function buildOrderBy(sort: SortOption, hasCoordinates: boolean): Prisma.Sql {
         return Prisma.sql`name ASC`;
       case "best_match":
       default:
-        // Relevance leads; distance only breaks ties between near-equally-relevant matches — e.g.
-        // several branches of the same chain all match the query name equally well, so the nearest
-        // branch surfaces first, while a single uniquely-named match is unaffected either way.
+        // A search that resolves to many essentially-interchangeable results — a category/
+        // subcategory name match ("medical shops"), or several businesses sharing the same/near-
+        // identical name (chain branches, or just a common name like "Udupi Hotel") — should default
+        // to nearest-first, since relevance can't meaningfully distinguish between them. A search
+        // that resolves to one specific, uniquely-named business is unaffected: this CASE evaluates
+        // to NULL for it, so it falls straight through to relevance (score) ranking as before.
         return hasCoordinates
-          ? Prisma.sql`score DESC, distance_km ASC NULLS LAST, review_count DESC`
+          ? Prisma.sql`CASE WHEN category_match_tier > 0 OR name_match_count > 1 THEN distance_km END ASC NULLS LAST, score DESC, distance_km ASC NULLS LAST, review_count DESC`
           : Prisma.sql`score DESC, review_count DESC`;
     }
   })();
@@ -400,6 +403,10 @@ export async function searchBusinesses(params: SearchParams) {
           WHEN b.primary_category_name ILIKE '%' || ${textQuery} || '%' OR b.primary_category_name ILIKE '%' || ${textQuerySingular} || '%' THEN 1
           ELSE 0
         END AS category_match_tier,
+        -- How many other candidates in THIS result set share the same business name (case-
+        -- insensitive) — catches chain branches and repeated common names (e.g. "Udupi Hotel")
+        -- even when the query didn't match a category name at all. See buildOrderBy's best_match.
+        COUNT(*) OVER (PARTITION BY lower(b.name)) AS name_match_count,
         -- No dashboard UI currently lets a business create an Offer (the backend endpoint exists
         -- but is unreachable in practice), so this was a guaranteed-false EXISTS subquery running
         -- on every row for nothing. Hardcoded until the feature actually ships.
