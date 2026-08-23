@@ -1,5 +1,17 @@
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
+// Server-side (SSR/build-time) requests go over Railway's private network when available,
+// bypassing Cloudflare entirely — the build's rapid-fire static-generation requests were getting
+// flagged and blocked by Cloudflare's edge protections even with Bot Fight Mode off, since some
+// other layer (e.g. API abuse detection) was still catching that traffic pattern. A browser can
+// never reach this address, so client-side requests always use the public API_URL regardless.
+function resolveBaseUrl(): string {
+  if (typeof window === "undefined" && process.env.INTERNAL_API_URL) {
+    return process.env.INTERNAL_API_URL;
+  }
+  return API_URL;
+}
+
 export type Role = "user" | "business_owner" | "admin" | "super_admin";
 
 export interface NotificationPreferences {
@@ -110,7 +122,7 @@ export async function request<T>(
 ): Promise<T> {
   const { accessToken, headers, ...rest } = options;
 
-  const res = await fetchWithRetry(`${API_URL}${path}`, {
+  const res = await fetchWithRetry(`${resolveBaseUrl()}${path}`, {
     ...rest,
     headers: {
       "Content-Type": "application/json",
@@ -151,7 +163,7 @@ async function requestForm<T>(
   formData: FormData,
   accessToken: string
 ): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(`${resolveBaseUrl()}${path}`, {
     method,
     body: formData,
     headers: { Authorization: `Bearer ${accessToken}` },
