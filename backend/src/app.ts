@@ -40,40 +40,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(morgan(isProd ? "combined" : "dev"));
-// Block any external scraper that bypasses Cloudflare proxy routing
-app.use((req: any, res: any, next: any) => {
-  const isInternal = req.headers['host']?.includes('railway.internal') || req.headers['host']?.includes('localhost');
-  const hasCloudflareIp = req.headers['cf-connecting-ip'];
-
-  // 1. If it's your own frontend app calling the backend internally, let it pass safely
-  if (isInternal) {
-    return next();
-  }
-
-  // 2. If it's an external request skipping Cloudflare, drop it instantly!
-  if (!hasCloudflareIp) {
-    return res.status(403).send('Access Denied');
-  }
-
-  next();
-});
-  // If a request is external and doesn't go through your Cloudflare proxy, reject it instantly
-  if (!hasCloudflareIp) {
-    return res.status(403).send('Access Denied');
-  }
-
-  next();
-});
-    if (referer.includes('findhubigo.com') || host.includes('localhost') || host.includes('railway.internal')) {
-      return next();
-    }
-
-    // Otherwise, it is the malicious scraper—drop them!
-    return res.status(403).send('Access Denied');
-  }
-
-  next();
-});
 app.get("/health", (_req, res) => {
   res.json({ success: true, message: "ok", data: { status: "healthy" } });
 });
