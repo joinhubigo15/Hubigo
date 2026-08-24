@@ -40,11 +40,22 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(morgan(isProd ? "combined" : "dev"));
-// Block the "node" scraper script on the backend service
+// Block the "node" scraper script, but allow legitimate internal frontend server traffic
 app.use((req: any, res: any, next: any) => {
   const userAgent = req.headers['user-agent'] || '';
+  const isNodeAgent = userAgent.toLowerCase().includes('node');
 
-  if (userAgent.toLowerCase().includes('node')) {
+  // If it's a 'node' agent, make sure it isn't your own frontend app bypassing it
+  if (isNodeAgent) {
+    // If it's coming from your own trusted frontend domain or a local container bridge, let it pass
+    const referer = req.headers['referer'] || '';
+    const host = req.headers['host'] || '';
+    
+    if (referer.includes('findhubigo.com') || host.includes('localhost') || host.includes('railway.internal')) {
+      return next();
+    }
+
+    // Otherwise, it is the malicious scraper—drop them!
     return res.status(403).send('Access Denied');
   }
 
