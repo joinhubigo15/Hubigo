@@ -40,7 +40,16 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(morgan(isProd ? "combined" : "dev"));
+// Block the "node" scraper script on the backend service
+app.use((req: any, res: any, next: any) => {
+  const userAgent = req.headers['user-agent'] || '';
 
+  if (userAgent.toLowerCase().includes('node')) {
+    return res.status(403).send('Access Denied');
+  }
+
+  next();
+});
 app.get("/health", (_req, res) => {
   res.json({ success: true, message: "ok", data: { status: "healthy" } });
 });
