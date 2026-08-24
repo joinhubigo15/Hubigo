@@ -8,6 +8,11 @@ const PUBLIC_ADMIN_ROUTES = new Set(["/admin/login", "/admin/forgot-password", "
 export async function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
 
+  // Block API v1 requests that don't include the Cloudflare client IP header
+  if (pathname.startsWith('/api/v1/') && !request.headers.get('cf-connecting-ip')) {
+    return new NextResponse('Forbidden', { status: 403 });
+  }
+
   // www.findhubigo.com now serves the app directly (Railway custom domain + cert), but the
   // canonical host everywhere else (SITE_URL, sitemap, JSON-LD) is the bare apex — redirect here
   // so Google never sees the same content under two hostnames.
