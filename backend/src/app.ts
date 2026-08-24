@@ -40,16 +40,23 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(morgan(isProd ? "combined" : "dev"));
-// Block any external traffic that tries to bypass Cloudflare proxy headers
+// Block any external scraper that bypasses Cloudflare proxy routing
 app.use((req: any, res: any, next: any) => {
-  const host = req.headers['host'] || '';
+  const isInternal = req.headers['host']?.includes('railway.internal') || req.headers['host']?.includes('localhost');
   const hasCloudflareIp = req.headers['cf-connecting-ip'];
 
-  // Allow your own Next.js frontend server calls or local system tasks to pass through
-  if (host.includes('railway.internal') || host.includes('localhost')) {
+  // 1. If it's your own frontend app calling the backend internally, let it pass safely
+  if (isInternal) {
     return next();
   }
 
+  // 2. If it's an external request skipping Cloudflare, drop it instantly!
+  if (!hasCloudflareIp) {
+    return res.status(403).send('Access Denied');
+  }
+
+  next();
+});
   // If a request is external and doesn't go through your Cloudflare proxy, reject it instantly
   if (!hasCloudflareIp) {
     return res.status(403).send('Access Denied');
