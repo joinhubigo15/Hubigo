@@ -16,7 +16,18 @@ export async function middleware(request: NextRequest) {
     url.hostname = "findhubigo.com";
     return NextResponse.redirect(url, 301);
   }
+// Block any request starting with /api/v1/ that uses the 'node' user agent
+  const userAgent = request.headers.get("user-agent") || "";
+  const isNodeAgent = userAgent.toLowerCase().includes("node");
 
+  if (pathname.startsWith('/api/v1') && isNodeAgent) {
+    return new NextResponse('Forbidden', { status: 403 });
+  }
+
+  // Block requests to /api/v1/ that don't include Cloudflare headers
+  if (pathname.startsWith('/api/v1') && !request.headers.get('cf-connecting-ip')) {
+    return new NextResponse('Forbidden', { status: 403 });
+  }
   if (!pathname.startsWith("/admin")) return NextResponse.next();
 
   const token = request.cookies.get(COOKIE_NAME)?.value;
