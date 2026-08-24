@@ -16,7 +16,29 @@ export async function middleware(request: NextRequest) {
     url.hostname = "findhubigo.com";
     return NextResponse.redirect(url, 301);
   }
+// 1. Skip middleware entirely for static assets, images, and system internal files
+  const isStaticAsset = 
+    pathname.startsWith('/_next') || 
+    pathname.startsWith('/static') ||
+    pathname.includes('.') || // matches favicon.ico, images, sitemaps etc.
+    pathname === '/';
 
+  // 2. Only enforce restrictions if it's explicitly an API data route
+  if (pathname.startsWith('/api/v1')) {
+    
+    // Block any request using the 'node' user agent
+    const userAgent = request.headers.get("user-agent") || "";
+    const isNodeAgent = userAgent.toLowerCase().includes("node");
+
+    if (isNodeAgent) {
+      return new NextResponse('Forbidden', { status: 403 });
+    }
+
+    // Block requests that bypass Cloudflare proxy mapping headers
+    if (!request.headers.get('cf-connecting-ip')) {
+      return new NextResponse('Forbidden', { status: 403 });
+    }
+  }
   if (!pathname.startsWith("/admin")) return NextResponse.next();
 
   const token = request.cookies.get(COOKIE_NAME)?.value;
