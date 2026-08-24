@@ -40,17 +40,23 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(passport.initialize());
 app.use(morgan(isProd ? "combined" : "dev"));
-// Block the "node" scraper script, but allow legitimate internal frontend server traffic
+// Block any external traffic that tries to bypass Cloudflare proxy headers
 app.use((req: any, res: any, next: any) => {
-  const userAgent = req.headers['user-agent'] || '';
-  const isNodeAgent = userAgent.toLowerCase().includes('node');
+  const host = req.headers['host'] || '';
+  const hasCloudflareIp = req.headers['cf-connecting-ip'];
 
-  // If it's a 'node' agent, make sure it isn't your own frontend app bypassing it
-  if (isNodeAgent) {
-    // If it's coming from your own trusted frontend domain or a local container bridge, let it pass
-    const referer = req.headers['referer'] || '';
-    const host = req.headers['host'] || '';
-    
+  // Allow your own Next.js frontend server calls or local system tasks to pass through
+  if (host.includes('railway.internal') || host.includes('localhost')) {
+    return next();
+  }
+
+  // If a request is external and doesn't go through your Cloudflare proxy, reject it instantly
+  if (!hasCloudflareIp) {
+    return res.status(403).send('Access Denied');
+  }
+
+  next();
+});
     if (referer.includes('findhubigo.com') || host.includes('localhost') || host.includes('railway.internal')) {
       return next();
     }
