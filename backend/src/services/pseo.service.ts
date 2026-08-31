@@ -13,7 +13,7 @@ import { prisma } from "../lib/prisma";
 // "more than 15") so it never excludes a genuinely indexable combo. The actual exist/indexable/
 // tier decision is made once, in that frontend module, via evaluatePseoGate() against the exact
 // counts returned here — this file never duplicates that decision.
-const CANDIDATE_FLOOR = 16;
+const CANDIDATE_FLOOR = 1;
 
 interface CityComboRow {
   city_slug: string;

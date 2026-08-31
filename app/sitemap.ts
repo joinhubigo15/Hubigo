@@ -15,6 +15,7 @@ import { SITE_URL } from "@/app/lib/json-ld";
 // the deployed container can reach the backend over Railway's private network. `revalidate` still
 // applies to those runtime renders (cached per Next's data cache), just skips the build-time one.
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const STATIC_PATHS = ["/", "/city", "/category", "/search", "/nearby"];
 
