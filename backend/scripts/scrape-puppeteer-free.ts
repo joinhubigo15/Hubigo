@@ -207,6 +207,32 @@ async function scrapeFreeWithPuppeteer() {
         }
       }
 
+      // Strict Healthcare Filter Guard
+      const nameLower = cleanName.toLowerCase();
+      const catLower = cleanCategory.toLowerCase();
+
+      const NON_MEDICAL_PATTERNS = [
+        "bus stand", "bus stop", "bus station", "parking", "paying guest", "pg for", "pg ladies", "pg gents",
+        "apartment", "apartments", "residency", "villas", "complex", "mall", "theater", "theatre", "microblading",
+        "makeup", "salon", "academy", "training institute", "school", "college", "university", "canteen", "restaurant",
+        "darshini", "bhel", "cafe", "hotel", "resort", "lodge", "post office", "subway", "mattress", "hardware", "motors"
+      ];
+
+      const HEALTHCARE_KEYWORDS = [
+        "hospital", "clinic", "doctor", "dr.", "dr ", "lab", "diagnostic", "patholog",
+        "pharmacy", "chemist", "optician", "optometrist", "dental", "dentist", "eye clinic", "eye hospital",
+        "health", "medical", "nursing", "physio", "blood bank", "ayurved", "homeo", "derma",
+        "ortho", "cardio", "neuro", "pediatric", "gynec", "cancer", "therapy", "x-ray", "scan", "hearing", "speech"
+      ];
+
+      const isNonMedical = NON_MEDICAL_PATTERNS.some((p) => nameLower.includes(p));
+      const isGenuineMedical = HEALTHCARE_KEYWORDS.some((kw) => nameLower.includes(kw) || catLower.includes(kw));
+
+      if (isNonMedical && !isGenuineMedical) {
+        console.log(`   ⏭️ Discarded Non-Healthcare Noise: "${cleanName}" (${cleanCategory})`);
+        continue;
+      }
+
       // Address Breakdown (Area / City / State / Country)
       let area = "";
       let city = "Bengaluru";
