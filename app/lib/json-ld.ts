@@ -171,9 +171,21 @@ export function buildOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Hubigo",
+    name: "Hubigo Healthcare",
+    alternateName: "Hubigo Medical Directory",
     url: SITE_URL,
     logo: `${SITE_URL}/logo.png`,
+    sameAs: [
+      "https://facebook.com/hubigo",
+      "https://twitter.com/hubigo",
+      "https://linkedin.com/company/hubigo",
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      telephone: "+91 80 4000 0000",
+      contactType: "customer service",
+      availableLanguage: ["English", "Hindi", "Kannada"],
+    },
   };
 }
 
@@ -181,7 +193,8 @@ export function buildWebSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Hubigo",
+    name: "Hubigo Healthcare",
+    alternateName: "Hubigo Medical & Healthcare Discovery Platform",
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
