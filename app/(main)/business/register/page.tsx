@@ -335,10 +335,10 @@ export default function BusinessRegisterPage() {
       <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-6 shadow-sm shadow-slate-200/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
         <div>
           <h1 className="text-xl sm:text-2xl font-black text-slate-900 mt-1">
-            Create Your Business Listing
+            Register Your Hospital, Clinic or Medical Practice
           </h1>
           <p className="text-xs text-slate-500 font-semibold">
-            Get discovered by thousands of nearby customers on Hubigo in minutes.
+            Get discovered by thousands of patients & healthcare seekers on Hubigo Healthcare in minutes.
           </p>
         </div>
 
@@ -432,7 +432,7 @@ export default function BusinessRegisterPage() {
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Royal Continental Restaurant"
+                    placeholder="e.g. Apollo Multi-Specialty Hospital or Dr. Sharma's Clinic"
                     value={formData.name}
                     onChange={(e) => updateForm("name", e.target.value)}
                     className="w-full px-4 py-2.5 bg-[#f8fafc] border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 placeholder-slate-400 focus:outline-none focus:border-purple-600 focus:bg-white focus:ring-2 focus:ring-purple-500/15 transition-all"

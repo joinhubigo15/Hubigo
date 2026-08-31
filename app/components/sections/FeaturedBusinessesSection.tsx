@@ -55,16 +55,15 @@ export default function FeaturedBusinessesSection({
 
   if (!loading && businesses.length === 0) return null;
 
-  // Mobile: show first 6 (3 cols × 2 rows), Desktop: show 8 (4 cols × 2 rows)
-  const mobileCards = businesses.slice(0, 6);
-  const desktopCards = businesses.slice(0, 8);
+  // Show exactly 3 featured healthcare centers
+  const cards = businesses.slice(0, 3);
 
   return (
     <section className="px-3 lg:px-6 mt-5 sm:mt-8 mb-2 shrink-0">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-1">
-          <h2 className="text-xs sm:text-sm lg:text-base font-bold text-slate-900">Featured Businesses</h2>
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="text-xs sm:text-sm lg:text-base font-bold text-slate-900">Featured Healthcare Centers</h2>
           <Link
             href="/search"
             className="text-[10px] sm:text-[11px] lg:text-xs font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-0.5 transition-colors"
@@ -75,27 +74,17 @@ export default function FeaturedBusinessesSection({
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-3 lg:grid-cols-4 gap-1.5 lg:gap-3">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div key={i} className="rounded-lg lg:rounded-lg bg-slate-100 animate-pulse h-24 lg:h-40" />
+          <div className="grid grid-cols-3 gap-2 lg:gap-3">
+            {Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="rounded-lg bg-slate-100 animate-pulse h-24 lg:h-40" />
             ))}
           </div>
         ) : (
-          <>
-            {/* Mobile Grid — 3 cols × 2 rows (6 cards) */}
-            <div className="lg:hidden grid grid-cols-3 gap-1.5">
-              {mobileCards.map((b) => (
-                <BusinessCard key={b.id} b={b} favorites={favorites} toggleFavorite={toggleFavorite} compact />
-              ))}
-            </div>
-
-            {/* Desktop Grid — 4 cols × 2 rows (8 cards) */}
-            <div className="hidden lg:grid grid-cols-4 gap-3">
-              {desktopCards.map((b) => (
-                <BusinessCard key={b.id} b={b} favorites={favorites} toggleFavorite={toggleFavorite} compact={false} />
-              ))}
-            </div>
-          </>
+          <div className="grid grid-cols-3 gap-2 lg:gap-3">
+            {cards.map((b) => (
+              <BusinessCard key={b.id} b={b} favorites={favorites} toggleFavorite={toggleFavorite} compact={false} />
+            ))}
+          </div>
         )}
       </div>
     </section>
@@ -122,7 +111,7 @@ function BusinessCard({
       className="group bg-white rounded-lg lg:rounded-lg border border-slate-100 shadow-xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col"
     >
       {/* Image */}
-      <div className={cn("relative w-full overflow-hidden bg-slate-100", compact ? "h-14 sm:h-18" : "h-28 lg:h-30")}>
+      <div className={cn("relative w-full overflow-hidden bg-slate-100", compact ? "h-12 sm:h-14" : "h-16 sm:h-18 lg:h-20")}>
         {b.coverImageUrl ? (
           <Image
             src={b.coverImageUrl}
@@ -150,32 +139,27 @@ function BusinessCard({
         {/* Heart */}
         <button
           onClick={(e) => toggleFavorite(b.id, e)}
-          className="absolute top-1 right-1 w-6 h-6 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-colors"
+          className="absolute top-1 right-1 w-5.5 h-5.5 rounded-full bg-black/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-white hover:text-rose-500 transition-colors"
           aria-label="Add to favorites"
         >
-          <Heart className={cn(favorites.includes(b.id) && "fill-rose-500 text-rose-500", compact ? "w-2.5 h-2.5" : "w-3.5 h-3.5")} />
+          <Heart className={cn(favorites.includes(b.id) && "fill-rose-500 text-rose-500", compact ? "w-2.5 h-2.5" : "w-3 h-3")} />
         </button>
       </div>
 
       {/* Info */}
-      <div className={cn("flex flex-col flex-1 justify-between gap-0.5", compact ? "p-1" : "p-2.5")}>
+      <div className={cn("flex flex-col flex-1 justify-between gap-0.5", compact ? "p-1" : "p-1.5 sm:p-2")}>
         <div className="space-y-0.5">
-          {b.primaryCategoryName && (
-            <span className={cn("font-medium text-slate-500 block leading-none", compact ? "text-[8px]" : "text-[10px]")}>
-              {b.primaryCategoryName}
-            </span>
-          )}
-          <h3 className={cn("font-bold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight line-clamp-1", compact ? "text-[9px]" : "text-xs")}>
+          <h3 className={cn("font-bold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight line-clamp-1", compact ? "text-[9px]" : "text-[11px] sm:text-xs")}>
             {b.name}
           </h3>
-          <div className={cn("flex items-center gap-0.5 text-slate-500", compact ? "text-[8px]" : "text-[10px]")}>
-            <MapPin className={cn("text-slate-400 shrink-0", compact ? "w-2 h-2" : "w-3 h-3")} />
+          <div className={cn("flex items-center gap-0.5 text-slate-500", compact ? "text-[8px]" : "text-[9px] sm:text-[10px]")}>
+            <MapPin className={cn("text-slate-400 shrink-0", compact ? "w-2 h-2" : "w-2.5 h-2.5")} />
             <span className="truncate">{[b.areaName ?? b.localityName, b.cityName].filter(Boolean).join(", ")}</span>
           </div>
         </div>
         {statusLabel && (
           <div>
-            <span className={cn("inline-block font-semibold px-1 py-0.5 rounded", statusColor, compact ? "text-[7px]" : "text-[9px]")}>
+            <span className={cn("inline-block font-semibold px-1 py-0.2 rounded", statusColor, compact ? "text-[7px]" : "text-[8px] sm:text-[9px]")}>
               {statusLabel}
             </span>
           </div>

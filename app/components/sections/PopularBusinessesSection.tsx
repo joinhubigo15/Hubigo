@@ -6,75 +6,71 @@ import { cn } from "@/app/lib/utils";
 
 const popularBrands = [
   {
-    name: "Domino's Pizza",
-    query: "Domino's",
-    bgColor: "bg-white",
-    borderColor: "border-slate-100",
+    name: "Manipal Hospitals",
+    query: "Manipal",
+    bgColor: "bg-emerald-600",
+    borderColor: "border-emerald-600",
     logo: (
-      <div className="w-full h-full flex items-center justify-center p-0.5">
-        <svg viewBox="0 0 100 100" className="w-5 h-5 sm:w-6 sm:h-6">
-          <rect x="25" y="25" width="50" height="50" rx="10" transform="rotate(45 50 50)" fill="#0078AE" />
-          <path d="M 25,25 L 75,75" stroke="#FFFFFF" strokeWidth="4" transform="rotate(45 50 50)" />
-          <circle cx="40" cy="35" r="5" fill="#E31837" />
-          <circle cx="65" cy="60" r="5" fill="#E31837" />
-        </svg>
+      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center text-white font-black">
+        <span className="text-[7px] sm:text-[9px] tracking-tight leading-none">MANIPAL</span>
+        <span className="text-[5px] font-semibold uppercase tracking-widest leading-none mt-0.5">HOSPITALS</span>
       </div>
     ),
   },
   {
-    name: "Reliance SMART",
-    query: "Reliance",
+    name: "Apollo Healthcare",
+    query: "Apollo",
     bgColor: "bg-white",
-    borderColor: "border-slate-100",
+    borderColor: "border-slate-200",
     logo: (
       <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center">
-        <span className="text-[6px] font-black text-red-600 tracking-tighter leading-none">Reliance</span>
-        <span className="text-[7px] font-extrabold text-blue-800 tracking-tight leading-none mt-0.5">SMART</span>
+        <span className="text-[7px] sm:text-[9px] font-black text-teal-800 tracking-tight leading-none">Apollo</span>
+        <span className="text-[5px] font-semibold text-slate-500 uppercase tracking-widest leading-none mt-0.5">HEALTH</span>
       </div>
     ),
   },
   {
-    name: "KFC",
-    query: "KFC",
+    name: "Fortis Healthcare",
+    query: "Fortis",
+    bgColor: "bg-blue-700",
+    borderColor: "border-blue-700",
+    logo: (
+      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center text-white font-black">
+        <span className="text-[7px] sm:text-[9px] tracking-wider leading-none">FORTIS</span>
+        <span className="text-[5px] font-semibold uppercase tracking-widest leading-none mt-0.5">CARE</span>
+      </div>
+    ),
+  },
+  {
+    name: "SRL Diagnostics",
+    query: "SRL",
+    bgColor: "bg-purple-700",
+    borderColor: "border-purple-700",
+    logo: (
+      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[8px] sm:text-[10px] tracking-widest">
+        SRL
+      </div>
+    ),
+  },
+  {
+    name: "Cloudnine Care",
+    query: "Cloudnine",
+    bgColor: "bg-pink-600",
+    borderColor: "border-pink-600",
+    logo: (
+      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-wider">
+        CLOUD9
+      </div>
+    ),
+  },
+  {
+    name: "MedPlus Pharmacy",
+    query: "MedPlus",
     bgColor: "bg-red-600",
     borderColor: "border-red-600",
     logo: (
-      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[9px] sm:text-xs tracking-wider">
-        KFC
-      </div>
-    ),
-  },
-  {
-    name: "Apollo Pharmacy",
-    query: "Apollo",
-    bgColor: "bg-white",
-    borderColor: "border-slate-100",
-    logo: (
-      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center">
-        <span className="text-[7px] font-black text-teal-800 tracking-tight leading-none">Apollo</span>
-        <span className="text-[5px] font-semibold text-slate-500 uppercase tracking-widest leading-none mt-0.5">PHARMACY</span>
-      </div>
-    ),
-  },
-  {
-    name: "Decathlon",
-    query: "Decathlon",
-    bgColor: "bg-[#00659c]",
-    borderColor: "border-[#00659c]",
-    logo: (
-      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[8px] tracking-wider italic px-0.5">
-        DECATHLON
-      </div>
-    ),
-  },
-  {
-    name: "Starbucks",
-    query: "Starbucks",
-    bgColor: "bg-[#00704A]",
-    borderColor: "border-[#00704A]",
-    logo: (
-      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-widest uppercase">
-        SB
+      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-wider">
+        MEDPLUS
       </div>
     ),
   },
@@ -87,7 +83,7 @@ export default function PopularBusinessesSection() {
         {/* Section Header */}
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-xs sm:text-sm lg:text-base font-bold text-slate-900">
-            Popular Businesses
+            Popular HealthCares & Brands
           </h2>
           <Link
             href="/search"

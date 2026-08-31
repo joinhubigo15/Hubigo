@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Home, Grid2X2, Plus, MessageSquare, User, Store, Check } from "lucide-react";
+import { Home, Grid2X2, Plus, Navigation, User, Store, Check } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { useAuth } from "@/app/lib/auth-context";
 
@@ -130,16 +130,16 @@ export default function MobileBottomNav() {
         </span>
       </Link>
 
-      {/* Chat */}
+      {/* Nearby */}
       <Link
-        href={chatHref}
+        href="/nearby"
         className={cn(
           "flex flex-col items-center gap-0.5 py-1 px-2 rounded-xl transition-all",
-          pathname === "/messages" || pathname.startsWith("/messages/") ? "text-purple-600 font-semibold" : "text-slate-400"
+          pathname === "/nearby" || pathname.startsWith("/nearby/") ? "text-purple-600 font-semibold" : "text-slate-400"
         )}
       >
-        <MessageSquare className="w-5 h-5" />
-        <span className="text-[10px]">Chat</span>
+        <Navigation className="w-5 h-5" />
+        <span className="text-[10px]">Nearby</span>
       </Link>
 
       {/* Account — long-press to switch between Customer/Business if the user owns a business */}

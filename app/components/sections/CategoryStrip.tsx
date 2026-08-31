@@ -2,57 +2,54 @@
 
 import Link from "next/link";
 import {
-  Utensils,
-  Activity,
-  GraduationCap,
   Building2,
-  Car,
+  Stethoscope,
+  TestTube,
+  Pill,
+  HeartPulse,
   LayoutGrid,
 } from "lucide-react";
 
 import { cn } from "@/app/lib/utils";
 
-// Real top-level category (sector) slugs from the taxonomy — see bootstrap-categories.ts. Kept
-// as a fixed set of quick-nav shortcuts (design intent: 5 icons + "More"), but pointed at slugs
-// that actually exist so these links don't 404 into "category not found".
 const mainCategories = [
   {
-    name: "Food & Dining",
-    href: "/category/food-and-beverage",
-    icon: Utensils,
-    bgColor: "bg-purple-100",
-    iconColor: "text-purple-600",
-  },
-  {
-    name: "Healthcare",
-    href: "/category/healthcare-and-medical",
-    icon: Activity,
+    name: "Hospitals",
+    href: "/search?q=Hospital",
+    icon: Building2,
     bgColor: "bg-emerald-100",
     iconColor: "text-emerald-600",
   },
   {
-    name: "Education",
-    href: "/category/education-and-training",
-    icon: GraduationCap,
+    name: "Doctors & Clinics",
+    href: "/search?q=Clinic",
+    icon: Stethoscope,
     bgColor: "bg-sky-100",
     iconColor: "text-sky-600",
   },
   {
-    name: "Home Services",
-    href: "/category/home-services",
-    icon: Building2,
-    bgColor: "bg-orange-100",
-    iconColor: "text-orange-600",
+    name: "Diagnostics & Labs",
+    href: "/search?q=Lab",
+    icon: TestTube,
+    bgColor: "bg-purple-100",
+    iconColor: "text-purple-600",
   },
   {
-    name: "Automotive",
-    href: "/category/automotive",
-    icon: Car,
+    name: "Pharmacies",
+    href: "/search?q=Pharmacy",
+    icon: Pill,
     bgColor: "bg-rose-100",
     iconColor: "text-rose-600",
   },
   {
-    name: "More",
+    name: "Ayurveda & AYUSH",
+    href: "/search?q=Ayurveda",
+    icon: HeartPulse,
+    bgColor: "bg-amber-100",
+    iconColor: "text-amber-600",
+  },
+  {
+    name: "All Specialties",
     href: "/category",
     icon: LayoutGrid,
     bgColor: "bg-slate-100",

@@ -1,0 +1,1902 @@
+[
+  {
+    "subcategory": "General Hospital",
+    "count": 1321
+  },
+  {
+    "subcategory": "Multispecialty Hospital",
+    "count": 1244
+  },
+  {
+    "subcategory": "Super Specialty Hospital",
+    "count": 994
+  },
+  {
+    "subcategory": "Private Hospital",
+    "count": 1087
+  },
+  {
+    "subcategory": "Government Hospital",
+    "count": 756
+  },
+  {
+    "subcategory": "Public Hospital",
+    "count": 1453
+  },
+  {
+    "subcategory": "Teaching Hospital",
+    "count": 1258
+  },
+  {
+    "subcategory": "University Hospital",
+    "count": 1035
+  },
+  {
+    "subcategory": "Community Hospital",
+    "count": 2090
+  },
+  {
+    "subcategory": "District Hospital",
+    "count": 886
+  },
+  {
+    "subcategory": "Rural Hospital",
+    "count": 738
+  },
+  {
+    "subcategory": "Municipal Hospital",
+    "count": 747
+  },
+  {
+    "subcategory": "Corporate Hospital",
+    "count": 1457
+  },
+  {
+    "subcategory": "Charitable Hospital",
+    "count": 687
+  },
+  {
+    "subcategory": "Mission Hospital",
+    "count": 298
+  },
+  {
+    "subcategory": "Military Hospital",
+    "count": 40
+  },
+  {
+    "subcategory": "Children’s Hospital",
+    "count": 827
+  },
+  {
+    "subcategory": "Women’s Hospital",
+    "count": 1358
+  },
+  {
+    "subcategory": "Maternity Hospital",
+    "count": 1269
+  },
+  {
+    "subcategory": "Mother and Child Hospital",
+    "count": 536
+  },
+  {
+    "subcategory": "Cancer Hospital",
+    "count": 633
+  },
+  {
+    "subcategory": "Cardiology Hospital",
+    "count": 663
+  },
+  {
+    "subcategory": "Heart Hospital",
+    "count": 745
+  },
+  {
+    "subcategory": "Neurology Hospital",
+    "count": 758
+  },
+  {
+    "subcategory": "Neurosurgery Hospital",
+    "count": 659
+  },
+  {
+    "subcategory": "Orthopedic Hospital",
+    "count": 1465
+  },
+  {
+    "subcategory": "Eye Hospital",
+    "count": 963
+  },
+  {
+    "subcategory": "ENT Hospital",
+    "count": 975
+  },
+  {
+    "subcategory": "Dental Hospital",
+    "count": 3472
+  },
+  {
+    "subcategory": "Skin Hospital",
+    "count": 1337
+  },
+  {
+    "subcategory": "Psychiatric Hospital",
+    "count": 1011
+  },
+  {
+    "subcategory": "Mental Health Hospital",
+    "count": 1200
+  },
+  {
+    "subcategory": "Kidney Hospital",
+    "count": 510
+  },
+  {
+    "subcategory": "Nephrology Hospital",
+    "count": 572
+  },
+  {
+    "subcategory": "Urology Hospital",
+    "count": 483
+  },
+  {
+    "subcategory": "Gastroenterology Hospital",
+    "count": 728
+  },
+  {
+    "subcategory": "Liver Hospital",
+    "count": 509
+  },
+  {
+    "subcategory": "Pulmonology Hospital",
+    "count": 436
+  },
+  {
+    "subcategory": "Respiratory Hospital",
+    "count": 672
+  },
+  {
+    "subcategory": "Endocrinology Hospital",
+    "count": 465
+  },
+  {
+    "subcategory": "Diabetes Hospital",
+    "count": 808
+  },
+  {
+    "subcategory": "Rheumatology Hospital",
+    "count": 208
+  },
+  {
+    "subcategory": "Infectious Disease Hospital",
+    "count": 148
+  },
+  {
+    "subcategory": "Rehabilitation Hospital",
+    "count": 1326
+  },
+  {
+    "subcategory": "Geriatric Hospital",
+    "count": 544
+  },
+  {
+    "subcategory": "Palliative Care Hospital",
+    "count": 402
+  },
+  {
+    "subcategory": "Transplant Hospital",
+    "count": 785
+  },
+  {
+    "subcategory": "Trauma Hospital",
+    "count": 502
+  },
+  {
+    "subcategory": "Accident Hospital",
+    "count": 926
+  },
+  {
+    "subcategory": "Emergency Hospital",
+    "count": 2038
+  },
+  {
+    "subcategory": "Burn Hospital",
+    "count": 186
+  },
+  {
+    "subcategory": "Plastic Surgery Hospital",
+    "count": 744
+  },
+  {
+    "subcategory": "Fertility Hospital",
+    "count": 901
+  },
+  {
+    "subcategory": "IVF Hospital",
+    "count": 699
+  },
+  {
+    "subcategory": "Oncology Hospital",
+    "count": 514
+  },
+  {
+    "subcategory": "Hematology Hospital",
+    "count": 240
+  },
+  {
+    "subcategory": "Neonatal Hospital",
+    "count": 716
+  },
+  {
+    "subcategory": "Tertiary Care Hospital",
+    "count": 708
+  },
+  {
+    "subcategory": "Quaternary Care Hospital",
+    "count": 495
+  },
+  {
+    "subcategory": "General Physician Clinic",
+    "count": 2106
+  },
+  {
+    "subcategory": "Family Medicine Clinic",
+    "count": 1716
+  },
+  {
+    "subcategory": "Primary Care Clinic",
+    "count": 1376
+  },
+  {
+    "subcategory": "Internal Medicine Clinic",
+    "count": 1109
+  },
+  {
+    "subcategory": "Pediatric Clinic",
+    "count": 1186
+  },
+  {
+    "subcategory": "Gynecology Clinic",
+    "count": 1442
+  },
+  {
+    "subcategory": "Obstetrics Clinic",
+    "count": 1609
+  },
+  {
+    "subcategory": "Dermatology Clinic",
+    "count": 1383
+  },
+  {
+    "subcategory": "Cardiology Clinic",
+    "count": 392
+  },
+  {
+    "subcategory": "Neurology Clinic",
+    "count": 542
+  },
+  {
+    "subcategory": "Neurosurgery Clinic",
+    "count": 401
+  },
+  {
+    "subcategory": "Orthopedic Clinic",
+    "count": 1382
+  },
+  {
+    "subcategory": "ENT Clinic",
+    "count": 940
+  },
+  {
+    "subcategory": "Ophthalmology Clinic",
+    "count": 1004
+  },
+  {
+    "subcategory": "Dental Clinic",
+    "count": 3475
+  },
+  {
+    "subcategory": "Psychiatric Clinic",
+    "count": 1111
+  },
+  {
+    "subcategory": "Psychology Clinic",
+    "count": 1182
+  },
+  {
+    "subcategory": "Urology Clinic",
+    "count": 431
+  },
+  {
+    "subcategory": "Nephrology Clinic",
+    "count": 373
+  },
+  {
+    "subcategory": "Gastroenterology Clinic",
+    "count": 639
+  },
+  {
+    "subcategory": "Hepatology Clinic",
+    "count": 411
+  },
+  {
+    "subcategory": "Pulmonology Clinic",
+    "count": 310
+  },
+  {
+    "subcategory": "Endocrinology Clinic",
+    "count": 382
+  },
+  {
+    "subcategory": "Diabetology Clinic",
+    "count": 1162
+  },
+  {
+    "subcategory": "Oncology Clinic",
+    "count": 569
+  },
+  {
+    "subcategory": "Hematology Clinic",
+    "count": 195
+  },
+  {
+    "subcategory": "Rheumatology Clinic",
+    "count": 239
+  },
+  {
+    "subcategory": "Allergy Clinic",
+    "count": 555
+  },
+  {
+    "subcategory": "Immunology Clinic",
+    "count": 694
+  },
+  {
+    "subcategory": "Infectious Disease Clinic",
+    "count": 280
+  },
+  {
+    "subcategory": "Pain Management Clinic",
+    "count": 978
+  },
+  {
+    "subcategory": "Sleep Clinic",
+    "count": 205
+  },
+  {
+    "subcategory": "Sexual Health Clinic",
+    "count": 21
+  },
+  {
+    "subcategory": "Fertility Clinic",
+    "count": 931
+  },
+  {
+    "subcategory": "IVF Clinic",
+    "count": 815
+  },
+  {
+    "subcategory": "Reproductive Medicine Clinic",
+    "count": 757
+  },
+  {
+    "subcategory": "Men’s Health Clinic",
+    "count": 845
+  },
+  {
+    "subcategory": "Women’s Health Clinic",
+    "count": 989
+  },
+  {
+    "subcategory": "Geriatric Clinic",
+    "count": 594
+  },
+  {
+    "subcategory": "Adolescent Clinic",
+    "count": 1057
+  },
+  {
+    "subcategory": "Neonatal Clinic",
+    "count": 828
+  },
+  {
+    "subcategory": "Breast Clinic",
+    "count": 305
+  },
+  {
+    "subcategory": "Thyroid Clinic",
+    "count": 643
+  },
+  {
+    "subcategory": "Liver Clinic",
+    "count": 361
+  },
+  {
+    "subcategory": "Kidney Clinic",
+    "count": 383
+  },
+  {
+    "subcategory": "Arthritis Clinic",
+    "count": 797
+  },
+  {
+    "subcategory": "Spine Clinic",
+    "count": 597
+  },
+  {
+    "subcategory": "Sports Medicine Clinic",
+    "count": 1164
+  },
+  {
+    "subcategory": "Wound Care Clinic",
+    "count": 629
+  },
+  {
+    "subcategory": "Travel Medicine Clinic",
+    "count": 659
+  },
+  {
+    "subcategory": "General Physician",
+    "count": 1727
+  },
+  {
+    "subcategory": "Family Doctor",
+    "count": 2583
+  },
+  {
+    "subcategory": "Internist",
+    "count": 3145
+  },
+  {
+    "subcategory": "Pediatrician",
+    "count": 2172
+  },
+  {
+    "subcategory": "Neonatologist",
+    "count": 666
+  },
+  {
+    "subcategory": "Gynecologist",
+    "count": 2170
+  },
+  {
+    "subcategory": "Obstetrician",
+    "count": 1985
+  },
+  {
+    "subcategory": "Obstetrician-Gynecologist",
+    "count": 1540
+  },
+  {
+    "subcategory": "Cardiologist",
+    "count": 898
+  },
+  {
+    "subcategory": "Interventional Cardiologist",
+    "count": 361
+  },
+  {
+    "subcategory": "Neurologist",
+    "count": 827
+  },
+  {
+    "subcategory": "Neurosurgeon",
+    "count": 509
+  },
+  {
+    "subcategory": "Orthopedic Doctor",
+    "count": 1537
+  },
+  {
+    "subcategory": "Orthopedic Surgeon",
+    "count": 1376
+  },
+  {
+    "subcategory": "Spine Surgeon",
+    "count": 688
+  },
+  {
+    "subcategory": "Joint Replacement Surgeon",
+    "count": 647
+  },
+  {
+    "subcategory": "Sports Medicine Doctor",
+    "count": 1354
+  },
+  {
+    "subcategory": "Rheumatologist",
+    "count": 273
+  },
+  {
+    "subcategory": "Dermatologist",
+    "count": 1455
+  },
+  {
+    "subcategory": "Cosmetologist",
+    "count": 1645
+  },
+  {
+    "subcategory": "Trichologist",
+    "count": 257
+  },
+  {
+    "subcategory": "Plastic Surgeon",
+    "count": 623
+  },
+  {
+    "subcategory": "Reconstructive Surgeon",
+    "count": 585
+  },
+  {
+    "subcategory": "ENT Specialist",
+    "count": 1108
+  },
+  {
+    "subcategory": "Ophthalmologist",
+    "count": 1229
+  },
+  {
+    "subcategory": "Optometrist",
+    "count": 1937
+  },
+  {
+    "subcategory": "Dentist",
+    "count": 3532
+  },
+  {
+    "subcategory": "Oral Surgeon",
+    "count": 2406
+  },
+  {
+    "subcategory": "Endodontist",
+    "count": 1293
+  },
+  {
+    "subcategory": "Orthodontist",
+    "count": 2746
+  },
+  {
+    "subcategory": "Periodontist",
+    "count": 1518
+  },
+  {
+    "subcategory": "Prosthodontist",
+    "count": 1853
+  },
+  {
+    "subcategory": "Pediatric Dentist",
+    "count": 1551
+  },
+  {
+    "subcategory": "Urologist",
+    "count": 651
+  },
+  {
+    "subcategory": "Nephrologist",
+    "count": 347
+  },
+  {
+    "subcategory": "Gastroenterologist",
+    "count": 876
+  },
+  {
+    "subcategory": "Hepatologist",
+    "count": 617
+  },
+  {
+    "subcategory": "Pulmonologist",
+    "count": 496
+  },
+  {
+    "subcategory": "Endocrinologist",
+    "count": 457
+  },
+  {
+    "subcategory": "Diabetologist",
+    "count": 885
+  },
+  {
+    "subcategory": "Oncologist",
+    "count": 526
+  },
+  {
+    "subcategory": "Hematologist",
+    "count": 439
+  },
+  {
+    "subcategory": "Pathologist",
+    "count": 1951
+  },
+  {
+    "subcategory": "Radiologist",
+    "count": 1140
+  },
+  {
+    "subcategory": "Anesthesiologist",
+    "count": 561
+  },
+  {
+    "subcategory": "Psychiatrist",
+    "count": 669
+  },
+  {
+    "subcategory": "Psychologist",
+    "count": 1607
+  },
+  {
+    "subcategory": "Clinical Psychologist",
+    "count": 1250
+  },
+  {
+    "subcategory": "Sexologist",
+    "count": 194
+  },
+  {
+    "subcategory": "Geriatrician",
+    "count": 137
+  },
+  {
+    "subcategory": "Palliative Care Doctor",
+    "count": 399
+  },
+  {
+    "subcategory": "Infectious Disease Specialist",
+    "count": 285
+  },
+  {
+    "subcategory": "Allergist",
+    "count": 870
+  },
+  {
+    "subcategory": "Immunologist",
+    "count": 494
+  },
+  {
+    "subcategory": "Pain Specialist",
+    "count": 1534
+  },
+  {
+    "subcategory": "Sleep Specialist",
+    "count": 257
+  },
+  {
+    "subcategory": "Fertility Specialist",
+    "count": 1029
+  },
+  {
+    "subcategory": "Reproductive Medicine Specialist",
+    "count": 938
+  },
+  {
+    "subcategory": "Geneticist",
+    "count": 71
+  },
+  {
+    "subcategory": "Nuclear Medicine Specialist",
+    "count": 170
+  },
+  {
+    "subcategory": "Emergency Medicine Doctor",
+    "count": 2095
+  },
+  {
+    "subcategory": "Critical Care Specialist",
+    "count": 1007
+  },
+  {
+    "subcategory": "Occupational Medicine Doctor",
+    "count": 751
+  },
+  {
+    "subcategory": "Public Health Doctor",
+    "count": 3145
+  },
+  {
+    "subcategory": "Preventive Medicine Doctor",
+    "count": 1494
+  },
+  {
+    "subcategory": "Cosmetic Dentist",
+    "count": 2606
+  },
+  {
+    "subcategory": "Oral Medicine Specialist",
+    "count": 2827
+  },
+  {
+    "subcategory": "Implant Dentist",
+    "count": 2051
+  },
+  {
+    "subcategory": "Dental Implant Center",
+    "count": 738
+  },
+  {
+    "subcategory": "Root Canal Specialist",
+    "count": 2517
+  },
+  {
+    "subcategory": "Dental Surgery Center",
+    "count": 1569
+  },
+  {
+    "subcategory": "Maxillofacial Surgeon",
+    "count": 2084
+  },
+  {
+    "subcategory": "Emergency Dentist",
+    "count": 2431
+  },
+  {
+    "subcategory": "Denture Clinic",
+    "count": 3219
+  },
+  {
+    "subcategory": "Dental Laboratory",
+    "count": 486
+  },
+  {
+    "subcategory": "Teeth Whitening Clinic",
+    "count": 2239
+  },
+  {
+    "subcategory": "Diagnostic Center",
+    "count": 3144
+  },
+  {
+    "subcategory": "Diagnostic Laboratory",
+    "count": 2535
+  },
+  {
+    "subcategory": "Pathology Laboratory",
+    "count": 1526
+  },
+  {
+    "subcategory": "Medical Laboratory",
+    "count": 3040
+  },
+  {
+    "subcategory": "Clinical Laboratory",
+    "count": 2477
+  },
+  {
+    "subcategory": "Blood Testing Laboratory",
+    "count": 1968
+  },
+  {
+    "subcategory": "Health Checkup Center",
+    "count": 2097
+  },
+  {
+    "subcategory": "Preventive Health Checkup Center",
+    "count": 1443
+  },
+  {
+    "subcategory": "Full Body Health Checkup",
+    "count": 1275
+  },
+  {
+    "subcategory": "Genetic Testing Laboratory",
+    "count": 413
+  },
+  {
+    "subcategory": "Molecular Diagnostic Laboratory",
+    "count": 255
+  },
+  {
+    "subcategory": "Microbiology Laboratory",
+    "count": 396
+  },
+  {
+    "subcategory": "Histopathology Laboratory",
+    "count": 798
+  },
+  {
+    "subcategory": "Cytology Laboratory",
+    "count": 486
+  },
+  {
+    "subcategory": "Hematology Laboratory",
+    "count": 585
+  },
+  {
+    "subcategory": "Biochemistry Laboratory",
+    "count": 510
+  },
+  {
+    "subcategory": "Immunology Laboratory",
+    "count": 182
+  },
+  {
+    "subcategory": "Toxicology Laboratory",
+    "count": 133
+  },
+  {
+    "subcategory": "Hormone Testing Laboratory",
+    "count": 864
+  },
+  {
+    "subcategory": "Fertility Testing Laboratory",
+    "count": 771
+  },
+  {
+    "subcategory": "COVID Testing Center",
+    "count": 10
+  },
+  {
+    "subcategory": "Infectious Disease Testing Center",
+    "count": 856
+  },
+  {
+    "subcategory": "Diagnostic Imaging Center",
+    "count": 1075
+  },
+  {
+    "subcategory": "Radiology Center",
+    "count": 2499
+  },
+  {
+    "subcategory": "X-Ray Center",
+    "count": 2144
+  },
+  {
+    "subcategory": "MRI Center",
+    "count": 1210
+  },
+  {
+    "subcategory": "CT Scan Center",
+    "count": 1120
+  },
+  {
+    "subcategory": "Ultrasound Center",
+    "count": 1868
+  },
+  {
+    "subcategory": "Sonography Center",
+    "count": 1408
+  },
+  {
+    "subcategory": "Mammography Center",
+    "count": 337
+  },
+  {
+    "subcategory": "PET Scan Center",
+    "count": 153
+  },
+  {
+    "subcategory": "Nuclear Medicine Center",
+    "count": 84
+  },
+  {
+    "subcategory": "Bone Density Scan Center",
+    "count": 555
+  },
+  {
+    "subcategory": "DEXA Scan Center",
+    "count": 334
+  },
+  {
+    "subcategory": "Echocardiography Center",
+    "count": 461
+  },
+  {
+    "subcategory": "Doppler Scan Center",
+    "count": 362
+  },
+  {
+    "subcategory": "Pharmacy",
+    "count": 4659
+  },
+  {
+    "subcategory": "Medical Store",
+    "count": 3328
+  },
+  {
+    "subcategory": "Drug Store",
+    "count": 4792
+  },
+  {
+    "subcategory": "Retail Pharmacy",
+    "count": 4290
+  },
+  {
+    "subcategory": "Hospital Pharmacy",
+    "count": 2735
+  },
+  {
+    "subcategory": "Community Pharmacy",
+    "count": 962
+  },
+  {
+    "subcategory": "24 Hour Pharmacy",
+    "count": 226
+  },
+  {
+    "subcategory": "Online Pharmacy",
+    "count": 1773
+  },
+  {
+    "subcategory": "Specialty Pharmacy",
+    "count": 924
+  },
+  {
+    "subcategory": "Compounding Pharmacy",
+    "count": 517
+  },
+  {
+    "subcategory": "Ayurvedic Pharmacy",
+    "count": 1149
+  },
+  {
+    "subcategory": "Homeopathic Pharmacy",
+    "count": 830
+  },
+  {
+    "subcategory": "Veterinary Pharmacy",
+    "count": 401
+  },
+  {
+    "subcategory": "Surgical Pharmacy",
+    "count": 1388
+  },
+  {
+    "subcategory": "Generic Medicine Store",
+    "count": 634
+  },
+  {
+    "subcategory": "Medical Distributor",
+    "count": 1714
+  },
+  {
+    "subcategory": "Pharmaceutical Distributor",
+    "count": 1008
+  },
+  {
+    "subcategory": "Physiotherapy Clinic",
+    "count": 1824
+  },
+  {
+    "subcategory": "Physical Therapy Clinic",
+    "count": 1701
+  },
+  {
+    "subcategory": "Rehabilitation Center",
+    "count": 1045
+  },
+  {
+    "subcategory": "Sports Rehabilitation",
+    "count": 880
+  },
+  {
+    "subcategory": "Neuro Rehabilitation",
+    "count": 712
+  },
+  {
+    "subcategory": "Cardiac Rehabilitation",
+    "count": 799
+  },
+  {
+    "subcategory": "Pulmonary Rehabilitation",
+    "count": 355
+  },
+  {
+    "subcategory": "Pediatric Rehabilitation",
+    "count": 415
+  },
+  {
+    "subcategory": "Geriatric Rehabilitation",
+    "count": 688
+  },
+  {
+    "subcategory": "Occupational Therapy",
+    "count": 561
+  },
+  {
+    "subcategory": "Speech Therapy",
+    "count": 579
+  },
+  {
+    "subcategory": "Occupational Rehabilitation",
+    "count": 552
+  },
+  {
+    "subcategory": "Stroke Rehabilitation",
+    "count": 618
+  },
+  {
+    "subcategory": "Spinal Rehabilitation",
+    "count": 1044
+  },
+  {
+    "subcategory": "Orthopedic Rehabilitation",
+    "count": 623
+  },
+  {
+    "subcategory": "Psychiatry Clinic",
+    "count": 836
+  },
+  {
+    "subcategory": "Counseling Center",
+    "count": 941
+  },
+  {
+    "subcategory": "Mental Health Clinic",
+    "count": 1329
+  },
+  {
+    "subcategory": "Child Psychologist",
+    "count": 863
+  },
+  {
+    "subcategory": "Alcohol Rehabilitation Center",
+    "count": 299
+  },
+  {
+    "subcategory": "Women's Hospital",
+    "count": 1252
+  },
+  {
+    "subcategory": "Women's Health Clinic",
+    "count": 1016
+  },
+  {
+    "subcategory": "IVF Center",
+    "count": 527
+  },
+  {
+    "subcategory": "Prenatal Care Center",
+    "count": 1800
+  },
+  {
+    "subcategory": "Postnatal Care Center",
+    "count": 334
+  },
+  {
+    "subcategory": "Menopause Clinic",
+    "count": 590
+  },
+  {
+    "subcategory": "Breast Cancer Center",
+    "count": 301
+  },
+  {
+    "subcategory": "Cervical Cancer Screening Center",
+    "count": 75
+  },
+  {
+    "subcategory": "High Risk Pregnancy Center",
+    "count": 720
+  },
+  {
+    "subcategory": "Infertility Clinic",
+    "count": 148
+  },
+  {
+    "subcategory": "IUI Center",
+    "count": 381
+  },
+  {
+    "subcategory": "Embryology Center",
+    "count": 233
+  },
+  {
+    "subcategory": "Andrology Center",
+    "count": 88
+  },
+  {
+    "subcategory": "Eye Clinic",
+    "count": 1231
+  },
+  {
+    "subcategory": "Cataract Surgery Center",
+    "count": 348
+  },
+  {
+    "subcategory": "Ear Specialist",
+    "count": 552
+  },
+  {
+    "subcategory": "Nose Specialist",
+    "count": 1034
+  },
+  {
+    "subcategory": "Throat Specialist",
+    "count": 901
+  },
+  {
+    "subcategory": "Hearing Center",
+    "count": 504
+  },
+  {
+    "subcategory": "Audiology Center",
+    "count": 661
+  },
+  {
+    "subcategory": "Speech Therapy Center",
+    "count": 416
+  },
+  {
+    "subcategory": "Cochlear Implant Center",
+    "count": 111
+  },
+  {
+    "subcategory": "Sinus Clinic",
+    "count": 720
+  },
+  {
+    "subcategory": "Allergy ENT Clinic",
+    "count": 304
+  },
+  {
+    "subcategory": "Vertigo Clinic",
+    "count": 72
+  },
+  {
+    "subcategory": "Hearing Aid Center",
+    "count": 388
+  },
+  {
+    "subcategory": "Emergency Department",
+    "count": 1547
+  },
+  {
+    "subcategory": "Emergency Clinic",
+    "count": 3664
+  },
+  {
+    "subcategory": "Urgent Care Center",
+    "count": 4434
+  },
+  {
+    "subcategory": "Accident & Emergency",
+    "count": 289
+  },
+  {
+    "subcategory": "Trauma Center",
+    "count": 401
+  },
+  {
+    "subcategory": "Ambulance Service",
+    "count": 425
+  },
+  {
+    "subcategory": "Emergency Ambulance",
+    "count": 429
+  },
+  {
+    "subcategory": "Air Ambulance",
+    "count": 128
+  },
+  {
+    "subcategory": "Medical Transport",
+    "count": 621
+  },
+  {
+    "subcategory": "Patient Transport",
+    "count": 546
+  },
+  {
+    "subcategory": "Critical Care Ambulance",
+    "count": 149
+  },
+  {
+    "subcategory": "Emergency Medical Service",
+    "count": 1343
+  },
+  {
+    "subcategory": "Home Nursing",
+    "count": 717
+  },
+  {
+    "subcategory": "Home Doctor",
+    "count": 967
+  },
+  {
+    "subcategory": "Home Physiotherapy",
+    "count": 804
+  },
+  {
+    "subcategory": "Home Medical Care",
+    "count": 901
+  },
+  {
+    "subcategory": "Home Diagnostic Service",
+    "count": 1633
+  },
+  {
+    "subcategory": "Home Blood Collection",
+    "count": 1264
+  },
+  {
+    "subcategory": "Home Lab Testing",
+    "count": 1609
+  },
+  {
+    "subcategory": "Elderly Home Care",
+    "count": 748
+  },
+  {
+    "subcategory": "Senior Care",
+    "count": 787
+  },
+  {
+    "subcategory": "Palliative Home Care",
+    "count": 288
+  },
+  {
+    "subcategory": "Postoperative Home Care",
+    "count": 389
+  },
+  {
+    "subcategory": "Home ICU",
+    "count": 570
+  },
+  {
+    "subcategory": "Home Respiratory Care",
+    "count": 335
+  },
+  {
+    "subcategory": "Home Rehabilitation",
+    "count": 1141
+  },
+  {
+    "subcategory": "Home Medicine Delivery",
+    "count": 1809
+  },
+  {
+    "subcategory": "Senior Care Center",
+    "count": 705
+  },
+  {
+    "subcategory": "Elder Care Center",
+    "count": 585
+  },
+  {
+    "subcategory": "Assisted Living",
+    "count": 743
+  },
+  {
+    "subcategory": "Nursing Home",
+    "count": 1234
+  },
+  {
+    "subcategory": "Retirement Home",
+    "count": 936
+  },
+  {
+    "subcategory": "Senior Living",
+    "count": 675
+  },
+  {
+    "subcategory": "Geriatric Care Center",
+    "count": 405
+  },
+  {
+    "subcategory": "Dementia Care Center",
+    "count": 247
+  },
+  {
+    "subcategory": "Alzheimer's Care Center",
+    "count": 98
+  },
+  {
+    "subcategory": "Memory Care Center",
+    "count": 449
+  },
+  {
+    "subcategory": "Old Age Home",
+    "count": 411
+  },
+  {
+    "subcategory": "Residential Care Home",
+    "count": 1014
+  },
+  {
+    "subcategory": "Long Term Care Facility",
+    "count": 731
+  },
+  {
+    "subcategory": "Palliative Care Facility",
+    "count": 260
+  },
+  {
+    "subcategory": "Skilled Nursing Facility",
+    "count": 1856
+  },
+  {
+    "subcategory": "Residential Care Facility",
+    "count": 1291
+  },
+  {
+    "subcategory": "Assisted Living Facility",
+    "count": 712
+  },
+  {
+    "subcategory": "Hospice",
+    "count": 322
+  },
+  {
+    "subcategory": "Palliative Care Center",
+    "count": 266
+  },
+  {
+    "subcategory": "Rehabilitation Facility",
+    "count": 1095
+  },
+  {
+    "subcategory": "Convalescent Home",
+    "count": 1482
+  },
+  {
+    "subcategory": "Care Home",
+    "count": 1439
+  },
+  {
+    "subcategory": "Nursing Care Center",
+    "count": 1360
+  },
+  {
+    "subcategory": "Medical Equipment Supplier",
+    "count": 1362
+  },
+  {
+    "subcategory": "Medical Equipment Store",
+    "count": 1683
+  },
+  {
+    "subcategory": "Surgical Equipment Supplier",
+    "count": 376
+  },
+  {
+    "subcategory": "Surgical Instrument Supplier",
+    "count": 418
+  },
+  {
+    "subcategory": "Hospital Equipment Supplier",
+    "count": 1256
+  },
+  {
+    "subcategory": "Diagnostic Equipment Supplier",
+    "count": 405
+  },
+  {
+    "subcategory": "Laboratory Equipment Supplier",
+    "count": 387
+  },
+  {
+    "subcategory": "Medical Device Supplier",
+    "count": 1465
+  },
+  {
+    "subcategory": "Mobility Equipment Store",
+    "count": 1077
+  },
+  {
+    "subcategory": "Wheelchair Supplier",
+    "count": 400
+  },
+  {
+    "subcategory": "Hospital Bed Supplier",
+    "count": 847
+  },
+  {
+    "subcategory": "Oxygen Equipment Supplier",
+    "count": 388
+  },
+  {
+    "subcategory": "CPAP Supplier",
+    "count": 260
+  },
+  {
+    "subcategory": "Prosthetic Supplier",
+    "count": 62
+  },
+  {
+    "subcategory": "Orthopedic Equipment Supplier",
+    "count": 180
+  },
+  {
+    "subcategory": "Hearing Aid Supplier",
+    "count": 302
+  },
+  {
+    "subcategory": "Dental Equipment Supplier",
+    "count": 170
+  },
+  {
+    "subcategory": "Dental Supply Store",
+    "count": 327
+  },
+  {
+    "subcategory": "Medical Consumables Supplier",
+    "count": 1750
+  },
+  {
+    "subcategory": "Ayurveda Clinic",
+    "count": 1316
+  },
+  {
+    "subcategory": "Ayurvedic Hospital",
+    "count": 1360
+  },
+  {
+    "subcategory": "Ayurvedic Doctor",
+    "count": 1581
+  },
+  {
+    "subcategory": "Homeopathy Clinic",
+    "count": 946
+  },
+  {
+    "subcategory": "Homeopathic Doctor",
+    "count": 1008
+  },
+  {
+    "subcategory": "Naturopathy Center",
+    "count": 310
+  },
+  {
+    "subcategory": "Yoga Therapy Center",
+    "count": 986
+  },
+  {
+    "subcategory": "Acupuncture Clinic",
+    "count": 629
+  },
+  {
+    "subcategory": "Traditional Medicine Center",
+    "count": 1202
+  },
+  {
+    "subcategory": "Unani Clinic",
+    "count": 118
+  },
+  {
+    "subcategory": "Siddha Clinic",
+    "count": 217
+  },
+  {
+    "subcategory": "Traditional Chinese Medicine Clinic",
+    "count": 139
+  },
+  {
+    "subcategory": "Chiropractic Clinic",
+    "count": 299
+  },
+  {
+    "subcategory": "Osteopathy Clinic",
+    "count": 259
+  },
+  {
+    "subcategory": "Massage Therapy Center",
+    "count": 1689
+  },
+  {
+    "subcategory": "Holistic Health Center",
+    "count": 623
+  },
+  {
+    "subcategory": "Nutritionist",
+    "count": 1375
+  },
+  {
+    "subcategory": "Dietitian",
+    "count": 877
+  },
+  {
+    "subcategory": "Clinical Nutritionist",
+    "count": 238
+  },
+  {
+    "subcategory": "Sports Nutritionist",
+    "count": 767
+  },
+  {
+    "subcategory": "Nutrition Clinic",
+    "count": 670
+  },
+  {
+    "subcategory": "Diet Clinic",
+    "count": 720
+  },
+  {
+    "subcategory": "Weight Loss Clinic",
+    "count": 1174
+  },
+  {
+    "subcategory": "Obesity Clinic",
+    "count": 859
+  },
+  {
+    "subcategory": "Bariatric Clinic",
+    "count": 507
+  },
+  {
+    "subcategory": "Bariatric Surgery Center",
+    "count": 572
+  },
+  {
+    "subcategory": "Diabetes Nutrition Center",
+    "count": 429
+  },
+  {
+    "subcategory": "Child Nutrition Center",
+    "count": 361
+  },
+  {
+    "subcategory": "Chronic Pain Clinic",
+    "count": 1132
+  },
+  {
+    "subcategory": "Spine Pain Clinic",
+    "count": 455
+  },
+  {
+    "subcategory": "Back Pain Clinic",
+    "count": 1594
+  },
+  {
+    "subcategory": "Joint Pain Clinic",
+    "count": 1382
+  },
+  {
+    "subcategory": "Headache Clinic",
+    "count": 909
+  },
+  {
+    "subcategory": "Migraine Clinic",
+    "count": 975
+  },
+  {
+    "subcategory": "Interventional Pain Center",
+    "count": 145
+  },
+  {
+    "subcategory": "Palliative Pain Clinic",
+    "count": 98
+  },
+  {
+    "subcategory": "Skin Clinic",
+    "count": 1722
+  },
+  {
+    "subcategory": "Hair Clinic",
+    "count": 1105
+  },
+  {
+    "subcategory": "Hair Transplant Clinic",
+    "count": 385
+  },
+  {
+    "subcategory": "Cosmetic Dermatology Clinic",
+    "count": 1120
+  },
+  {
+    "subcategory": "Aesthetic Clinic",
+    "count": 1301
+  },
+  {
+    "subcategory": "Medical Aesthetics Clinic",
+    "count": 1124
+  },
+  {
+    "subcategory": "Laser Skin Clinic",
+    "count": 849
+  },
+  {
+    "subcategory": "Acne Clinic",
+    "count": 923
+  },
+  {
+    "subcategory": "Psoriasis Clinic",
+    "count": 479
+  },
+  {
+    "subcategory": "Vitiligo Clinic",
+    "count": 257
+  },
+  {
+    "subcategory": "Hair Loss Clinic",
+    "count": 726
+  },
+  {
+    "subcategory": "Scar Treatment Clinic",
+    "count": 727
+  },
+  {
+    "subcategory": "Cosmetic Surgery Clinic",
+    "count": 873
+  },
+  {
+    "subcategory": "Plastic Surgery Center",
+    "count": 470
+  },
+  {
+    "subcategory": "Pediatric Hospital",
+    "count": 1102
+  },
+  {
+    "subcategory": "Neonatal ICU",
+    "count": 299
+  },
+  {
+    "subcategory": "Pediatric ICU",
+    "count": 419
+  },
+  {
+    "subcategory": "Children's Clinic",
+    "count": 1013
+  },
+  {
+    "subcategory": "Child Development Center",
+    "count": 1915
+  },
+  {
+    "subcategory": "Child Neurology Clinic",
+    "count": 271
+  },
+  {
+    "subcategory": "Pediatric Cardiology",
+    "count": 529
+  },
+  {
+    "subcategory": "Pediatric Surgery",
+    "count": 927
+  },
+  {
+    "subcategory": "Pediatric Dentistry",
+    "count": 1912
+  },
+  {
+    "subcategory": "Child Vaccination Center",
+    "count": 726
+  },
+  {
+    "subcategory": "Child Immunization Center",
+    "count": 578
+  },
+  {
+    "subcategory": "Newborn Care Center",
+    "count": 1143
+  },
+  {
+    "subcategory": "Lactation Consultant",
+    "count": 133
+  },
+  {
+    "subcategory": "Breastfeeding Support Center",
+    "count": 120
+  },
+  {
+    "subcategory": "Vaccination Center",
+    "count": 710
+  },
+  {
+    "subcategory": "Immunization Center",
+    "count": 918
+  },
+  {
+    "subcategory": "Health Screening Center",
+    "count": 1725
+  },
+  {
+    "subcategory": "Preventive Health Center",
+    "count": 815
+  },
+  {
+    "subcategory": "Corporate Health Checkup",
+    "count": 1563
+  },
+  {
+    "subcategory": "Occupational Health Center",
+    "count": 685
+  },
+  {
+    "subcategory": "Public Health Center",
+    "count": 922
+  },
+  {
+    "subcategory": "Community Health Center",
+    "count": 557
+  },
+  {
+    "subcategory": "Primary Health Center",
+    "count": 283
+  },
+  {
+    "subcategory": "Family Health Center",
+    "count": 1196
+  },
+  {
+    "subcategory": "Wellness Center",
+    "count": 1690
+  },
+  {
+    "subcategory": "Travel Vaccination Center",
+    "count": 284
+  },
+  {
+    "subcategory": "Health Camp",
+    "count": 570
+  },
+  {
+    "subcategory": "Blood Bank",
+    "count": 169
+  },
+  {
+    "subcategory": "Blood Donation Center",
+    "count": 348
+  },
+  {
+    "subcategory": "Plasma Donation Center",
+    "count": 112
+  },
+  {
+    "subcategory": "Platelet Donation Center",
+    "count": 142
+  },
+  {
+    "subcategory": "Stem Cell Donation Center",
+    "count": 44
+  },
+  {
+    "subcategory": "Stem Cell Bank",
+    "count": 18
+  },
+  {
+    "subcategory": "Cord Blood Bank",
+    "count": 37
+  },
+  {
+    "subcategory": "Tissue Bank",
+    "count": 40
+  },
+  {
+    "subcategory": "Organ Donation Center",
+    "count": 42
+  },
+  {
+    "subcategory": "Eye Bank",
+    "count": 63
+  },
+  {
+    "subcategory": "Biobank",
+    "count": 66
+  },
+  {
+    "subcategory": "Palliative Care",
+    "count": 352
+  },
+  {
+    "subcategory": "End of Life Care",
+    "count": 445
+  },
+  {
+    "subcategory": "Funeral Medical Services",
+    "count": 137
+  },
+  {
+    "subcategory": "Mortuary",
+    "count": 271
+  },
+  {
+    "subcategory": "Hospital Mortuary",
+    "count": 197
+  },
+  {
+    "subcategory": "Cremation Service",
+    "count": 172
+  },
+  {
+    "subcategory": "Burial Service",
+    "count": 242
+  },
+  {
+    "subcategory": "Funeral Home",
+    "count": 183
+  },
+  {
+    "subcategory": "Medical College",
+    "count": 338
+  },
+  {
+    "subcategory": "Nursing College",
+    "count": 304
+  },
+  {
+    "subcategory": "Nursing School",
+    "count": 413
+  },
+  {
+    "subcategory": "Medical Training Institute",
+    "count": 624
+  },
+  {
+    "subcategory": "Paramedical College",
+    "count": 233
+  },
+  {
+    "subcategory": "Pharmacy College",
+    "count": 100
+  },
+  {
+    "subcategory": "Dental College",
+    "count": 106
+  },
+  {
+    "subcategory": "Physiotherapy College",
+    "count": 82
+  },
+  {
+    "subcategory": "Allied Health Institute",
+    "count": 85
+  },
+  {
+    "subcategory": "Medical Laboratory Training Institute",
+    "count": 721
+  },
+  {
+    "subcategory": "Radiology Training Institute",
+    "count": 111
+  },
+  {
+    "subcategory": "EMT Training Institute",
+    "count": 8
+  },
+  {
+    "subcategory": "First Aid Training Center",
+    "count": 37
+  },
+  {
+    "subcategory": "CPR Training Center",
+    "count": 138
+  },
+  {
+    "subcategory": "Healthcare Training Center",
+    "count": 1587
+  },
+  {
+    "subcategory": "Veterinary Hospital",
+    "count": 544
+  },
+  {
+    "subcategory": "Veterinary Clinic",
+    "count": 582
+  },
+  {
+    "subcategory": "Veterinarian",
+    "count": 728
+  },
+  {
+    "subcategory": "Animal Hospital",
+    "count": 533
+  },
+  {
+    "subcategory": "Pet Hospital",
+    "count": 635
+  },
+  {
+    "subcategory": "Animal Clinic",
+    "count": 583
+  },
+  {
+    "subcategory": "Emergency Veterinary Clinic",
+    "count": 329
+  },
+  {
+    "subcategory": "Veterinary Diagnostic Center",
+    "count": 263
+  },
+  {
+    "subcategory": "Veterinary Laboratory",
+    "count": 243
+  },
+  {
+    "subcategory": "Veterinary Surgery Center",
+    "count": 277
+  },
+  {
+    "subcategory": "Animal Rehabilitation Center",
+    "count": 130
+  }
+]

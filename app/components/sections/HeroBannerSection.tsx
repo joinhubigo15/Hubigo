@@ -3,9 +3,11 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Search, Sparkles, Menu } from "lucide-react";
+import Link from "next/link";
+import { Search, Sparkles, Menu, MessageSquare } from "lucide-react";
 import { useAuth } from "@/app/lib/auth-context";
 import CityPickerPill from "@/app/components/layout/CityPickerPill";
+import NotificationBell from "@/app/components/ui/NotificationBell";
 import { resolveTopSearchOrFallback, TOP_X_IN_Y_PATTERN } from "@/app/lib/search-api";
 
 /** Strictly 3-4 words + name (if authenticated) */
@@ -75,19 +77,23 @@ export default function HeroBannerSection() {
   }, [user?.name]);
 
   const searchBarCard = (
-    <div className="bg-white rounded-xl sm:rounded-2xl shadow-sm border border-slate-200/90 p-1.5 sm:p-2 flex items-center gap-1.5">
+    <div className="bg-white rounded-2xl shadow-sm border border-purple-300/80 hover:border-purple-400 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/10 p-1.5 sm:p-2 flex items-center gap-2 transition-all">
       <div className="flex-1 flex items-center px-3.5 py-1">
         <input
           type="text"
-          placeholder="Search for businesses, services..."
+          placeholder="Search Doctors, Hospitals, Clinics, Diagnostic Labs, Pharmacies..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) => {
+            const v = e.target.value;
+            setSearchQuery(v ? v.charAt(0).toUpperCase() + v.slice(1) : "");
+          }}
           onKeyDown={handleSearchKeyDown}
-          className="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-800 placeholder-slate-400 focus:outline-none"
+          autoCapitalize="words"
+          className="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none capitalize"
         />
       </div>
 
-      <div className="h-5 w-px bg-slate-200 shrink-0 hidden sm:block" />
+      <div className="h-6 w-px bg-slate-200 shrink-0 hidden sm:block" />
 
       <div className="shrink-0 hidden sm:block">
         <CityPickerPill size="sm" />
@@ -96,9 +102,9 @@ export default function HeroBannerSection() {
       <button
         onClick={handleSearch}
         aria-label="Search"
-        className="bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs px-3.5 sm:px-5 lg:px-6 py-1.5 sm:py-2 rounded-lg sm:rounded-xl flex items-center gap-1.5 shadow-sm shadow-purple-600/25 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
+        className="bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs px-5 sm:px-6 py-2 sm:py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm shadow-purple-600/30 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
       >
-        <Search className="w-3.5 h-3.5 stroke-[2.5]" />
+        <Search className="w-4 h-4 stroke-[2.5]" />
         <span className="hidden sm:inline">Search</span>
       </button>
     </div>
@@ -118,9 +124,10 @@ export default function HeroBannerSection() {
             </span>
           </div>
 
-          {/* Location & Menu */}
-          <div className="flex items-center gap-1.5 mt-0.5">
+          {/* Location & Website Notification Center */}
+          <div className="flex items-center gap-2 mt-0.5">
             <CityPickerPill size="xs" />
+            <NotificationBell size="sm" />
           </div>
         </div>
 
@@ -137,39 +144,32 @@ export default function HeroBannerSection() {
             {/* Clean HTML Headline with ZERO Overlap */}
             <div className="space-y-1 lg:space-y-2">
               <h1 className="text-base sm:text-xl lg:text-4xl font-black text-slate-900 tracking-tight leading-tight">
-                Find. Connect.
+                Find Top Hospitals,
                 <br />
-                Grow with <span className="text-purple-600">Hubigo.</span>
+                Doctors & <span className="text-purple-600">Healthcare.</span>
               </h1>
               <p className="text-[10px] sm:text-xs lg:text-sm font-semibold text-slate-500 max-w-sm lg:max-w-md leading-snug">
-                Discover trusted local businesses and services near you.
+                Discover trusted hospitals, clinics, specialist doctors, diagnostic labs & pharmacies near you.
               </p>
             </div>
 
-            {/* Desktop-only search bar — lives directly under the paragraph in normal document
-                flow (not a separate grid row), so it isn't pushed down by the taller image
-                column on the right. See the lg:hidden copy below for mobile/tablet. */}
+            {/* Desktop-only search bar */}
             <div className="hidden lg:block max-w-2xl mt-6">
               {searchBarCard}
             </div>
           </div>
 
-          {/* Right Hero Image — hosted on R2 (profile-pics bucket), pure white background
-              blended flat via mix-blend-multiply against the page's off-white background.
-              This is the page's LCP element, so it goes through next/image (responsive
-              srcset + WebP/AVIF + priority preload) instead of a raw <img> — the raw tag was
-              shipping the full 900x667 JPEG (134KB) at a ~170px-tall display size, tanking
-              mobile PageSpeed's LCP score. */}
+          {/* Right Hero Image — Vector Healthcare Illustration with Real Foreign Doctor Face */}
           <div className="col-span-5 relative flex items-center justify-center overflow-visible">
             <Image
-              src="https://pub-e457284fdd7844e5b0bcc12b89e4a198.r2.dev/whitehero-crop.jpeg"
-              alt="Discover local businesses"
+              src="/healthcare-hero-v4.jpg"
+              alt="Hubigo Healthcare - Verified Doctors & Hospitals"
               width={900}
               height={667}
               priority
               fetchPriority="high"
-              sizes="(min-width: 1024px) 320px, (min-width: 640px) 260px, 200px"
-              className="w-full h-auto max-h-[170px] sm:max-h-[200px] lg:max-h-[250px] object-contain mix-blend-multiply lg:scale-105 lg:translate-x-2 transition-transform duration-300"
+              sizes="(min-width: 1024px) 340px, (min-width: 640px) 300px, 240px"
+              className="w-full h-auto max-h-[220px] sm:max-h-[250px] lg:max-h-[240px] object-contain mix-blend-multiply scale-110 sm:scale-115 lg:scale-100 lg:translate-x-0 transition-transform duration-300"
             />
           </div>
         </div>

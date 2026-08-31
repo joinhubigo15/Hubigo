@@ -6,15 +6,16 @@ export interface CategoryRecord {
   subcategory: string;
 }
 
-export type City = "bangalore" | "chennai" | "mumbai" | "hyderabad";
+export type City = "bangalore" | "chennai" | "mumbai" | "hyderabad" | "gulbarga";
 
-export const CITIES: City[] = ["bangalore", "chennai", "mumbai", "hyderabad"];
+export const CITIES: City[] = ["bangalore", "chennai", "mumbai", "hyderabad", "gulbarga"];
 
 export const CITY_LABEL: Record<City, string> = {
   bangalore: "Bangalore",
   chennai: "Chennai",
   mumbai: "Mumbai",
   hyderabad: "Hyderabad",
+  gulbarga: "Gulbarga",
 };
 
 export type SearchMode = "plain" | "area";

@@ -60,11 +60,8 @@ export default async function HomePage() {
           {/* Category Icons Selector Strip */}
           <CategoryStrip />
 
-          {/* Featured Businesses Section (2 Rows: 8 Cards Desktop, 6 Cards Mobile) */}
+          {/* Featured Businesses Section */}
           <FeaturedBusinessesSection initialBusinesses={initialBusinesses} />
-
-          {/* Stats Strip Banner */}
-          <StatsStripBanner initialStats={initialStats} />
 
           {/* Popular Businesses Section (Brand Logos) */}
           <PopularBusinessesSection />

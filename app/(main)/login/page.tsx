@@ -14,9 +14,11 @@ import {
   Building2,
   Users,
   Star,
-  Utensils,
-  Car,
+  Stethoscope,
+  Pill,
   Heart,
+  Activity,
+  Hospital,
 } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { API_URL } from "@/app/lib/api";
@@ -30,16 +32,16 @@ const roleConfig: Record<
   { label: string; icon: React.ElementType; heading: string; subtext: string }
 > = {
   user: {
-    label: "User Login",
+    label: "Patient Login",
     icon: User,
-    heading: "Welcome back! 👋",
-    subtext: "Sign in with Google to continue exploring Hubigo",
+    heading: "Patient Portal 👋",
+    subtext: "Sign in with Google to search top doctors, book OPD appointments & save healthcare centers",
   },
   business: {
-    label: "Business Login",
-    icon: Store,
-    heading: "Welcome back! 👋",
-    subtext: "Sign in with Google to access your business dashboard & leads",
+    label: "Doctor & Hospital Login",
+    icon: Building2,
+    heading: "Healthcare Provider Portal 👋",
+    subtext: "Sign in with Google to manage your OPD schedule, patient leads & healthcare facility profile",
   },
 };
 
@@ -139,7 +141,7 @@ function LoginPageInner() {
         {/* Top Header Row */}
         <div className="z-10 relative flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Hubigo" className="w-8 h-8 object-contain" />
+            <img src="/logo.png" alt="Hubigo Healthcare" className="w-8 h-8 object-contain" />
             <span className="text-lg font-black tracking-tight text-white">
               HUB<span className="text-purple-400">IGO</span>
             </span>
@@ -152,23 +154,23 @@ function LoginPageInner() {
           {/* Left Text */}
           <div className="xl:col-span-7 space-y-3.5">
             {/* Top Shield Badge Pill */}
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/10 border border-white/15 backdrop-blur-md text-[10px] font-semibold text-purple-200">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-purple-950/80 border border-purple-500/30 backdrop-blur-md text-[10px] font-semibold text-purple-200">
               <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-              <span>India&apos;s Most Trusted Business Discovery Platform</span>
+              <span>India&apos;s Most Trusted Healthcare Directory</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-[1.15]">
-              Find.<br />
-              Connect.<br />
-              Grow with{" "}
+              Find Doctors.<br />
+              Book Care.<br />
+              Connect with{" "}
               <span className="bg-gradient-to-r from-purple-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent">
                 Hubigo.
               </span>
             </h1>
 
             <p className="text-[11px] sm:text-xs text-slate-300 font-medium leading-relaxed max-w-sm">
-              Discover verified businesses, connect instantly, and grow your brand with India&apos;s most advanced local discovery platform.
+              Discover NABH verified hospitals, top specialist doctors, 24/7 pharmacies, and diagnostic labs across India.
             </p>
 
             {/* 3 Glassmorphism Cards */}
@@ -178,28 +180,28 @@ function LoginPageInner() {
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-bold text-white">Verified & Trusted</h4>
-                  <p className="text-[9px] text-slate-400 font-medium leading-none">Every business is verified for your trust</p>
+                  <h4 className="text-[11px] font-bold text-white">Verified Healthcare</h4>
+                  <p className="text-[9px] text-slate-400 font-medium leading-none">NABH certified hospitals & verified doctors</p>
                 </div>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 backdrop-blur-md flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/30">
-                  <Zap className="w-3.5 h-3.5" />
+                  <Stethoscope className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-bold text-white">Smart & Fast Search</h4>
-                  <p className="text-[9px] text-slate-400 font-medium leading-none">Find exactly what you need in seconds</p>
+                  <h4 className="text-[11px] font-bold text-white">Instant Care Search</h4>
+                  <p className="text-[9px] text-slate-400 font-medium leading-none">Locate nearby clinics & OPD slots in seconds</p>
                 </div>
               </div>
 
               <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 backdrop-blur-md flex items-center gap-2.5">
                 <div className="w-7 h-7 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center shrink-0 border border-purple-500/30">
-                  <TrendingUp className="w-3.5 h-3.5" />
+                  <Activity className="w-3.5 h-3.5" />
                 </div>
                 <div>
-                  <h4 className="text-[11px] font-bold text-white">Grow Your Business</h4>
-                  <p className="text-[9px] text-slate-400 font-medium leading-none">Reach more customers and grow your brand</p>
+                  <h4 className="text-[11px] font-bold text-white">Patient & Practice Portal</h4>
+                  <p className="text-[9px] text-slate-400 font-medium leading-none">Connect directly with trusted medical providers</p>
                 </div>
               </div>
             </div>
@@ -218,16 +220,16 @@ function LoginPageInner() {
 
             {/* Floating Category Icons */}
             <div className="absolute top-2 left-2 w-7 h-7 rounded-lg bg-purple-500 text-white flex items-center justify-center shadow-md">
-              <Utensils className="w-3.5 h-3.5" />
+              <Stethoscope className="w-3.5 h-3.5" />
             </div>
             <div className="absolute top-8 right-0 w-7 h-7 rounded-lg bg-rose-500 text-white flex items-center justify-center shadow-md">
-              <Car className="w-3.5 h-3.5" />
+              <Heart className="w-3.5 h-3.5" />
             </div>
             <div className="absolute bottom-6 right-2 w-7 h-7 rounded-lg bg-blue-500 text-white flex items-center justify-center shadow-md">
-              <Building2 className="w-3.5 h-3.5" />
+              <Hospital className="w-3.5 h-3.5" />
             </div>
             <div className="absolute bottom-4 left-6 w-7 h-7 rounded-lg bg-emerald-500 text-white flex items-center justify-center shadow-md">
-              <Heart className="w-3.5 h-3.5" />
+              <Pill className="w-3.5 h-3.5" />
             </div>
           </div>
         </div>
@@ -236,10 +238,10 @@ function LoginPageInner() {
         <div className="z-10 relative bg-white/5 border border-white/10 rounded-xl p-2.5 backdrop-blur-md grid grid-cols-4 divide-x divide-white/10 text-center">
           <div className="px-1">
             <div className="flex items-center justify-center gap-1 text-purple-400 mb-0.5">
-              <Store className="w-3.5 h-3.5" />
+              <Hospital className="w-3.5 h-3.5" />
             </div>
-            <div className="text-xs sm:text-sm font-black text-white">10L+</div>
-            <div className="text-[9px] text-slate-400 font-semibold">Businesses</div>
+            <div className="text-xs sm:text-sm font-black text-white">10,000+</div>
+            <div className="text-[9px] text-slate-400 font-semibold">Healthcare Centers</div>
           </div>
 
           <div className="px-1">
@@ -247,15 +249,15 @@ function LoginPageInner() {
               <Building2 className="w-3.5 h-3.5" />
             </div>
             <div className="text-xs sm:text-sm font-black text-white">500+</div>
-            <div className="text-[9px] text-slate-400 font-semibold">Cities</div>
+            <div className="text-[9px] text-slate-400 font-semibold">Cities Covered</div>
           </div>
 
           <div className="px-1">
             <div className="flex items-center justify-center gap-1 text-purple-400 mb-0.5">
-              <Users className="w-3.5 h-3.5" />
+              <Stethoscope className="w-3.5 h-3.5" />
             </div>
-            <div className="text-xs sm:text-sm font-black text-white">50L+</div>
-            <div className="text-[9px] text-slate-400 font-semibold">Happy Users</div>
+            <div className="text-xs sm:text-sm font-black text-white">25+</div>
+            <div className="text-[9px] text-slate-400 font-semibold">Specialties</div>
           </div>
 
           <div className="px-1">
@@ -279,7 +281,7 @@ function LoginPageInner() {
         {/* Top Header Row (Mobile Brand Logo + English Selector) */}
         <div className="w-full flex items-center justify-between mb-4 z-10">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Hubigo" className="w-8 h-8 object-contain" />
+            <img src="/logo.png" alt="Hubigo Healthcare" className="w-8 h-8 object-contain" />
             <span className="text-lg font-black tracking-tight text-white lg:text-slate-900 lg:hidden">
               HUB<span className="text-purple-400">IGO</span>
             </span>
@@ -314,7 +316,7 @@ function LoginPageInner() {
 
           {reason === "business_required" ? (
             <div className="p-2.5 bg-amber-950/40 lg:bg-amber-50 border border-amber-500/25 lg:border-amber-200 rounded-xl text-[10px] font-bold text-amber-300 lg:text-amber-800 text-center leading-snug">
-              Please sign in with a business account to manage your listings.
+              Please sign in with a doctor/facility account to manage your listings.
             </div>
           ) : null}
 
@@ -331,7 +333,7 @@ function LoginPageInner() {
               )}
             >
               <User className="w-3.5 h-3.5" />
-              <span>User Login</span>
+              <span>Patient Login</span>
             </button>
             <button
               type="button"
@@ -343,8 +345,8 @@ function LoginPageInner() {
                   : "text-slate-400 hover:text-white lg:text-slate-500 lg:hover:text-slate-800"
               )}
             >
-              <Store className="w-3.5 h-3.5" />
-              <span>Business Login</span>
+              <Building2 className="w-3.5 h-3.5" />
+              <span>Doctor / Hospital</span>
             </button>
           </div>
 

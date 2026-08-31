@@ -5,7 +5,8 @@ import Link from "next/link";
 import { cn } from "@/app/lib/utils";
 import Button from "@/app/components/ui/Button";
 import { useAuth } from "@/app/lib/auth-context";
-import { User, LayoutDashboard, Building2, Plus, LogOut, ChevronDown } from "lucide-react";
+import NotificationBell from "@/app/components/ui/NotificationBell";
+import { User, LayoutDashboard, Building2, Plus, LogOut, ChevronDown, MessageSquare } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -103,10 +104,12 @@ export default function Navbar() {
 
             {/* Desktop Actions / Auth Pill */}
             <div className="hidden md:flex items-center gap-3" id="desktop-actions">
+              <NotificationBell />
+
               <Link href="/business/register">
                 <Button variant="primary" size="sm" className="flex items-center gap-1.5">
                   <Plus className="w-4 h-4" />
-                  <span>List Your Business</span>
+                  <span>List Practice / Facility</span>
                 </Button>
               </Link>
 

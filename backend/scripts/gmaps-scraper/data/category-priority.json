@@ -2,1457 +2,4726 @@
   {
     "priority": 1,
     "sectorRank": 1,
-    "sector": "Food & Beverage",
+    "sector": "Healthcare & Medical",
     "densityTier": "High",
-    "subcategory": "Bakery Database"
+    "subcategory": "Hospital"
   },
   {
     "priority": 2,
     "sectorRank": 2,
-    "sector": "Food & Beverage",
-    "densityTier": "High",
-    "subcategory": "Cafe Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Multi-Speciality Hospital"
   },
   {
     "priority": 3,
     "sectorRank": 3,
-    "sector": "Food & Beverage",
+    "sector": "Healthcare & Medical",
     "densityTier": "High",
-    "subcategory": "Coffee Shop Database"
+    "subcategory": "Medical Clinic"
   },
   {
     "priority": 4,
     "sectorRank": 4,
-    "sector": "Food & Beverage",
-    "densityTier": "High",
-    "subcategory": "Ice Cream Shop Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Diagnostic Center"
   },
   {
     "priority": 5,
     "sectorRank": 5,
-    "sector": "Food & Beverage",
+    "sector": "Healthcare & Medical",
     "densityTier": "High",
-    "subcategory": "Juice Shop Database"
+    "subcategory": "Dental Clinic"
   },
   {
     "priority": 6,
     "sectorRank": 6,
-    "sector": "Food & Beverage",
-    "densityTier": "High",
-    "subcategory": "Restaurant Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Dental Lab"
   },
   {
     "priority": 7,
     "sectorRank": 7,
-    "sector": "Food & Beverage",
+    "sector": "Healthcare & Medical",
     "densityTier": "High",
-    "subcategory": "Cake Shop Database"
+    "subcategory": "Pharmacy"
   },
   {
     "priority": 8,
     "sectorRank": 8,
-    "sector": "Food & Beverage",
+    "sector": "Healthcare & Medical",
     "densityTier": "High",
-    "subcategory": "Tea Store Database"
+    "subcategory": "Physiotherapy Center"
   },
   {
     "priority": 9,
     "sectorRank": 9,
-    "sector": "Food & Beverage",
-    "densityTier": "High",
-    "subcategory": "Chocolate Shop Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Cardiology Clinic"
   },
   {
     "priority": 10,
     "sectorRank": 10,
-    "sector": "Food & Beverage",
-    "densityTier": "Low",
-    "subcategory": "Desert Store Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Orthopedic Clinic"
   },
   {
     "priority": 11,
     "sectorRank": 11,
-    "sector": "Food & Beverage",
-    "densityTier": "High",
-    "subcategory": "Fast food store Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Low",
+    "subcategory": "Neurology Clinic"
   },
   {
     "priority": 12,
     "sectorRank": 12,
-    "sector": "Food & Beverage",
-    "densityTier": "High",
-    "subcategory": "Wine Store Database"
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "ENT Clinic"
   },
   {
     "priority": 13,
-    "sectorRank": 1,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Children's Clothing Store Database"
+    "sectorRank": 13,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Low",
+    "subcategory": "Gastroenterology Clinic"
   },
   {
     "priority": 14,
-    "sectorRank": 2,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Cosmetics Store Database"
+    "sectorRank": 14,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Low",
+    "subcategory": "Urology Clinic"
   },
   {
     "priority": 15,
-    "sectorRank": 3,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Gift Store Database"
+    "sectorRank": 15,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Pulmonary Clinic"
   },
   {
     "priority": 16,
-    "sectorRank": 4,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Grocery Store Database"
+    "sectorRank": 16,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Pediatrics Clinic"
   },
   {
     "priority": 17,
-    "sectorRank": 5,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Hardware Store Database"
+    "sectorRank": 17,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Psychiatry Clinic"
   },
   {
     "priority": 18,
-    "sectorRank": 6,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Men's Clothing Store Database"
+    "sectorRank": 18,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Skin Care Clinic"
   },
   {
     "priority": 19,
-    "sectorRank": 7,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Shoe Store Database"
+    "sectorRank": 19,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Eye Care Clinic"
   },
   {
     "priority": 20,
-    "sectorRank": 8,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Stationery Store Database"
+    "sectorRank": 20,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Low",
+    "subcategory": "Cancer Care Center"
   },
   {
     "priority": 21,
-    "sectorRank": 9,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Supermarket Database"
+    "sectorRank": 21,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Blood Testing Center"
   },
   {
     "priority": 22,
-    "sectorRank": 10,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Women's Clothing Store Database"
+    "sectorRank": 22,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Ambulance Service"
   },
   {
     "priority": 23,
-    "sectorRank": 11,
-    "sector": "Retail Stores",
-    "densityTier": "Low",
-    "subcategory": "Antique Store Database"
+    "sectorRank": 23,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Home Health Care"
   },
   {
     "priority": 24,
-    "sectorRank": 12,
-    "sector": "Retail Stores",
+    "sectorRank": 24,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Bag Store Database"
+    "subcategory": "Nursing Care"
   },
   {
     "priority": 25,
-    "sectorRank": 13,
-    "sector": "Retail Stores",
+    "sectorRank": 25,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Boutique Database"
+    "subcategory": "Rehabilitation Center"
   },
   {
     "priority": 26,
-    "sectorRank": 14,
-    "sector": "Retail Stores",
+    "sectorRank": 26,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Building Materials Store Database"
+    "subcategory": "Sports Medicine Clinic"
   },
   {
     "priority": 27,
-    "sectorRank": 15,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Meat Store Database"
+    "sectorRank": 27,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Low",
+    "subcategory": "Women's Health Clinic"
   },
   {
     "priority": 28,
-    "sectorRank": 16,
-    "sector": "Retail Stores",
-    "densityTier": "Medium",
-    "subcategory": "Costume Jewelry Store Database"
+    "sectorRank": 28,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Low",
+    "subcategory": "Pain Management Clinic"
   },
   {
     "priority": 29,
-    "sectorRank": 17,
-    "sector": "Retail Stores",
+    "sectorRank": 29,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Craft Store Database"
+    "subcategory": "Alternative Medicine Clinic"
   },
   {
     "priority": 30,
-    "sectorRank": 18,
-    "sector": "Retail Stores",
-    "densityTier": "Very Low",
-    "subcategory": "Curtain Store Database"
+    "sectorRank": 30,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "IVF & Fertility Center"
   },
   {
     "priority": 31,
-    "sectorRank": 19,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Dairy Store Database"
+    "sectorRank": 31,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Dialysis Center"
   },
   {
     "priority": 32,
-    "sectorRank": 20,
-    "sector": "Retail Stores",
+    "sectorRank": 32,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Electrical wholesale Supply Store Database"
+    "subcategory": "Radiology/Scan Center"
   },
   {
     "priority": 33,
-    "sectorRank": 21,
-    "sector": "Retail Stores",
+    "sectorRank": 33,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Fabric Store Database"
+    "subcategory": "MRI"
   },
   {
     "priority": 34,
-    "sectorRank": 22,
-    "sector": "Retail Stores",
-    "densityTier": "Very Low",
-    "subcategory": "Farm Store Database"
+    "sectorRank": 34,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "CT Scan"
   },
   {
     "priority": 35,
-    "sectorRank": 23,
-    "sector": "Retail Stores",
+    "sectorRank": 35,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Fashion Accessories Store Database"
+    "subcategory": "X-Ray"
   },
   {
     "priority": 36,
-    "sectorRank": 24,
-    "sector": "Retail Stores",
+    "sectorRank": 36,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Frozen Food Store Database"
+    "subcategory": "Clinical Laboratory"
   },
   {
     "priority": 37,
-    "sectorRank": 25,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Fruit & Vegetable Store Database"
+    "sectorRank": 37,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Cosmetic Surgery"
   },
   {
     "priority": 38,
-    "sectorRank": 26,
-    "sector": "Retail Stores",
+    "sectorRank": 38,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Game Store Database"
+    "subcategory": "Plastic Surgery"
   },
   {
     "priority": 39,
-    "sectorRank": 27,
-    "sector": "Retail Stores",
-    "densityTier": "Low",
-    "subcategory": "Glass & Mirror Store Database"
+    "sectorRank": 39,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Kidney Care"
   },
   {
     "priority": 40,
-    "sectorRank": 28,
-    "sector": "Retail Stores",
-    "densityTier": "Low",
-    "subcategory": "Handbag Store Database"
+    "sectorRank": 40,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Endocrinology"
   },
   {
     "priority": 41,
-    "sectorRank": 29,
-    "sector": "Retail Stores",
+    "sectorRank": 41,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Internet Cafe Database"
+    "subcategory": "De-addiction"
   },
   {
     "priority": 42,
-    "sectorRank": 30,
-    "sector": "Retail Stores",
+    "sectorRank": 42,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Kitchen Supply Store Database"
+    "subcategory": "Sleep Clinic"
   },
   {
     "priority": 43,
-    "sectorRank": 31,
-    "sector": "Retail Stores",
+    "sectorRank": 43,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Mattress Store Database"
+    "subcategory": "Acupuncture Clinic"
   },
   {
     "priority": 44,
-    "sectorRank": 32,
-    "sector": "Retail Stores",
+    "sectorRank": 44,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Automobiles body Parts Store Database"
+    "subcategory": "Ayurvedic Clinic"
   },
   {
     "priority": 45,
-    "sectorRank": 33,
-    "sector": "Retail Stores",
+    "sectorRank": 45,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Musical Instrument Store Database"
+    "subcategory": "Homeopathy Clinic"
   },
   {
     "priority": 46,
-    "sectorRank": 34,
-    "sector": "Retail Stores",
+    "sectorRank": 46,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Office Supply Store Database"
+    "subcategory": "Optical Store"
   },
   {
     "priority": 47,
-    "sectorRank": 35,
-    "sector": "Retail Stores",
+    "sectorRank": 47,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Paint Store Database"
+    "subcategory": "Hearing Aid Store"
   },
   {
     "priority": 48,
-    "sectorRank": 36,
-    "sector": "Retail Stores",
+    "sectorRank": 48,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Perfume Store Database"
+    "subcategory": "Speech Therapy"
   },
   {
     "priority": 49,
-    "sectorRank": 37,
-    "sector": "Retail Stores",
+    "sectorRank": 49,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Pet Store Database"
+    "subcategory": "Occupational Therapy"
   },
   {
     "priority": 50,
-    "sectorRank": 38,
-    "sector": "Retail Stores",
+    "sectorRank": 50,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Photo Store Database"
+    "subcategory": "Psychology Clinic"
   },
   {
     "priority": 51,
-    "sectorRank": 39,
-    "sector": "Retail Stores",
+    "sectorRank": 51,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Plant Nursery Database"
+    "subcategory": "Veterinary Clinic"
   },
   {
     "priority": 52,
-    "sectorRank": 40,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Printer Shop Database"
+    "sectorRank": 52,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Pet Pharmacy"
   },
   {
     "priority": 53,
-    "sectorRank": 41,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Saree Store Database"
+    "sectorRank": 53,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Blood Bank"
   },
   {
     "priority": 54,
-    "sectorRank": 42,
-    "sector": "Retail Stores",
-    "densityTier": "Low",
-    "subcategory": "Seafood Market Database"
+    "sectorRank": 54,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Organ Donation Center"
   },
   {
     "priority": 55,
-    "sectorRank": 43,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Second Hand Store Database"
+    "sectorRank": 55,
+    "sector": "Healthcare & Medical",
+    "densityTier": "Medium",
+    "subcategory": "Medical Equipment Supplier"
   },
   {
     "priority": 56,
-    "sectorRank": 44,
-    "sector": "Retail Stores",
+    "sectorRank": 56,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Shopping Mall Database"
+    "subcategory": "Home Nursing Agency"
   },
   {
     "priority": 57,
-    "sectorRank": 45,
-    "sector": "Retail Stores",
+    "sectorRank": 57,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Furniture Store Database"
+    "subcategory": "Health Checkup Center"
   },
   {
     "priority": 58,
-    "sectorRank": 46,
-    "sector": "Retail Stores",
+    "sectorRank": 58,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Sporting Goods Store Database"
+    "subcategory": "Weight Management Clinic"
   },
   {
     "priority": 59,
-    "sectorRank": 47,
-    "sector": "Retail Stores",
+    "sectorRank": 59,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Sportswear Store Database"
+    "subcategory": "Fertility Doctor"
   },
   {
     "priority": 60,
-    "sectorRank": 48,
-    "sector": "Retail Stores",
+    "sectorRank": 60,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Supplement Store Database"
+    "subcategory": "Child Vaccination Center"
   },
   {
     "priority": 61,
-    "sectorRank": 49,
-    "sector": "Retail Stores",
+    "sectorRank": 61,
+    "sector": "Healthcare & Medical",
     "densityTier": "Medium",
-    "subcategory": "Tile Store Database"
+    "subcategory": "Emergency Care Center"
   },
   {
     "priority": 62,
-    "sectorRank": 50,
-    "sector": "Retail Stores",
-    "densityTier": "Medium",
-    "subcategory": "Tobacco Store Database"
+    "sectorRank": 1,
+    "sector": "Beauty & Wellness",
+    "densityTier": "High",
+    "subcategory": "Salon"
   },
   {
     "priority": 63,
-    "sectorRank": 51,
-    "sector": "Retail Stores",
-    "densityTier": "Medium",
-    "subcategory": "Toy Store Database"
+    "sectorRank": 2,
+    "sector": "Beauty & Wellness",
+    "densityTier": "High",
+    "subcategory": "Beauty Parlour"
   },
   {
     "priority": 64,
-    "sectorRank": 52,
-    "sector": "Retail Stores",
-    "densityTier": "Medium",
-    "subcategory": "Vegetable Market Database"
+    "sectorRank": 3,
+    "sector": "Beauty & Wellness",
+    "densityTier": "High",
+    "subcategory": "Massage & Spa"
   },
   {
     "priority": 65,
-    "sectorRank": 53,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Watch Store Database"
+    "sectorRank": 4,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Wellness Center"
   },
   {
     "priority": 66,
-    "sectorRank": 54,
-    "sector": "Retail Stores",
-    "densityTier": "High",
-    "subcategory": "Electronic Store Database"
+    "sectorRank": 5,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Tattoo Studio"
   },
   {
     "priority": 67,
-    "sectorRank": 55,
-    "sector": "Retail Stores",
-    "densityTier": "Very Low",
-    "subcategory": "Animal Feed Store Database"
+    "sectorRank": 6,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Nutritionist"
   },
   {
     "priority": 68,
-    "sectorRank": 56,
-    "sector": "Retail Stores",
-    "densityTier": "Low",
-    "subcategory": "Appliance Store Database"
+    "sectorRank": 7,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Hair Transplant"
   },
   {
     "priority": 69,
-    "sectorRank": 57,
-    "sector": "Retail Stores",
+    "sectorRank": 8,
+    "sector": "Beauty & Wellness",
     "densityTier": "Medium",
-    "subcategory": "Baby Store Database"
+    "subcategory": "Weight Loss"
   },
   {
     "priority": 70,
-    "sectorRank": 1,
-    "sector": "Healthcare & Medical",
-    "densityTier": "High",
-    "subcategory": "Dental Clinic Database"
+    "sectorRank": 9,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Nail Salon"
   },
   {
     "priority": 71,
-    "sectorRank": 2,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 10,
+    "sector": "Beauty & Wellness",
     "densityTier": "Medium",
-    "subcategory": "Diagnostic Center Database"
+    "subcategory": "Makeup Artist"
   },
   {
     "priority": 72,
-    "sectorRank": 3,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 11,
+    "sector": "Beauty & Wellness",
     "densityTier": "Medium",
-    "subcategory": "Eye Care Clinic Database"
+    "subcategory": "Bridal Makeup"
   },
   {
     "priority": 73,
-    "sectorRank": 4,
-    "sector": "Healthcare & Medical",
-    "densityTier": "High",
-    "subcategory": "Medical Clinic Database"
+    "sectorRank": 12,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Barber"
   },
   {
     "priority": 74,
-    "sectorRank": 5,
-    "sector": "Healthcare & Medical",
-    "densityTier": "High",
-    "subcategory": "Multi specialist Database"
+    "sectorRank": 13,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Laser Hair Removal"
   },
   {
     "priority": 75,
-    "sectorRank": 6,
-    "sector": "Healthcare & Medical",
-    "densityTier": "High",
-    "subcategory": "Pharmacy Database"
+    "sectorRank": 14,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Eyelash Salon"
   },
   {
     "priority": 76,
-    "sectorRank": 7,
-    "sector": "Healthcare & Medical",
-    "densityTier": "High",
-    "subcategory": "Physiotherapy Center Database"
+    "sectorRank": 15,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Foot Care"
   },
   {
     "priority": 77,
-    "sectorRank": 8,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 16,
+    "sector": "Beauty & Wellness",
     "densityTier": "Medium",
-    "subcategory": "Ayurvedic Clinic Database"
+    "subcategory": "Hair Removal Service"
   },
   {
     "priority": 78,
-    "sectorRank": 9,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "Cardiology Clinic Database"
+    "sectorRank": 17,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Low",
+    "subcategory": "Tanning Studio"
   },
   {
     "priority": 79,
-    "sectorRank": 10,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "ENT Clinic Database"
+    "sectorRank": 18,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Low",
+    "subcategory": "Meditation Center"
   },
   {
     "priority": 80,
-    "sectorRank": 11,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Gastroenterology Clinic Database"
+    "sectorRank": 19,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Reiki Therapist"
   },
   {
     "priority": 81,
-    "sectorRank": 12,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "Scan center Database"
+    "sectorRank": 20,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Very Low",
+    "subcategory": "Life Coach"
   },
   {
     "priority": 82,
-    "sectorRank": 13,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 21,
+    "sector": "Beauty & Wellness",
     "densityTier": "Medium",
-    "subcategory": "IVF & Fertility Center Database"
+    "subcategory": "Yoga Studio"
   },
   {
     "priority": 83,
-    "sectorRank": 14,
-    "sector": "Healthcare & Medical",
-    "densityTier": "High",
-    "subcategory": "Hospital Database"
+    "sectorRank": 22,
+    "sector": "Beauty & Wellness",
+    "densityTier": "Medium",
+    "subcategory": "Ayurvedic Wellness"
   },
   {
     "priority": 84,
-    "sectorRank": 15,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 23,
+    "sector": "Beauty & Wellness",
     "densityTier": "Medium",
-    "subcategory": "Nursing Care Database"
+    "subcategory": "Skin Care & Facial"
   },
   {
     "priority": 85,
-    "sectorRank": 16,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "Orthopedic Clinic Database"
+    "sectorRank": 1,
+    "sector": "Home Services",
+    "densityTier": "High",
+    "subcategory": "Carpenter"
   },
   {
     "priority": 86,
-    "sectorRank": 17,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "Pediatric Clinic Database"
+    "sectorRank": 2,
+    "sector": "Home Services",
+    "densityTier": "High",
+    "subcategory": "Electrician"
   },
   {
     "priority": 87,
-    "sectorRank": 18,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "Psychiatric Clinic Database"
+    "sectorRank": 3,
+    "sector": "Home Services",
+    "densityTier": "High",
+    "subcategory": "Plumber"
   },
   {
     "priority": 88,
-    "sectorRank": 19,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Medium",
-    "subcategory": "Rehabilitation Center Database"
+    "sectorRank": 4,
+    "sector": "Home Services",
+    "densityTier": "High",
+    "subcategory": "Painter"
   },
   {
     "priority": 89,
-    "sectorRank": 20,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 5,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Skin Care Clinic Database"
+    "subcategory": "Cleaning"
   },
   {
     "priority": 90,
-    "sectorRank": 21,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 6,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Veterinary Clinic Database"
+    "subcategory": "Pest Control"
   },
   {
     "priority": 91,
-    "sectorRank": 22,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 7,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Ambulance Service Database"
+    "subcategory": "Landscaping"
   },
   {
     "priority": 92,
-    "sectorRank": 23,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Blood Testing Service Database"
+    "sectorRank": 8,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Welder"
   },
   {
     "priority": 93,
-    "sectorRank": 24,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Cancer Care Center Database"
+    "sectorRank": 9,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Laundry"
   },
   {
     "priority": 94,
-    "sectorRank": 25,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 10,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Lab Services Database"
+    "subcategory": "Packers & Movers"
   },
   {
     "priority": 95,
-    "sectorRank": 26,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 11,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Home Health Care Service Database"
+    "subcategory": "AC Installation"
   },
   {
     "priority": 96,
-    "sectorRank": 27,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Neurology Clinic Database"
+    "sectorRank": 12,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "CCTV Installation"
   },
   {
     "priority": 97,
-    "sectorRank": 28,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Pain Management Clinic Database"
+    "sectorRank": 13,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Interior Decorator"
   },
   {
     "priority": 98,
-    "sectorRank": 29,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 14,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Makeup Clinic Database"
+    "subcategory": "RO Installation"
   },
   {
     "priority": 99,
-    "sectorRank": 30,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 15,
+    "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Lung Clinic Database"
+    "subcategory": "Water Purifier Service"
   },
   {
     "priority": 100,
-    "sectorRank": 31,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Speech & Hearing Clinic Database"
+    "sectorRank": 16,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Appliance Installation"
   },
   {
     "priority": 101,
-    "sectorRank": 32,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Surgical Center Database"
+    "sectorRank": 17,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Modular Kitchen"
   },
   {
     "priority": 102,
-    "sectorRank": 33,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Urology Clinic Database"
-  },
-  {
-    "priority": 103,
-    "sectorRank": 34,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Veterinary Care Database"
-  },
-  {
-    "priority": 104,
-    "sectorRank": 35,
-    "sector": "Healthcare & Medical",
-    "densityTier": "Low",
-    "subcategory": "Women's Health Clinic Database"
-  },
-  {
-    "priority": 105,
-    "sectorRank": 1,
-    "sector": "Beauty & Wellness",
-    "densityTier": "High",
-    "subcategory": "Salon Database"
-  },
-  {
-    "priority": 106,
-    "sectorRank": 2,
-    "sector": "Beauty & Wellness",
-    "densityTier": "High",
-    "subcategory": "Massage & Spa Database"
-  },
-  {
-    "priority": 107,
-    "sectorRank": 3,
-    "sector": "Beauty & Wellness",
-    "densityTier": "High",
-    "subcategory": "Beauty Parlour Database"
-  },
-  {
-    "priority": 108,
-    "sectorRank": 4,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Low",
-    "subcategory": "Meditation Center Database"
-  },
-  {
-    "priority": 109,
-    "sectorRank": 5,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Medium",
-    "subcategory": "Tattoo Shop Database"
-  },
-  {
-    "priority": 110,
-    "sectorRank": 6,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Medium",
-    "subcategory": "Weight Loss Service Database"
-  },
-  {
-    "priority": 111,
-    "sectorRank": 7,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Medium",
-    "subcategory": "Wellness Center Database"
-  },
-  {
-    "priority": 112,
-    "sectorRank": 8,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Medium",
-    "subcategory": "Cosmetic Service Database"
-  },
-  {
-    "priority": 113,
-    "sectorRank": 9,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Very Low",
-    "subcategory": "Life Coach Database"
-  },
-  {
-    "priority": 114,
-    "sectorRank": 10,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Medium",
-    "subcategory": "Nutritionist Database"
-  },
-  {
-    "priority": 115,
-    "sectorRank": 11,
-    "sector": "Beauty & Wellness",
-    "densityTier": "Low",
-    "subcategory": "Tanning Studio Database"
-  },
-  {
-    "priority": 116,
-    "sectorRank": 12,
-    "sector": "Home Services",
-    "densityTier": "High",
-    "subcategory": "Carpenter Database"
-  },
-  {
-    "priority": 117,
-    "sectorRank": 13,
-    "sector": "Home Services",
-    "densityTier": "High",
-    "subcategory": "Cleaning Service Database"
-  },
-  {
-    "priority": 118,
-    "sectorRank": 14,
-    "sector": "Home Services",
-    "densityTier": "High",
-    "subcategory": "Electrician Database"
-  },
-  {
-    "priority": 119,
-    "sectorRank": 15,
-    "sector": "Home Services",
-    "densityTier": "High",
-    "subcategory": "Painter Database"
-  },
-  {
-    "priority": 120,
-    "sectorRank": 16,
-    "sector": "Home Services",
-    "densityTier": "High",
-    "subcategory": "Plumber Database"
-  },
-  {
-    "priority": 121,
-    "sectorRank": 17,
-    "sector": "Home Services",
-    "densityTier": "Medium",
-    "subcategory": "Laundry Service Database"
-  },
-  {
-    "priority": 122,
     "sectorRank": 18,
     "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Pest Control Service Database"
+    "subcategory": "Bathroom Renovation"
   },
   {
-    "priority": 123,
+    "priority": 103,
     "sectorRank": 19,
     "sector": "Home Services",
     "densityTier": "Medium",
-    "subcategory": "Interior Decorator Database"
+    "subcategory": "Waterproofing"
+  },
+  {
+    "priority": 104,
+    "sectorRank": 20,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "False Ceiling"
+  },
+  {
+    "priority": 105,
+    "sectorRank": 21,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Glass & Aluminium"
+  },
+  {
+    "priority": 106,
+    "sectorRank": 22,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "UPVC Windows"
+  },
+  {
+    "priority": 107,
+    "sectorRank": 23,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Door Installation"
+  },
+  {
+    "priority": 108,
+    "sectorRank": 24,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Furniture Assembly"
+  },
+  {
+    "priority": 109,
+    "sectorRank": 25,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Solar Panel Installation"
+  },
+  {
+    "priority": 110,
+    "sectorRank": 26,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Home Security"
+  },
+  {
+    "priority": 111,
+    "sectorRank": 27,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Chimney Cleaning"
+  },
+  {
+    "priority": 112,
+    "sectorRank": 28,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Geyser Repair"
+  },
+  {
+    "priority": 113,
+    "sectorRank": 29,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "AC Repair"
+  },
+  {
+    "priority": 114,
+    "sectorRank": 30,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Refrigerator Repair"
+  },
+  {
+    "priority": 115,
+    "sectorRank": 31,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Washing Machine Repair"
+  },
+  {
+    "priority": 116,
+    "sectorRank": 32,
+    "sector": "Home Services",
+    "densityTier": "Medium",
+    "subcategory": "Microwave Repair"
+  },
+  {
+    "priority": 117,
+    "sectorRank": 1,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Dealer"
+  },
+  {
+    "priority": 118,
+    "sectorRank": 2,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Used Car Dealer"
+  },
+  {
+    "priority": 119,
+    "sectorRank": 3,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Leasing Service"
+  },
+  {
+    "priority": 120,
+    "sectorRank": 4,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Rental Agency"
+  },
+  {
+    "priority": 121,
+    "sectorRank": 5,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Repair Service"
+  },
+  {
+    "priority": 122,
+    "sectorRank": 6,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Wash"
+  },
+  {
+    "priority": 123,
+    "sectorRank": 7,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Detailing"
   },
   {
     "priority": 124,
-    "sectorRank": 20,
-    "sector": "Home Services",
+    "sectorRank": 8,
+    "sector": "Automotive Services",
     "densityTier": "Low",
-    "subcategory": "Landscaper Database"
+    "subcategory": "Driving School"
   },
   {
     "priority": 125,
-    "sectorRank": 1,
+    "sectorRank": 9,
     "sector": "Automotive Services",
     "densityTier": "High",
-    "subcategory": "Vehicle Wash Database"
+    "subcategory": "Mechanic"
   },
   {
     "priority": 126,
-    "sectorRank": 2,
+    "sectorRank": 10,
     "sector": "Automotive Services",
-    "densityTier": "High",
-    "subcategory": "Mechanic Database"
+    "densityTier": "Medium",
+    "subcategory": "Motorcycle Dealer"
   },
   {
     "priority": 127,
-    "sectorRank": 3,
+    "sectorRank": 11,
     "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Vehicle Dealer Database"
+    "subcategory": "Motorcycle Repair Shop"
   },
   {
     "priority": 128,
-    "sectorRank": 4,
+    "sectorRank": 12,
     "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Vehicle Service Shop Database"
+    "subcategory": "Tire Repair Shop"
   },
   {
     "priority": 129,
-    "sectorRank": 5,
+    "sectorRank": 13,
     "sector": "Automotive Services",
-    "densityTier": "Low",
-    "subcategory": "Driving School Database"
+    "densityTier": "Medium",
+    "subcategory": "Truck Dealer"
   },
   {
     "priority": 130,
-    "sectorRank": 6,
+    "sectorRank": 14,
     "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Vehicle Showroom Database"
+    "subcategory": "Truck Rental Agency"
   },
   {
     "priority": 131,
-    "sectorRank": 1,
-    "sector": "Repair Services",
-    "densityTier": "High",
-    "subcategory": "Computer Repair Shop Database"
+    "sectorRank": 15,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Truck Repair Shop"
   },
   {
     "priority": 132,
-    "sectorRank": 2,
-    "sector": "Repair Services",
-    "densityTier": "High",
-    "subcategory": "Electronics Repair Shop Database"
+    "sectorRank": 16,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Van Rental Agency"
   },
   {
     "priority": 133,
-    "sectorRank": 3,
-    "sector": "Repair Services",
-    "densityTier": "High",
-    "subcategory": "Mobile Phone Repair Shop Database"
+    "sectorRank": 17,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Wheel Alignment Service"
   },
   {
     "priority": 134,
-    "sectorRank": 4,
-    "sector": "Repair Services",
+    "sectorRank": 18,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Air Conditioning Repair Service Database"
+    "subcategory": "Battery Dealer"
   },
   {
     "priority": 135,
-    "sectorRank": 5,
-    "sector": "Repair Services",
-    "densityTier": "Low",
-    "subcategory": "Refrigerator Repair Service Database"
+    "sectorRank": 19,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Accessories"
   },
   {
     "priority": 136,
-    "sectorRank": 6,
-    "sector": "Repair Services",
+    "sectorRank": 20,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "RO AND Geyser Repair Service Database"
+    "subcategory": "Bike Accessories"
   },
   {
     "priority": 137,
-    "sectorRank": 1,
-    "sector": "Fashion & Tailoring",
-    "densityTier": "High",
-    "subcategory": "Tailoring Service Database"
+    "sectorRank": 21,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "EV Charging"
   },
   {
     "priority": 138,
-    "sectorRank": 2,
-    "sector": "Fashion & Tailoring",
+    "sectorRank": 22,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Fashion Designer Database"
+    "subcategory": "Towing"
   },
   {
     "priority": 139,
-    "sectorRank": 3,
-    "sector": "Education & Training",
-    "densityTier": "High",
-    "subcategory": "Coaching Center Database"
+    "sectorRank": 23,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Auto Parts"
   },
   {
     "priority": 140,
-    "sectorRank": 4,
-    "sector": "Education & Training",
-    "densityTier": "High",
-    "subcategory": "School Database"
+    "sectorRank": 24,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car Insurance"
   },
   {
     "priority": 141,
-    "sectorRank": 5,
-    "sector": "Education & Training",
+    "sectorRank": 25,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Tution & S.English Service Database"
+    "subcategory": "PUC Center"
   },
   {
     "priority": 142,
-    "sectorRank": 6,
-    "sector": "Education & Training",
-    "densityTier": "High",
-    "subcategory": "Play School Database"
+    "sectorRank": 26,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Bike Rental"
   },
   {
     "priority": 143,
-    "sectorRank": 7,
-    "sector": "Education & Training",
+    "sectorRank": 27,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Computer Training School Database"
+    "subcategory": "Bicycle Shop"
   },
   {
     "priority": 144,
-    "sectorRank": 8,
-    "sector": "Education & Training",
+    "sectorRank": 28,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Dance and Music School Database"
+    "subcategory": "Bicycle Repair Shop"
   },
   {
     "priority": 145,
-    "sectorRank": 9,
-    "sector": "Education & Training",
-    "densityTier": "High",
-    "subcategory": "College Database"
+    "sectorRank": 29,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Tractor Dealer"
   },
   {
     "priority": 146,
-    "sectorRank": 10,
-    "sector": "Education & Training",
+    "sectorRank": 30,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Vocational Training School Database"
+    "subcategory": "Tractor Repair"
   },
   {
     "priority": 147,
-    "sectorRank": 11,
-    "sector": "Education & Training",
+    "sectorRank": 31,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Library Database"
+    "subcategory": "Auto Body Shop"
   },
   {
     "priority": 148,
-    "sectorRank": 12,
-    "sector": "Education & Training",
-    "densityTier": "Low",
-    "subcategory": "University Database"
+    "sectorRank": 32,
+    "sector": "Automotive Services",
+    "densityTier": "Medium",
+    "subcategory": "Car AC Repair"
   },
   {
     "priority": 149,
-    "sectorRank": 13,
-    "sector": "Education & Training",
+    "sectorRank": 33,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Tuition Database"
+    "subcategory": "Car Glass Shop"
   },
   {
     "priority": 150,
-    "sectorRank": 14,
-    "sector": "Education & Training",
+    "sectorRank": 34,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "JEE and NEET Database"
+    "subcategory": "Car Wrap & PPF"
   },
   {
     "priority": 151,
-    "sectorRank": 15,
-    "sector": "Education & Training",
+    "sectorRank": 35,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "CA Database"
+    "subcategory": "Car Rental With Driver"
   },
   {
     "priority": 152,
-    "sectorRank": 16,
-    "sector": "Education & Training",
+    "sectorRank": 36,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "IELTS and Spoken English Database"
+    "subcategory": "Parking Service"
   },
   {
     "priority": 153,
-    "sectorRank": 17,
-    "sector": "Education & Training",
+    "sectorRank": 37,
+    "sector": "Automotive Services",
     "densityTier": "Medium",
-    "subcategory": "Civil Services Database"
+    "subcategory": "Scrap Car Dealer"
   },
   {
     "priority": 154,
     "sectorRank": 1,
-    "sector": "Events & Wedding Services",
-    "densityTier": "High",
-    "subcategory": "Catering Service Database"
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Computer Repair"
   },
   {
     "priority": 155,
     "sectorRank": 2,
-    "sector": "Events & Wedding Services",
-    "densityTier": "High",
-    "subcategory": "Event Planner Database"
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Laptop Repair"
   },
   {
     "priority": 156,
     "sectorRank": 3,
-    "sector": "Events & Wedding Services",
-    "densityTier": "High",
-    "subcategory": "Photography Studio Database"
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Mobile Repair"
   },
   {
     "priority": 157,
     "sectorRank": 4,
-    "sector": "Events & Wedding Services",
-    "densityTier": "Low",
-    "subcategory": "DJ Database"
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Electronics Repair"
   },
   {
     "priority": 158,
     "sectorRank": 5,
-    "sector": "Events & Wedding Services",
-    "densityTier": "High",
-    "subcategory": "Event Venue Database"
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Appliance Repair"
   },
   {
     "priority": 159,
     "sectorRank": 6,
-    "sector": "Events & Wedding Services",
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Flower Designer Database"
+    "subcategory": "TV Repair"
   },
   {
     "priority": 160,
     "sectorRank": 7,
-    "sector": "Events & Wedding Services",
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Hall Database"
+    "subcategory": "RO Repair"
   },
   {
     "priority": 161,
     "sectorRank": 8,
-    "sector": "Events & Wedding Services",
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Event Rental Service Database"
+    "subcategory": "Printer Repair"
   },
   {
     "priority": 162,
-    "sectorRank": 1,
-    "sector": "Sports & Fitness",
-    "densityTier": "High",
-    "subcategory": "Gym Database"
+    "sectorRank": 9,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "CCTV Repair"
   },
   {
     "priority": 163,
-    "sectorRank": 2,
-    "sector": "Sports & Fitness",
+    "sectorRank": 10,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Sports Courts Database"
+    "subcategory": "Inverter Repair"
   },
   {
     "priority": 164,
-    "sectorRank": 3,
-    "sector": "Sports & Fitness",
+    "sectorRank": 11,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Sports School Database"
+    "subcategory": "Battery Repair"
   },
   {
     "priority": 165,
-    "sectorRank": 4,
-    "sector": "Sports & Fitness",
+    "sectorRank": 12,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Swimming Pool Database"
+    "subcategory": "Generator Repair"
   },
   {
     "priority": 166,
-    "sectorRank": 5,
-    "sector": "Sports & Fitness",
-    "densityTier": "Low",
-    "subcategory": "Stadium Database"
+    "sectorRank": 13,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Water Pump Repair"
   },
   {
     "priority": 167,
-    "sectorRank": 1,
-    "sector": "Travel & Accommodation",
-    "densityTier": "High",
-    "subcategory": "Hotel Database"
+    "sectorRank": 14,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Gas Stove Repair"
   },
   {
     "priority": 168,
-    "sectorRank": 2,
-    "sector": "Travel & Accommodation",
+    "sectorRank": 15,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Taxi Service Database"
+    "subcategory": "Sewing Machine Repair"
   },
   {
     "priority": 169,
-    "sectorRank": 3,
-    "sector": "Travel & Accommodation",
-    "densityTier": "High",
-    "subcategory": "Travel Agency Database"
+    "sectorRank": 16,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Furniture Repair"
   },
   {
     "priority": 170,
-    "sectorRank": 4,
-    "sector": "Travel & Accommodation",
-    "densityTier": "Low",
-    "subcategory": "Guest House Database"
+    "sectorRank": 17,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Watch Repair"
   },
   {
     "priority": 171,
-    "sectorRank": 5,
-    "sector": "Travel & Accommodation",
-    "densityTier": "High",
-    "subcategory": "Lodge Database"
+    "sectorRank": 18,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Jewellery Repair"
   },
   {
     "priority": 172,
-    "sectorRank": 6,
-    "sector": "Travel & Accommodation",
+    "sectorRank": 19,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Resort Database"
+    "subcategory": "Shoe Repair"
   },
   {
     "priority": 173,
-    "sectorRank": 7,
-    "sector": "Travel & Accommodation",
+    "sectorRank": 20,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Serviced Accommodation Database"
+    "subcategory": "Key Duplication"
   },
   {
     "priority": 174,
-    "sectorRank": 8,
-    "sector": "Travel & Accommodation",
-    "densityTier": "Low",
-    "subcategory": "Cottage Database"
+    "sectorRank": 21,
+    "sector": "Repair Services",
+    "densityTier": "Medium",
+    "subcategory": "Glass Repair"
   },
   {
     "priority": 175,
-    "sectorRank": 10,
-    "sector": "Travel & Accommodation",
+    "sectorRank": 22,
+    "sector": "Repair Services",
     "densityTier": "Medium",
-    "subcategory": "Hostel Database"
+    "subcategory": "Locksmith"
   },
   {
     "priority": 176,
-    "sectorRank": 11,
-    "sector": "Travel & Accommodation",
+    "sectorRank": 1,
+    "sector": "Food & Beverage",
     "densityTier": "High",
-    "subcategory": "Private Guest Room Database"
+    "subcategory": "Restaurant"
   },
   {
     "priority": 177,
-    "sectorRank": 12,
-    "sector": "Travel & Accommodation",
-    "densityTier": "Low",
-    "subcategory": "Villa Database"
+    "sectorRank": 2,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Cafe"
   },
   {
     "priority": 178,
-    "sectorRank": 13,
-    "sector": "Travel & Accommodation",
-    "densityTier": "Medium",
-    "subcategory": "Service Apartment Database"
+    "sectorRank": 3,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Coffee Shop"
   },
   {
     "priority": 179,
-    "sectorRank": 1,
-    "sector": "Entertainment & Leisure",
-    "densityTier": "Medium",
-    "subcategory": "Movie Theater Database"
+    "sectorRank": 4,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Tea Store"
   },
   {
     "priority": 180,
-    "sectorRank": 2,
-    "sector": "Entertainment & Leisure",
-    "densityTier": "Medium",
-    "subcategory": "Tourist Attraction Database"
+    "sectorRank": 5,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Bakery"
   },
   {
     "priority": 181,
-    "sectorRank": 3,
-    "sector": "Entertainment & Leisure",
-    "densityTier": "Low",
-    "subcategory": "Nightclub Database"
+    "sectorRank": 6,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Cake Shop"
   },
   {
     "priority": 182,
-    "sectorRank": 4,
-    "sector": "Entertainment & Leisure",
-    "densityTier": "Very Low",
-    "subcategory": "Pool Hall Database"
+    "sectorRank": 7,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Chocolate Shop"
   },
   {
     "priority": 183,
-    "sectorRank": 5,
-    "sector": "Entertainment & Leisure",
+    "sectorRank": 8,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Amusement Park Database"
+    "subcategory": "Candy Store"
   },
   {
     "priority": 184,
-    "sectorRank": 6,
-    "sector": "Entertainment & Leisure",
+    "sectorRank": 9,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Water Park Database"
+    "subcategory": "Dessert Shop"
   },
   {
     "priority": 185,
-    "sectorRank": 7,
-    "sector": "Entertainment & Leisure",
+    "sectorRank": 10,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Gaming Zone Database"
+    "subcategory": "Donut Shop"
   },
   {
     "priority": 186,
-    "sectorRank": 1,
-    "sector": "Professional Services",
-    "densityTier": "Medium",
-    "subcategory": "Lawyer Database"
+    "sectorRank": 11,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Ice Cream Shop"
   },
   {
     "priority": 187,
-    "sectorRank": 2,
-    "sector": "Professional Services",
-    "densityTier": "Medium",
-    "subcategory": "Chartered Accountant Database"
+    "sectorRank": 12,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Juice Shop"
   },
   {
     "priority": 188,
-    "sectorRank": 3,
-    "sector": "Professional Services",
+    "sectorRank": 13,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Tax Consultant Database"
+    "subcategory": "Kebab Shop"
   },
   {
     "priority": 189,
-    "sectorRank": 4,
-    "sector": "Professional Services",
+    "sectorRank": 14,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Financial Consultant Database"
+    "subcategory": "Pizza Restaurant"
   },
   {
     "priority": 190,
-    "sectorRank": 5,
-    "sector": "Professional Services",
+    "sectorRank": 15,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Insurance Database"
+    "subcategory": "Burger Restaurant"
   },
   {
     "priority": 191,
-    "sectorRank": 6,
-    "sector": "Professional Services",
+    "sectorRank": 16,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Real Estate Database"
+    "subcategory": "Biriyani Restaurant"
   },
   {
     "priority": 192,
-    "sectorRank": 7,
-    "sector": "Professional Services",
+    "sectorRank": 17,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Architect Database"
+    "subcategory": "Chinese Restaurant"
   },
   {
     "priority": 193,
-    "sectorRank": 8,
-    "sector": "Professional Services",
+    "sectorRank": 18,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Interior Designer Database"
+    "subcategory": "South Indian Restaurant"
   },
   {
     "priority": 194,
-    "sectorRank": 1,
-    "sector": "IT & Digital Services",
+    "sectorRank": 19,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Web Designer Database"
+    "subcategory": "North Indian Restaurant"
   },
   {
     "priority": 195,
-    "sectorRank": 2,
-    "sector": "IT & Digital Services",
+    "sectorRank": 20,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Digital Marketing Database"
+    "subcategory": "Fast Food Restaurant"
   },
   {
     "priority": 196,
-    "sectorRank": 3,
-    "sector": "IT & Digital Services",
+    "sectorRank": 21,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Software Company Database"
+    "subcategory": "Vegetarian Restaurant"
   },
   {
     "priority": 197,
-    "sectorRank": 4,
-    "sector": "IT & Digital Services",
+    "sectorRank": 22,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "App Developer Database"
+    "subcategory": "Non-Vegetarian Restaurant"
   },
   {
     "priority": 198,
-    "sectorRank": 5,
-    "sector": "IT & Digital Services",
+    "sectorRank": 23,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Graphic Designer Database"
+    "subcategory": "Seafood Restaurant"
   },
   {
     "priority": 199,
-    "sectorRank": 9,
-    "sector": "Professional Services",
+    "sectorRank": 24,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Marketing Agency Database"
+    "subcategory": "Family Restaurant"
   },
   {
     "priority": 200,
-    "sectorRank": 10,
-    "sector": "Professional Services",
+    "sectorRank": 25,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Import and Export Service Database"
+    "subcategory": "Fine Dining Restaurant"
   },
   {
     "priority": 201,
-    "sectorRank": 21,
-    "sector": "Home Services",
+    "sectorRank": 26,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Borewell Contractor Database"
+    "subcategory": "Buffet Restaurant"
   },
   {
     "priority": 202,
-    "sectorRank": 22,
-    "sector": "Home Services",
+    "sectorRank": 27,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Security Service Database"
+    "subcategory": "Rooftop Restaurant"
   },
   {
     "priority": 203,
-    "sectorRank": 36,
-    "sector": "Healthcare & Medical",
+    "sectorRank": 28,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Doctor Database"
+    "subcategory": "Cloud Kitchen"
   },
   {
     "priority": 204,
-    "sectorRank": 23,
-    "sector": "Home Services",
+    "sectorRank": 29,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Packers and Movers Database"
+    "subcategory": "Food Court"
   },
   {
     "priority": 205,
-    "sectorRank": 58,
-    "sector": "Retail Stores",
+    "sectorRank": 30,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Agricultural Products Database"
+    "subcategory": "Sweet Shop"
   },
   {
     "priority": 206,
-    "sectorRank": 24,
-    "sector": "Home Services",
+    "sectorRank": 31,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Civil Contractor Database"
+    "subcategory": "Snack Shop"
   },
   {
     "priority": 207,
-    "sectorRank": 25,
-    "sector": "Home Services",
+    "sectorRank": 32,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Water Suppliers Database"
+    "subcategory": "Sandwich Shop"
   },
   {
     "priority": 208,
-    "sectorRank": 7,
-    "sector": "Automotive Services",
+    "sectorRank": 33,
+    "sector": "Food & Beverage",
     "densityTier": "Medium",
-    "subcategory": "Towing Service Database"
+    "subcategory": "Salad Shop"
+  },
+  {
+    "priority": 209,
+    "sectorRank": 34,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Soft Drinks Shop"
+  },
+  {
+    "priority": 210,
+    "sectorRank": 35,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Meal Delivery Service"
+  },
+  {
+    "priority": 211,
+    "sectorRank": 36,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Grocery Delivery Service"
+  },
+  {
+    "priority": 212,
+    "sectorRank": 37,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Catering Food Service"
+  },
+  {
+    "priority": 213,
+    "sectorRank": 38,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Wine Store"
+  },
+  {
+    "priority": 214,
+    "sectorRank": 39,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Meat Shop"
+  },
+  {
+    "priority": 215,
+    "sectorRank": 40,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Fish Shop"
+  },
+  {
+    "priority": 216,
+    "sectorRank": 41,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Organic Food Store"
+  },
+  {
+    "priority": 217,
+    "sectorRank": 42,
+    "sector": "Food & Beverage",
+    "densityTier": "High",
+    "subcategory": "Grocery Store"
+  },
+  {
+    "priority": 218,
+    "sectorRank": 43,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Convenience Store"
+  },
+  {
+    "priority": 219,
+    "sectorRank": 1,
+    "sector": "Education & Training",
+    "densityTier": "High",
+    "subcategory": "School"
+  },
+  {
+    "priority": 220,
+    "sectorRank": 2,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "CBSE School"
+  },
+  {
+    "priority": 221,
+    "sectorRank": 3,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "ICSE School"
+  },
+  {
+    "priority": 222,
+    "sectorRank": 4,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "State Board School"
+  },
+  {
+    "priority": 223,
+    "sectorRank": 5,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "International School"
+  },
+  {
+    "priority": 224,
+    "sectorRank": 6,
+    "sector": "Education & Training",
+    "densityTier": "High",
+    "subcategory": "College"
+  },
+  {
+    "priority": 225,
+    "sectorRank": 7,
+    "sector": "Education & Training",
+    "densityTier": "Low",
+    "subcategory": "University"
+  },
+  {
+    "priority": 226,
+    "sectorRank": 8,
+    "sector": "Education & Training",
+    "densityTier": "High",
+    "subcategory": "Coaching Center"
+  },
+  {
+    "priority": 227,
+    "sectorRank": 9,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Tuition Center"
+  },
+  {
+    "priority": 228,
+    "sectorRank": 10,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "NEET Coaching"
+  },
+  {
+    "priority": 229,
+    "sectorRank": 11,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "JEE Coaching"
+  },
+  {
+    "priority": 230,
+    "sectorRank": 12,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "CA Coaching"
+  },
+  {
+    "priority": 231,
+    "sectorRank": 13,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "CS Coaching"
+  },
+  {
+    "priority": 232,
+    "sectorRank": 14,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "CMA Coaching"
+  },
+  {
+    "priority": 233,
+    "sectorRank": 15,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "CAT Coaching"
+  },
+  {
+    "priority": 234,
+    "sectorRank": 16,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "UPSC Coaching"
+  },
+  {
+    "priority": 235,
+    "sectorRank": 17,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "KPSC Coaching"
+  },
+  {
+    "priority": 236,
+    "sectorRank": 18,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Bank Exam Coaching"
+  },
+  {
+    "priority": 237,
+    "sectorRank": 19,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "SSC Coaching"
+  },
+  {
+    "priority": 238,
+    "sectorRank": 20,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Railway Exam Coaching"
+  },
+  {
+    "priority": 239,
+    "sectorRank": 21,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "IELTS Coaching"
+  },
+  {
+    "priority": 240,
+    "sectorRank": 22,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "TOEFL Coaching"
+  },
+  {
+    "priority": 241,
+    "sectorRank": 23,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Spoken English"
+  },
+  {
+    "priority": 242,
+    "sectorRank": 24,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Computer Training"
+  },
+  {
+    "priority": 243,
+    "sectorRank": 25,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Programming Classes"
+  },
+  {
+    "priority": 244,
+    "sectorRank": 26,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Vocational Training"
+  },
+  {
+    "priority": 245,
+    "sectorRank": 27,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "ITI Training"
+  },
+  {
+    "priority": 246,
+    "sectorRank": 28,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Polytechnic College"
+  },
+  {
+    "priority": 247,
+    "sectorRank": 29,
+    "sector": "Education & Training",
+    "densityTier": "High",
+    "subcategory": "Play School"
+  },
+  {
+    "priority": 248,
+    "sectorRank": 30,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Day Care"
+  },
+  {
+    "priority": 249,
+    "sectorRank": 31,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Montessori School"
+  },
+  {
+    "priority": 250,
+    "sectorRank": 32,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Special Education School"
+  },
+  {
+    "priority": 251,
+    "sectorRank": 33,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Library"
+  },
+  {
+    "priority": 252,
+    "sectorRank": 34,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Music School"
+  },
+  {
+    "priority": 253,
+    "sectorRank": 35,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Dance School"
+  },
+  {
+    "priority": 254,
+    "sectorRank": 36,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Art School"
+  },
+  {
+    "priority": 255,
+    "sectorRank": 37,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Abacus Classes"
+  },
+  {
+    "priority": 256,
+    "sectorRank": 38,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Vedic Maths"
+  },
+  {
+    "priority": 257,
+    "sectorRank": 39,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Personality Development"
+  },
+  {
+    "priority": 258,
+    "sectorRank": 40,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Foreign Language Classes"
+  },
+  {
+    "priority": 259,
+    "sectorRank": 41,
+    "sector": "Education & Training",
+    "densityTier": "Medium",
+    "subcategory": "Competitive Exam Coaching"
+  },
+  {
+    "priority": 260,
+    "sectorRank": 1,
+    "sector": "Events & Wedding Services",
+    "densityTier": "High",
+    "subcategory": "Catering Service"
+  },
+  {
+    "priority": 261,
+    "sectorRank": 2,
+    "sector": "Events & Wedding Services",
+    "densityTier": "High",
+    "subcategory": "Event Planner"
+  },
+  {
+    "priority": 262,
+    "sectorRank": 3,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Planner"
+  },
+  {
+    "priority": 263,
+    "sectorRank": 4,
+    "sector": "Events & Wedding Services",
+    "densityTier": "High",
+    "subcategory": "Event Venue"
+  },
+  {
+    "priority": 264,
+    "sectorRank": 5,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Venue"
+  },
+  {
+    "priority": 265,
+    "sectorRank": 6,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Banquet Hall"
+  },
+  {
+    "priority": 266,
+    "sectorRank": 7,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Conference Center"
+  },
+  {
+    "priority": 267,
+    "sectorRank": 8,
+    "sector": "Events & Wedding Services",
+    "densityTier": "High",
+    "subcategory": "Photography Studio"
+  },
+  {
+    "priority": 268,
+    "sectorRank": 9,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Photographer"
+  },
+  {
+    "priority": 269,
+    "sectorRank": 10,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Photo Booth"
+  },
+  {
+    "priority": 270,
+    "sectorRank": 11,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Videographer"
+  },
+  {
+    "priority": 271,
+    "sectorRank": 12,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Flower Designer"
+  },
+  {
+    "priority": 272,
+    "sectorRank": 13,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Low",
+    "subcategory": "DJ"
+  },
+  {
+    "priority": 273,
+    "sectorRank": 14,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Musician"
+  },
+  {
+    "priority": 274,
+    "sectorRank": 15,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Sound Rental"
+  },
+  {
+    "priority": 275,
+    "sectorRank": 16,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Event Rental Service"
+  },
+  {
+    "priority": 276,
+    "sectorRank": 17,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Entertainment Agency"
+  },
+  {
+    "priority": 277,
+    "sectorRank": 18,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Invitation Card Designer"
+  },
+  {
+    "priority": 278,
+    "sectorRank": 19,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Mehendi Artist"
+  },
+  {
+    "priority": 279,
+    "sectorRank": 20,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Decorator"
+  },
+  {
+    "priority": 280,
+    "sectorRank": 21,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Bridal Wear"
+  },
+  {
+    "priority": 281,
+    "sectorRank": 22,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Makeup Artist"
+  },
+  {
+    "priority": 282,
+    "sectorRank": 23,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Car Rental"
+  },
+  {
+    "priority": 283,
+    "sectorRank": 24,
+    "sector": "Events & Wedding Services",
+    "densityTier": "Medium",
+    "subcategory": "Wedding Band"
+  },
+  {
+    "priority": 284,
+    "sectorRank": 1,
+    "sector": "Sports & Fitness",
+    "densityTier": "High",
+    "subcategory": "Gym"
+  },
+  {
+    "priority": 285,
+    "sectorRank": 2,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Sports Club"
+  },
+  {
+    "priority": 286,
+    "sectorRank": 3,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Swimming Pool"
+  },
+  {
+    "priority": 287,
+    "sectorRank": 4,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Yoga Center"
+  },
+  {
+    "priority": 288,
+    "sectorRank": 5,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Zumba Classes"
+  },
+  {
+    "priority": 289,
+    "sectorRank": 6,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Martial Arts"
+  },
+  {
+    "priority": 290,
+    "sectorRank": 7,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Cricket Academy"
+  },
+  {
+    "priority": 291,
+    "sectorRank": 8,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Football Academy"
+  },
+  {
+    "priority": 292,
+    "sectorRank": 9,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Badminton Court"
+  },
+  {
+    "priority": 293,
+    "sectorRank": 10,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Personal Trainer"
+  },
+  {
+    "priority": 294,
+    "sectorRank": 11,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Basketball Academy"
+  },
+  {
+    "priority": 295,
+    "sectorRank": 12,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Tennis Academy"
+  },
+  {
+    "priority": 296,
+    "sectorRank": 13,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Table Tennis Academy"
+  },
+  {
+    "priority": 297,
+    "sectorRank": 14,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Boxing Academy"
+  },
+  {
+    "priority": 298,
+    "sectorRank": 15,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Skating Academy"
+  },
+  {
+    "priority": 299,
+    "sectorRank": 16,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Sports Equipment Store"
+  },
+  {
+    "priority": 300,
+    "sectorRank": 17,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Pilates Studio"
+  },
+  {
+    "priority": 301,
+    "sectorRank": 18,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Dance Fitness"
+  },
+  {
+    "priority": 302,
+    "sectorRank": 19,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "CrossFit Gym"
+  },
+  {
+    "priority": 303,
+    "sectorRank": 20,
+    "sector": "Sports & Fitness",
+    "densityTier": "Medium",
+    "subcategory": "Fitness Trainer for Women"
+  },
+  {
+    "priority": 304,
+    "sectorRank": 1,
+    "sector": "Travel & Accommodation",
+    "densityTier": "High",
+    "subcategory": "Hotel"
+  },
+  {
+    "priority": 305,
+    "sectorRank": 2,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Budget Hotel"
+  },
+  {
+    "priority": 306,
+    "sectorRank": 3,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Luxury Hotel"
+  },
+  {
+    "priority": 307,
+    "sectorRank": 4,
+    "sector": "Travel & Accommodation",
+    "densityTier": "High",
+    "subcategory": "Lodge"
+  },
+  {
+    "priority": 308,
+    "sectorRank": 5,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Low",
+    "subcategory": "Guest House"
+  },
+  {
+    "priority": 309,
+    "sectorRank": 6,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Resort"
+  },
+  {
+    "priority": 310,
+    "sectorRank": 7,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Hostel"
+  },
+  {
+    "priority": 311,
+    "sectorRank": 8,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Service Apartment"
+  },
+  {
+    "priority": 312,
+    "sectorRank": 9,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Homestay"
+  },
+  {
+    "priority": 313,
+    "sectorRank": 10,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Tour Operator"
+  },
+  {
+    "priority": 314,
+    "sectorRank": 11,
+    "sector": "Travel & Accommodation",
+    "densityTier": "High",
+    "subcategory": "Travel Agency"
+  },
+  {
+    "priority": 315,
+    "sectorRank": 12,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Taxi Service"
+  },
+  {
+    "priority": 316,
+    "sectorRank": 13,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Car Rental"
+  },
+  {
+    "priority": 317,
+    "sectorRank": 14,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Bus Rental"
+  },
+  {
+    "priority": 318,
+    "sectorRank": 15,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Tourist Guide"
+  },
+  {
+    "priority": 319,
+    "sectorRank": 16,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Pilgrimage Tour Operator"
+  },
+  {
+    "priority": 320,
+    "sectorRank": 17,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Airport Taxi"
+  },
+  {
+    "priority": 321,
+    "sectorRank": 18,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Hotel Booking Agency"
+  },
+  {
+    "priority": 322,
+    "sectorRank": 19,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Holiday Package Provider"
+  },
+  {
+    "priority": 323,
+    "sectorRank": 20,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Backpacker Hostel"
+  },
+  {
+    "priority": 324,
+    "sectorRank": 21,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Camping Site"
+  },
+  {
+    "priority": 325,
+    "sectorRank": 22,
+    "sector": "Travel & Accommodation",
+    "densityTier": "Medium",
+    "subcategory": "Resort & Spa"
+  },
+  {
+    "priority": 326,
+    "sectorRank": 1,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Movie Theater"
+  },
+  {
+    "priority": 327,
+    "sectorRank": 2,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Tourist Attraction"
+  },
+  {
+    "priority": 328,
+    "sectorRank": 3,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Low",
+    "subcategory": "Nightclub"
+  },
+  {
+    "priority": 329,
+    "sectorRank": 4,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Amusement Park"
+  },
+  {
+    "priority": 330,
+    "sectorRank": 5,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Water Park"
+  },
+  {
+    "priority": 331,
+    "sectorRank": 6,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Gaming Zone"
+  },
+  {
+    "priority": 332,
+    "sectorRank": 7,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Bowling Alley"
+  },
+  {
+    "priority": 333,
+    "sectorRank": 8,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Very Low",
+    "subcategory": "Pool Hall"
+  },
+  {
+    "priority": 334,
+    "sectorRank": 9,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Escape Room"
+  },
+  {
+    "priority": 335,
+    "sectorRank": 10,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Arcade"
+  },
+  {
+    "priority": 336,
+    "sectorRank": 11,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Karaoke Bar"
+  },
+  {
+    "priority": 337,
+    "sectorRank": 12,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Live Music Venue"
+  },
+  {
+    "priority": 338,
+    "sectorRank": 13,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Comedy Club"
+  },
+  {
+    "priority": 339,
+    "sectorRank": 14,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Zoo"
+  },
+  {
+    "priority": 340,
+    "sectorRank": 15,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Aquarium"
+  },
+  {
+    "priority": 341,
+    "sectorRank": 16,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Museum"
+  },
+  {
+    "priority": 342,
+    "sectorRank": 17,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Art Gallery"
+  },
+  {
+    "priority": 343,
+    "sectorRank": 18,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Planetarium"
+  },
+  {
+    "priority": 344,
+    "sectorRank": 19,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Adventure Park"
+  },
+  {
+    "priority": 345,
+    "sectorRank": 20,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Indoor Play Area"
+  },
+  {
+    "priority": 346,
+    "sectorRank": 21,
+    "sector": "Entertainment & Leisure",
+    "densityTier": "Medium",
+    "subcategory": "Fun Fair"
+  },
+  {
+    "priority": 347,
+    "sectorRank": 1,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Lawyer"
+  },
+  {
+    "priority": 348,
+    "sectorRank": 2,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Civil Lawyer"
+  },
+  {
+    "priority": 349,
+    "sectorRank": 3,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Criminal Lawyer"
+  },
+  {
+    "priority": 350,
+    "sectorRank": 4,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Family Lawyer"
+  },
+  {
+    "priority": 351,
+    "sectorRank": 5,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Corporate Lawyer"
+  },
+  {
+    "priority": 352,
+    "sectorRank": 6,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Property Lawyer"
+  },
+  {
+    "priority": 353,
+    "sectorRank": 7,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Chartered Accountant"
+  },
+  {
+    "priority": 354,
+    "sectorRank": 8,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Tax Consultant"
+  },
+  {
+    "priority": 355,
+    "sectorRank": 9,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "GST Consultant"
+  },
+  {
+    "priority": 356,
+    "sectorRank": 10,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Financial Consultant"
+  },
+  {
+    "priority": 357,
+    "sectorRank": 11,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Insurance Agent"
+  },
+  {
+    "priority": 358,
+    "sectorRank": 12,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Insurance Company"
+  },
+  {
+    "priority": 359,
+    "sectorRank": 13,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Real Estate Agent"
+  },
+  {
+    "priority": 360,
+    "sectorRank": 14,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Property Management"
+  },
+  {
+    "priority": 361,
+    "sectorRank": 15,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Architect"
+  },
+  {
+    "priority": 362,
+    "sectorRank": 16,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Interior Designer"
+  },
+  {
+    "priority": 363,
+    "sectorRank": 17,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Business Consultant"
+  },
+  {
+    "priority": 364,
+    "sectorRank": 18,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Recruitment Agency"
+  },
+  {
+    "priority": 365,
+    "sectorRank": 19,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "HR Consultant"
+  },
+  {
+    "priority": 366,
+    "sectorRank": 20,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Astrologer"
+  },
+  {
+    "priority": 367,
+    "sectorRank": 21,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Translator"
+  },
+  {
+    "priority": 368,
+    "sectorRank": 22,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Notary"
+  },
+  {
+    "priority": 369,
+    "sectorRank": 23,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Company Secretary"
+  },
+  {
+    "priority": 370,
+    "sectorRank": 24,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Trademark Consultant"
+  },
+  {
+    "priority": 371,
+    "sectorRank": 25,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Patent Consultant"
+  },
+  {
+    "priority": 372,
+    "sectorRank": 26,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Digital Documentation Service"
+  },
+  {
+    "priority": 373,
+    "sectorRank": 27,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Courier Service"
+  },
+  {
+    "priority": 374,
+    "sectorRank": 28,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Printing Service"
+  },
+  {
+    "priority": 375,
+    "sectorRank": 29,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Photocopy Service"
+  },
+  {
+    "priority": 376,
+    "sectorRank": 30,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Packaging Service"
+  },
+  {
+    "priority": 377,
+    "sectorRank": 31,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Office Rental"
+  },
+  {
+    "priority": 378,
+    "sectorRank": 32,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Virtual Office"
+  },
+  {
+    "priority": 379,
+    "sectorRank": 33,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Business Center"
+  },
+  {
+    "priority": 380,
+    "sectorRank": 34,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "B2B Service Provider"
+  },
+  {
+    "priority": 381,
+    "sectorRank": 35,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Market Research Company"
+  },
+  {
+    "priority": 382,
+    "sectorRank": 36,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Consulting Firm"
+  },
+  {
+    "priority": 383,
+    "sectorRank": 37,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Event Staffing"
+  },
+  {
+    "priority": 384,
+    "sectorRank": 38,
+    "sector": "Professional & Business Services",
+    "densityTier": "Medium",
+    "subcategory": "Security Agency"
+  },
+  {
+    "priority": 385,
+    "sectorRank": 1,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Web Designer"
+  },
+  {
+    "priority": 386,
+    "sectorRank": 2,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Digital Marketing Agency"
+  },
+  {
+    "priority": 387,
+    "sectorRank": 3,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Software Company"
+  },
+  {
+    "priority": 388,
+    "sectorRank": 4,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "App Developer"
+  },
+  {
+    "priority": 389,
+    "sectorRank": 5,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "SEO Agency"
+  },
+  {
+    "priority": 390,
+    "sectorRank": 6,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Graphic Designer"
+  },
+  {
+    "priority": 391,
+    "sectorRank": 7,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Video Editor"
+  },
+  {
+    "priority": 392,
+    "sectorRank": 8,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "IT Consultant"
+  },
+  {
+    "priority": 393,
+    "sectorRank": 9,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Cloud Services"
+  },
+  {
+    "priority": 394,
+    "sectorRank": 10,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Cybersecurity Company"
+  },
+  {
+    "priority": 395,
+    "sectorRank": 11,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Data Recovery"
+  },
+  {
+    "priority": 396,
+    "sectorRank": 12,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Computer Sales"
+  },
+  {
+    "priority": 397,
+    "sectorRank": 13,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Laptop Store"
+  },
+  {
+    "priority": 398,
+    "sectorRank": 14,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Mobile Phone Store"
+  },
+  {
+    "priority": 399,
+    "sectorRank": 15,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Internet Provider"
+  },
+  {
+    "priority": 400,
+    "sectorRank": 16,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Telecom Company"
+  },
+  {
+    "priority": 401,
+    "sectorRank": 17,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Network Service"
+  },
+  {
+    "priority": 402,
+    "sectorRank": 18,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "CCTV Company"
+  },
+  {
+    "priority": 403,
+    "sectorRank": 19,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Software Training"
+  },
+  {
+    "priority": 404,
+    "sectorRank": 20,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Game Development"
+  },
+  {
+    "priority": 405,
+    "sectorRank": 21,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "AI Company"
+  },
+  {
+    "priority": 406,
+    "sectorRank": 22,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Digital Agency"
+  },
+  {
+    "priority": 407,
+    "sectorRank": 23,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Social Media Agency"
+  },
+  {
+    "priority": 408,
+    "sectorRank": 24,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "Content Writing Agency"
+  },
+  {
+    "priority": 409,
+    "sectorRank": 25,
+    "sector": "Information Technology",
+    "densityTier": "Medium",
+    "subcategory": "App Repair"
+  },
+  {
+    "priority": 410,
+    "sectorRank": 1,
+    "sector": "Retail Stores",
+    "densityTier": "High",
+    "subcategory": "Supermarket"
+  },
+  {
+    "priority": 411,
+    "sectorRank": 2,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Department Store"
+  },
+  {
+    "priority": 412,
+    "sectorRank": 3,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Shopping Mall"
+  },
+  {
+    "priority": 413,
+    "sectorRank": 4,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Clothing Store"
+  },
+  {
+    "priority": 414,
+    "sectorRank": 5,
+    "sector": "Retail Stores",
+    "densityTier": "High",
+    "subcategory": "Shoe Store"
+  },
+  {
+    "priority": 415,
+    "sectorRank": 6,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Jewellery Store"
+  },
+  {
+    "priority": 416,
+    "sectorRank": 7,
+    "sector": "Retail Stores",
+    "densityTier": "High",
+    "subcategory": "Watch Store"
+  },
+  {
+    "priority": 417,
+    "sectorRank": 8,
+    "sector": "Retail Stores",
+    "densityTier": "High",
+    "subcategory": "Cosmetics Store"
+  },
+  {
+    "priority": 418,
+    "sectorRank": 9,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Electronics Store"
+  },
+  {
+    "priority": 419,
+    "sectorRank": 10,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Computer Store"
+  },
+  {
+    "priority": 420,
+    "sectorRank": 11,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Furniture Store"
+  },
+  {
+    "priority": 421,
+    "sectorRank": 12,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Home Decor Store"
+  },
+  {
+    "priority": 422,
+    "sectorRank": 13,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Mattress Store"
+  },
+  {
+    "priority": 423,
+    "sectorRank": 14,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Kitchenware Store"
+  },
+  {
+    "priority": 424,
+    "sectorRank": 15,
+    "sector": "Retail Stores",
+    "densityTier": "High",
+    "subcategory": "Hardware Store"
+  },
+  {
+    "priority": 425,
+    "sectorRank": 16,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Paint Store"
+  },
+  {
+    "priority": 426,
+    "sectorRank": 17,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Building Material Store"
+  },
+  {
+    "priority": 427,
+    "sectorRank": 18,
+    "sector": "Retail Stores",
+    "densityTier": "High",
+    "subcategory": "Stationery Store"
+  },
+  {
+    "priority": 428,
+    "sectorRank": 19,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Book Store"
+  },
+  {
+    "priority": 429,
+    "sectorRank": 20,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Toy Store"
+  },
+  {
+    "priority": 430,
+    "sectorRank": 21,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Gift Shop"
+  },
+  {
+    "priority": 431,
+    "sectorRank": 22,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Flower Shop"
+  },
+  {
+    "priority": 432,
+    "sectorRank": 23,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Pet Store"
+  },
+  {
+    "priority": 433,
+    "sectorRank": 24,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Sports Store"
+  },
+  {
+    "priority": 434,
+    "sectorRank": 25,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Musical Instrument Store"
+  },
+  {
+    "priority": 435,
+    "sectorRank": 26,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Organic Store"
+  },
+  {
+    "priority": 436,
+    "sectorRank": 27,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Fish Store"
+  },
+  {
+    "priority": 437,
+    "sectorRank": 28,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Liquor Store"
+  },
+  {
+    "priority": 438,
+    "sectorRank": 29,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Baby Store"
+  },
+  {
+    "priority": 439,
+    "sectorRank": 30,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Baby Clothing Store"
+  },
+  {
+    "priority": 440,
+    "sectorRank": 31,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Bicycle Store"
+  },
+  {
+    "priority": 441,
+    "sectorRank": 32,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Automotive Parts Store"
+  },
+  {
+    "priority": 442,
+    "sectorRank": 33,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Electrical Store"
+  },
+  {
+    "priority": 443,
+    "sectorRank": 34,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Sanitaryware Store"
+  },
+  {
+    "priority": 444,
+    "sectorRank": 35,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Marble & Granite Store"
+  },
+  {
+    "priority": 445,
+    "sectorRank": 36,
+    "sector": "Retail Stores",
+    "densityTier": "Very Low",
+    "subcategory": "Curtain Store"
+  },
+  {
+    "priority": 446,
+    "sectorRank": 37,
+    "sector": "Retail Stores",
+    "densityTier": "Medium",
+    "subcategory": "Mattress & Bedding"
+  },
+  {
+    "priority": 447,
+    "sectorRank": 1,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Real Estate Company"
+  },
+  {
+    "priority": 448,
+    "sectorRank": 2,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Property Dealer"
+  },
+  {
+    "priority": 449,
+    "sectorRank": 3,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Residential Property Dealer"
+  },
+  {
+    "priority": 450,
+    "sectorRank": 4,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Commercial Property Dealer"
+  },
+  {
+    "priority": 451,
+    "sectorRank": 5,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Apartment Sales"
+  },
+  {
+    "priority": 452,
+    "sectorRank": 6,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Apartment Rental"
+  },
+  {
+    "priority": 453,
+    "sectorRank": 7,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "House Sales"
+  },
+  {
+    "priority": 454,
+    "sectorRank": 8,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "House Rental"
+  },
+  {
+    "priority": 455,
+    "sectorRank": 9,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Plot Sales"
+  },
+  {
+    "priority": 456,
+    "sectorRank": 10,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Land Dealer"
+  },
+  {
+    "priority": 457,
+    "sectorRank": 11,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Office Space"
+  },
+  {
+    "priority": 458,
+    "sectorRank": 12,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Warehouse Rental"
+  },
+  {
+    "priority": 459,
+    "sectorRank": 13,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Industrial Property"
+  },
+  {
+    "priority": 460,
+    "sectorRank": 14,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Co-working Space"
+  },
+  {
+    "priority": 461,
+    "sectorRank": 15,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "PG Accommodation"
+  },
+  {
+    "priority": 462,
+    "sectorRank": 16,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Builders & Developers"
+  },
+  {
+    "priority": 463,
+    "sectorRank": 17,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Construction Company"
+  },
+  {
+    "priority": 464,
+    "sectorRank": 18,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Property Valuation"
+  },
+  {
+    "priority": 465,
+    "sectorRank": 19,
+    "sector": "Real Estate & Property",
+    "densityTier": "Medium",
+    "subcategory": "Home Loan Consultant"
+  },
+  {
+    "priority": 466,
+    "sectorRank": 1,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Bank"
+  },
+  {
+    "priority": 467,
+    "sectorRank": 2,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Cooperative Bank"
+  },
+  {
+    "priority": 468,
+    "sectorRank": 3,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "NBFC"
+  },
+  {
+    "priority": 469,
+    "sectorRank": 4,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "ATM"
+  },
+  {
+    "priority": 470,
+    "sectorRank": 5,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Accountant"
+  },
+  {
+    "priority": 471,
+    "sectorRank": 6,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Accounting Service"
+  },
+  {
+    "priority": 472,
+    "sectorRank": 7,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Loan Consultant"
+  },
+  {
+    "priority": 473,
+    "sectorRank": 8,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Home Loan"
+  },
+  {
+    "priority": 474,
+    "sectorRank": 9,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Personal Loan"
+  },
+  {
+    "priority": 475,
+    "sectorRank": 10,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Business Loan"
+  },
+  {
+    "priority": 476,
+    "sectorRank": 11,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Insurance Agency"
+  },
+  {
+    "priority": 477,
+    "sectorRank": 12,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Life Insurance"
+  },
+  {
+    "priority": 478,
+    "sectorRank": 13,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Health Insurance"
+  },
+  {
+    "priority": 479,
+    "sectorRank": 14,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Motor Insurance"
+  },
+  {
+    "priority": 480,
+    "sectorRank": 15,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Mutual Fund Advisor"
+  },
+  {
+    "priority": 481,
+    "sectorRank": 16,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Stock Broker"
+  },
+  {
+    "priority": 482,
+    "sectorRank": 17,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Investment Advisor"
+  },
+  {
+    "priority": 483,
+    "sectorRank": 18,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Gold Loan"
+  },
+  {
+    "priority": 484,
+    "sectorRank": 19,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Microfinance"
+  },
+  {
+    "priority": 485,
+    "sectorRank": 20,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Money Transfer"
+  },
+  {
+    "priority": 486,
+    "sectorRank": 21,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Venture Capital"
+  },
+  {
+    "priority": 487,
+    "sectorRank": 22,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Private Equity"
+  },
+  {
+    "priority": 488,
+    "sectorRank": 23,
+    "sector": "Finance & Banking",
+    "densityTier": "Medium",
+    "subcategory": "Credit Cooperative"
+  },
+  {
+    "priority": 489,
+    "sectorRank": 1,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Civil Contractor"
+  },
+  {
+    "priority": 490,
+    "sectorRank": 2,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Road Contractor"
+  },
+  {
+    "priority": 491,
+    "sectorRank": 3,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Bridge Contractor"
+  },
+  {
+    "priority": 492,
+    "sectorRank": 4,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Electrical Contractor"
+  },
+  {
+    "priority": 493,
+    "sectorRank": 5,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Plumbing Contractor"
+  },
+  {
+    "priority": 494,
+    "sectorRank": 6,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "HVAC Contractor"
+  },
+  {
+    "priority": 495,
+    "sectorRank": 7,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Structural Engineer"
+  },
+  {
+    "priority": 496,
+    "sectorRank": 8,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Architectural Firm"
+  },
+  {
+    "priority": 497,
+    "sectorRank": 9,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Surveyor"
+  },
+  {
+    "priority": 498,
+    "sectorRank": 10,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Excavation Contractor"
+  },
+  {
+    "priority": 499,
+    "sectorRank": 11,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Demolition Contractor"
+  },
+  {
+    "priority": 500,
+    "sectorRank": 12,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Concrete Supplier"
+  },
+  {
+    "priority": 501,
+    "sectorRank": 13,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Steel Supplier"
+  },
+  {
+    "priority": 502,
+    "sectorRank": 14,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Cement Dealer"
+  },
+  {
+    "priority": 503,
+    "sectorRank": 15,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Bricks Supplier"
+  },
+  {
+    "priority": 504,
+    "sectorRank": 16,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Sand Supplier"
+  },
+  {
+    "priority": 505,
+    "sectorRank": 17,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Stone Supplier"
+  },
+  {
+    "priority": 506,
+    "sectorRank": 18,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Tiles Store"
+  },
+  {
+    "priority": 507,
+    "sectorRank": 19,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Marble Store"
+  },
+  {
+    "priority": 508,
+    "sectorRank": 20,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Granite Store"
+  },
+  {
+    "priority": 509,
+    "sectorRank": 21,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Glass Contractor"
+  },
+  {
+    "priority": 510,
+    "sectorRank": 22,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Roofing Contractor"
+  },
+  {
+    "priority": 511,
+    "sectorRank": 23,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Waterproofing Contractor"
+  },
+  {
+    "priority": 512,
+    "sectorRank": 24,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Scaffolding Service"
+  },
+  {
+    "priority": 513,
+    "sectorRank": 25,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Crane Rental"
+  },
+  {
+    "priority": 514,
+    "sectorRank": 26,
+    "sector": "Construction & Infrastructure",
+    "densityTier": "Medium",
+    "subcategory": "Construction Equipment Rental"
+  },
+  {
+    "priority": 515,
+    "sectorRank": 1,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Logistics Company"
+  },
+  {
+    "priority": 516,
+    "sectorRank": 2,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Transport Company"
+  },
+  {
+    "priority": 517,
+    "sectorRank": 3,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Truck Transport"
+  },
+  {
+    "priority": 518,
+    "sectorRank": 4,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Bus Service"
+  },
+  {
+    "priority": 519,
+    "sectorRank": 5,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Truck Rental"
+  },
+  {
+    "priority": 520,
+    "sectorRank": 6,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Warehouse"
+  },
+  {
+    "priority": 521,
+    "sectorRank": 7,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Cold Storage"
+  },
+  {
+    "priority": 522,
+    "sectorRank": 8,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Cargo Service"
+  },
+  {
+    "priority": 523,
+    "sectorRank": 9,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Freight Forwarder"
+  },
+  {
+    "priority": 524,
+    "sectorRank": 10,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Shipping Company"
+  },
+  {
+    "priority": 525,
+    "sectorRank": 11,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Container Service"
+  },
+  {
+    "priority": 526,
+    "sectorRank": 12,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Last Mile Delivery"
+  },
+  {
+    "priority": 527,
+    "sectorRank": 13,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Bike Delivery"
+  },
+  {
+    "priority": 528,
+    "sectorRank": 14,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Auto Rickshaw Service"
+  },
+  {
+    "priority": 529,
+    "sectorRank": 15,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "School Bus Service"
+  },
+  {
+    "priority": 530,
+    "sectorRank": 16,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Airport Transfer"
+  },
+  {
+    "priority": 531,
+    "sectorRank": 17,
+    "sector": "Transportation & Logistics",
+    "densityTier": "Medium",
+    "subcategory": "Fleet Management"
+  },
+  {
+    "priority": 532,
+    "sectorRank": 1,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Manufacturing Company"
+  },
+  {
+    "priority": 533,
+    "sectorRank": 2,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Machine Manufacturer"
+  },
+  {
+    "priority": 534,
+    "sectorRank": 3,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Auto Parts Manufacturer"
+  },
+  {
+    "priority": 535,
+    "sectorRank": 4,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Electrical Manufacturer"
+  },
+  {
+    "priority": 536,
+    "sectorRank": 5,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Electronic Manufacturer"
+  },
+  {
+    "priority": 537,
+    "sectorRank": 6,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Textile Manufacturer"
+  },
+  {
+    "priority": 538,
+    "sectorRank": 7,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Garment Manufacturer"
+  },
+  {
+    "priority": 539,
+    "sectorRank": 8,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Food Manufacturer"
+  },
+  {
+    "priority": 540,
+    "sectorRank": 9,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Pharmaceutical Manufacturer"
+  },
+  {
+    "priority": 541,
+    "sectorRank": 10,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Chemical Manufacturer"
+  },
+  {
+    "priority": 542,
+    "sectorRank": 11,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Plastic Manufacturer"
+  },
+  {
+    "priority": 543,
+    "sectorRank": 12,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Packaging Manufacturer"
+  },
+  {
+    "priority": 544,
+    "sectorRank": 13,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Steel Manufacturer"
+  },
+  {
+    "priority": 545,
+    "sectorRank": 14,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Cement Manufacturer"
+  },
+  {
+    "priority": 546,
+    "sectorRank": 15,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Furniture Manufacturer"
+  },
+  {
+    "priority": 547,
+    "sectorRank": 16,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Tool Manufacturer"
+  },
+  {
+    "priority": 548,
+    "sectorRank": 17,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Machine Shop"
+  },
+  {
+    "priority": 549,
+    "sectorRank": 18,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Welding Fabrication"
+  },
+  {
+    "priority": 550,
+    "sectorRank": 19,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Sheet Metal Fabricator"
+  },
+  {
+    "priority": 551,
+    "sectorRank": 20,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Injection Molding"
+  },
+  {
+    "priority": 552,
+    "sectorRank": 21,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Printing Manufacturer"
+  },
+  {
+    "priority": 553,
+    "sectorRank": 22,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Paper Manufacturer"
+  },
+  {
+    "priority": 554,
+    "sectorRank": 23,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Industrial Equipment Supplier"
+  },
+  {
+    "priority": 555,
+    "sectorRank": 24,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Generator Manufacturer"
+  },
+  {
+    "priority": 556,
+    "sectorRank": 25,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Solar Manufacturer"
+  },
+  {
+    "priority": 557,
+    "sectorRank": 26,
+    "sector": "Industrial & Manufacturing",
+    "densityTier": "Medium",
+    "subcategory": "Water Treatment Equipment"
+  },
+  {
+    "priority": 558,
+    "sectorRank": 1,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Farm"
+  },
+  {
+    "priority": 559,
+    "sectorRank": 2,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Dairy Farm"
+  },
+  {
+    "priority": 560,
+    "sectorRank": 3,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Poultry Farm"
+  },
+  {
+    "priority": 561,
+    "sectorRank": 4,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Goat Farm"
+  },
+  {
+    "priority": 562,
+    "sectorRank": 5,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Sheep Farm"
+  },
+  {
+    "priority": 563,
+    "sectorRank": 6,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Cattle Farm"
+  },
+  {
+    "priority": 564,
+    "sectorRank": 7,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Fish Farm"
+  },
+  {
+    "priority": 565,
+    "sectorRank": 8,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Nursery"
+  },
+  {
+    "priority": 566,
+    "sectorRank": 9,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Garden Center"
+  },
+  {
+    "priority": 567,
+    "sectorRank": 10,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Seed Store"
+  },
+  {
+    "priority": 568,
+    "sectorRank": 11,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Fertilizer Store"
+  },
+  {
+    "priority": 569,
+    "sectorRank": 12,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Pesticide Store"
+  },
+  {
+    "priority": 570,
+    "sectorRank": 13,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Agricultural Equipment"
+  },
+  {
+    "priority": 571,
+    "sectorRank": 14,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Irrigation Equipment"
+  },
+  {
+    "priority": 572,
+    "sectorRank": 15,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Agricultural Consultant"
+  },
+  {
+    "priority": 573,
+    "sectorRank": 16,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Organic Farm"
+  },
+  {
+    "priority": 574,
+    "sectorRank": 17,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Floriculture Farm"
+  },
+  {
+    "priority": 575,
+    "sectorRank": 18,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Fruit Farm"
+  },
+  {
+    "priority": 576,
+    "sectorRank": 19,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Vegetable Farm"
+  },
+  {
+    "priority": 577,
+    "sectorRank": 20,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Agricultural Machinery Repair"
+  },
+  {
+    "priority": 578,
+    "sectorRank": 21,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Veterinary Service"
+  },
+  {
+    "priority": 579,
+    "sectorRank": 22,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Very Low",
+    "subcategory": "Animal Feed Store"
+  },
+  {
+    "priority": 580,
+    "sectorRank": 23,
+    "sector": "Agriculture & Farming",
+    "densityTier": "Medium",
+    "subcategory": "Pet Feed Store"
+  },
+  {
+    "priority": 581,
+    "sectorRank": 1,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Solar Energy Company"
+  },
+  {
+    "priority": 582,
+    "sectorRank": 2,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Solar Installer"
+  },
+  {
+    "priority": 583,
+    "sectorRank": 3,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Solar Water Heater"
+  },
+  {
+    "priority": 584,
+    "sectorRank": 4,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Electricity Service"
+  },
+  {
+    "priority": 585,
+    "sectorRank": 5,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Generator Supplier"
+  },
+  {
+    "priority": 586,
+    "sectorRank": 6,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Generator Rental"
+  },
+  {
+    "priority": 587,
+    "sectorRank": 7,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Battery Supplier"
+  },
+  {
+    "priority": 588,
+    "sectorRank": 8,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Inverter Dealer"
+  },
+  {
+    "priority": 589,
+    "sectorRank": 9,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "EV Charging Station"
+  },
+  {
+    "priority": 590,
+    "sectorRank": 10,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Gas Agency"
+  },
+  {
+    "priority": 591,
+    "sectorRank": 11,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Water Supplier"
+  },
+  {
+    "priority": 592,
+    "sectorRank": 12,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Water Purifier"
+  },
+  {
+    "priority": 593,
+    "sectorRank": 13,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Water Treatment Plant"
+  },
+  {
+    "priority": 594,
+    "sectorRank": 14,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Electrical Substation"
+  },
+  {
+    "priority": 595,
+    "sectorRank": 15,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Waste Management"
+  },
+  {
+    "priority": 596,
+    "sectorRank": 16,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Recycling Center"
+  },
+  {
+    "priority": 597,
+    "sectorRank": 17,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Scrap Dealer"
+  },
+  {
+    "priority": 598,
+    "sectorRank": 18,
+    "sector": "Energy & Utilities",
+    "densityTier": "Medium",
+    "subcategory": "Sewage Treatment"
+  },
+  {
+    "priority": 599,
+    "sectorRank": 1,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Mobile Network Provider"
+  },
+  {
+    "priority": 600,
+    "sectorRank": 2,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Internet Service Provider"
+  },
+  {
+    "priority": 601,
+    "sectorRank": 3,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Fiber Internet Provider"
+  },
+  {
+    "priority": 602,
+    "sectorRank": 4,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Cable TV Operator"
+  },
+  {
+    "priority": 603,
+    "sectorRank": 5,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "DTH Service"
+  },
+  {
+    "priority": 604,
+    "sectorRank": 6,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "WiFi Provider"
+  },
+  {
+    "priority": 605,
+    "sectorRank": 7,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Telecom Dealer"
+  },
+  {
+    "priority": 606,
+    "sectorRank": 8,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Mobile Recharge Store"
+  },
+  {
+    "priority": 607,
+    "sectorRank": 9,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Network Installation"
+  },
+  {
+    "priority": 608,
+    "sectorRank": 10,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Tower Installation"
+  },
+  {
+    "priority": 609,
+    "sectorRank": 11,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "VOIP Service"
+  },
+  {
+    "priority": 610,
+    "sectorRank": 12,
+    "sector": "Telecommunications & Network",
+    "densityTier": "Medium",
+    "subcategory": "Business Communication Service"
+  },
+  {
+    "priority": 611,
+    "sectorRank": 1,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "CCTV Dealer"
+  },
+  {
+    "priority": 612,
+    "sectorRank": 2,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Alarm System"
+  },
+  {
+    "priority": 613,
+    "sectorRank": 3,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Fire Safety Company"
+  },
+  {
+    "priority": 614,
+    "sectorRank": 4,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Fire Extinguisher Dealer"
+  },
+  {
+    "priority": 615,
+    "sectorRank": 5,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Fire Alarm Installation"
+  },
+  {
+    "priority": 616,
+    "sectorRank": 6,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Access Control"
+  },
+  {
+    "priority": 617,
+    "sectorRank": 7,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Security Equipment"
+  },
+  {
+    "priority": 618,
+    "sectorRank": 8,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Private Investigator"
+  },
+  {
+    "priority": 619,
+    "sectorRank": 9,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Safety Equipment"
+  },
+  {
+    "priority": 620,
+    "sectorRank": 10,
+    "sector": "Security & Safety",
+    "densityTier": "Medium",
+    "subcategory": "Fire Fighting Equipment"
+  },
+  {
+    "priority": 621,
+    "sectorRank": 1,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Videography Studio"
+  },
+  {
+    "priority": 622,
+    "sectorRank": 2,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Video Production Company"
+  },
+  {
+    "priority": 623,
+    "sectorRank": 3,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Graphic Design Agency"
+  },
+  {
+    "priority": 624,
+    "sectorRank": 4,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Advertising Agency"
+  },
+  {
+    "priority": 625,
+    "sectorRank": 5,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Branding Agency"
+  },
+  {
+    "priority": 626,
+    "sectorRank": 6,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "PR Agency"
+  },
+  {
+    "priority": 627,
+    "sectorRank": 7,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Animation Studio"
+  },
+  {
+    "priority": 628,
+    "sectorRank": 8,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Film Production Company"
+  },
+  {
+    "priority": 629,
+    "sectorRank": 9,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Music Production Studio"
+  },
+  {
+    "priority": 630,
+    "sectorRank": 10,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Printing Press"
+  },
+  {
+    "priority": 631,
+    "sectorRank": 11,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Sign Board Company"
+  },
+  {
+    "priority": 632,
+    "sectorRank": 12,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Digital Printing"
+  },
+  {
+    "priority": 633,
+    "sectorRank": 13,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Newspaper Publisher"
+  },
+  {
+    "priority": 634,
+    "sectorRank": 14,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Magazine Publisher"
+  },
+  {
+    "priority": 635,
+    "sectorRank": 15,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Radio Station"
+  },
+  {
+    "priority": 636,
+    "sectorRank": 16,
+    "sector": "Media & Creative",
+    "densityTier": "Medium",
+    "subcategory": "Event Media"
+  },
+  {
+    "priority": 637,
+    "sectorRank": 1,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Dry Cleaner"
+  },
+  {
+    "priority": 638,
+    "sectorRank": 2,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Laundry Service"
+  },
+  {
+    "priority": 639,
+    "sectorRank": 3,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Tailor"
+  },
+  {
+    "priority": 640,
+    "sectorRank": 4,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Key Maker"
+  },
+  {
+    "priority": 641,
+    "sectorRank": 5,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Photocopy Shop"
+  },
+  {
+    "priority": 642,
+    "sectorRank": 6,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Document Printing"
+  },
+  {
+    "priority": 643,
+    "sectorRank": 7,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Travel Document Service"
+  },
+  {
+    "priority": 644,
+    "sectorRank": 8,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Visa Consultant"
+  },
+  {
+    "priority": 645,
+    "sectorRank": 9,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Immigration Consultant"
+  },
+  {
+    "priority": 646,
+    "sectorRank": 10,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Pet Grooming"
+  },
+  {
+    "priority": 647,
+    "sectorRank": 11,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Pet Boarding"
+  },
+  {
+    "priority": 648,
+    "sectorRank": 12,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Pet Care"
+  },
+  {
+    "priority": 649,
+    "sectorRank": 13,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Funeral Service"
+  },
+  {
+    "priority": 650,
+    "sectorRank": 14,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Cremation Service"
+  },
+  {
+    "priority": 651,
+    "sectorRank": 15,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Marriage Bureau"
+  },
+  {
+    "priority": 652,
+    "sectorRank": 16,
+    "sector": "Consumer Services",
+    "densityTier": "Medium",
+    "subcategory": "Matchmaker"
+  },
+  {
+    "priority": 653,
+    "sectorRank": 1,
+    "sector": "Government & Public Services",
+    "densityTier": "Medium",
+    "subcategory": "Government Office"
+  },
+  {
+    "priority": 654,
+    "sectorRank": 2,
+    "sector": "Government & Public Services",
+    "densityTier": "Medium",
+    "subcategory": "Municipal Office"
+  },
+  {
+    "priority": 655,
+    "sectorRank": 44,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Andhra Restaurant"
+  },
+  {
+    "priority": 656,
+    "sectorRank": 45,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Hyderabadi Restaurant"
+  },
+  {
+    "priority": 657,
+    "sectorRank": 46,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Kerala Restaurant"
+  },
+  {
+    "priority": 658,
+    "sectorRank": 47,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Rajasthani Restaurant"
+  },
+  {
+    "priority": 659,
+    "sectorRank": 48,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Gujarati Restaurant"
+  },
+  {
+    "priority": 660,
+    "sectorRank": 49,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Bengali Restaurant"
+  },
+  {
+    "priority": 661,
+    "sectorRank": 50,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Maharashtrian Restaurant"
+  },
+  {
+    "priority": 662,
+    "sectorRank": 51,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Arabian Restaurant"
+  },
+  {
+    "priority": 663,
+    "sectorRank": 52,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Middle Eastern Restaurant"
+  },
+  {
+    "priority": 664,
+    "sectorRank": 53,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Mexican Restaurant"
+  },
+  {
+    "priority": 665,
+    "sectorRank": 54,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Italian Restaurant"
+  },
+  {
+    "priority": 666,
+    "sectorRank": 55,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Japanese Restaurant"
+  },
+  {
+    "priority": 667,
+    "sectorRank": 56,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Korean Restaurant"
+  },
+  {
+    "priority": 668,
+    "sectorRank": 57,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Thai Restaurant"
+  },
+  {
+    "priority": 669,
+    "sectorRank": 58,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Continental Restaurant"
+  },
+  {
+    "priority": 670,
+    "sectorRank": 59,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Afghan Restaurant"
+  },
+  {
+    "priority": 671,
+    "sectorRank": 60,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Street Food"
+  },
+  {
+    "priority": 672,
+    "sectorRank": 61,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Food Truck"
+  },
+  {
+    "priority": 673,
+    "sectorRank": 62,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Breakfast Restaurant"
+  },
+  {
+    "priority": 674,
+    "sectorRank": 63,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Brunch Restaurant"
+  },
+  {
+    "priority": 675,
+    "sectorRank": 64,
+    "sector": "Food & Beverage",
+    "densityTier": "Medium",
+    "subcategory": "Restaurant With Home Delivery"
   }
 ]

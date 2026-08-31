@@ -48,7 +48,7 @@ export default function NearbyBusinessesSection() {
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="flex items-center justify-between mb-1">
-          <h2 className="text-xs sm:text-sm lg:text-base font-bold text-slate-900">Nearby Businesses</h2>
+          <h2 className="text-xs sm:text-sm lg:text-base font-bold text-slate-900">Nearby Healthcare Services</h2>
           <Link
             href="/nearby"
             className="text-[10px] sm:text-[11px] lg:text-xs font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-0.5 transition-colors"

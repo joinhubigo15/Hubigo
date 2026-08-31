@@ -18,34 +18,34 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Hubigo — Discover the Best Local Businesses Near You",
-    template: "%s | Hubigo",
+    default: "Hubigo Healthcare — Discover Top Hospitals, Doctors & Medical Services Near You",
+    template: "%s | Hubigo Healthcare",
   },
   description:
-    "Hubigo is India's modern local discovery platform. Find restaurants, hospitals, hotels, salons, plumbers, electricians and more. Read reviews, compare businesses, and connect instantly.",
+    "Hubigo Healthcare is India's dedicated medical & healthcare discovery platform. Find hospitals, clinics, specialist doctors, diagnostic labs, and 24/7 pharmacies near you.",
   keywords: [
-    "local businesses",
-    "business directory",
-    "restaurants near me",
-    "best businesses",
-    "Hubigo",
-    "India business search",
-    "local discovery",
-    "find services",
+    "healthcare directory",
+    "hospitals near me",
+    "specialist doctors",
+    "diagnostic labs",
+    "pharmacies near me",
+    "Hubigo Healthcare",
+    "India medical search",
+    "clinics near me",
   ],
   openGraph: {
-    title: "Hubigo — Discover the Best Local Businesses Near You",
+    title: "Hubigo Healthcare — Discover Top Hospitals, Doctors & Medical Services",
     description:
-      "India's modern local discovery platform. Find, compare, and connect with businesses near you.",
+      "India's dedicated medical & healthcare discovery platform. Find, compare, and connect with healthcare providers near you.",
     type: "website",
     locale: "en_IN",
-    siteName: "Hubigo",
+    siteName: "Hubigo Healthcare",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hubigo — Discover the Best Local Businesses",
+    title: "Hubigo Healthcare — Discover Top Hospitals & Doctors",
     description:
-      "India's modern local discovery platform. Find, compare, and connect with businesses near you.",
+      "India's dedicated medical & healthcare discovery platform. Find, compare, and connect with healthcare providers near you.",
   },
   robots: {
     index: true,

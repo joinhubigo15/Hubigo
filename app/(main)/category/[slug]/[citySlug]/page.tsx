@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { searchBusinesses, getCategories, type CategoryOption } from "@/app/lib/search-api";
-import { buildBreadcrumbJsonLd } from "@/app/lib/json-ld";
+import { buildBreadcrumbJsonLd, generateHealthcareKeywords } from "@/app/lib/json-ld";
 import JsonLd from "@/app/components/seo/JsonLd";
 import PseoBusinessGrid from "@/app/components/pseo/PseoBusinessGrid";
 import { evaluatePseoGate, pseoRobotsMeta, PSEO_DISPLAY_LIMIT, PSEO_MAX_EXPOSED } from "@/app/lib/pseo-thresholds";
@@ -24,10 +24,6 @@ export async function generateMetadata({
   params: Promise<{ slug: string; citySlug: string }>;
 }): Promise<Metadata> {
   const { slug, citySlug } = await params;
-
-  // No .catch() on either fetch below — a failed fetch must propagate rather than being treated
-  // as "category/results don't exist", which would otherwise false-positive notFound() and cache
-  // that for the whole revalidate window. Only a real empty result should hit the pSEO gate.
   const categories = await getCategories();
   const categoryName = resolveCategoryName(categories, slug);
   if (!categoryName) notFound();
@@ -45,15 +41,21 @@ export async function generateMetadata({
   }
 
   const displayCityName = result.items[0].cityName ?? citySlug;
-  const title = `Top ${categoryName} in ${displayCityName}`;
-  const description = `Discover the top-rated ${categoryName} in ${displayCityName} — ${result.total.toLocaleString("en-IN")} businesses ranked by rating and reviews on Hubigo.`;
-  // Self-canonical — this is distinct, substantive content (gated by the pSEO exist floor), not
-  // a duplicate of /category/{slug}, so it must not canonicalize up to that page.
+  const isHealthcare = categoryName.toLowerCase().includes("health") || categoryName.toLowerCase().includes("medical") || categoryName.toLowerCase().includes("doctor") || categoryName.toLowerCase().includes("clinic") || categoryName.toLowerCase().includes("lab") || categoryName.toLowerCase().includes("hospital") || categoryName.toLowerCase().includes("pharmacy");
+
+  const title = isHealthcare
+    ? `Top ${categoryName} in ${displayCityName} | Compare & Book OPD | Hubigo`
+    : `Top ${categoryName} in ${displayCityName} | Hubigo`;
+  const description = isHealthcare
+    ? `Find ${result.total.toLocaleString("en-IN")} top-rated ${categoryName} in ${displayCityName}. Compare ratings, phone numbers, addresses, and OPD timings on Hubigo Healthcare.`
+    : `Discover the top-rated ${categoryName} in ${displayCityName} — ${result.total.toLocaleString("en-IN")} businesses ranked by rating and reviews on Hubigo.`;
   const canonical = `/category/${slug}/${citySlug}`;
+  const keywords = generateHealthcareKeywords(categoryName, undefined, displayCityName);
 
   return {
     title,
     description,
+    keywords,
     alternates: { canonical },
     robots: pseoRobotsMeta(gate.indexable),
     openGraph: { title, description, url: canonical, type: "website" },

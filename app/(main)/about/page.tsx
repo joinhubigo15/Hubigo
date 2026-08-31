@@ -830,14 +830,14 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
           {[
-            { icon: "🍽️", label: "Restaurants" },
-            { icon: "💆🏻‍♀️", label: "Salons & Spas" },
-            { icon: "🏋️", label: "Fitness Gyms" },
-            { icon: "🩺", label: "Healthcare" },
-            { icon: "🔧", label: "Auto Repair" },
-            { icon: "🛍️", label: "Retail Stores" },
-            { icon: "🎓", label: "Education" },
-            { icon: "🛠️", label: "Home Services" },
+            { icon: "🏥", label: "Hospitals" },
+            { icon: "🩺", label: "Specialty Clinics" },
+            { icon: "🧪", label: "Diagnostic Labs" },
+            { icon: "💊", label: "Pharmacies" },
+            { icon: "🦷", label: "Dental Care" },
+            { icon: "👁️", label: "Eye Care" },
+            { icon: "🧘", label: "Physical Therapy" },
+            { icon: "🚑", label: "Emergency Care" },
           ].map((cat, idx) => (
             <div
               key={idx}

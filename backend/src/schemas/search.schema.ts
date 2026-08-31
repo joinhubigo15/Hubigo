@@ -45,7 +45,7 @@ export const compareNearbyQuerySchema = z.object({
   category: z.string().trim().min(1).max(120).optional(),
   lat: z.coerce.number().min(-90).max(90),
   lng: z.coerce.number().min(-180).max(180),
-  limit: z.coerce.number().int().min(1).max(5).default(5),
+  limit: z.coerce.number().int().min(1).max(5).default(3),
 }).refine((v) => v.subcategory || v.category, {
   message: "subcategory or category is required",
   path: ["subcategory"],

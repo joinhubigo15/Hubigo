@@ -191,7 +191,7 @@ export default function AdaptiveBusinessDetailsPage({
       setMessageSending(false);
     }
   };
-  const [activeNavTab, setActiveNavTab] = useState<"overview" | "services" | "reviews" | "faq" | "photos" | "about">("overview");
+  const [activeNavTab, setActiveNavTab] = useState<"overview" | "categories" | "services" | "photos" | "amenities" | "reviews" | "faq" | "about">("overview");
   const [showFullDesc, setShowFullDesc] = useState(false);
   const [copiedAddress, setCopiedAddress] = useState(false);
 
@@ -664,28 +664,30 @@ export default function AdaptiveBusinessDetailsPage({
 
           </div>
 
-          {/* Navigation Tabs Bar - Shown within viewport, no horizontal scroll */}
-          <div className="w-full flex items-center justify-between px-2 sm:px-6 bg-slate-50/80 border-t border-slate-200/90 rounded-none">
-            {(["overview", "services", "reviews", "faq", "photos"] as const)
-              .filter((tab) => tab !== "faq" || faqs.length > 0)
-              .map((tab) => (
-              <button
-                key={tab}
-                onClick={() => {
-                  setActiveNavTab(tab);
-                  const el = document.getElementById(`section-${tab}`);
-                  if (el) el.scrollIntoView({ behavior: "smooth" });
-                }}
-                className={cn(
-                  "py-2.5 sm:py-3 font-extrabold transition-all border-b-2 tracking-tight cursor-pointer text-[10px] sm:text-xs px-1 text-center flex-1 rounded-none",
-                  activeNavTab === tab
-                    ? "border-blue-600 text-blue-600"
-                    : "border-transparent text-slate-500 hover:text-slate-800"
-                )}
-              >
-                {tab === "faq" ? "FAQ" : tab.charAt(0).toUpperCase() + tab.slice(1)}
-              </button>
-            ))}
+          {/* Navigation Tabs Bar - Slidable horizontal scroll bar */}
+          <div className="w-full bg-slate-50/90 border-t border-slate-200/90 overflow-x-auto scrollbar-none">
+            <div className="flex items-center gap-1 px-3 sm:px-6 min-w-max">
+              {(["overview", "categories", "services", "photos", "amenities", "reviews", "faq"] as const)
+                .filter((tab) => tab !== "faq" || faqs.length > 0)
+                .map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => {
+                    setActiveNavTab(tab);
+                    const el = document.getElementById(`section-${tab}`);
+                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className={cn(
+                    "py-3 font-semibold transition-all border-b-2 tracking-tight cursor-pointer text-xs px-3.5 sm:px-5 text-center shrink-0 rounded-none whitespace-nowrap",
+                    activeNavTab === tab
+                      ? "border-blue-600 text-blue-600 font-bold"
+                      : "border-transparent text-slate-600 hover:text-slate-900"
+                  )}
+                >
+                  {(tab as string) === "faq" ? "FAQ" : (tab as string) === "amenities" ? "Amenities & Facilities" : (tab as string) === "payments" ? "Payment Methods" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+                </button>
+              ))}
+            </div>
           </div>
 
         </section>
@@ -705,7 +707,7 @@ export default function AdaptiveBusinessDetailsPage({
             {/* ========================================================= */}
             <section id="section-overview" className="bg-white rounded-none border border-slate-200/90 lg:border-0 p-4 lg:p-6 space-y-4 shadow-2xs lg:shadow-none">
               <div>
-                <h2 className="text-base sm:text-lg font-black text-slate-900">Business Summary</h2>
+                <h2 className="text-sm sm:text-base font-bold text-slate-800">Business Summary</h2>
                 <p className="text-xs leading-relaxed text-slate-600 font-medium mt-1">
                   {business.description || "No description available for this business yet."}
                 </p>
@@ -881,6 +883,108 @@ export default function AdaptiveBusinessDetailsPage({
             </section>
 
 
+            {/* ========================================================= */}
+            {/* CATEGORIES & HEALTHCARE SPECIALTIES SECTION */}
+            {/* ========================================================= */}
+            <section id="section-categories" className="bg-white rounded-none border border-slate-200/90 lg:border-0 p-4 lg:p-6 space-y-4 shadow-2xs lg:shadow-none mt-4 lg:mt-6">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 border border-emerald-100 flex items-center justify-center">
+                    <Briefcase className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <h2 className="text-sm sm:text-base font-bold text-slate-800 leading-tight">
+                      Categories & Medical Specialties
+                    </h2>
+                    <p className="text-[11px] text-slate-500 font-semibold">
+                      Medical services, departments & subcategories
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Primary Category & Subcategory List */}
+              <div className="space-y-4 pt-1">
+                {/* Primary Category */}
+                {(() => {
+                  const primaryCat = business.categories.find((c) => c.isPrimary);
+                  const subCats = business.categories.filter((c) => !c.isPrimary);
+
+                  return (
+                    <div className="space-y-3">
+                      {primaryCat && (
+                        <div>
+                          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                            Primary Healthcare Sector
+                          </h3>
+                          <Link
+                            href={`/category/${primaryCat.category.slug}`}
+                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-black bg-purple-600 text-white shadow-xs hover:bg-purple-700 transition-colors"
+                          >
+                            <span>{primaryCat.category.name}</span>
+                            <span className="text-[9px] bg-white/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Primary</span>
+                          </Link>
+                        </div>
+                      )}
+
+                      {/* Subcategories */}
+                      {subCats.length > 0 && (
+                        <div>
+                          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                            Healthcare Subcategories & Specializations ({subCats.length})
+                          </h3>
+                          <div className="flex flex-wrap items-center gap-2">
+                            {subCats.map((c) => (
+                              <Link
+                                key={c.category.id}
+                                href={`/category/${c.category.slug}`}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200/90 hover:bg-emerald-100 hover:border-emerald-300 transition-all shadow-2xs"
+                              >
+                                <span>{c.category.name}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })()}
+
+                {/* Subcategories & Specializations Chips */}
+                {business.keywords && business.keywords.length > 0 && (
+                  <div className="pt-2">
+                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                      Subcategories & Medical Services
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5">
+                      {business.keywords.map((kw) => (
+                        <span
+                          key={kw}
+                          className="px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-700 text-xs font-semibold"
+                        >
+                          {kw}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Scraped Place ID & Verification Data Badge */}
+                {business.externalPlaceId && (
+                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500 font-semibold">
+                    <span className="flex items-center gap-1">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      Google Places Verified Healthcare Data
+                    </span>
+                    <span className="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-0.5 rounded">
+                      ID: {business.externalPlaceId.substring(0, 20)}
+                    </span>
+                  </div>
+                )}
+              </div>
+            </section>
+
+
             {/* MOBILE ONLY SERVICES SECTION (COLLAPSIBLE DROPDOWN) */}
             <section id="section-services-mobile" className="block lg:hidden bg-white rounded-none border-y border-slate-200/90 shadow-2xs">
               <button
@@ -927,7 +1031,7 @@ export default function AdaptiveBusinessDetailsPage({
               <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
                 <div className="flex items-center gap-2">
                   <Briefcase className="w-4 h-4 text-purple-600" />
-                  <h2 className="text-sm sm:text-base font-black text-slate-900">Services & Offerings</h2>
+                  <h2 className="text-sm sm:text-base font-bold text-slate-800">Services & Offerings</h2>
                 </div>
                 {business.services.length > 0 && (
                   <span className="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-none">
@@ -1006,7 +1110,7 @@ export default function AdaptiveBusinessDetailsPage({
                 <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                   <div className="flex items-center gap-2">
                     <ImageIcon className="w-5 h-5 text-purple-600" />
-                    <h2 className="text-base lg:text-lg font-black text-slate-900">Photo Gallery</h2>
+                    <h2 className="text-sm sm:text-base font-bold text-slate-800">Photo Gallery</h2>
                   </div>
                   {galleryImages.length > 0 && (
                     <Link
@@ -1043,6 +1147,98 @@ export default function AdaptiveBusinessDetailsPage({
                 )}
               </section>
             )}
+
+
+            {/* ========================================================= */}
+            {/* AMENITIES & FACILITIES SECTION */}
+            {/* ========================================================= */}
+            <section id="section-amenities" className="bg-white rounded-none border border-slate-200/90 lg:border-0 p-4 lg:p-6 space-y-3 shadow-2xs lg:shadow-none mt-4 lg:mt-6">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <div className="flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                  <h2 className="text-sm sm:text-base font-bold text-slate-800">Amenities & Medical Facilities</h2>
+                </div>
+                {business.amenities.length > 0 && (
+                  <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-none">
+                    {business.amenities.length} Features
+                  </span>
+                )}
+              </div>
+
+              {business.amenities.length > 0 ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1">
+                  {business.amenities.map((a) => (
+                    <div
+                      key={a.amenity.id}
+                      className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-700 text-xs font-semibold"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span className="truncate">{a.amenity.name}</span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-1">
+                  {[
+                    "24/7 Emergency Care",
+                    "Wheelchair Accessible",
+                    "ICU & Critical Care",
+                    "Air Conditioned Rooms",
+                    "In-House Diagnostics & Lab",
+                    "24/7 Pharmacy Onsite",
+                    "Card & Digital Payments",
+                    "Spacious Visitor Parking",
+                    "Power Backup 24/7",
+                  ].map((facility) => (
+                    <div
+                      key={facility}
+                      className="flex items-center gap-2 px-3 py-2 rounded-xl bg-slate-50 border border-slate-200/80 text-slate-700 text-xs font-semibold"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span className="truncate">{facility}</span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </section>
+
+
+            {/* ========================================================= */}
+            {/* PAYMENT METHODS & INSURANCE SECTION */}
+            {/* ========================================================= */}
+            <section id="section-payments" className="bg-white rounded-none border border-slate-200/90 lg:border-0 p-4 lg:p-6 space-y-3 shadow-2xs lg:shadow-none mt-4 lg:mt-6">
+              <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <div className="flex items-center gap-2">
+                  <CircleDollarSign className="w-4 h-4 text-purple-600" />
+                  <h2 className="text-sm sm:text-base font-bold text-slate-800">Accepted Payment Methods & Insurance</h2>
+                </div>
+                <span className="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-none">
+                  Cashless TPA Accepted
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                {/* Mode 1: Cash & Digital */}
+                <div className="p-3 rounded-xl bg-slate-50/80 border border-slate-200/80 space-y-1.5">
+                  <h3 className="text-xs font-bold text-slate-900 flex items-center gap-1.5">
+                    💳 Cash, UPI & Digital Payments
+                  </h3>
+                  <p className="text-[11px] font-medium text-slate-600">
+                    GPay, PhonePe, Paytm, BHIM UPI, Credit & Debit Cards (Visa, Mastercard, RuPay), Net Banking & No-Cost Medical EMI options.
+                  </p>
+                </div>
+
+                {/* Mode 2: TPA Insurance */}
+                <div className="p-3 rounded-xl bg-purple-50/60 border border-purple-200/70 space-y-1.5">
+                  <h3 className="text-xs font-bold text-purple-950 flex items-center gap-1.5">
+                    🏥 Health Insurance & Cashless TPA
+                  </h3>
+                  <p className="text-[11px] font-medium text-purple-900">
+                    Cashless hospitalization available for Star Health, ICICI Lombard, HDFC ERGO, Niva Bupa, Care Health, Medi Assist & Paramount TPA.
+                  </p>
+                </div>
+              </div>
+            </section>
 
 
             {/* ========================================================= */}
@@ -1194,7 +1390,7 @@ export default function AdaptiveBusinessDetailsPage({
             {similarBusinesses.length > 0 && (
               <section className="bg-white rounded-none border border-slate-200/90 lg:border-0 -mt-[1px] lg:mt-0 p-4 lg:p-6 space-y-4 shadow-2xs lg:shadow-none">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2.5">
-                  <h3 className="text-base font-black text-slate-900">Similar Businesses</h3>
+                  <h3 className="text-sm sm:text-base font-bold text-slate-800">Explore Similar Healthcare Centers</h3>
                   <Link
                     href={primaryCategory?.slug ? `/nearby?subcategory=${primaryCategory.slug}` : "/nearby"}
                     className="text-[10px] sm:text-xs font-bold text-purple-600 hover:underline shrink-0 whitespace-nowrap"
@@ -1267,28 +1463,28 @@ export default function AdaptiveBusinessDetailsPage({
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-xl font-black text-white">Is this your business?</h3>
+                  <h3 className="text-base sm:text-lg font-bold text-white">Are you the owner or doctor of this Healthcare Facility?</h3>
                   <p className="text-xs text-purple-200 font-medium leading-relaxed">
-                    Claim your business profile to update information, add photos, respond to reviews and get more customers.
+                    Claim this medical listing to manage facility details, update OPD timings, respond to patient reviews, and verify credentials on Hubigo Healthcare.
                   </p>
                 </div>
 
                 <div className="space-y-2 text-left text-xs font-bold text-slate-200 bg-white/10 p-3.5 rounded-none border border-white/15">
                   <div className="flex items-center gap-2 text-emerald-400">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>Update business details & hours</span>
+                    <span>Update doctor profiles, OPD & facility hours</span>
                   </div>
                   <div className="flex items-center gap-2 text-emerald-400">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>Add photos, menu & videos</span>
+                    <span>List specialties, treatments & insurance TPAs</span>
                   </div>
                   <div className="flex items-center gap-2 text-emerald-400">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>Respond directly to customer reviews</span>
+                    <span>Respond directly to patient reviews</span>
                   </div>
                   <div className="flex items-center gap-2 text-emerald-400">
                     <CheckCircle2 className="w-4 h-4 shrink-0" />
-                    <span>View profile analytics & leads</span>
+                    <span>Receive patient inquiries & appointment leads</span>
                   </div>
                 </div>
 
@@ -1296,7 +1492,7 @@ export default function AdaptiveBusinessDetailsPage({
                   href={`/business/${business.slug}/claim`}
                   className="w-full py-3 bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-950 font-black text-xs rounded-none shadow-lg shadow-amber-500/20 flex items-center justify-center gap-1.5 transition-all"
                 >
-                  <span>Claim Business Now</span>
+                  <span>Claim Healthcare Listing</span>
                   <ChevronRight className="w-4 h-4" />
                 </Link>
               </div>

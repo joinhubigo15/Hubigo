@@ -14,8 +14,8 @@
 // is an informational density tier only — it is NOT an additional indexing requirement.
 export const PSEO_THRESHOLDS = {
   minExist: Number(process.env.PSEO_MIN_EXIST ?? 1),
-  minIndexable: Number(process.env.PSEO_MIN_INDEXABLE ?? 16),
-  highDensityAt: Number(process.env.PSEO_HIGH_DENSITY_AT ?? 50),
+  minIndexable: Number(process.env.PSEO_MIN_INDEXABLE ?? 1),
+  highDensityAt: Number(process.env.PSEO_HIGH_DENSITY_AT ?? 20),
 } as const;
 
 export const PSEO_DISPLAY_LIMIT = Number(process.env.PSEO_DISPLAY_LIMIT ?? 20);

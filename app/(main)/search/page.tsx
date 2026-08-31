@@ -2,7 +2,7 @@
 
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { ArrowLeft, SlidersHorizontal, X, GitCompareArrows } from "lucide-react";
+import { ArrowLeft, SlidersHorizontal, X, GitCompareArrows, Star, ChevronDown, Check } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import SearchInputBar from "@/app/components/search/SearchInputBar";
 import FiltersPanel from "@/app/components/search/FiltersPanel";
@@ -26,6 +26,54 @@ import {
 
 function normalizeCityQuery(q: string): string {
   return q.trim().toLowerCase().replace(/\s+/g, " ");
+}
+
+function RatingDropdownPill({
+  value,
+  onChange,
+}: {
+  value?: number;
+  onChange: (val?: number) => void;
+}) {
+  const labelMap: Record<number, string> = {
+    4: "4+",
+    3.5: "3.5+",
+    3: "3+",
+  };
+
+  return (
+    <div className="relative shrink-0">
+      {/* Visual Button Display */}
+      <button
+        type="button"
+        className={cn(
+          "py-0.5 px-2 rounded-full text-[9px] sm:text-[10px] font-bold transition-all cursor-pointer border shadow-2xs flex items-center gap-0.5 shrink-0 pointer-events-none",
+          value && value !== 4.5
+            ? "bg-amber-500 text-white border-amber-500 shadow-amber-500/20 font-black"
+            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+        )}
+      >
+        <Star className={cn("w-2.5 h-2.5", value && value !== 4.5 ? "fill-white text-white" : "fill-amber-400 text-amber-400")} />
+        <span>{value && value !== 4.5 ? labelMap[value] ?? `${value}+` : "Ratings"}</span>
+        <ChevronDown className="w-2.5 h-2.5 opacity-60 ml-0.5" />
+      </button>
+
+      {/* Invisible overlay native select — works 100% reliably on mobile iOS & Android without overflow clipping */}
+      <select
+        value={value ?? ""}
+        onChange={(e) => {
+          const val = e.target.value ? parseFloat(e.target.value) : undefined;
+          onChange(val);
+        }}
+        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10 text-[10px]"
+      >
+        <option value="" className="text-slate-900 bg-white font-medium text-[10px]">All Ratings</option>
+        <option value="4" className="text-slate-900 bg-white font-medium text-[10px]">4+</option>
+        <option value="3.5" className="text-slate-900 bg-white font-medium text-[10px]">3.5+</option>
+        <option value="3" className="text-slate-900 bg-white font-medium text-[10px]">3+</option>
+      </select>
+    </div>
+  );
 }
 
 const ARRAY_KEYS = ["price", "amenities", "tier"] as const;
@@ -321,159 +369,155 @@ function SearchPageContent() {
           />
         </div>
 
-        {/* Standalone Pill Cells Toolbar (With Side Edge Inset Gap & Compact Pill Sizes) */}
-        <div className="w-full flex items-center justify-between gap-1.5 px-3.5 sm:px-4 pt-1 pb-2 bg-white">
-          {/* 1. All Pill Cell */}
+        {/* Quick Action Toolbar Bar (Seamless single line without large gaps or ml-auto gaps) */}
+        <div className="w-full flex items-center gap-1.5 px-3 pt-0.5 pb-1.5 bg-white overflow-x-auto scrollbar-none">
+          {/* All */}
           <button
             onClick={() => updateFilters({ tier: undefined, openNow: undefined, minRating: undefined })}
             className={cn(
-              "flex-1 py-0.5 sm:py-1 px-1 rounded-full text-[9.5px] sm:text-[11px] font-bold transition-all cursor-pointer border shadow-2xs text-center justify-center flex items-center min-w-0",
+              "py-1 px-3 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer border shadow-2xs shrink-0",
               isAllActive
                 ? "bg-purple-600 text-white border-purple-600 shadow-purple-600/20 font-black"
-                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
             )}
           >
             All
           </button>
 
-          {/* 2. Sort By Pill Cell */}
-          <div className="flex-1 min-w-0">
-            <SortDropdown value={filters.sort ?? "best_match"} onChange={handleSortChange} label="Sort by" className="w-full px-1 py-0.5 sm:py-1 text-[9.5px] sm:text-[11px] justify-center" />
-          </div>
-
-          {/* 3. Comparison Pill Cell (Full Word, No Truncation) */}
+          {/* Open Now Toggle */}
           <button
-            onClick={() => compareSubcategory && setCompareOpen(true)}
-            disabled={!compareSubcategory}
+            onClick={() => updateFilters({ openNow: filters.openNow ? undefined : true })}
             className={cn(
-              "flex-[1.2] flex items-center justify-center gap-0.5 py-0.5 sm:py-1 px-1 rounded-full text-[9.5px] sm:text-[11px] font-bold transition-all border shadow-2xs cursor-pointer whitespace-nowrap min-w-0",
-              !compareSubcategory
-                ? "bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed"
-                : compareOpen
-                ? "bg-purple-600 text-white border-purple-600 shadow-purple-600/20 font-black"
-                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-100"
+              "py-1 px-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer border shadow-2xs shrink-0 flex items-center gap-1",
+              filters.openNow
+                ? "bg-emerald-600 text-white border-emerald-600 shadow-emerald-600/20"
+                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
             )}
           >
-            <GitCompareArrows className="w-3 h-3 shrink-0" />
-            <span className="whitespace-nowrap">Comparison</span>
+            <span className={cn("w-1.5 h-1.5 rounded-full", filters.openNow ? "bg-white" : "bg-emerald-500")} />
+            Open Now
           </button>
 
-          {/* 4. Filter Pill Cell */}
+          {/* Top Rated Toggle Button (Direct >4.5 Filter) */}
           <button
-            onClick={() => setMobileFiltersOpen(true)}
-            className="flex-1 flex items-center justify-center gap-0.5 py-0.5 sm:py-1 px-1 rounded-full text-[9.5px] sm:text-[11px] font-bold bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all cursor-pointer shadow-2xs whitespace-nowrap min-w-0"
+            onClick={() => updateFilters({ minRating: filters.minRating === 4.5 ? undefined : 4.5 })}
+            className={cn(
+              "py-1 px-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer border shadow-2xs shrink-0 flex items-center gap-1",
+              filters.minRating === 4.5
+                ? "bg-amber-500 text-white border-amber-500 shadow-amber-500/20 font-black"
+                : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+            )}
           >
-            <SlidersHorizontal className="w-3 h-3 text-purple-600 shrink-0" />
-            <span className="whitespace-nowrap">Filter</span>
+            <Star className={cn("w-3 h-3", filters.minRating === 4.5 ? "fill-white text-white" : "fill-amber-400 text-amber-400")} />
+            Top Rated
           </button>
-        </div>
-      </div>
 
-      {/* Active Filter Chips + Sort (desktop) */}
-      <div className="hidden lg:flex items-center justify-between gap-3 lg:px-6 lg:py-3 lg:bg-white lg:border-b lg:border-slate-100">
-        <ActiveFilterChips filters={filters} onChange={updateFilters} />
-        <div className="ml-auto shrink-0 flex items-center gap-2">
-          {compareSubcategory && !compareOpen && (
-            <button
-              onClick={() => setCompareOpen(true)}
-              className="flex items-center gap-1.5 px-3.5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold rounded-xl shadow-sm shadow-purple-600/25 cursor-pointer"
-            >
-              <GitCompareArrows className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Compare Top 5</span>
-              <span className="sm:hidden">Compare</span>
-            </button>
-          )}
-          <SortDropdown value={filters.sort ?? "best_match"} onChange={handleSortChange} />
-        </div>
-      </div>
-
-      {compareOpen ? (
-        <CompareNearbyPanel category={filters.category} subcategory={compareSubcategory} onClose={() => setCompareOpen(false)} />
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-0 items-start lg:items-stretch flex-1">
-          {/* Desktop Filters Sidebar */}
-          <FiltersPanel
-            filters={filters}
-            onChange={updateFilters}
-            onReset={resetFilters}
-            hasVerifiedMatches={hasVerifiedMatches}
-            className="hidden lg:flex lg:col-span-3"
+          {/* Ratings Sub-sections Dropdown */}
+          <RatingDropdownPill
+            value={filters.minRating}
+            onChange={(val) => updateFilters({ minRating: val })}
           />
 
-          {/* Results */}
-          <div className="lg:col-span-9 flex flex-col gap-0 lg:gap-0 bg-white">
-            {errorMsg && (
-              <div className="bg-white rounded-2xl border border-rose-100 shadow-xs p-6 text-center text-sm text-rose-600 font-semibold">
-                {errorMsg}
-              </div>
-            )}
+          {/* Sort By Dropdown */}
+          <div className="shrink-0">
+            <SortDropdown
+              value={filters.sort ?? "best_match"}
+              onChange={handleSortChange}
+              className="px-2.5 py-1 text-[10px] sm:text-xs"
+            />
+          </div>
 
-            {matchedSupportedCity ? (
-              <div className="bg-white border-t lg:border-0 border-slate-100 shadow-2xs lg:shadow-none overflow-hidden lg:rounded-none divide-y divide-slate-100">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <SkeletonResultCard key={i} />
-                ))}
-              </div>
-            ) : matchedOtherCity ? (
+          {/* Icon-Only Filter Button (Seamless in-line, no ml-auto gap) */}
+          <button
+            onClick={() => setMobileFiltersOpen(true)}
+            className="p-2 rounded-full bg-white text-slate-700 border border-slate-200 hover:bg-slate-100 transition-all cursor-pointer shadow-2xs shrink-0 flex items-center justify-center"
+            aria-label="Open Filters"
+            title="Open Filters"
+          >
+            <SlidersHorizontal className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+          </button>
+        </div>
+      </div>
+
+      {/* Active Filter Chips (desktop) */}
+      <div className="hidden lg:flex items-center justify-between gap-3 lg:px-6 lg:py-2 lg:bg-white lg:border-b lg:border-slate-100">
+        <ActiveFilterChips filters={filters} onChange={updateFilters} />
+      </div>
+
+      <div className="flex-1 w-full bg-white">
+        {/* Results */}
+        <div className="w-full flex flex-col gap-0 lg:gap-0 bg-white">
+          {errorMsg && (
+            <div className="bg-white rounded-2xl border border-rose-100 shadow-xs p-6 text-center text-sm text-rose-600 font-semibold">
+              {errorMsg}
+            </div>
+          )}
+
+          {matchedSupportedCity ? (
+            <div className="bg-white border-t lg:border-0 border-slate-100 shadow-2xs lg:shadow-none overflow-hidden lg:rounded-none divide-y divide-slate-100">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonResultCard key={i} />
+              ))}
+            </div>
+          ) : matchedOtherCity ? (
+            <EmptySearchState
+              onResetFilters={resetFilters}
+              title={`We're not in ${matchedOtherCity} yet`}
+              message="Hubigo currently covers Bangalore, Chennai, and Hyderabad — we're working on expanding to more cities soon."
+            />
+          ) : loading ? (
+            <div className="bg-white border-t lg:border-0 border-slate-100 shadow-2xs lg:shadow-none overflow-hidden lg:rounded-none divide-y divide-slate-100">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <SkeletonResultCard key={i} />
+              ))}
+            </div>
+          ) : items.length === 0 && !errorMsg ? (
+            filters.verified ? (
               <EmptySearchState
                 onResetFilters={resetFilters}
-                title={`We're not in ${matchedOtherCity} yet`}
-                message="Hubigo currently covers Bangalore, Chennai, and Hyderabad — we're working on expanding to more cities soon."
+                title="No platform-verified businesses here yet"
+                message="We don't have any verified businesses for this category/area yet — try turning off Verified Only to see everything."
               />
-            ) : loading ? (
+            ) : (
+              <EmptySearchState onResetFilters={resetFilters} />
+            )
+          ) : (
+            <>
               <div className="bg-white border-t lg:border-0 border-slate-100 shadow-2xs lg:shadow-none overflow-hidden lg:rounded-none divide-y divide-slate-100">
-                {Array.from({ length: 6 }).map((_, i) => (
-                  <SkeletonResultCard key={i} />
+                {items.map((business) => (
+                  <BusinessResultCard key={business.id} business={business} />
                 ))}
               </div>
-            ) : items.length === 0 && !errorMsg ? (
-              filters.verified ? (
-                <EmptySearchState
-                  onResetFilters={resetFilters}
-                  title="No platform-verified businesses here yet"
-                  message="We don't have any verified businesses for this category/area yet — try turning off Verified Only to see everything."
-                />
-              ) : (
-                <EmptySearchState onResetFilters={resetFilters} />
-              )
-            ) : (
-              <>
-                <div className="bg-white border-t lg:border-0 border-slate-100 shadow-2xs lg:shadow-none overflow-hidden lg:rounded-none divide-y divide-slate-100">
-                  {items.map((business) => (
-                    <BusinessResultCard key={business.id} business={business} />
-                  ))}
+
+              {hasMore && (
+                <div ref={sentinelRef} className="flex flex-col gap-0.5 lg:gap-3 pt-1">
+                  {loadingMore ? (
+                    Array.from({ length: 2 }).map((_, i) => <SkeletonResultCard key={i} />)
+                  ) : (
+                    <button
+                      onClick={() => runSearch(page + 1, true)}
+                      className="mx-auto px-5 py-2 text-xs font-bold text-purple-600 bg-purple-50 hover:bg-purple-100 rounded-full transition-colors cursor-pointer"
+                    >
+                      Load More
+                    </button>
+                  )}
                 </div>
-
-                {hasMore && (
-                  <div ref={sentinelRef} className="flex flex-col gap-0.5 lg:gap-3 pt-1">
-                    {loadingMore ? (
-                      Array.from({ length: 2 }).map((_, i) => <SkeletonResultCard key={i} />)
-                    ) : (
-                      <button
-                        onClick={() => runSearch(page + 1, true)}
-                        className="mx-auto px-5 py-2 text-xs font-bold text-purple-600 bg-purple-50 hover:bg-purple-100 rounded-full transition-colors cursor-pointer"
-                      >
-                        Load More
-                      </button>
-                    )}
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+              )}
+            </>
+          )}
         </div>
-      )}
+      </div>
 
-      {/* Mobile Filters Drawer */}
+      {/* Slide-over Filters Drawer (Works on both Laptop/Desktop and Mobile when user clicks Filter icon) */}
       {mobileFiltersOpen && (
-        <div className="fixed inset-0 z-50 lg:hidden flex">
-          <div className="absolute inset-0 bg-black/30" onClick={() => setMobileFiltersOpen(false)} />
-          <div className="relative ml-auto w-[85%] max-w-sm h-full bg-[#f1f4f9] overflow-y-auto p-4">
+        <div className="fixed inset-0 z-50 flex">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-xs" onClick={() => setMobileFiltersOpen(false)} />
+          <div className="relative ml-auto w-[85%] max-w-sm h-full bg-[#f1f4f9] overflow-y-auto p-4 shadow-2xl z-10">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-bold text-slate-900">Filters</h2>
               <button
                 onClick={() => setMobileFiltersOpen(false)}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-slate-200 text-slate-500 cursor-pointer"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-white border border-slate-200 text-slate-500 cursor-pointer hover:bg-slate-100 transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>

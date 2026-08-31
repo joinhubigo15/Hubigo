@@ -28,13 +28,31 @@ async function buildStaticEntries(): Promise<MetadataRoute.Sitemap> {
   }));
 }
 
+function isHealthcareItem(nameOrSlug: string): boolean {
+  const lower = nameOrSlug.toLowerCase();
+  return (
+    lower.includes("health") ||
+    lower.includes("medical") ||
+    lower.includes("hospital") ||
+    lower.includes("clinic") ||
+    lower.includes("lab") ||
+    lower.includes("pharmacy") ||
+    lower.includes("doctor") ||
+    lower.includes("dental") ||
+    lower.includes("dentist") ||
+    lower.includes("patholog") ||
+    lower.includes("eye") ||
+    lower.includes("optometr") ||
+    lower.includes("pediatric") ||
+    lower.includes("derma") ||
+    lower.includes("physio")
+  );
+}
+
 // Same reasoning as buildStaticEntries — City has no updatedAt column, and the public categories
 // API doesn't currently expose Category.updatedAt, so there's no reliable per-page lastmod source
 // here either. Omitted rather than faked.
 async function buildCityAndCategoryEntries(): Promise<MetadataRoute.Sitemap> {
-  // No .catch() — a failed fetch must propagate rather than silently producing a truncated
-  // sitemap that then gets cached for an hour, which reads to Google as thousands of URLs having
-  // disappeared.
   const [cities, categories] = await Promise.all([getCities(), getCategories()]);
 
   const cityEntries: MetadataRoute.Sitemap = cities.map((c) => ({
@@ -43,14 +61,26 @@ async function buildCityAndCategoryEntries(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const categoryEntries: MetadataRoute.Sitemap = categories.flatMap((c) => [
-    { url: `${SITE_URL}/category/${c.slug}`, changeFrequency: "weekly" as const, priority: 0.6 },
-    ...c.subcategories.map((s) => ({
-      url: `${SITE_URL}/category/${s.slug}`,
-      changeFrequency: "weekly" as const,
-      priority: 0.5,
-    })),
-  ]);
+  const categoryEntries: MetadataRoute.Sitemap = categories.flatMap((c) => {
+    const isCatHealthcare = isHealthcareItem(c.slug) || isHealthcareItem(c.name);
+    const priority = isCatHealthcare ? 0.9 : 0.8;
+
+    return [
+      {
+        url: `${SITE_URL}/category/${c.slug}`,
+        changeFrequency: "daily" as const,
+        priority: priority,
+      },
+      ...c.subcategories.map((s) => {
+        const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
+        return {
+          url: `${SITE_URL}/category/${s.slug}`,
+          changeFrequency: "daily" as const,
+          priority: isSubcatHealthcare ? 0.85 : 0.7,
+        };
+      }),
+    ];
+  });
 
   return [...cityEntries, ...categoryEntries];
 }

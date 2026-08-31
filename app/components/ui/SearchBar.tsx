@@ -9,17 +9,16 @@ interface SearchBarProps {
 }
 
 const categoryOptions = [
-  "All Categories",
-  "Restaurants",
-  "Hospitals",
-  "Hotels",
-  "Gyms & Fitness",
-  "Salons & Spas",
-  "Plumbers",
-  "Electricians",
-  "Shopping",
-  "Education",
-  "Real Estate",
+  "All Healthcare Sectors",
+  "Hospitals & Medical Centers",
+  "Clinics & Doctors",
+  "Diagnostic & Laboratory Services",
+  "Pharmacies & Medicines",
+  "Eye Care & LASIK",
+  "Dental Clinics",
+  "Physiotherapy & Rehab",
+  "Ayurveda & AYUSH",
+  "Emergency & Urgent Care",
 ];
 
 export default function SearchBar({
@@ -70,7 +69,7 @@ export default function SearchBar({
             onChange={(e) => setQuery(e.target.value)}
             onFocus={() => setIsFocused(true)}
             onBlur={() => setIsFocused(false)}
-            placeholder="Search for restaurants, services, businesses..."
+            placeholder="Search doctors, hospitals, clinics, diagnostic labs..."
             className={cn(
               "flex-1 bg-transparent outline-none text-secondary placeholder:text-secondary-400",
               isHero ? "text-base" : "text-sm"

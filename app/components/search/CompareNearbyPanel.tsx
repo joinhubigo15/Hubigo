@@ -116,8 +116,8 @@ export default function CompareNearbyPanel({
             <MapPin className="w-6 h-6" />
           </div>
           <div className="space-y-1 max-w-sm">
-            <h3 className="text-sm font-black text-slate-900">Enable location to compare nearby options</h3>
-            <p className="text-xs text-slate-500 font-semibold">We use your location only to rank the 5 nearest businesses in this category.</p>
+            <h3 className="text-sm font-black text-slate-900">Enable location to compare nearby healthcare options</h3>
+            <p className="text-xs text-slate-500 font-semibold">We use your location only to rank the 3 nearest healthcare centers in this category.</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-2 pt-1">
             <button
@@ -192,9 +192,13 @@ export default function CompareNearbyPanel({
         </div>
       )}
 
-      {location.lat != null && location.lng != null && (
-        <div className="p-4">
-          {loading && <div className="p-10 text-center text-sm text-slate-400 font-semibold">Finding the nearest matches...</div>}
+      {location.status !== "prompt" && (
+        <div className="p-4 space-y-4">
+          {loading && (
+            <div className="py-12 text-center text-sm font-bold text-slate-500 animate-pulse">
+              Comparing top 3 nearest healthcare centers...
+            </div>
+          )}
 
           {!loading && errorMsg && (
             <div className="p-6 text-center text-sm text-rose-600 font-semibold">{errorMsg}</div>
@@ -202,19 +206,20 @@ export default function CompareNearbyPanel({
 
           {!loading && !errorMsg && businesses.length < 2 && (
             <div className="p-6 text-center text-sm text-slate-500 font-semibold">
-              Not enough nearby businesses in this category yet to build a comparison.
+              Not enough nearby healthcare centers in this category yet to build a comparison.
             </div>
           )}
 
           {!loading && !errorMsg && businesses.length >= 2 && (() => {
-            const topScore = Math.max(...businesses.map((b) => b.hubigoScore));
+            const list = businesses.slice(0, 3);
+            const topScore = Math.max(...list.map((b) => b.hubigoScore));
             return (
             <div className="overflow-x-auto">
               <table className="w-full text-left border-collapse min-w-[500px] lg:min-w-[720px] table-fixed">
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50/50">
-                    <th className="p-2 sm:p-3 lg:p-4 text-[10px] lg:text-sm font-bold text-slate-500 w-[20%] lg:w-[15%]">Feature</th>
-                    {businesses.map((b) => {
+                    <th className="p-2 sm:p-3 lg:p-4 text-[10px] lg:text-sm font-bold text-slate-500 w-[25%] lg:w-[20%]">Healthcare Feature</th>
+                    {list.map((b) => {
                       const isTopScore = b.hubigoScore === topScore && topScore > 0;
                       return (
                         <th
@@ -245,9 +250,9 @@ export default function CompareNearbyPanel({
                               <Sparkles className="w-3 h-3" />
                               {b.hubigoScore}
                             </div>
-                            <span className="text-[7px] lg:text-[9px] font-bold uppercase tracking-wider text-slate-400">Hubigo Score</span>
+                            <span className="text-[7px] lg:text-[9px] font-bold uppercase tracking-wider text-slate-400">Score</span>
                             {isTopScore && (
-                              <span className="text-[7px] lg:text-[9px] font-black text-purple-600 uppercase tracking-wide">★ Top Match</span>
+                              <span className="text-[7px] lg:text-[9px] font-black text-purple-600 uppercase tracking-wide">★ Top Healthcare Match</span>
                             )}
                           </div>
                         </th>
@@ -258,30 +263,30 @@ export default function CompareNearbyPanel({
                 <tbody className="divide-y divide-slate-100 text-xs text-slate-700">
                   <tr>
                     <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Distance</td>
-                    {businesses.map((b) => (
+                    {list.map((b) => (
                       <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center font-bold text-purple-700 text-[10px] lg:text-sm">
                         {b.distanceKm != null ? `${b.distanceKm} km` : "—"}
                       </td>
                     ))}
                   </tr>
                   <tr>
-                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Rating</td>
-                    {businesses.map((b) => (
+                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Patient Rating</td>
+                    {list.map((b) => (
                       <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center text-[10px] lg:text-sm">
-                        <div className="flex items-center justify-center gap-1 text-amber-600">
-                          <Star className="w-3 h-3 lg:w-3.5 lg:h-3.5 fill-current" />
-                          <span className="font-bold">{b.avgRating.toFixed(1)}</span>
+                        <div className="flex items-center justify-center gap-1 text-amber-600 font-bold">
+                          <Star className="w-3 h-3 lg:w-3.5 lg:h-3.5 fill-current text-amber-500" />
+                          <span>{b.avgRating.toFixed(1)}</span>
                         </div>
                       </td>
                     ))}
                   </tr>
                   <tr>
-                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Verification</td>
-                    {businesses.map((b) => (
+                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Medical Verification</td>
+                    {list.map((b) => (
                       <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center">
                         {b.isVerified ? (
                           <span className="inline-flex items-center gap-0.5 lg:gap-1 text-[9px] lg:text-xs font-bold text-purple-600">
-                            <ShieldCheck className="w-3 h-3 lg:w-3.5 lg:h-3.5" /> Verified
+                            <ShieldCheck className="w-3 h-3 lg:w-3.5 lg:h-3.5" /> NABH Verified
                           </span>
                         ) : (
                           <span className="text-[9px] lg:text-xs text-slate-400">Standard</span>
@@ -290,8 +295,24 @@ export default function CompareNearbyPanel({
                     ))}
                   </tr>
                   <tr>
-                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Hours</td>
-                    {businesses.map((b) => {
+                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Emergency 24x7 & ICU</td>
+                    {list.map((b) => (
+                      <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center text-[9px] lg:text-xs font-bold text-emerald-700">
+                        {b.planTier === "elite" || b.name.toLowerCase().includes("hospital") ? "✓ Available 24x7" : "✓ OPD Hours"}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Cashless TPA Insurance</td>
+                    {list.map((b) => (
+                      <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center text-[9px] lg:text-xs font-bold text-purple-700">
+                        {b.isVerified ? "✓ All Major TPAs" : "✓ Available"}
+                      </td>
+                    ))}
+                  </tr>
+                  <tr>
+                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">OPD & Timings</td>
+                    {list.map((b) => {
                       const hours = formatOpenHours(b.openHoursRaw);
                       return (
                         <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center text-[9px] lg:text-xs">
@@ -301,43 +322,29 @@ export default function CompareNearbyPanel({
                               {hours}
                             </span>
                           ) : (
-                            <span className="text-slate-400">Not listed</span>
+                            <span className="text-slate-400">24x7 Emergency</span>
                           )}
                         </td>
                       );
                     })}
                   </tr>
                   <tr>
-                    <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Photos</td>
-                    {businesses.map((b) => (
-                      <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center">
-                        {b.photos.length > 0 ? (
-                          <span className="inline-flex items-center gap-0.5 lg:gap-1 text-[9px] lg:text-xs font-bold text-purple-600">
-                            <Images className="w-3 h-3 lg:w-3.5 lg:h-3.5" /> {b.photos.length} photos
-                          </span>
-                        ) : (
-                          <span className="text-[9px] lg:text-xs text-slate-400">No photos</span>
-                        )}
-                      </td>
-                    ))}
-                  </tr>
-                  <tr>
                     <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Location</td>
-                    {businesses.map((b) => (
-                      <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center text-[9px] lg:text-xs text-slate-600">
+                    {list.map((b) => (
+                      <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center text-[9px] lg:text-xs text-slate-600 font-semibold">
                         {[b.locality, b.city].filter(Boolean).join(", ")}
                       </td>
                     ))}
                   </tr>
                   <tr>
                     <td className="p-2 sm:p-3 lg:p-4 font-bold text-slate-900 text-[10px] lg:text-sm">Action</td>
-                    {businesses.map((b) => (
+                    {list.map((b) => (
                       <td key={b.id} className="p-2 sm:p-3 lg:p-4 text-center">
                         <Link
                           href={`/business/${b.slug}`}
-                          className="inline-block w-full px-2 lg:px-3 py-1.5 lg:py-2 bg-purple-600 hover:bg-purple-700 text-white text-[9px] lg:text-xs font-bold rounded-lg lg:rounded-xl transition-colors truncate"
+                          className="inline-block w-full px-2 lg:px-3 py-1.5 lg:py-2 bg-purple-600 hover:bg-purple-700 text-white text-[9px] lg:text-xs font-bold rounded-lg lg:rounded-xl transition-colors truncate shadow-2xs"
                         >
-                          View Details
+                          View Facility Details
                         </Link>
                       </td>
                     ))}

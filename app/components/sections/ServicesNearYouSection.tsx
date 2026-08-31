@@ -1,18 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Pill, Croissant, Coffee, BookOpen, Wrench, Scissors } from "lucide-react";
+import { ArrowRight, Pill, Stethoscope, HeartPulse, Activity, Sparkles, TestTube } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 
-// Real subcategory slugs from the taxonomy (backend/prisma/description-templates) — links go
-// straight to /search?subcategory=<slug> the same way category chips elsewhere do.
 const services = [
-  { name: "Pharmacies", slug: "pharmacy", icon: Pill, bgColor: "bg-emerald-100", iconColor: "text-emerald-600" },
-  { name: "Bakeries", slug: "bakery", icon: Croissant, bgColor: "bg-amber-100", iconColor: "text-amber-600" },
-  { name: "Cafes", slug: "cafe", icon: Coffee, bgColor: "bg-orange-100", iconColor: "text-orange-600" },
-  { name: "Coaching Centers", slug: "coaching-center", icon: BookOpen, bgColor: "bg-sky-100", iconColor: "text-sky-600" },
-  { name: "Mechanics", slug: "mechanic", icon: Wrench, bgColor: "bg-purple-100", iconColor: "text-purple-600" },
-  { name: "Salons", slug: "salon", icon: Scissors, bgColor: "bg-pink-100", iconColor: "text-pink-600" },
+  { name: "Emergency Care", slug: "emergency-hospital", icon: HeartPulse, bgColor: "bg-rose-100", iconColor: "text-rose-600" },
+  { name: "24/7 Pharmacies", slug: "pharmacy", icon: Pill, bgColor: "bg-emerald-100", iconColor: "text-emerald-600" },
+  { name: "Specialist Doctors", slug: "general-physician", icon: Stethoscope, bgColor: "bg-sky-100", iconColor: "text-sky-600" },
+  { name: "Diagnostic Labs", slug: "pathology-lab", icon: TestTube, bgColor: "bg-purple-100", iconColor: "text-purple-600" },
+  { name: "Physiotherapy", slug: "physiotherapy-clinic", icon: Activity, bgColor: "bg-orange-100", iconColor: "text-orange-600" },
+  { name: "Dental Clinics", slug: "dental-clinic", icon: Sparkles, bgColor: "bg-amber-100", iconColor: "text-amber-600" },
 ];
 
 export default function ServicesNearYouSection() {

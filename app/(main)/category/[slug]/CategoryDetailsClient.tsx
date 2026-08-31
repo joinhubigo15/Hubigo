@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Store, Star, MapPin, ChevronRight, ArrowRight, UtensilsCrossed, HeartPulse, GraduationCap, Wrench, Car } from "lucide-react";
+import { Store, Star, MapPin, ChevronRight, ArrowRight, UtensilsCrossed, HeartPulse, Stethoscope, Hospital, GraduationCap, Wrench, Car } from "lucide-react";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
 import {
   searchBusinesses,
@@ -68,12 +68,10 @@ export default function CategoryDetailsPage({
 
   const title = category?.name ?? (slug ? slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "Category");
 
-  const CategoryIcon = slug === "food-and-beverage" ? UtensilsCrossed :
-                       (slug === "health-and-medicine" || slug === "healthcare") ? HeartPulse :
-                       slug === "education" ? GraduationCap :
-                       slug === "home-services" ? Wrench :
-                       (slug === "automotive" || slug === "automotive-services") ? Car :
-                       Store;
+  const CategoryIcon = (slug === "health-and-medicine" || slug === "healthcare" || slug === "healthcare-and-medical") ? HeartPulse :
+                       slug === "hospitals" ? Hospital :
+                       slug === "clinics" ? Stethoscope :
+                       HeartPulse;
 
   if (!loadingCategory && !category) {
     return (
@@ -92,16 +90,16 @@ export default function CategoryDetailsPage({
     <div className="bg-slate-50/60 min-h-screen px-0 lg:px-0 pt-0 pb-4 lg:py-0 flex flex-col gap-0 lg:gap-0 w-full">
       {/* Category Hero Block */}
       <div className="bg-white rounded-none lg:rounded-none border-y lg:border-b lg:border-x-0 lg:border-t-0 border-slate-100 py-4 px-4 lg:p-6 lg:px-6 shadow-xs lg:shadow-none relative overflow-hidden flex flex-row items-center justify-between gap-4">
-        <div className="absolute right-0 top-0 w-24 h-24 bg-purple-50 rounded-full blur-2xl opacity-70" />
+        <div className="absolute right-0 top-0 w-24 h-24 bg-emerald-50 rounded-full blur-2xl opacity-70" />
 
         <div className="space-y-1.5 z-10 flex-1 min-w-0 pr-2">
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 leading-tight truncate">{title}</h1>
           <p className="text-xs text-slate-500 max-w-md leading-relaxed font-medium mt-0.5 truncate sm:whitespace-normal">
-            Find the best {title.toLowerCase()} businesses near you. Compare ratings and reviews.
+            Find top-rated {title.toLowerCase()} providers, clinics, and specialists near you. Compare ratings, reviews, and contact info.
           </p>
         </div>
 
-        <div className="flex w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-orange-50 text-orange-500 items-center justify-center shrink-0 z-10 shadow-2xs border border-orange-100">
+        <div className="flex w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-emerald-50 text-emerald-600 items-center justify-center shrink-0 z-10 shadow-2xs border border-emerald-100">
           <CategoryIcon className="w-6 h-6 lg:w-8 lg:h-8" />
         </div>
       </div>

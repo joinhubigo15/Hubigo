@@ -85,8 +85,8 @@ export default function DownloadAppCTA() {
                   </div>
                   <div className="bg-primary-50 p-2.5 rounded-xl flex items-center justify-between">
                     <div>
-                      <div className="font-bold text-primary text-[11px]">30% OFF Today</div>
-                      <div className="text-[9px] text-secondary-500">Spice Garden Restaurant</div>
+                      <div className="font-bold text-primary text-[11px]">25% OFF Checkup</div>
+                      <div className="text-[9px] text-secondary-500">Manipal Super Specialty</div>
                     </div>
                     <div className="text-xs font-bold bg-primary text-white px-2 py-0.5 rounded-full">Claim</div>
                   </div>

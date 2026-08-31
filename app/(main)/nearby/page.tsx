@@ -33,6 +33,7 @@ import { cn } from "@/app/lib/utils";
 import { useNearbyLocation } from "@/app/lib/useNearbyLocation";
 import NearbyMap, { NearbyBusinessItem } from "@/app/components/nearby/NearbyMap";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
+import CityPickerPill from "@/app/components/layout/CityPickerPill";
 import { API_URL } from "@/app/lib/api";
 
 const DEFAULT_RADIUS = 5; // Default radius in KM (configurable constant)
@@ -204,13 +205,13 @@ function NearbyPageContent() {
   const getAISuggestion = () => {
     const hour = new Date().getHours();
     if (hour >= 6 && hour < 11) {
-      return "☕ Morning Recommendation: Great breakfast cafes and gyms are open near you!";
+      return "🩺 Morning Healthcare: Diagnostic labs for fasting blood tests & OPD clinics open near you!";
     } else if (hour >= 11 && hour < 16) {
-      return "🍽️ Lunch Highlight: Top-rated dining sizzlers & team lunch spots nearby!";
+      return "🏥 Afternoon Care: Specialist doctor consultations, eye clinics & physiotherapy centers open nearby!";
     } else if (hour >= 16 && hour < 22) {
-      return "🌆 Evening Picks: Trending rooftop lounges, salons, and shopping hubs nearby!";
+      return "💊 Evening Healthcare: Pharmacies, wellness centers, and pediatric clinics open near you!";
     }
-    return "🚨 Late Night: 24x7 Pharmacies, emergency clinics, and late-night delivery nearby!";
+    return "🚨 24/7 Healthcare: Emergency trauma hospitals, 24/7 pharmacies, and ambulance services nearby!";
   };
 
   return (
@@ -228,10 +229,10 @@ function NearbyPageContent() {
 
             <div className="space-y-1">
               <h2 className="text-xl sm:text-3xl font-black text-white tracking-tight">
-                Find businesses near you 📍
+                Find Healthcare Services Near You 📍
               </h2>
               <p className="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed">
-                Enable your location to discover nearby restaurants, hospitals, gyms, pharmacies, electricians, and exclusive offers within your area.
+                Enable your location to discover nearby hospitals, clinics, 24/7 pharmacies, diagnostic labs, and specialist doctors within your area.
               </p>
             </div>
 
@@ -383,16 +384,36 @@ function NearbyPageContent() {
             </button>
           </div>
 
-          {/* Floating Search Bar */}
-          <div className="flex-1 w-full max-w-md relative">
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-purple-600 pointer-events-none" />
-            <input
-              type="text"
-              placeholder="Search nearby restaurants, dentists, pharmacies..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 lg:py-2.5 bg-[#f8fafc] border border-slate-200 rounded-none lg:rounded-xl text-[11px] lg:text-xs font-semibold text-slate-900 placeholder-slate-400 focus:outline-none focus:border-purple-600 focus:bg-white transition-all shadow-none lg:shadow-2xs"
-            />
+          {/* Homepage Pattern Search Bar */}
+          <div className="flex-1 w-full max-w-lg bg-white rounded-2xl shadow-sm border border-purple-300/80 hover:border-purple-400 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/10 p-1 sm:p-1.5 flex items-center gap-1.5 transition-all">
+            <div className="flex-1 flex items-center px-3 py-1">
+              <input
+                type="text"
+                placeholder="Search Doctors, Hospitals, Clinics, Diagnostic Labs, Pharmacies..."
+                value={searchQuery}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setSearchQuery(v ? v.charAt(0).toUpperCase() + v.slice(1) : "");
+                }}
+                autoCapitalize="words"
+                className="w-full bg-transparent text-xs sm:text-sm font-semibold text-slate-900 placeholder-slate-400 focus:outline-none capitalize"
+              />
+            </div>
+
+            <div className="h-5 w-px bg-slate-200 shrink-0 hidden sm:block" />
+
+            <div className="shrink-0 hidden sm:block">
+              <CityPickerPill size="xs" />
+            </div>
+
+            <button
+              onClick={() => {}}
+              aria-label="Search"
+              className="bg-purple-600 hover:bg-purple-700 text-white font-extrabold text-xs px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-xl flex items-center gap-1 shadow-sm shadow-purple-600/30 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
+            >
+              <Search className="w-3.5 h-3.5 stroke-[2.5]" />
+              <span className="hidden sm:inline">Search</span>
+            </button>
           </div>
 
           {/* Radius Selector & View Mode Switcher */}
@@ -452,16 +473,7 @@ function NearbyPageContent() {
           </div>
         </div>
 
-        {/* AI Time-of-Day Recommendation Bar */}
-        <div className="bg-gradient-to-r from-purple-50 via-indigo-50 to-purple-50 border-b lg:border-b lg:border-x-0 lg:border-t-0 border-purple-100 -mt-[1px] lg:mt-0 rounded-none lg:rounded-none p-3 flex items-center justify-between gap-2 shadow-none lg:shadow-none relative z-10">
-          <div className="flex items-center gap-2 text-xs font-bold text-purple-900">
-            <Sparkles className="w-4 h-4 text-purple-600 shrink-0" />
-            <span>{getAISuggestion()}</span>
-          </div>
-          <span className="text-[10px] font-extrabold text-purple-700 bg-white px-2 py-0.5 rounded-md border border-purple-200 shrink-0">
-            AI Smart Match 🧠
-          </span>
-        </div>
+
 
         {/* QUICK CATEGORIES HORIZONTAL CHIPS */}
         <div className="flex items-center gap-2 overflow-x-auto px-4 lg:px-6 py-3 bg-white border-b lg:border-b border-slate-200/80 -mt-[1px] lg:mt-0 scrollbar-none relative z-10">

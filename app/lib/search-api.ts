@@ -364,6 +364,8 @@ export interface BusinessDetail {
   offers: BusinessDetailOffer[];
   products: BusinessDetailProduct[];
   reviews: BusinessDetailReview[];
+  keywords?: string[];
+  externalPlaceId?: string;
 }
 
 export function getBusinessBySlug(slug: string, accessToken?: string) {

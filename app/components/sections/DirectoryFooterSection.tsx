@@ -6,7 +6,34 @@ export default function DirectoryFooterSection() {
   return (
     <footer className="bg-white border-t border-slate-200/80 mt-8 shrink-0">
       {/* Directory Links */}
-      <div className="px-4 lg:px-8 py-10 max-w-6xl mx-auto">
+      <div className="px-4 lg:px-8 py-10 max-w-6xl mx-auto space-y-8">
+        {/* Popular Healthcare Searches */}
+        <div className="border-b border-slate-100 pb-6">
+          <h3 className="text-xs font-black text-slate-900 uppercase tracking-wider mb-3">
+            Popular Healthcare Searches
+          </h3>
+          <div className="flex flex-wrap gap-2 text-[11px] font-semibold text-slate-600">
+            {[
+              { label: "Hospitals in Bangalore", href: "/search?q=Hospitals+in+Bangalore" },
+              { label: "Cardiologists in Koramangala", href: "/search?q=Cardiologists+in+Koramangala" },
+              { label: "24/7 Pharmacies in HSR Layout", href: "/search?q=Pharmacies+in+HSR+Layout" },
+              { label: "Diagnostic Labs in Indiranagar", href: "/search?q=Diagnostic+Labs+in+Indiranagar" },
+              { label: "Pediatricians in Whitefield", href: "/search?q=Pediatricians+in+Whitefield" },
+              { label: "Eye Hospitals in Bangalore", href: "/search?q=Eye+Hospitals+in+Bangalore" },
+              { label: "Physiotherapy Clinics", href: "/search?q=Physiotherapy" },
+              { label: "Ayurveda & AYUSH Centers", href: "/search?q=Ayurveda" },
+            ].map((tag) => (
+              <Link
+                key={tag.label}
+                href={tag.href}
+                className="px-2.5 py-1 rounded-full bg-slate-100 hover:bg-purple-50 hover:text-purple-600 transition-colors"
+              >
+                {tag.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-8 max-w-4xl mx-auto text-center lg:text-left">
           {/* Company & Legal */}
           <div className="space-y-3">
@@ -16,12 +43,12 @@ export default function DirectoryFooterSection() {
             <ul className="space-y-2 text-xs font-semibold text-slate-500 flex flex-col lg:flex-row gap-2 lg:gap-6">
               <li>
                 <Link href="/about" className="hover:text-purple-600 transition-colors">
-                  About Hubigo
+                  About Hubigo Healthcare
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-purple-600 transition-colors">
-                  Contact Support
+                  Contact Healthcare Support
                 </Link>
               </li>
               <li>
@@ -92,8 +119,8 @@ export default function DirectoryFooterSection() {
 
         {/* Bottom copyright */}
         <div className="border-t border-slate-100 mt-8 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-semibold gap-2">
-          <span>© 2026 HUBIGO Inc. All rights reserved.</span>
-          <span>Made with ❤️ for Local Businesses in India</span>
+          <span>© 2026 HUBIGO Healthcare Inc. All rights reserved.</span>
+          <span>Made with ❤️ for Patients & Healthcare Providers in India</span>
         </div>
       </div>
     </footer>

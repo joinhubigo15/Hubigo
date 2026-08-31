@@ -139,7 +139,7 @@ export async function compareNearbyBusinesses(
   categorySlug: string,
   userLat: number,
   userLng: number,
-  limit = 5,
+  limit = 3,
 ) {
   const category = await prisma.category.findUnique({
     where: { slug: categorySlug },

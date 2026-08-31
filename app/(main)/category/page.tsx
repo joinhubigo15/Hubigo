@@ -6,8 +6,8 @@ import AllCategoriesClient from "./AllCategoriesClient";
 // reach the backend by any path.
 export const dynamic = "force-dynamic";
 
-const title = "All Categories";
-const description = "Browse every business category listed on Hubigo, India's local discovery platform.";
+const title = "Healthcare Categories & Medical Specialties";
+const description = "Browse all healthcare categories, medical specialties, hospitals, clinics, and diagnostic labs on Hubigo Healthcare.";
 
 export const metadata: Metadata = {
   title,

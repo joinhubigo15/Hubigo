@@ -20,12 +20,14 @@
     "seed": "tsx prisma/seed.ts",
     "seed:mock-businesses": "tsx prisma/seed-mock-businesses.ts",
     "seed:clear-mock-businesses": "tsx prisma/seed-mock-businesses.ts --clear",
-    "scrape:gmaps": "tsx scripts/gmaps-scraper/cli.ts"
+    "scrape:gmaps": "tsx scripts/gmaps-scraper/cli.ts",
+    "scrape:google-place-ids": "tsx scripts/google-place-ids-by-pincode.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1104.0",
     "@prisma/client": "^6.3.0",
     "@sentry/node": "^10.70.0",
+    "apify-client": "^2.25.0",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -38,6 +40,8 @@
     "multer": "^2.2.0",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
+    "playwright": "^1.62.1",
+    "puppeteer": "^25.9.0",
     "resend": "^4.1.1",
     "web-push": "^3.6.7",
     "xlsx": "^0.18.5",

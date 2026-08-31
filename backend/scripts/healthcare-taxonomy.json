@@ -1,0 +1,2577 @@
+[
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "General Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Multispecialty Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Super Specialty Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Private Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Government Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Public Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Teaching Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "University Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Community Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "District Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rural Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Municipal Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Corporate Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Charitable Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mission Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Military Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Children\u2019s Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Women\u2019s Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Maternity Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mother and Child Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cancer Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cardiology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Heart Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neurology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neurosurgery Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthopedic Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Eye Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "ENT Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Skin Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psychiatric Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mental Health Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Kidney Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nephrology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Urology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Gastroenterology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Liver Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pulmonology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Respiratory Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Endocrinology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diabetes Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rheumatology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Infectious Disease Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rehabilitation Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Geriatric Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Care Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Transplant Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Trauma Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Accident Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Burn Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Plastic Surgery Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Fertility Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "IVF Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Oncology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hematology Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neonatal Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Tertiary Care Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Quaternary Care Hospital",
+    "pdf_section": "Hospitals"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "General Physician Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Family Medicine Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Primary Care Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Internal Medicine Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Gynecology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Obstetrics Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dermatology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cardiology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neurology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neurosurgery Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthopedic Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "ENT Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ophthalmology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psychiatric Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psychology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Urology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nephrology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Gastroenterology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hepatology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pulmonology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Endocrinology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diabetology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Oncology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hematology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rheumatology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Allergy Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Immunology Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Infectious Disease Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pain Management Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sleep Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sexual Health Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Fertility Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "IVF Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Reproductive Medicine Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Men\u2019s Health Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Women\u2019s Health Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Geriatric Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Adolescent Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neonatal Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Breast Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Thyroid Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Liver Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Kidney Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Arthritis Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Spine Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sports Medicine Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Wound Care Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Travel Medicine Clinic",
+    "pdf_section": "Clinics"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "General Physician",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Family Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Internist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatrician",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neonatologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Gynecologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Obstetrician",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Obstetrician-Gynecologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cardiologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Interventional Cardiologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neurologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neurosurgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthopedic Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthopedic Surgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Spine Surgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Joint Replacement Surgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sports Medicine Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rheumatologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dermatologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cosmetologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Trichologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Plastic Surgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Reconstructive Surgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "ENT Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ophthalmologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Optometrist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dentist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Oral Surgeon",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Endodontist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthodontist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Periodontist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Prosthodontist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Dentist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Urologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nephrologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Gastroenterologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hepatologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pulmonologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Endocrinologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diabetologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Oncologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hematologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pathologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Radiologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Anesthesiologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psychiatrist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psychologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Clinical Psychologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sexologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Geriatrician",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Care Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Infectious Disease Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Allergist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Immunologist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pain Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sleep Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Fertility Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Reproductive Medicine Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Geneticist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nuclear Medicine Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Medicine Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Critical Care Specialist",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Occupational Medicine Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Public Health Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Preventive Medicine Doctor",
+    "pdf_section": "Doctors & Medical Specialists"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cosmetic Dentist",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Oral Medicine Specialist",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Implant Dentist",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Implant Center",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Root Canal Specialist",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Surgery Center",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Maxillofacial Surgeon",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Dentist",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Denture Clinic",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Laboratory",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Teeth Whitening Clinic",
+    "pdf_section": "Dental"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diagnostic Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diagnostic Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pathology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Clinical Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Blood Testing Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Health Checkup Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Preventive Health Checkup Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Full Body Health Checkup",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Genetic Testing Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Molecular Diagnostic Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Microbiology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Histopathology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cytology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hematology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Biochemistry Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Immunology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Toxicology Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hormone Testing Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Fertility Testing Laboratory",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "COVID Testing Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Infectious Disease Testing Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diagnostic Imaging Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Radiology Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "X-Ray Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "MRI Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "CT Scan Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ultrasound Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sonography Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mammography Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "PET Scan Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nuclear Medicine Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Bone Density Scan Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "DEXA Scan Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Echocardiography Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Doppler Scan Center",
+    "pdf_section": "Diagnostic & Laboratory Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Store",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Drug Store",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Retail Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hospital Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Community Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "24 Hour Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Online Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Specialty Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Compounding Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ayurvedic Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Homeopathic Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinary Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Surgical Pharmacy",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Generic Medicine Store",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Distributor",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pharmaceutical Distributor",
+    "pdf_section": "Pharmacies & Medicines"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Physiotherapy Clinic",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Physical Therapy Clinic",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rehabilitation Center",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sports Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neuro Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cardiac Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pulmonary Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Geriatric Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Occupational Therapy",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Speech Therapy",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Occupational Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Stroke Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Spinal Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthopedic Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pain Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Post Surgery Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Prosthetic Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Amputee Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mobility Rehabilitation",
+    "pdf_section": "Physiotherapy & Rehabilitation"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psychiatry Clinic",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Counseling Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mental Health Clinic",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Behavioral Health Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Addiction Treatment Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "De-Addiction Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Child Psychologist",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Adolescent Psychologist",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Family Counselor",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Marriage Counselor",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Relationship Counselor",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Substance Abuse Treatment Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Alcohol Rehabilitation Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Drug Rehabilitation Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Eating Disorder Clinic",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Stress Management Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Trauma Therapy Center",
+    "pdf_section": "Mental & Behavioral Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Women's Hospital",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Women's Health Clinic",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "IVF Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Reproductive Medicine Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Prenatal Care Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Postnatal Care Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Menopause Clinic",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Breast Cancer Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cervical Cancer Screening Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "High Risk Pregnancy Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Maternal Fetal Medicine Center",
+    "pdf_section": "Women's Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Infertility Clinic",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "IUI Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Embryology Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Andrology Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sperm Bank",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Egg Donation Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Fertility Preservation Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Egg Freezing Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sperm Freezing Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Surrogacy Center",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Male Infertility Clinic",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Reproductive Endocrinology Clinic",
+    "pdf_section": "Fertility & Reproductive Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Eye Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Optician",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Optical Store",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Vision Center",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "LASIK Center",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cataract Surgery Center",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Retina Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Glaucoma Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cornea Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Eye Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Squint Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Eye Laser Center",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Contact Lens Center",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Low Vision Center",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diabetic Eye Clinic",
+    "pdf_section": "Eye Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ear Specialist",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nose Specialist",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Throat Specialist",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hearing Center",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Audiology Center",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Speech Therapy Center",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cochlear Implant Center",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sinus Clinic",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Allergy ENT Clinic",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Vertigo Clinic",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hearing Aid Center",
+    "pdf_section": "ENT"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Department",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Clinic",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Urgent Care Center",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Accident & Emergency",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Trauma Center",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ambulance Service",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Ambulance",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Air Ambulance",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Transport",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Patient Transport",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Critical Care Ambulance",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Medical Service",
+    "pdf_section": "Emergency & Urgent Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Nursing",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Doctor",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Physiotherapy",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Medical Care",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Diagnostic Service",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Blood Collection",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Lab Testing",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Elderly Home Care",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Senior Care",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Home Care",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Postoperative Home Care",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home ICU",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Respiratory Care",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Rehabilitation",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Home Medicine Delivery",
+    "pdf_section": "Home Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Senior Care Center",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Elder Care Center",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Assisted Living",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nursing Home",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Retirement Home",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Senior Living",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Geriatric Care Center",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dementia Care Center",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Alzheimer's Care Center",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Memory Care Center",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Old Age Home",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Residential Care Home",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Long Term Care Facility",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Care Facility",
+    "pdf_section": "Elder Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Skilled Nursing Facility",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Residential Care Facility",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Assisted Living Facility",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hospice",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Care Center",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Rehabilitation Facility",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Convalescent Home",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Care Home",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nursing Care Center",
+    "pdf_section": "Nursing & Care Facilities"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Equipment Store",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Surgical Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Surgical Instrument Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hospital Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diagnostic Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Laboratory Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Device Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mobility Equipment Store",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Wheelchair Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hospital Bed Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Oxygen Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "CPAP Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Prosthetic Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Orthopedic Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hearing Aid Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Equipment Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental Supply Store",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Consumables Supplier",
+    "pdf_section": "Medical Equipment & Supplies"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ayurveda Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ayurvedic Hospital",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Ayurvedic Doctor",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Homeopathy Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Homeopathic Doctor",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Naturopathy Center",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Yoga Therapy Center",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Acupuncture Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Traditional Medicine Center",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Unani Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Siddha Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Traditional Chinese Medicine Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Chiropractic Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Osteopathy Clinic",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Massage Therapy Center",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Holistic Health Center",
+    "pdf_section": "Alternative & Complementary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nutritionist",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dietitian",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Clinical Nutritionist",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Sports Nutritionist",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nutrition Clinic",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diet Clinic",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Weight Loss Clinic",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Obesity Clinic",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Bariatric Clinic",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Bariatric Surgery Center",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Diabetes Nutrition Center",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Child Nutrition Center",
+    "pdf_section": "Nutrition & Weight Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Chronic Pain Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Spine Pain Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Back Pain Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Joint Pain Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Headache Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Migraine Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Interventional Pain Center",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Pain Clinic",
+    "pdf_section": "Pain Management"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Skin Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hair Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hair Transplant Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cosmetic Dermatology Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Aesthetic Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Aesthetics Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Laser Skin Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Acne Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Psoriasis Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Vitiligo Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hair Loss Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Scar Treatment Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cosmetic Surgery Clinic",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Plastic Surgery Center",
+    "pdf_section": "Skin, Hair & Aesthetic Medicine"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Hospital",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Neonatal ICU",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric ICU",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Children's Clinic",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Child Development Center",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Child Neurology Clinic",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Cardiology",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Surgery",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pediatric Dentistry",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Child Vaccination Center",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Child Immunization Center",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Newborn Care Center",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Lactation Consultant",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Breastfeeding Support Center",
+    "pdf_section": "Maternal, Child & Neonatal Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Vaccination Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Immunization Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Health Screening Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Preventive Health Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Corporate Health Checkup",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Occupational Health Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Public Health Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Community Health Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Primary Health Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Family Health Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Wellness Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Travel Vaccination Center",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Health Camp",
+    "pdf_section": "Public Health & Preventive Care"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Blood Bank",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Blood Donation Center",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Plasma Donation Center",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Platelet Donation Center",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Stem Cell Donation Center",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Stem Cell Bank",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cord Blood Bank",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Tissue Bank",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Organ Donation Center",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Eye Bank",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Biobank",
+    "pdf_section": "Blood, Tissue & Donation Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Palliative Care",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "End of Life Care",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Funeral Medical Services",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Mortuary",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Hospital Mortuary",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Cremation Service",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Burial Service",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Funeral Home",
+    "pdf_section": "Funeral & End-of-Life Healthcare Services"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical College",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nursing College",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Nursing School",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Training Institute",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Paramedical College",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pharmacy College",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Dental College",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Physiotherapy College",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Allied Health Institute",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Medical Laboratory Training Institute",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Radiology Training Institute",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "EMT Training Institute",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "First Aid Training Center",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "CPR Training Center",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Healthcare Training Center",
+    "pdf_section": "Medical Education & Training"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinary Hospital",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinary Clinic",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinarian",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Animal Hospital",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Pet Hospital",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Animal Clinic",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Emergency Veterinary Clinic",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinary Diagnostic Center",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinary Laboratory",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Veterinary Surgery Center",
+    "pdf_section": "Veterinary Healthcare"
+  },
+  {
+    "category": "Healthcare & Medical",
+    "subcategory": "Animal Rehabilitation Center",
+    "pdf_section": "Veterinary Healthcare"
+  }
+]

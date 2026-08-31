@@ -1,25 +1,10 @@
 /**
- * Isolated mock business data — NOT permanent.
- *
- * Real businesses arrive later via the scraper pipeline (SRS §21). This script exists purely
- * so the search/ranking/filter/compare stack has something realistic to run against until then.
- * Every row it creates carries an externalPlaceId starting with "MOCK-", so it can be wiped
- * cleanly with `npm run seed:clear-mock-businesses` without touching real imported data or the
- * permanent taxonomy from seed.ts.
+ * Isolated Healthcare Mock Business Data — Premium Healthcare Discovery Platform.
  */
+import "dotenv/config";
 import { PrismaClient, PlanTier, PriceRange, DayOfWeek } from "@prisma/client";
 
 const prisma = new PrismaClient();
-
-const STANDARD_HOURS: { day: DayOfWeek; openTime: string; closeTime: string }[] = [
-  "monday",
-  "tuesday",
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-  "sunday",
-].map((day) => ({ day: day as DayOfWeek, openTime: "09:00", closeTime: "21:00" }));
 
 const ALWAYS_OPEN_HOURS: { day: DayOfWeek; openTime: string; closeTime: string }[] = [
   "monday",
@@ -31,13 +16,27 @@ const ALWAYS_OPEN_HOURS: { day: DayOfWeek; openTime: string; closeTime: string }
   "sunday",
 ].map((day) => ({ day: day as DayOfWeek, openTime: "00:00", closeTime: "23:59" }));
 
-interface MockBusiness {
+const STANDARD_CLINIC_HOURS: { day: DayOfWeek; openTime: string; closeTime: string }[] = [
+  "monday",
+  "tuesday",
+  "wednesday",
+  "thursday",
+  "friday",
+  "saturday",
+  "sunday",
+].map((day) => ({ day: day as DayOfWeek, openTime: "08:00", closeTime: "21:00" }));
+
+interface HealthcareMockBusiness {
   name: string;
   categorySlug: string;
-  subcategorySlug?: string;
+  subcategorySlugs: string[];
   citySlug: string;
   localitySlug?: string;
   address: string;
+  pincode?: string;
+  phone?: string;
+  whatsappPhone?: string;
+  website?: string;
   planTier: PlanTier;
   isVerified: boolean;
   isTrusted: boolean;
@@ -49,662 +48,526 @@ interface MockBusiness {
   amenitySlugs: string[];
   services: string[];
   hasOffer?: boolean;
+  offerTitle?: string;
+  offerDiscount?: string;
   description: string;
   coverImageUrl: string;
   hours?: "standard" | "always";
 }
 
-const businesses: MockBusiness[] = [
-  // ── The Koramangala/Delhi gym example from the spec, made real ──
+const healthcareBusinesses: HealthcareMockBusiness[] = [
   {
-    name: "Iron Paradise Fitness Club",
-    categorySlug: "gyms",
-    citySlug: "bangalore",
-    localitySlug: "koramangala",
-    address: "3rd Floor, Forum Mall Road, Koramangala",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.5,
-    reviewCount: 210,
-    viewCount: 1400,
-    keywords: ["gym", "fitness", "weight training", "crossfit"],
-    amenitySlugs: ["parking", "air-conditioning", "wifi"],
-    services: ["Personal Training", "Group Classes"],
-    description: "Neighbourhood strength and conditioning gym with certified trainers.",
-    coverImageUrl: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-  {
-    name: "Elite Fitness Delhi",
-    categorySlug: "gyms",
-    citySlug: "delhi",
-    localitySlug: "saket",
-    address: "Select Citywalk Complex, Saket",
-    planTier: PlanTier.elite,
-    isVerified: true,
-    isTrusted: true,
-    priceRange: PriceRange.luxury,
-    avgRating: 4.8,
-    reviewCount: 940,
-    viewCount: 5200,
-    keywords: ["gym", "fitness", "luxury gym", "personal training"],
-    amenitySlugs: ["parking", "air-conditioning", "wifi", "wheelchair-accessible"],
-    services: ["Personal Training", "Nutrition Coaching", "Spa Recovery"],
-    hasOffer: true,
-    description: "Premium fitness club with recovery spa, personal chefs, and elite trainers.",
-    coverImageUrl: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&h=400&fit=crop",
-    hours: "always",
-  },
-
-  // ── Restaurants ──
-  {
-    name: "Spice Garden Restaurant",
-    categorySlug: "restaurants",
-    subcategorySlug: "fine-dining",
-    citySlug: "pune",
-    localitySlug: "koregaon-park",
-    address: "42, MG Road, Koregaon Park",
-    planTier: PlanTier.elite,
-    isVerified: true,
-    isTrusted: true,
-    priceRange: PriceRange.premium,
-    avgRating: 4.8,
-    reviewCount: 1245,
-    viewCount: 8600,
-    keywords: ["north indian", "fine dining", "live music"],
-    amenitySlugs: ["air-conditioning", "parking", "card-payment", "outdoor-seating"],
-    services: ["Dine-in", "Live Music Nights", "Private Events"],
-    hasOffer: true,
-    description: "Authentic Indian cuisine with a modern twist and weekend live music.",
-    coverImageUrl: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-  {
-    name: "The Urban Cafe & Bistro",
-    categorySlug: "restaurants",
-    subcategorySlug: "cafe",
-    citySlug: "pune",
-    localitySlug: "koregaon-park",
-    address: "Lane 5, Koregaon Park",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.4,
-    reviewCount: 678,
-    viewCount: 3100,
-    keywords: ["cafe", "coffee", "pastries", "continental"],
-    amenitySlugs: ["wifi", "outdoor-seating", "card-payment"],
-    services: ["Dine-in", "Takeaway"],
-    description: "Trendy cafe serving artisanal coffee and fusion cuisine.",
-    coverImageUrl: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-  {
-    name: "Bengaluru Bites",
-    categorySlug: "restaurants",
-    subcategorySlug: "fast-food",
+    name: "Manipal Super Specialty Hospital",
+    categorySlug: "hospitals",
+    subcategorySlugs: [
+      "multispecialty-hospital",
+      "super-specialty-hospital",
+      "general-hospital",
+      "emergency-hospital",
+      "trauma-hospital",
+      "cardiology-hospital",
+      "neurology-hospital",
+      "orthopedic-hospital",
+      "oncology-hospital",
+    ],
     citySlug: "bangalore",
     localitySlug: "indiranagar",
-    address: "100ft Road, Indiranagar",
-    planTier: PlanTier.premium,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.budget,
-    avgRating: 4.2,
-    reviewCount: 512,
-    viewCount: 2700,
-    keywords: ["fast food", "quick bites", "south indian"],
-    amenitySlugs: ["home-delivery", "card-payment"],
-    services: ["Dine-in", "Delivery"],
-    description: "Quick-serve South Indian favourites, from dosas to filter coffee.",
-    coverImageUrl: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-  {
-    name: "Flour & Co Bakery",
-    categorySlug: "restaurants",
-    subcategorySlug: "bakery",
-    citySlug: "mumbai",
-    localitySlug: "bandra",
-    address: "Hill Road, Bandra West",
-    planTier: PlanTier.basic,
-    isVerified: false,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.0,
-    reviewCount: 88,
-    viewCount: 640,
-    keywords: ["bakery", "desserts", "cakes"],
-    amenitySlugs: ["card-payment"],
-    services: ["Custom Cakes", "Walk-in"],
-    description: "Neighbourhood bakery known for sourdough and custom celebration cakes.",
-    coverImageUrl: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Hospitals ──
-  {
-    name: "LifeCare Wellness Hospital",
-    categorySlug: "hospitals",
-    citySlug: "pune",
-    localitySlug: "baner",
-    address: "15, Baner Road, Baner",
+    address: "98, HAL Old Airport Road, Kodihalli, Indiranagar",
+    pincode: "560038",
+    phone: "+91 80 2502 4444",
+    whatsappPhone: "918025024444",
+    website: "https://www.manipalhospitals.com",
     planTier: PlanTier.elite,
     isVerified: true,
     isTrusted: true,
-    priceRange: PriceRange.luxury,
-    avgRating: 4.6,
-    reviewCount: 892,
-    viewCount: 6100,
-    keywords: ["multi-specialty", "emergency", "icu"],
-    amenitySlugs: ["parking", "wheelchair-accessible", "air-conditioning"],
-    services: ["24/7 Emergency", "ICU", "Diagnostics"],
-    description: "Multi-specialty hospital with 24/7 emergency care and expert doctors.",
-    coverImageUrl: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=600&h=400&fit=crop",
+    priceRange: PriceRange.premium,
+    avgRating: 4.9,
+    reviewCount: 3840,
+    viewCount: 18500,
+    keywords: ["hospital", "multispecialty", "emergency", "cardiology", "icu", "neurology"],
+    amenitySlugs: ["parking", "air-conditioning", "wifi", "wheelchair-accessible", "card-payment", "cctv", "power-backup"],
+    services: ["24x7 Emergency & Trauma", "Robotic Surgery", "Cardiology & Cardiac Surgery", "Organ Transplant", "Advanced ICU"],
+    hasOffer: true,
+    offerTitle: "Free Master Health Checkup Voucher",
+    offerDiscount: "25% OFF",
+    description: "Ranked among India's top multispecialty hospitals. Features 24x7 emergency trauma care, world-class ICU, robotic surgery, and 500+ specialist doctors.",
+    coverImageUrl: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?w=800&h=500&fit=crop",
     hours: "always",
   },
   {
-    name: "Apollo Care Clinic",
-    categorySlug: "hospitals",
-    citySlug: "hyderabad",
-    localitySlug: "banjara-hills",
-    address: "Road No 12, Banjara Hills",
-    planTier: PlanTier.premium,
+    name: "Apollo Medical & Diagnostic Center",
+    categorySlug: "clinics",
+    subcategorySlugs: [
+      "primary-care-clinic",
+      "general-physician-clinic",
+      "family-medicine-clinic",
+      "internal-medicine-clinic",
+      "pediatric-clinic",
+      "cardiology-clinic",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "koramangala",
+    address: "80 Feet Road, 4th Block, Koramangala",
+    pincode: "560034",
+    phone: "+91 80 4111 8888",
+    whatsappPhone: "918041118888",
+    website: "https://www.apolloclinics.com",
+    planTier: PlanTier.elite,
     isVerified: true,
     isTrusted: true,
-    priceRange: PriceRange.premium,
-    avgRating: 4.7,
-    reviewCount: 1530,
-    viewCount: 9200,
-    keywords: ["multi-specialty", "diagnostics", "checkup"],
-    amenitySlugs: ["parking", "wheelchair-accessible"],
-    services: ["General Consultation", "Full Body Checkup"],
-    description: "Trusted multi-specialty clinic with same-day diagnostics.",
-    coverImageUrl: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=600&h=400&fit=crop",
+    priceRange: PriceRange.moderate,
+    avgRating: 4.8,
+    reviewCount: 2150,
+    viewCount: 12400,
+    keywords: ["clinic", "doctor", "health checkup", "general physician", "blood test"],
+    amenitySlugs: ["air-conditioning", "parking", "card-payment", "wheelchair-accessible"],
+    services: ["Specialist OPD Consultation", "Comprehensive Health Checkups", "ECG & Blood Testing", "Vaccination"],
+    hasOffer: true,
+    offerTitle: "Full Body Executive Health Screening",
+    offerDiscount: "FLAT ₹999",
+    description: "Full-service multi-specialty clinic providing OPD consultations with senior physicians, diagnostic blood tests, ultrasound, and preventative health packages.",
+    coverImageUrl: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&h=500&fit=crop",
     hours: "standard",
   },
   {
-    name: "Manipal City Hospital",
+    name: "Fortis Escorts Heart & Multispecialty Institute",
     categorySlug: "hospitals",
+    subcategorySlugs: [
+      "super-specialty-hospital",
+      "heart-hospital",
+      "cardiology-hospital",
+      "emergency-hospital",
+      "trauma-hospital",
+      "vascular-surgery-hospital",
+    ],
     citySlug: "bangalore",
     localitySlug: "hsr-layout",
-    address: "27th Main, HSR Layout",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.3,
-    reviewCount: 410,
-    viewCount: 2900,
-    keywords: ["general hospital", "emergency"],
-    amenitySlugs: ["parking", "wheelchair-accessible"],
-    services: ["General Ward", "Emergency"],
-    description: "Community hospital offering general and emergency medical care.",
-    coverImageUrl: "https://images.unsplash.com/photo-1587351021355-a479a299d2f9?w=600&h=400&fit=crop",
-    hours: "always",
-  },
-
-  // ── Hotels ──
-  {
-    name: "Grand Vista Hotel & Suites",
-    categorySlug: "hotels",
-    citySlug: "pune",
-    address: "Plot 7, Hinjewadi Phase 1",
+    address: "154/9, Bannerghatta Main Road & HSR Sector 1",
+    pincode: "560102",
+    phone: "+91 80 6621 4444",
+    whatsappPhone: "918066214444",
+    website: "https://www.fortishealthcare.com",
     planTier: PlanTier.elite,
     isVerified: true,
     isTrusted: true,
     priceRange: PriceRange.luxury,
     avgRating: 4.9,
-    reviewCount: 2130,
-    viewCount: 11400,
-    keywords: ["5 star", "luxury hotel", "pool", "spa"],
-    amenitySlugs: ["wifi", "parking", "air-conditioning", "card-payment"],
-    services: ["Room Service", "Spa", "Banquet Hall"],
-    hasOffer: true,
-    description: "5-star luxury hotel with panoramic views and a world-class spa.",
-    coverImageUrl: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&h=400&fit=crop",
+    reviewCount: 4120,
+    viewCount: 22100,
+    keywords: ["heart hospital", "cardiology", "angioplasty", "bypass surgery", "fortis"],
+    amenitySlugs: ["parking", "air-conditioning", "wifi", "wheelchair-accessible", "power-backup"],
+    services: ["Cath Lab Interventions", "Coronary Bypass Surgery", "Heart Failure Clinic", "24x7 Cardiac Emergency"],
+    hasOffer: false,
+    description: "Premier cardiac & super-specialty hospital renowned for complex heart surgeries, interventional cardiology, vascular surgery, and critical care.",
+    coverImageUrl: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&h=500&fit=crop",
     hours: "always",
   },
   {
-    name: "City Comfort Inn",
-    categorySlug: "hotels",
-    citySlug: "chennai",
-    localitySlug: "t-nagar",
-    address: "Usman Road, T Nagar",
-    planTier: PlanTier.basic,
-    isVerified: false,
-    isTrusted: false,
-    priceRange: PriceRange.budget,
-    avgRating: 3.9,
-    reviewCount: 156,
-    viewCount: 980,
-    keywords: ["budget hotel", "business travel"],
-    amenitySlugs: ["wifi", "air-conditioning"],
-    services: ["Room Service"],
-    description: "No-frills budget stay close to T Nagar's shopping district.",
-    coverImageUrl: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=400&fit=crop",
-    hours: "always",
-  },
-
-  // ── Salons & Spas ──
-  {
-    name: "Glamour Studio Salon & Spa",
-    categorySlug: "salons",
-    subcategorySlug: "spa",
-    citySlug: "pune",
-    address: "12, FC Road, Shivajinagar",
-    planTier: PlanTier.premium,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.premium,
-    avgRating: 4.7,
-    reviewCount: 934,
-    viewCount: 4200,
-    keywords: ["salon", "spa", "bridal", "hair color"],
-    amenitySlugs: ["air-conditioning", "card-payment", "wifi"],
-    services: ["Hair Styling", "Bridal Package", "Spa Therapy"],
-    hasOffer: true,
-    description: "Luxury salon offering premium hair, skin, and body treatments.",
-    coverImageUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-  {
-    name: "Chop Shop Unisex Salon",
-    categorySlug: "salons",
-    subcategorySlug: "hair-salon",
-    citySlug: "bangalore",
-    localitySlug: "indiranagar",
-    address: "12th Main, Indiranagar",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.3,
-    reviewCount: 267,
-    viewCount: 1500,
-    keywords: ["salon", "haircut", "unisex"],
-    amenitySlugs: ["air-conditioning", "card-payment"],
-    services: ["Haircut", "Beard Grooming"],
-    description: "Walk-in friendly unisex salon known for consistent haircuts.",
-    coverImageUrl: "https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Plumbers / Electricians (services) ──
-  {
-    name: "QuickFix Plumbing Services",
-    categorySlug: "plumbers",
-    citySlug: "pune",
-    localitySlug: "kothrud",
-    address: "Near Dahanukar Colony, Kothrud",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.budget,
-    avgRating: 4.3,
-    reviewCount: 312,
-    viewCount: 1600,
-    keywords: ["plumber", "emergency plumbing", "leak repair"],
-    amenitySlugs: ["card-payment"],
-    services: ["Emergency Repair", "Pipe Installation"],
-    description: "Same-day residential and commercial plumbing repairs.",
-    coverImageUrl: "https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-  {
-    name: "Bright Spark Electricals",
-    categorySlug: "electricians",
-    citySlug: "pune",
-    address: "Near Bremen Chowk, Aundh",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.budget,
-    avgRating: 4.2,
-    reviewCount: 245,
-    viewCount: 1300,
-    keywords: ["electrician", "wiring", "repairs"],
-    amenitySlugs: [],
-    services: ["Wiring", "Appliance Installation"],
-    description: "Licensed electricians for wiring, repairs, and installations.",
-    coverImageUrl: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Shopping ──
-  {
-    name: "Style Avenue Mall",
-    categorySlug: "shopping",
-    citySlug: "pune",
-    address: "Magarpatta City, Hadapsar",
-    planTier: PlanTier.elite,
-    isVerified: true,
-    isTrusted: true,
-    priceRange: PriceRange.premium,
-    avgRating: 4.6,
-    reviewCount: 1567,
-    viewCount: 7200,
-    keywords: ["mall", "shopping", "fashion", "electronics"],
-    amenitySlugs: ["parking", "air-conditioning", "wheelchair-accessible", "wifi"],
-    services: ["Food Court", "Valet Parking"],
-    hasOffer: true,
-    description: "Premium shopping destination with 200+ international and Indian brands.",
-    coverImageUrl: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Education ──
-  {
-    name: "Bright Minds Learning Centre",
-    categorySlug: "education",
+    name: "Cloudnine Women & Children's Hospital",
+    categorySlug: "hospitals",
+    subcategorySlugs: [
+      "maternity-hospital",
+      "women-s-hospital",
+      "mother-and-child-hospital",
+      "children-s-hospital",
+      "gynecology-clinic",
+      "fertility-hospital",
+      "ivf-hospital",
+    ],
     citySlug: "bangalore",
     localitySlug: "whitefield",
-    address: "ITPL Main Road, Whitefield",
-    planTier: PlanTier.premium,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.5,
-    reviewCount: 340,
-    viewCount: 1900,
-    keywords: ["tuition", "coaching", "school prep"],
-    amenitySlugs: ["air-conditioning", "wifi", "parking"],
-    services: ["K-12 Tuition", "Test Prep"],
-    description: "After-school coaching centre for K-12 and competitive exam prep.",
-    coverImageUrl: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Real Estate ──
-  {
-    name: "Skyline Realty Advisors",
-    categorySlug: "real-estate",
-    citySlug: "mumbai",
-    localitySlug: "powai",
-    address: "Hiranandani Gardens, Powai",
+    address: "ITPB Main Road, Whitefield",
+    pincode: "560066",
+    phone: "+91 80 4333 1111",
+    whatsappPhone: "918043331111",
+    website: "https://www.cloudninehospitals.com",
     planTier: PlanTier.premium,
     isVerified: true,
     isTrusted: true,
     priceRange: PriceRange.premium,
-    avgRating: 4.4,
-    reviewCount: 210,
-    viewCount: 2600,
-    keywords: ["real estate", "property", "rental", "resale"],
-    amenitySlugs: ["parking", "air-conditioning"],
-    services: ["Property Search", "Legal Assistance"],
-    description: "Full-service real estate advisory for rentals, resale, and new projects.",
-    coverImageUrl: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Car Services ──
-  {
-    name: "AutoCare Service Centre",
-    categorySlug: "car-services",
-    citySlug: "delhi",
-    localitySlug: "dwarka",
-    address: "Sector 12, Dwarka",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.1,
-    reviewCount: 389,
-    viewCount: 2100,
-    keywords: ["car service", "car repair", "denting painting"],
-    amenitySlugs: ["parking", "card-payment"],
-    services: ["General Service", "Denting & Painting"],
-    description: "Multi-brand car service and repair centre with pickup/drop.",
-    coverImageUrl: "https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Dentists ──
-  {
-    name: "Dr. Smile Dental Clinic",
-    categorySlug: "dentists",
-    citySlug: "pune",
-    address: "JM Road, Near Garware Bridge",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
     avgRating: 4.8,
-    reviewCount: 456,
-    viewCount: 2400,
-    keywords: ["dentist", "braces", "implants", "cosmetic dentistry"],
-    amenitySlugs: ["air-conditioning", "card-payment", "wheelchair-accessible"],
-    services: ["Cosmetic Dentistry", "Braces", "Implants"],
-    description: "Modern dental clinic offering painless treatments and cosmetic dentistry.",
-    coverImageUrl: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=600&h=400&fit=crop",
+    reviewCount: 1890,
+    viewCount: 9800,
+    keywords: ["maternity hospital", "gynecologist", "pediatrician", "ivf", "pregnancy care"],
+    amenitySlugs: ["parking", "air-conditioning", "wifi", "wheelchair-accessible", "card-payment"],
+    services: ["Painless Delivery", "High-Risk Pregnancy Care", "Level-III NICU", "Pediatric OPD", "Fertility & IVF"],
+    hasOffer: true,
+    offerTitle: "Maternity Package Consultation",
+    offerDiscount: "15% OFF",
+    description: "India's leading maternity, gynaecology, and pediatric care hospital. Specialized in high-risk pregnancy, neonatology, and painless delivery.",
+    coverImageUrl: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&h=500&fit=crop",
+    hours: "always",
+  },
+  {
+    name: "Netradhama Super Specialty Eye Hospital",
+    categorySlug: "eye-care",
+    subcategorySlugs: [
+      "eye-hospital",
+      "ophthalmology-clinic",
+      "optometry-clinic",
+      "cataract-surgery-center",
+      "lasik-laser-center",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "koramangala",
+    address: "22, 7th Block, Koramangala",
+    pincode: "560034",
+    phone: "+91 80 2663 3533",
+    whatsappPhone: "918026633533",
+    website: "https://www.netradhama.org",
+    planTier: PlanTier.premium,
+    isVerified: true,
+    isTrusted: true,
+    priceRange: PriceRange.moderate,
+    avgRating: 4.9,
+    reviewCount: 2980,
+    viewCount: 14200,
+    keywords: ["eye hospital", "lasik surgery", "cataract", "retina clinic", "ophthalmologist"],
+    amenitySlugs: ["air-conditioning", "parking", "card-payment", "wheelchair-accessible"],
+    services: ["Bladeless Femto LASIK", "Cataract Micro-Surgery", "Glaucoma Clinic", "Retina & Cornea Care"],
+    hasOffer: true,
+    offerTitle: "Free LASIK Eligibility Screening",
+    offerDiscount: "FREE TEST",
+    description: "NABH-accredited eye care institute offering advanced Femto-LASIK laser vision correction, robotic cataract surgery, and pediatric ophthalmology.",
+    coverImageUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=500&fit=crop",
     hours: "standard",
   },
-
-  // ── Lawyers ──
   {
-    name: "Chandra & Associates",
-    categorySlug: "lawyers",
-    citySlug: "delhi",
-    localitySlug: "connaught-place",
-    address: "Barakhamba Road, Connaught Place",
+    name: "SRL Diagnostic & Pathology Lab",
+    categorySlug: "diagnostic-and-laboratory-services",
+    subcategorySlugs: [
+      "pathology-lab",
+      "diagnostic-center",
+      "mri-scan-center",
+      "ct-scan-center",
+      "blood-testing-lab",
+      "radiology-center",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "indiranagar",
+    address: "100 Feet Road, Indiranagar",
+    pincode: "560038",
+    phone: "+91 80 4900 7777",
+    whatsappPhone: "918049007777",
+    website: "https://www.srlworld.com",
+    planTier: PlanTier.premium,
+    isVerified: true,
+    isTrusted: true,
+    priceRange: PriceRange.budget,
+    avgRating: 4.7,
+    reviewCount: 1650,
+    viewCount: 7800,
+    keywords: ["diagnostic lab", "blood test", "mri scan", "ct scan", "pathology"],
+    amenitySlugs: ["air-conditioning", "card-payment", "power-backup"],
+    services: ["Home Sample Collection", "Full Blood Profile", "3T MRI & 128-Slice CT", "Hormone Testing"],
+    hasOffer: true,
+    offerTitle: "Complete Blood Profile & Lipid Panel",
+    offerDiscount: "50% OFF",
+    description: "NABL & CAP certified diagnostic network providing accurate blood testing, digital X-rays, 3T MRI scans, and free home sample pickup.",
+    coverImageUrl: "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&h=500&fit=crop",
+    hours: "standard",
+  },
+  {
+    name: "MedPlus 24/7 Pharmacy & Surgical Store",
+    categorySlug: "pharmacies-and-medicines",
+    subcategorySlugs: [
+      "24x7-pharmacy",
+      "medical-store",
+      "surgical-supply-store",
+      "chemist-and-druggist",
+      "orthopedic-apparel-store",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "hsr-layout",
+    address: "Sector 3, HSR Layout",
+    pincode: "560102",
+    phone: "+91 80 2572 1234",
+    whatsappPhone: "918025721234",
+    website: "https://www.medplusmart.com",
+    planTier: PlanTier.basic,
+    isVerified: true,
+    isTrusted: false,
+    priceRange: PriceRange.budget,
+    avgRating: 4.6,
+    reviewCount: 890,
+    viewCount: 5400,
+    keywords: ["pharmacy", "medical store", "chemist", "24 hours", "medicines"],
+    amenitySlugs: ["card-payment", "power-backup", "home-delivery"],
+    services: ["24x7 Genuine Medicines", "Doorstep Express Delivery", "Surgical Equipment", "Baby Care Supplies"],
+    hasOffer: true,
+    offerTitle: "Prescription Medicine Discount",
+    offerDiscount: "FLAT 20% OFF",
+    description: "Trusted 24-hour licensed retail pharmacy stocking genuine prescription medications, surgical supplies, orthopedic supports, and wellness products.",
+    coverImageUrl: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&h=500&fit=crop",
+    hours: "always",
+  },
+  {
+    name: "Aster CMI Super Specialty Hospital",
+    categorySlug: "hospitals",
+    subcategorySlugs: [
+      "super-specialty-hospital",
+      "quaternary-care-hospital",
+      "tertiary-care-hospital",
+      "oncology-hospital",
+      "transplant-hospital",
+      "neurology-hospital",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "whitefield",
+    address: "Hebbal & Whitefield Tech Zone, Bangalore",
+    pincode: "560066",
+    phone: "+91 80 4342 0100",
+    whatsappPhone: "918043420100",
+    website: "https://www.asterhospitals.in",
     planTier: PlanTier.elite,
     isVerified: true,
     isTrusted: true,
     priceRange: PriceRange.luxury,
+    avgRating: 4.9,
+    reviewCount: 3120,
+    viewCount: 16900,
+    keywords: ["aster hospital", "oncology", "neurosurgery", "organ transplant", "icu"],
+    amenitySlugs: ["parking", "air-conditioning", "wifi", "wheelchair-accessible", "cctv", "power-backup"],
+    services: ["Comprehensive Cancer Care", "Bone Marrow Transplant", "Brain & Spine Surgery", "Heart & Lung Transplant"],
+    hasOffer: true,
+    offerTitle: "Senior Citizen Wellness Package",
+    offerDiscount: "30% OFF",
+    description: "500-bed quaternary care hospital with international accreditation, center of excellence for liver transplant, oncology, neurosurgery, and pediatric cardiac care.",
+    coverImageUrl: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?w=800&h=500&fit=crop",
+    hours: "always",
+  },
+  {
+    name: "Dr. Batra's Homeopathy & Wellness Clinic",
+    categorySlug: "alternative-and-complementary-healthcare",
+    subcategorySlugs: [
+      "homeopathy-clinic",
+      "dermatology-clinic",
+      "trichology-clinic",
+      "wellness-center",
+      "allergy-clinic",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "koramangala",
+    address: "5th Block, Koramangala",
+    pincode: "560034",
+    phone: "+91 80 4121 9999",
+    whatsappPhone: "918041219999",
+    website: "https://www.drbatras.com",
+    planTier: PlanTier.premium,
+    isVerified: true,
+    isTrusted: true,
+    priceRange: PriceRange.moderate,
     avgRating: 4.7,
-    reviewCount: 180,
-    viewCount: 1700,
-    keywords: ["lawyer", "legal advisory", "corporate law"],
-    amenitySlugs: ["air-conditioning", "wifi"],
-    services: ["Corporate Law", "Civil Litigation"],
-    description: "Full-service law firm specializing in corporate and civil matters.",
-    coverImageUrl: "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=400&fit=crop",
+    reviewCount: 1420,
+    viewCount: 6500,
+    keywords: ["homeopathy", "hair loss treatment", "skin care", "asthma", "wellness"],
+    amenitySlugs: ["air-conditioning", "card-payment", "wifi"],
+    services: ["Natural Hair Fall Treatment", "Skin Psoriasis & Eczema Care", "Asthma & Allergy Care", "Weight Management"],
+    hasOffer: true,
+    offerTitle: "First Doctor Consultation & Hair Analysis",
+    offerDiscount: "FLAT ₹299",
+    description: "World's largest chain of homeopathic clinics. Specialized in side-effect-free treatment for hair loss, skin ailments, respiratory allergies, and chronic diseases.",
+    coverImageUrl: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&h=500&fit=crop",
     hours: "standard",
   },
-
-  // ── Photographers ──
   {
-    name: "Pixel Perfect Studio",
-    categorySlug: "photographers",
-    citySlug: "pune",
-    address: "Viman Nagar, Near Phoenix Mall",
+    name: "Sakra World Hospital",
+    categorySlug: "hospitals",
+    subcategorySlugs: [
+      "multispecialty-hospital",
+      "orthopedic-hospital",
+      "rehabilitation-hospital",
+      "joint-replacement-center",
+      "trauma-hospital",
+    ],
+    citySlug: "bangalore",
+    localitySlug: "hsr-layout",
+    address: "Devarabeesanahalli, Outer Ring Road, Near HSR Layout",
+    pincode: "560102",
+    phone: "+91 80 4969 4969",
+    whatsappPhone: "918049694969",
+    website: "https://www.sakraworldhospital.com",
     planTier: PlanTier.elite,
     isVerified: true,
     isTrusted: true,
     priceRange: PriceRange.premium,
     avgRating: 4.9,
-    reviewCount: 423,
-    viewCount: 3300,
-    keywords: ["photography", "wedding photographer", "portrait"],
-    amenitySlugs: ["wifi", "parking"],
-    services: ["Wedding Shoots", "Portrait Sessions", "Commercial Shoots"],
-    hasOffer: true,
-    description: "Award-winning photography studio specializing in weddings and portraits.",
-    coverImageUrl: "https://images.unsplash.com/photo-1554048612-b6a482bc67e5?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Pet Care ──
-  {
-    name: "Happy Paws Pet Clinic",
-    categorySlug: "pet-care",
-    citySlug: "bangalore",
-    localitySlug: "koramangala",
-    address: "80 Feet Road, Koramangala",
-    planTier: PlanTier.basic,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.moderate,
-    avgRating: 4.6,
-    reviewCount: 198,
-    viewCount: 1100,
-    keywords: ["pet clinic", "vet", "grooming"],
-    amenitySlugs: ["air-conditioning", "pet-friendly", "parking"],
-    services: ["Vaccination", "Grooming", "Consultation"],
-    description: "Full-service veterinary clinic and grooming salon for pets.",
-    coverImageUrl: "https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?w=600&h=400&fit=crop",
-    hours: "standard",
-  },
-
-  // ── Home Decor ──
-  {
-    name: "Casa Living Home Decor",
-    categorySlug: "home-decor",
-    citySlug: "chennai",
-    localitySlug: "adyar",
-    address: "Lattice Bridge Road, Adyar",
-    planTier: PlanTier.premium,
-    isVerified: true,
-    isTrusted: false,
-    priceRange: PriceRange.premium,
-    avgRating: 4.5,
-    reviewCount: 267,
-    viewCount: 1800,
-    keywords: ["home decor", "furniture", "interior"],
-    amenitySlugs: ["parking", "card-payment", "air-conditioning"],
-    services: ["Interior Consultation", "Custom Furniture"],
-    description: "Curated home decor and furniture store with interior design consultations.",
-    coverImageUrl: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&h=400&fit=crop",
-    hours: "standard",
+    reviewCount: 2780,
+    viewCount: 15100,
+    keywords: ["sakra hospital", "japanese medical tech", "orthopedics", "rehab", "icu"],
+    amenitySlugs: ["parking", "air-conditioning", "wifi", "wheelchair-accessible", "power-backup"],
+    services: ["Japanese Joint Replacement Surgery", "Advanced Neuro Rehab", "Gastroenterology", "24x7 Emergency"],
+    hasOffer: false,
+    description: "India's first Japanese collaboration hospital bringing cutting-edge Japanese medical technology, advanced rehabilitation, and joint replacement expertise.",
+    coverImageUrl: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?w=800&h=500&fit=crop",
+    hours: "always",
   },
 ];
 
-function slugify(name: string) {
-  return name
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
-
-async function clearMockBusinesses() {
-  const result = await prisma.business.deleteMany({
+async function main() {
+  console.log("Cleaning up old mock business listings...");
+  
+  // Wipe existing mock businesses safely
+  const oldMocks = await prisma.business.findMany({
     where: { externalPlaceId: { startsWith: "MOCK-" } },
+    select: { id: true },
   });
-  console.log(`Removed ${result.count} mock business(es).`);
-}
 
-async function seedMockBusinesses() {
-  const categorySlugs = [...new Set(businesses.flatMap((b) => [b.categorySlug, b.subcategorySlug]))].filter(
-    Boolean
-  ) as string[];
-  const citySlugs = [...new Set(businesses.map((b) => b.citySlug))];
-
-  const [dbCategories, dbCities, dbAmenities] = await Promise.all([
-    prisma.category.findMany({ where: { slug: { in: categorySlugs } } }),
-    prisma.city.findMany({ where: { slug: { in: citySlugs } }, include: { localities: true } }),
-    prisma.amenity.findMany(),
-  ]);
-
-  const categoryBySlug = new Map(dbCategories.map((c) => [c.slug, c]));
-  const cityBySlug = new Map(dbCities.map((c) => [c.slug, c]));
-  const amenityBySlug = new Map(dbAmenities.map((a) => [a.slug, a]));
-
-  if (dbCategories.length === 0 || dbCities.length === 0) {
-    throw new Error("Run `npm run seed` first to create categories/cities before seeding mock businesses.");
+  const mockIds = oldMocks.map((b) => b.id);
+  if (mockIds.length > 0) {
+    await prisma.businessCategory.deleteMany({ where: { businessId: { in: mockIds } } });
+    await prisma.businessMedia.deleteMany({ where: { businessId: { in: mockIds } } });
+    await prisma.businessAmenity.deleteMany({ where: { businessId: { in: mockIds } } });
+    await prisma.businessService.deleteMany({ where: { businessId: { in: mockIds } } });
+    await prisma.offer.deleteMany({ where: { businessId: { in: mockIds } } });
+    await prisma.business.deleteMany({ where: { id: { in: mockIds } } });
   }
 
-  let created = 0;
-  for (const [index, mock] of businesses.entries()) {
-    const slug = slugify(mock.name);
-    const city = cityBySlug.get(mock.citySlug);
+  console.log(`Deleted ${mockIds.length} old mock business listings.`);
+
+  // Load Cities & Localities map
+  const cities = await prisma.city.findMany({ include: { localities: true } });
+  const cityMap = new Map(cities.map((c) => [c.slug, c]));
+
+  // Load Categories map
+  const categories = await prisma.category.findMany();
+  const categoryMap = new Map(categories.map((c) => [c.slug, c]));
+
+  // Load Amenities map
+  const amenities = await prisma.amenity.findMany();
+  const amenityMap = new Map(amenities.map((a) => [a.slug, a]));
+
+  let insertedCount = 0;
+
+  for (const item of healthcareBusinesses) {
+    const city = cityMap.get(item.citySlug);
     if (!city) {
-      console.warn(`Skipping "${mock.name}" — unknown city slug "${mock.citySlug}"`);
+      console.warn(`City not found: ${item.citySlug}`);
       continue;
     }
-    const locality = mock.localitySlug
-      ? city.localities.find((l) => l.slug === mock.localitySlug)
+
+    const locality = item.localitySlug
+      ? city.localities.find((l) => l.slug === item.localitySlug)
       : undefined;
-    const primaryCategory = categoryBySlug.get(mock.categorySlug);
-    const subCategory = mock.subcategorySlug ? categoryBySlug.get(mock.subcategorySlug) : undefined;
 
-    const externalPlaceId = `MOCK-${index}`;
+    const parentCat = categoryMap.get(item.categorySlug);
 
-    const existing = await prisma.business.findUnique({ where: { externalPlaceId } });
-    if (existing) continue;
+    if (!parentCat) {
+      console.warn(`Parent category not found: ${item.categorySlug}`);
+      continue;
+    }
 
-    const hoursTemplate = mock.hours === "always" ? ALWAYS_OPEN_HOURS : STANDARD_HOURS;
+    const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const externalPlaceId = `MOCK-HEALTHCARE-${Math.random().toString(36).substring(2, 9).toUpperCase()}`;
 
-    await prisma.business.create({
+    const business = await prisma.business.create({
       data: {
+        name: item.name,
         slug,
-        name: mock.name,
-        description: mock.description,
-        externalPlaceId,
+        description: item.description,
+        address: item.address,
         cityId: city.id,
-        localityId: locality?.id,
-        address: mock.address,
-        pincode: locality?.pincode,
-        lat: locality?.lat ?? city.lat,
-        lng: locality?.lng ?? city.lng,
-        phone: `98765${String(10000 + index).slice(-5)}`,
-        whatsappPhone: `98765${String(10000 + index).slice(-5)}`,
-        planTier: mock.planTier,
+        localityId: locality?.id ?? null,
+        pincode: item.pincode ?? locality?.pincode ?? "560034",
+        lat: locality?.lat ?? city.lat ?? 12.9716,
+        lng: locality?.lng ?? city.lng ?? 77.5946,
+        phone: item.phone ?? "+91 80 4000 0000",
+        whatsappPhone: item.whatsappPhone ?? "918040000000",
+        website: item.website ?? "https://hubigo.in",
+        planTier: item.planTier,
+        isVerified: item.isVerified,
+        isTrusted: item.isTrusted,
+        priceRange: item.priceRange,
+        avgRating: item.avgRating,
+        reviewCount: item.reviewCount,
+        viewCount: item.viewCount,
         status: "approved",
-        isVerified: mock.isVerified,
-        isTrusted: mock.isTrusted,
-        priceRange: mock.priceRange,
-        coverImageUrl: mock.coverImageUrl,
-        keywords: mock.keywords,
-        avgRating: mock.avgRating,
-        reviewCount: mock.reviewCount,
-        viewCount: mock.viewCount,
-        categories: {
-          create: [
-            ...(primaryCategory ? [{ categoryId: primaryCategory.id, isPrimary: true }] : []),
-            ...(subCategory ? [{ categoryId: subCategory.id, isPrimary: false }] : []),
-          ],
-        },
-        amenities: {
-          create: mock.amenitySlugs
-            .map((slug) => amenityBySlug.get(slug))
-            .filter((a): a is NonNullable<typeof a> => Boolean(a))
-            .map((a) => ({ amenityId: a.id })),
-        },
-        services: { create: mock.services.map((name) => ({ name })) },
-        hours: { create: hoursTemplate },
-        offers: mock.hasOffer
-          ? {
-              create: [
-                {
-                  title: "Limited-time offer",
-                  description: "Special introductory pricing for new customers.",
-                  discountLabel: "10% OFF",
-                },
-              ],
-            }
-          : undefined,
-        reviews: {
-          create: [
-            {
-              authorName: "Anonymous User",
-              rating: Math.round(mock.avgRating),
-              comment: "Great experience, would recommend.",
-            },
-          ],
-        },
+        claimedAt: new Date(),
+        externalPlaceId,
+        coverImageUrl: item.coverImageUrl,
+        openHoursRaw: JSON.stringify(item.hours === "always" ? ALWAYS_OPEN_HOURS : STANDARD_CLINIC_HOURS),
       },
     });
-    created++;
+
+    // Link Primary Parent Category
+    await prisma.businessCategory.create({
+      data: {
+        businessId: business.id,
+        categoryId: parentCat.id,
+        isPrimary: true,
+      },
+    });
+
+    // Link Subcategories
+    for (let sIdx = 0; sIdx < item.subcategorySlugs.length; sIdx++) {
+      const subSlug = item.subcategorySlugs[sIdx];
+      const subCat = categoryMap.get(subSlug);
+      if (subCat && subCat.id !== parentCat.id) {
+        await prisma.businessCategory.create({
+          data: {
+            businessId: business.id,
+            categoryId: subCat.id,
+            isPrimary: false,
+          },
+        });
+      }
+    }
+
+    // Add Media Cover Photo
+    await prisma.businessMedia.create({
+      data: {
+        businessId: business.id,
+        type: "image",
+        url: item.coverImageUrl,
+        sortOrder: 0,
+      },
+    });
+
+    // Link Amenities
+    for (const aSlug of item.amenitySlugs) {
+      const amenity = amenityMap.get(aSlug);
+      if (amenity) {
+        await prisma.businessAmenity.create({
+          data: {
+            businessId: business.id,
+            amenityId: amenity.id,
+          },
+        });
+      }
+    }
+
+    // Add Services
+    for (let i = 0; i < item.services.length; i++) {
+      await prisma.businessService.create({
+        data: {
+          businessId: business.id,
+          name: item.services[i],
+        },
+      });
+    }
+
+    // Add Offer if applicable
+    if (item.hasOffer) {
+      await prisma.offer.create({
+        data: {
+          businessId: business.id,
+          title: item.offerTitle ?? "Special Health Checkup Discount",
+          description: "Exclusive offer available for Hubigo users. Show this card at registration.",
+          discountLabel: item.offerDiscount ?? "20% OFF",
+          endDate: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days valid
+        },
+      });
+    }
+
+    insertedCount++;
   }
 
-  console.log(`Created ${created} mock business(es).`);
-}
-
-async function main() {
-  const shouldClear = process.argv.includes("--clear");
-  if (shouldClear) {
-    await clearMockBusinesses();
-    return;
-  }
-  await seedMockBusinesses();
+  console.log(`Seeded ${insertedCount} Healthcare businesses with multiple subcategories successfully!`);
 }
 
 main()
   .catch((err) => {
-    console.error(err);
+    console.error("Fatal error seeding healthcare businesses:", err);
     process.exit(1);
   })
   .finally(() => prisma.$disconnect());

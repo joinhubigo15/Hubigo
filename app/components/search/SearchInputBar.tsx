@@ -36,7 +36,7 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
   {
     value,
     onSubmit,
-    placeholder = "Search for restaurants, services, businesses...",
+    placeholder = "Search Doctors, Hospitals, Clinics, Diagnostic Labs, Pharmacies...",
     className,
     bare = false,
   },
@@ -98,6 +98,9 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
       setRecent(getRecentSearches());
     }
 
+    // "Top X in Y" / "Best X in Y" queries route straight to the matching pSEO page instead of
+    // the search results page — this is the only entry point into those pages besides a direct
+    // link, so it has to be wired here as well as in HeroBannerSection.
     if (TOP_X_IN_Y_PATTERN.test(trimmed)) {
       resolveTopSearchOrFallback(trimmed).then((result) => {
         if (result.path !== null) router.push(result.path);
@@ -119,25 +122,28 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
     <div ref={containerRef} className={cn("relative w-full", className)}>
       <div
         className={cn(
-          "flex items-center gap-2",
+          "flex items-center gap-2.5",
           bare
             ? "flex-1"
-            : "rounded-xl px-3 py-2 bg-slate-50/90 focus-within:bg-slate-100/90 transition-all border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus-within:ring-0 focus-within:outline-none shadow-none"
+            : "rounded-2xl px-4 py-2.5 bg-white border border-purple-300/80 hover:border-purple-400 focus-within:border-purple-500 focus-within:ring-2 focus-within:ring-purple-500/10 shadow-sm transition-all"
         )}
-        style={bare ? undefined : { outline: "none", border: "none", boxShadow: "none" }}
       >
-        <Search className="w-4 h-4 text-purple-600 shrink-0" />
+        <Search className="w-4 h-4 text-purple-600 shrink-0 stroke-[2.5]" />
         <input
           type="text"
           value={draft}
-          onChange={(e) => setDraft(e.target.value)}
+          onChange={(e) => {
+            const v = e.target.value;
+            setDraft(v ? v.charAt(0).toUpperCase() + v.slice(1) : "");
+          }}
           onFocus={() => setIsOpen(true)}
           onKeyDown={(e) => {
             if (e.key === "Enter") commit(draft);
             if (e.key === "Escape") setIsOpen(false);
           }}
           placeholder={placeholder}
-          className="w-full bg-transparent text-sm text-slate-800 placeholder-slate-400 border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus:border-0 shadow-none font-medium"
+          autoCapitalize="words"
+          className="w-full bg-transparent text-sm font-semibold text-slate-900 placeholder-slate-400 border-0 outline-none ring-0 focus:outline-none focus:ring-0 focus:border-0 shadow-none capitalize"
           style={{ outline: "none", border: "none", boxShadow: "none" }}
         />
         {draft && (

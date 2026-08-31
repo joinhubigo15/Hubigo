@@ -11,18 +11,18 @@ export default function BusinessOwnerCTASection() {
         {/* Left Text Content */}
         <div className="min-w-0 z-10 max-w-md">
           <h2 className="font-black text-slate-900 text-sm sm:text-lg lg:text-xl leading-tight tracking-tight">
-            Are you a business owner?
+            Are you a Healthcare Provider or Doctor?
           </h2>
 
           <p className="text-slate-600 font-semibold text-[10px] sm:text-xs leading-relaxed mt-0.5 mb-2.5">
-            List your business on Hubigo and reach thousands of customers.
+            List your hospital, clinic, or medical practice on Hubigo Healthcare and connect with patients.
           </p>
 
           <Link
             href="/business/register"
             className="inline-flex items-center gap-1 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-extrabold text-[10px] sm:text-xs px-3 py-1.5 sm:px-4 sm:py-2 rounded-full shadow-xs transition-all hover:scale-[1.02] active:scale-95 cursor-pointer"
           >
-            <span>Add Your Business</span>
+            <span>Register Practice / Facility</span>
             <ArrowRight className="w-3 h-3 stroke-[2.5]" />
           </Link>
         </div>
