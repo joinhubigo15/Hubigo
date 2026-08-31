@@ -56,32 +56,36 @@ function isHealthcareItem(nameOrSlug: string): boolean {
 async function buildCityAndCategoryEntries(): Promise<MetadataRoute.Sitemap> {
   const [cities, categories] = await Promise.all([getCities(), getCategories()]);
 
-  const cityEntries: MetadataRoute.Sitemap = cities.map((c) => ({
-    url: `${SITE_URL}/city/${c.slug}`,
-    changeFrequency: "weekly",
-    priority: 0.6,
-  }));
+  const cityEntries: MetadataRoute.Sitemap = cities
+    .filter((c) => (c.businessCount ?? 1) > 0)
+    .map((c) => ({
+      url: `${SITE_URL}/city/${c.slug}`,
+      changeFrequency: "weekly",
+      priority: 0.6,
+    }));
 
-  const categoryEntries: MetadataRoute.Sitemap = categories.flatMap((c) => {
-    const isCatHealthcare = isHealthcareItem(c.slug) || isHealthcareItem(c.name);
-    const priority = isCatHealthcare ? 0.9 : 0.8;
+  const categoryEntries: MetadataRoute.Sitemap = categories
+    .filter((c) => isHealthcareItem(c.slug) || isHealthcareItem(c.name) || (c.businessCount ?? 0) > 0)
+    .flatMap((c) => {
+      const isCatHealthcare = isHealthcareItem(c.slug) || isHealthcareItem(c.name);
+      const priority = isCatHealthcare ? 0.9 : 0.8;
 
-    return [
-      {
-        url: `${SITE_URL}/category/${c.slug}`,
-        changeFrequency: "daily" as const,
-        priority: priority,
-      },
-      ...c.subcategories.map((s) => {
-        const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
-        return {
-          url: `${SITE_URL}/category/${s.slug}`,
+      return [
+        {
+          url: `${SITE_URL}/category/${c.slug}`,
           changeFrequency: "daily" as const,
-          priority: isSubcatHealthcare ? 0.85 : 0.7,
-        };
-      }),
-    ];
-  });
+          priority: priority,
+        },
+        ...c.subcategories.map((s) => {
+          const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
+          return {
+            url: `${SITE_URL}/category/${s.slug}`,
+            changeFrequency: "daily" as const,
+            priority: isSubcatHealthcare ? 0.85 : 0.7,
+          };
+        }),
+      ];
+    });
 
   return [...cityEntries, ...categoryEntries];
 }
