@@ -12,12 +12,14 @@ export interface Suggestion {
 // A handful of sensible defaults shown before there's any real search-log traffic to learn
 // popularity from — replaced automatically once SearchLog has data (see getPopularSearches).
 const FALLBACK_POPULAR_SEARCHES = [
-  "Restaurants near me",
-  "Best gyms",
-  "24 hour pharmacy",
-  "AC repair service",
-  "Wedding photographers",
-  "Dental clinic",
+  "24/7 Pharmacy near me",
+  "Hospitals in Bangalore",
+  "Pathology & Diagnostic Labs",
+  "General Physician OPD",
+  "Specialist Pediatrician",
+  "Eye Hospital & LASIK",
+  "Dental Clinic & Dentists",
+  "Physiotherapy Clinics",
 ];
 
 export async function getSuggestions(q: string, limit: number): Promise<Suggestion[]> {
