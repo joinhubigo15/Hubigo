@@ -237,37 +237,62 @@ export async function searchBusinesses(params: SearchParams) {
   // noise from the scraper's duplicate-merge step (e.g. a CA firm also carrying "restaurant",
   // "hotel", "hall" tags from a bad phone/geo match), and matching against them surfaced
   // completely unrelated businesses in subcategory search results.
+  const categoryConditions: Prisma.Sql[] = [];
   if (params.subcategorySlug) {
-    baseFilters.push(Prisma.sql`(
-      pc.category_slug = ${params.subcategorySlug}
-      OR pc.category_parent_id = (SELECT parent_id FROM categories WHERE slug = ${params.subcategorySlug})
+    categoryConditions.push(Prisma.sql`(
+      EXISTS (
+        SELECT 1 FROM business_categories bc_sub
+        JOIN categories c_sub ON c_sub.id = bc_sub.category_id
+        WHERE bc_sub.business_id = b.id AND (
+          c_sub.slug = ${params.subcategorySlug}
+          OR c_sub.parent_id = (SELECT parent_id FROM categories WHERE slug = ${params.subcategorySlug})
+          OR c_sub.parent_id = (SELECT id FROM categories WHERE slug = ${params.subcategorySlug})
+        )
+      )
     )`);
   } else if (params.categorySlug) {
-    baseFilters.push(Prisma.sql`(
-      pc.category_slug = ${params.categorySlug}
-      OR pc.category_parent_id = (SELECT id FROM categories WHERE slug = ${params.categorySlug})
+    categoryConditions.push(Prisma.sql`(
+      EXISTS (
+        SELECT 1 FROM business_categories bc_cat
+        JOIN categories c_cat ON c_cat.id = bc_cat.category_id
+        WHERE bc_cat.business_id = b.id AND (
+          c_cat.slug = ${params.categorySlug}
+          OR c_cat.parent_id = (SELECT id FROM categories WHERE slug = ${params.categorySlug})
+        )
+      )
     )`);
   }
-  // A free-text query must actually mean something for a business to be a candidate at all — it
-  // was previously only used to RANK rows, never to filter them, so a query like "pool in
-  // hyderabad" returned the entire unfiltered business table (336k+ rows) re-sorted by score,
-  // letting a business with no textual relevance whatsoever (e.g. an IVF clinic) outrank real
-  // matches purely on verified/elite/rating bonus points. This mirrors the same signals already
-  // used for scoring below (name/category/keyword/service match, or fuzzy name similarity), just
-  // enforced as a hard requirement instead of an optional bonus.
+
+  if (categoryConditions.length > 0) {
+    baseFilters.push(Prisma.sql`(${Prisma.join(categoryConditions, " OR ")})`);
+  }
+
   if (textQuery) {
     const textMatchConditions: Prisma.Sql[] = [
       Prisma.sql`b.name % ${textQuery}`,
       Prisma.sql`b.name ILIKE '%' || ${textQuery} || '%'`,
+      Prisma.sql`b.description ILIKE '%' || ${textQuery} || '%'`,
+      Prisma.sql`b.address ILIKE '%' || ${textQuery} || '%'`,
       Prisma.sql`pc.category_name ILIKE '%' || ${textQuery} || '%'`,
-    ];
-    if (textQuerySingular !== textQuery) {
-      textMatchConditions.push(Prisma.sql`pc.category_name ILIKE '%' || ${textQuerySingular} || '%'`);
-    }
-    textMatchConditions.push(
+      Prisma.sql`EXISTS (
+        SELECT 1 FROM business_categories bc2
+        JOIN categories c2 ON c2.id = bc2.category_id
+        WHERE bc2.business_id = b.id AND (c2.name ILIKE '%' || ${textQuery} || '%' OR c2.slug ILIKE '%' || ${textQuery} || '%')
+      )`,
       Prisma.sql`EXISTS (SELECT 1 FROM unnest(b.keywords) k WHERE k ILIKE '%' || ${textQuery} || '%')`,
       Prisma.sql`EXISTS (SELECT 1 FROM business_services bs WHERE bs.business_id = b.id AND bs.name ILIKE '%' || ${textQuery} || '%')`
-    );
+    ];
+    if (textQuerySingular !== textQuery) {
+      textMatchConditions.push(
+        Prisma.sql`b.name ILIKE '%' || ${textQuerySingular} || '%'`,
+        Prisma.sql`pc.category_name ILIKE '%' || ${textQuerySingular} || '%'`,
+        Prisma.sql`EXISTS (
+          SELECT 1 FROM business_categories bc2
+          JOIN categories c2 ON c2.id = bc2.category_id
+          WHERE bc2.business_id = b.id AND (c2.name ILIKE '%' || ${textQuerySingular} || '%' OR c2.slug ILIKE '%' || ${textQuerySingular} || '%')
+        )`
+      );
+    }
     baseFilters.push(Prisma.sql`(${Prisma.join(textMatchConditions, " OR ")})`);
   }
   if (params.amenitySlugs && params.amenitySlugs.length > 0) {

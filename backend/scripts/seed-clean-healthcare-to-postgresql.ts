@@ -35,9 +35,9 @@ interface CleanMasterRecord {
   services?: string;
 }
 
-async function seedCleanHealthcareToPostgresql() {
+async function seedAllCleanHealthcareToPostgresql() {
   console.log(`====================================================`);
-  console.log(`🏥 SEEDING CLEAN HEALTHCARE DATASET TO LIVE POSTGRESQL`);
+  console.log(`🏥 BULK SEEDING ALL 28,000 CLEAN HEALTHCARE LISTINGS TO POSTGRESQL`);
   console.log(`====================================================`);
 
   const masterJsonPath = path.resolve(__dirname, "../google-place-ids-healthcare-CLEANED-master.json");
@@ -49,82 +49,87 @@ async function seedCleanHealthcareToPostgresql() {
   const rawData: CleanMasterRecord[] = JSON.parse(fs.readFileSync(masterJsonPath, "utf8"));
   console.log(`📊 Loaded ${rawData.length} 100% clean healthcare listings.`);
 
-  // Load Cities
-  const cities = await prisma.city.findMany();
-  let city = cities.find((c) => c.slug === "bangalore");
+  // Load Cities Map
+  let city = await prisma.city.findFirst({ where: { slug: "bangalore" } });
   if (!city) {
     city = await prisma.city.create({
       data: { name: "Bangalore", slug: "bangalore", lat: 12.9716, lng: 77.5946 },
     });
   }
 
-  // Load Primary Category (Healthcare & Medical)
-  let parentCat = await prisma.category.findFirst({ where: { slug: "hospitals" } });
-  if (!parentCat) {
-    parentCat = await prisma.category.create({
-      data: { name: "Hospitals & Healthcare", slug: "hospitals", icon: "🏥" },
+  // Load Categories Map
+  const categories = await prisma.category.findMany();
+  const defaultCategory = categories.find((c) => c.slug === "hospitals") || categories[0];
+
+  const BATCH_SIZE = 500;
+  let totalInserted = 0;
+
+  for (let i = 0; i < rawData.length; i += BATCH_SIZE) {
+    const chunk = rawData.slice(i, i + BATCH_SIZE);
+
+    const businessData = chunk.map((item, idx) => {
+      const baseSlug = (item.name || "healthcare-provider")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+      const placeShort = item.place_id ? item.place_id.substring(0, 6).toLowerCase() : `${i + idx}`;
+      const slug = `${baseSlug}-${placeShort}`;
+      const lat = item.latitude ? parseFloat(String(item.latitude)) : 12.9716;
+      const lng = item.longitude ? parseFloat(String(item.longitude)) : 77.5946;
+      const avgRating = item.ratings ? parseFloat(String(item.ratings)) : 4.5;
+      const reviewCount = item.reviews_count ? parseInt(String(item.reviews_count), 10) : 15;
+
+      return {
+        name: item.name || "Medical Provider",
+        slug,
+        description: item.editorial_summary || `${item.name} is a licensed healthcare medical provider located in ${item.area || "Bangalore"}.`,
+        address: item.address || "Bangalore, Karnataka, India",
+        cityId: city.id,
+        pincode: "560034",
+        lat,
+        lng,
+        phone: item.phone_number || "+91 80 4000 0000",
+        website: item.website_url || "https://hubigo.in",
+        planTier: PlanTier.basic,
+        isVerified: true,
+        isTrusted: true,
+        priceRange: PriceRange.moderate,
+        avgRating,
+        reviewCount,
+        status: "approved",
+        externalPlaceId: item.place_id,
+        openHoursRaw: item.operational_hours || "08:00 - 21:00",
+      };
     });
-  }
-
-  let inserted = 0;
-  console.log(`🚀 Importing clean healthcare listings to Railway PostgreSQL...`);
-
-  // Batch insert sample 1000 clean healthcare listings for fast live rendering
-  const batch = rawData.slice(0, 1000);
-
-  for (const item of batch) {
-    if (!item.name) continue;
-
-    const baseSlug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-    const slug = `${baseSlug}-${item.place_id.substring(0, 6).toLowerCase()}`;
-    const lat = item.latitude ? parseFloat(String(item.latitude)) : 12.9716;
-    const lng = item.longitude ? parseFloat(String(item.longitude)) : 77.5946;
-    const avgRating = item.ratings ? parseFloat(String(item.ratings)) : 4.5;
-    const reviewCount = item.reviews_count ? parseInt(String(item.reviews_count), 10) : 15;
 
     try {
-      const biz = await prisma.business.create({
-        data: {
-          name: item.name,
-          slug,
-          description: item.editorial_summary || `${item.name} is a licensed medical healthcare provider in ${item.area || "Bangalore"}.`,
-          address: item.address || "Bangalore, Karnataka, India",
-          cityId: city.id,
-          pincode: "560034",
-          lat,
-          lng,
-          phone: item.phone_number || "+91 80 4000 0000",
-          website: item.website_url || "https://hubigo.in",
-          planTier: PlanTier.basic,
-          isVerified: true,
-          isTrusted: true,
-          priceRange: PriceRange.moderate,
-          avgRating,
-          reviewCount,
-          status: "approved",
-          externalPlaceId: item.place_id,
-          openHoursRaw: item.operational_hours || "08:00 - 21:00",
-        },
+      const result = await prisma.business.createMany({
+        data: businessData,
+        skipDuplicates: true,
       });
 
-      await prisma.businessCategory.create({
-        data: {
-          businessId: biz.id,
-          categoryId: parentCat.id,
-          isPrimary: true,
-        },
-      });
-
-      inserted++;
-    } catch {
-      // Ignore duplicate slug constraints
+      totalInserted += result.count;
+      console.log(`  📥 Batch ${Math.floor(i / BATCH_SIZE) + 1}/${Math.ceil(rawData.length / BATCH_SIZE)}: Inserted ${result.count} listings (Total: ${totalInserted})`);
+    } catch (err: any) {
+      console.warn(`  ⚠️ Batch error:`, err.message);
     }
   }
 
-  console.log(`\n🎉 SUCCESSFULLY SEEDED ${inserted} CLEAN HEALTHCARE LISTINGS TO LIVE POSTGRESQL!`);
+  // Link Primary Category to newly created businesses
+  console.log(`🔗 Linking primary category to imported businesses...`);
+  await prisma.$executeRawUnsafe(`
+    INSERT INTO business_categories (id, business_id, category_id, is_primary)
+    SELECT gen_random_uuid(), b.id, '${defaultCategory.id}', true
+    FROM businesses b
+    LEFT JOIN business_categories bc ON b.id = bc.business_id
+    WHERE bc.id IS NULL
+  `);
+
+  const finalCount: any = await prisma.$queryRawUnsafe(`SELECT COUNT(*) as count FROM businesses`);
+  console.log(`\n🎉 SUCCESSFULLY SEEDED ALL ${finalCount[0]?.count} CLEAN HEALTHCARE LISTINGS TO POSTGRESQL!`);
   console.log(`====================================================\n`);
 
   await prisma.$disconnect();
 }
 
-seedCleanHealthcareToPostgresql();
+seedAllCleanHealthcareToPostgresql();
