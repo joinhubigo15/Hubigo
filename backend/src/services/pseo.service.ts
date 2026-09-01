@@ -38,6 +38,18 @@ export interface PseoCandidate {
   lastmod: string | null;
 }
 
+export async function getAllBusinessSlugsForSitemap() {
+  const rows = await prisma.business.findMany({
+    where: { status: "approved", deletedAt: null },
+    select: { slug: true, updatedAt: true },
+    orderBy: { avgRating: "desc" },
+  });
+  return rows.map((r) => ({
+    slug: r.slug,
+    lastmod: r.updatedAt ? r.updatedAt.toISOString() : null,
+  }));
+}
+
 async function getCityCategoryCombos(): Promise<PseoCandidate[]> {
   const rows = await prisma.$queryRaw<CityComboRow[]>(Prisma.sql`
     WITH primary_cat AS (

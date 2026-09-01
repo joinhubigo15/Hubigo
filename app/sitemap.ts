@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getCategories, getCities, getPseoSitemapCandidates } from "@/app/lib/search-api";
+import { getCategories, getCities, getPseoSitemapCandidates, getBusinessSitemapSlugs } from "@/app/lib/search-api";
 import { evaluatePseoGate } from "@/app/lib/pseo-thresholds";
 import { SITE_URL } from "@/app/lib/json-ld";
 
@@ -122,16 +122,24 @@ async function buildPseoEntries(): Promise<PseoSitemapEntry[]> {
     }));
 }
 
+async function buildBusinessDetailEntries(): Promise<MetadataRoute.Sitemap> {
+  const businessSlugs = await getBusinessSitemapSlugs();
+  return businessSlugs.map((b) => ({
+    url: `${SITE_URL}/business/${b.slug}`,
+    ...(b.lastmod ? { lastModified: b.lastmod } : {}),
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const [staticEntries, cityAndCategory, pseoEntries] = await Promise.all([
+  const [staticEntries, cityAndCategory, pseoEntries, businessEntries] = await Promise.all([
     buildStaticEntries(),
     buildCityAndCategoryEntries(),
     buildPseoEntries(),
+    buildBusinessDetailEntries(),
   ]);
 
-  // Descending by real business count, URL ascending as a deterministic tiebreak — for
-  // organization/inspection only. Sitemap order is not a crawl-priority mechanism; Googlebot
-  // does not guarantee crawling in listed order.
   const sortedPseo = [...pseoEntries].sort((a, b) => {
     if (b.count !== a.count) return b.count - a.count;
     return a.url.localeCompare(b.url);
@@ -144,5 +152,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority,
   }));
 
-  return [...staticEntries, ...cityAndCategory, ...pseoSitemapEntries];
+  return [...staticEntries, ...cityAndCategory, ...pseoSitemapEntries, ...businessEntries];
 }
