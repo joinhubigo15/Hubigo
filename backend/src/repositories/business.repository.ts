@@ -8,6 +8,7 @@ interface LocationMatch {
   matchedLocalityId: string | null;
   matchedAreaPincodes: string[] | null;
   matchedName: string | null;
+  phaseSubQuery: string | null;
   remainingQuery: string;
 }
 
@@ -79,31 +80,32 @@ async function getLocationNameCache(): Promise<CachedLocationName[]> {
 async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
   const trimmed = q.trim();
   if (!trimmed) {
-    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, remainingQuery: "" };
+    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, phaseSubQuery: null, remainingQuery: "" };
   }
 
   const trimmedLower = trimmed.toLowerCase();
   const names = await getLocationNameCache();
   const candidates = names.filter((n) => trimmedLower.includes(n.nameLower));
-  // Same tie-break as before: longest name wins; on an equal-length tie (e.g. "Whitefield" exists
-  // as both a locality and an area row), prefer the area match — see the original comment on why.
   candidates.sort((a, b) => b.name.length - a.name.length || (b.kind === "area" ? 1 : 0) - (a.kind === "area" ? 1 : 0));
 
   const match = candidates[0];
-  if (!match) {
-    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, remainingQuery: stripLocationStopwords(trimmed) };
+  const phaseMatch = trimmed.match(/(?:phase|block|stage|sector|layout|zone)\s*\d+|\d+(?:st|nd|rd|th)?\s*(?:phase|block|stage|sector|layout|zone)/i);
+  const phaseSubQuery = phaseMatch ? phaseMatch[0] : null;
+
+  let withoutLocation = trimmed;
+  if (match) {
+    withoutLocation = withoutLocation.replace(new RegExp(escapeRegExp(match.name), "i"), "");
+  }
+  if (phaseSubQuery) {
+    withoutLocation = withoutLocation.replace(new RegExp(escapeRegExp(phaseSubQuery), "i"), "");
   }
 
-  const withoutMatch = trimmed
-    .replace(new RegExp(escapeRegExp(match.name), "i"), "")
-    .replace(/\s+/g, " ")
-    .trim();
+  if (!match && !phaseSubQuery) {
+    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, phaseSubQuery: null, remainingQuery: stripLocationStopwords(trimmed) };
+  }
 
-  // Same area name can span multiple pincodes (e.g. "Koramangala" covers 560034 and 560095) —
-  // pull every pincode sharing this exact name so the score bonus below covers all of them, not
-  // just the single row that happened to win the candidate search above.
   let matchedAreaPincodes: string[] | null = null;
-  if (match.kind === "area") {
+  if (match && match.kind === "area") {
     const pincodeRows = await prisma.$queryRaw<{ pincode: string }[]>(
       Prisma.sql`SELECT DISTINCT pincode FROM pincode_areas WHERE name = ${match.name}`
     );
@@ -111,11 +113,12 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
   }
 
   return {
-    matchedCityId: match.kind === "city" ? match.id : match.cityId,
-    matchedLocalityId: match.kind === "locality" ? match.id : null,
+    matchedCityId: match ? (match.kind === "city" ? match.id : match.cityId) : null,
+    matchedLocalityId: match ? (match.kind === "locality" ? match.id : null) : null,
     matchedAreaPincodes,
-    matchedName: match.name,
-    remainingQuery: stripLocationStopwords(withoutMatch),
+    matchedName: match ? match.name : null,
+    phaseSubQuery,
+    remainingQuery: stripLocationStopwords(withoutLocation),
   };
 }
 
@@ -199,19 +202,43 @@ export async function searchBusinesses(params: SearchParams) {
   ];
 
   if (location.matchedLocalityId) {
+    const mName = location.matchedName || "";
+    const withSpaces = mName.replace(/([A-Z])([A-Z])/g, "$1 $2");
+    const withDots = mName.replace(/([A-Z])([A-Z])/g, "$1. $2.");
+    const withDotNoSpace = mName.replace(/([A-Z])([A-Z])/g, "$1.$2.");
     baseFilters.push(Prisma.sql`(
       b.locality_id = ${location.matchedLocalityId}
-      OR b.address ILIKE '%' || ${location.matchedName} || '%'
-      OR (loc.name IS NOT NULL AND loc.name ILIKE '%' || ${location.matchedName} || '%')
+      OR b.address ILIKE '%' || ${mName} || '%'
+      OR b.address ILIKE '%' || ${withSpaces} || '%'
+      OR b.address ILIKE '%' || ${withDots} || '%'
+      OR b.address ILIKE '%' || ${withDotNoSpace} || '%'
+      OR (loc.name IS NOT NULL AND loc.name ILIKE '%' || ${mName} || '%')
     )`);
   } else if (location.matchedName) {
+    const mName = location.matchedName;
+    const withSpaces = mName.replace(/([A-Z])([A-Z])/g, "$1 $2");
+    const withDots = mName.replace(/([A-Z])([A-Z])/g, "$1. $2.");
+    const withDotNoSpace = mName.replace(/([A-Z])([A-Z])/g, "$1.$2.");
     baseFilters.push(Prisma.sql`(
-      b.address ILIKE '%' || ${location.matchedName} || '%'
-      OR (loc.name IS NOT NULL AND loc.name ILIKE '%' || ${location.matchedName} || '%')
+      b.address ILIKE '%' || ${mName} || '%'
+      OR b.address ILIKE '%' || ${withSpaces} || '%'
+      OR b.address ILIKE '%' || ${withDots} || '%'
+      OR b.address ILIKE '%' || ${withDotNoSpace} || '%'
+      OR (loc.name IS NOT NULL AND loc.name ILIKE '%' || ${mName} || '%')
       ${location.matchedAreaPincodes && location.matchedAreaPincodes.length > 0
         ? Prisma.sql`OR b.pincode IN (${Prisma.join(location.matchedAreaPincodes)})`
         : Prisma.sql``}
     )`);
+  }
+
+  if (location.phaseSubQuery) {
+    const num = location.phaseSubQuery.match(/\d+/)?.[0] || "";
+    if (num) {
+      baseFilters.push(Prisma.sql`(
+        b.address ILIKE '%' || ${num} || '%'
+        OR b.address ILIKE '%' || ${location.phaseSubQuery} || '%'
+      )`);
+    }
   }
 
   if (params.citySlug) {
