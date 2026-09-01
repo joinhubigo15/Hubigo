@@ -297,6 +297,38 @@ export async function searchBusinesses(params: SearchParams) {
       Prisma.sql`EXISTS (SELECT 1 FROM unnest(b.keywords) k WHERE k ILIKE '%' || ${textQuery} || '%')`,
       Prisma.sql`EXISTS (SELECT 1 FROM business_services bs WHERE bs.business_id = b.id AND bs.name ILIKE '%' || ${textQuery} || '%')`
     ];
+    // Healthcare Category Synonym Mappings (e.g. "medical", "chemist", "medical store" -> Pharmacies & Chemists)
+    const lowerTQ = textQuery.toLowerCase().trim();
+
+    if (/^(medical|medicals|medical store|medical shop|chemist|chemist shop|pharmacy|pharmacies)$/i.test(lowerTQ)) {
+      textMatchConditions.push(
+        Prisma.sql`b.name ILIKE '%pharmacy%' OR b.name ILIKE '%chemist%' OR b.name ILIKE '%medical%'`,
+        Prisma.sql`EXISTS (
+          SELECT 1 FROM business_categories bc_p
+          JOIN categories c_p ON c_p.id = bc_p.category_id
+          WHERE bc_p.business_id = b.id AND c_p.slug IN ('pharmacies', '24-7-pharmacy', 'hospitals')
+        )`
+      );
+    } else if (/^(lab|pathology|blood test|diagnostic|scan|x-ray|mri|ct scan)$/i.test(lowerTQ)) {
+      textMatchConditions.push(
+        Prisma.sql`b.name ILIKE '%lab%' OR b.name ILIKE '%diagnostic%' OR b.name ILIKE '%pathology%'`,
+        Prisma.sql`EXISTS (
+          SELECT 1 FROM business_categories bc_d
+          JOIN categories c_d ON c_d.id = bc_d.category_id
+          WHERE bc_d.business_id = b.id AND c_d.slug IN ('diagnostic-labs', 'pathology-lab')
+        )`
+      );
+    } else if (/^(doctor|opd|clinic|physician|specialist)$/i.test(lowerTQ)) {
+      textMatchConditions.push(
+        Prisma.sql`b.name ILIKE '%clinic%' OR b.name ILIKE '%dr%' OR b.name ILIKE '%doctor%'`,
+        Prisma.sql`EXISTS (
+          SELECT 1 FROM business_categories bc_doc
+          JOIN categories c_doc ON c_doc.id = bc_doc.category_id
+          WHERE bc_doc.business_id = b.id AND c_doc.slug IN ('doctors-clinics', 'general-physician')
+        )`
+      );
+    }
+
     if (textQuerySingular !== textQuery) {
       textMatchConditions.push(
         Prisma.sql`b.name ILIKE '%' || ${textQuerySingular} || '%'`,
