@@ -6,10 +6,8 @@ import { NATIVE_RATING_ACTIVATION_THRESHOLD } from "../config/rating-thresholds"
 interface LocationMatch {
   matchedCityId: string | null;
   matchedLocalityId: string | null;
-  // Area names (e.g. "Whitefield", "Koramangala") live in pincode_areas, not localities — see that
-  // model's comment. An area name can span several pincodes, so this is every pincode sharing the
-  // matched name rather than a single id.
   matchedAreaPincodes: string[] | null;
+  matchedName: string | null;
   remainingQuery: string;
 }
 
@@ -81,7 +79,7 @@ async function getLocationNameCache(): Promise<CachedLocationName[]> {
 async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
   const trimmed = q.trim();
   if (!trimmed) {
-    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, remainingQuery: "" };
+    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, remainingQuery: "" };
   }
 
   const trimmedLower = trimmed.toLowerCase();
@@ -93,7 +91,7 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
 
   const match = candidates[0];
   if (!match) {
-    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, remainingQuery: stripLocationStopwords(trimmed) };
+    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, remainingQuery: stripLocationStopwords(trimmed) };
   }
 
   const withoutMatch = trimmed
@@ -116,6 +114,7 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
     matchedCityId: match.kind === "city" ? match.id : match.cityId,
     matchedLocalityId: match.kind === "locality" ? match.id : null,
     matchedAreaPincodes,
+    matchedName: match.name,
     remainingQuery: stripLocationStopwords(withoutMatch),
   };
 }
@@ -198,6 +197,22 @@ export async function searchBusinesses(params: SearchParams) {
     Prisma.sql`b.deleted_at IS NULL`,
     Prisma.sql`b.status = 'approved'`,
   ];
+
+  if (location.matchedLocalityId) {
+    baseFilters.push(Prisma.sql`(
+      b.locality_id = ${location.matchedLocalityId}
+      OR b.address ILIKE '%' || ${location.matchedName} || '%'
+      OR (loc.name IS NOT NULL AND loc.name ILIKE '%' || ${location.matchedName} || '%')
+    )`);
+  } else if (location.matchedName) {
+    baseFilters.push(Prisma.sql`(
+      b.address ILIKE '%' || ${location.matchedName} || '%'
+      OR (loc.name IS NOT NULL AND loc.name ILIKE '%' || ${location.matchedName} || '%')
+      ${location.matchedAreaPincodes && location.matchedAreaPincodes.length > 0
+        ? Prisma.sql`OR b.pincode IN (${Prisma.join(location.matchedAreaPincodes)})`
+        : Prisma.sql``}
+    )`);
+  }
 
   if (params.citySlug) {
     baseFilters.push(Prisma.sql`city.slug = ${params.citySlug}`);
