@@ -8,7 +8,7 @@ import { Star, MapPin, Heart, Crown, Tag, Phone } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { useAuth, ApiClientError } from "@/app/lib/auth-context";
 import { saveBusinessRequest, removeSavedBusinessRequest, getSavedBusinessesRequest } from "@/app/lib/api";
-import type { BusinessSummary } from "@/app/lib/search-api";
+import { formatDisplayArea, type BusinessSummary } from "@/app/lib/search-api";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
 
 const PRICE_LABEL: Record<string, string> = {
@@ -42,7 +42,7 @@ export default function BusinessResultCard({ business, className }: BusinessResu
           setSavedId(match.id);
         }
       })
-      .catch(() => { });
+      .catch(() => {});
     return () => {
       cancelled = true;
     };
@@ -57,7 +57,9 @@ export default function BusinessResultCard({ business, className }: BusinessResu
       return;
     }
 
+    if (busy) return;
     setBusy(true);
+
     try {
       if (saved && savedId) {
         await removeSavedBusinessRequest(accessToken, savedId);
@@ -82,7 +84,8 @@ export default function BusinessResultCard({ business, className }: BusinessResu
     }
   }
 
-  const locationLabel = [business.areaName ?? business.localityName, business.cityName].filter(Boolean).join(", ");
+  const displayArea = formatDisplayArea(business.address, business.areaName, business.localityName);
+  const locationLabel = [displayArea, business.cityName].filter(Boolean).join(", ");
 
   return (
     <Link

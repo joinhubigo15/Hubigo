@@ -33,6 +33,28 @@ export interface BusinessSummary {
   score: number;
 }
 
+export function formatDisplayArea(address?: string | null, areaName?: string | null, localityName?: string | null): string {
+  if (address) {
+    if (/j\.?\s*p\.?\s*nagar/i.test(address)) return "JP Nagar";
+    if (/indiranagar/i.test(address)) return "Indiranagar";
+    if (/whitefield/i.test(address)) return "Whitefield";
+    if (/hsr\s*layout/i.test(address)) return "HSR Layout";
+    if (/koramangala/i.test(address)) return "Koramangala";
+    if (/rajajinagar/i.test(address)) return "Rajajinagar";
+    if (/jayanagar/i.test(address)) return "Jayanagar";
+    if (/hebbal/i.test(address)) return "Hebbal";
+    if (/electronic\s*city/i.test(address)) return "Electronic City";
+    if (/banashankari/i.test(address)) return "Banashankari";
+    if (/btm\s*layout/i.test(address)) return "BTM Layout";
+    if (/marathahalli/i.test(address)) return "Marathahalli";
+    if (/yelahanka/i.test(address)) return "Yelahanka";
+    if (/malleshwaram/i.test(address)) return "Malleshwaram";
+    if (/sarjapur/i.test(address)) return "Sarjapur";
+    if (/bellandur/i.test(address)) return "Bellandur";
+  }
+  return areaName || localityName || "Bangalore";
+}
+
 export interface PaginatedResult<T> {
   items: T[];
   page: number;
