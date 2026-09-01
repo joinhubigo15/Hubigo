@@ -400,7 +400,7 @@ export async function searchBusinesses(params: SearchParams) {
   // this only meaningfully engages for broad, filter-less browsing, where a large top-N by a cheap
   // heuristic (paid tier, then stored rating) before full scoring is a standard, safe trade-off —
   // the alternative (scoring literally everything) is what was actually slow.
-  const CANDIDATE_POOL_SIZE = 3000;
+  const CANDIDATE_POOL_SIZE = 400;
 
   const rows = await prisma.$queryRaw<Record<string, unknown>[]>(Prisma.sql`
     WITH primary_category AS (
