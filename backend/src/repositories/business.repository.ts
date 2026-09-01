@@ -429,9 +429,31 @@ export async function searchBusinesses(params: SearchParams) {
         b.price_range,
         b.address, b.lat, b.lng, b.phone, b.whatsapp_phone, b.created_at,
         CASE b.plan_tier WHEN 'elite' THEN 3 WHEN 'premium' THEN 2 ELSE 1 END AS plan_tier_rank,
-        b.city_slug, b.city_name,
-        b.locality_slug, b.locality_name,
-        area.name AS area_name, area.slug AS area_slug,
+        b.city_slug, b.city_name, b.locality_slug, b.locality_name,
+        COALESCE(
+          b.locality_name,
+          (CASE
+            WHEN b.address ILIKE '%JP Nagar%' OR b.address ILIKE '%J. P. Nagar%' OR b.address ILIKE '%J.P. Nagar%' THEN 'JP Nagar'
+            WHEN b.address ILIKE '%Indiranagar%' THEN 'Indiranagar'
+            WHEN b.address ILIKE '%Whitefield%' THEN 'Whitefield'
+            WHEN b.address ILIKE '%HSR Layout%' THEN 'HSR Layout'
+            WHEN b.address ILIKE '%Koramangala%' THEN 'Koramangala'
+            WHEN b.address ILIKE '%Rajajinagar%' THEN 'Rajajinagar'
+            WHEN b.address ILIKE '%Jayanagar%' THEN 'Jayanagar'
+            WHEN b.address ILIKE '%Hebbal%' THEN 'Hebbal'
+            WHEN b.address ILIKE '%Electronic City%' THEN 'Electronic City'
+            WHEN b.address ILIKE '%Banashankari%' THEN 'Banashankari'
+            WHEN b.address ILIKE '%BTM Layout%' THEN 'BTM Layout'
+            WHEN b.address ILIKE '%Marathahalli%' THEN 'Marathahalli'
+            WHEN b.address ILIKE '%Yelahanka%' THEN 'Yelahanka'
+            WHEN b.address ILIKE '%Malleshwaram%' THEN 'Malleshwaram'
+            WHEN b.address ILIKE '%Sarjapur%' THEN 'Sarjapur'
+            WHEN b.address ILIKE '%Bellandur%' THEN 'Bellandur'
+            ELSE area.name
+          END),
+          'Bangalore'
+        ) AS area_name,
+        COALESCE(area.slug, 'bangalore') AS area_slug,
         b.primary_category_name, b.primary_category_slug,
         CASE WHEN ${params.subcategorySlug ?? null}::text IS NOT NULL
           AND b.primary_category_slug = ${params.subcategorySlug ?? null}::text
