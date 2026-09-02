@@ -314,15 +314,19 @@ function SearchPageContent() {
   // signal to conflict with there.
   const hasExplicitSort = searchParams.get("sort") != null;
   useEffect(() => {
-    const activeLat = location.lat ?? 12.9716;
-    const activeLng = location.lng ?? 77.5946;
-    if (filters.lat !== activeLat || filters.lng !== activeLng) {
-      const patch: Partial<SearchFilters> = { lat: activeLat, lng: activeLng };
+    if (hasRealFix && location.lat != null && location.lng != null) {
+      if (filters.lat !== location.lat || filters.lng !== location.lng) {
+        const patch: Partial<SearchFilters> = { lat: location.lat, lng: location.lng };
+        if (!hasExplicitSort && !filters.q) patch.sort = "distance";
+        updateFilters(patch);
+      }
+    } else if (!hasRealFix && (filters.lat == null || filters.lng == null)) {
+      const patch: Partial<SearchFilters> = { lat: 12.9716, lng: 77.5946 };
       if (!hasExplicitSort && !filters.q) patch.sort = "distance";
       updateFilters(patch);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasExplicitSort, location.lat, location.lng, filters.q]);
+  }, [hasExplicitSort, hasRealFix, location.lat, location.lng, filters.q]);
 
   // Fire the browser's own native location permission prompt directly on first load — no custom
   // in-app modal in between. Only fires once, and only when nothing is known yet (a cached/real
@@ -332,12 +336,11 @@ function SearchPageContent() {
   const requestedLocationRef = useRef(false);
   useEffect(() => {
     if (requestedLocationRef.current) return;
-    if (filters.lat != null || filters.lng != null) return;
-    if (location.lat != null) return;
     requestedLocationRef.current = true;
-    requestGPS();
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- fire once, only for the true "nothing known yet" case
-  }, []);
+    if (!hasRealFix) {
+      requestGPS();
+    }
+  }, [hasRealFix, requestGPS]);
 
   function resetFilters() {
     router.push(filters.q ? `/search?q=${encodeURIComponent(filters.q)}` : "/search");
