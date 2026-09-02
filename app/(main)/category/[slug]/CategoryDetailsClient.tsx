@@ -11,6 +11,8 @@ import {
   type BusinessSummary,
 } from "@/app/lib/search-api";
 
+import { useNearbyLocation } from "@/app/lib/useNearbyLocation";
+
 interface PlatformStats {
   businessCount: number;
   pincodeCount: number;
@@ -27,14 +29,16 @@ export default function CategoryDetailsPage({
   initialPlatformStats: PlatformStats | null;
   initialFeatured: BusinessSummary[];
 }) {
+  const { location } = useNearbyLocation();
+  const activeLat = location.lat ?? 12.9716;
+  const activeLng = location.lng ?? 77.5946;
+
   const [category] = useState<CategoryOption | null>(initialCategory);
   const [loadingCategory] = useState(false);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
   const [featured, setFeatured] = useState<BusinessSummary[]>(initialFeatured);
   const [loadingFeatured, setLoadingFeatured] = useState(false);
-  // On mobile, the results only show up below the (often long) subcategory list, out of view —
-  // scroll them into frame on pick so the tap doesn't look like a no-op. Desktop shows both
-  // columns side by side already, so this is a no-op there (guarded by viewport width below).
+
   const featuredSectionRef = useRef<HTMLDivElement | null>(null);
   function selectSubcategory(subSlug: string | null) {
     setActiveSubcategory(subSlug);
@@ -44,27 +48,23 @@ export default function CategoryDetailsPage({
       });
     }
   }
-  // Platform-wide totals (not this category's own, smaller numbers) — the real, trust-building
-  // headline figures: total businesses on Hubigo and total distinct pincodes we cover.
+
   const [platformStats] = useState<PlatformStats | null>(initialPlatformStats);
 
-  // page.tsx (server) already fetched the category, platform stats, and the "All"-tab featured
-  // businesses for this slug — skip re-fetching those on mount. Only refetch featured businesses
-  // when the visitor picks a different subcategory tab (a genuinely interactive, client-only state).
-  const initialSlugRef = useRef<string | null>(slug);
   useEffect(() => {
-    if (slug === initialSlugRef.current && activeSubcategory === null) return;
     setLoadingFeatured(true);
     searchBusinesses({
       category: activeSubcategory ? undefined : slug,
       subcategory: activeSubcategory ?? undefined,
+      lat: activeLat,
+      lng: activeLng,
       sort: "rating",
       limit: 6,
     })
       .then((res) => setFeatured(res.items))
       .catch(() => setFeatured([]))
       .finally(() => setLoadingFeatured(false));
-  }, [slug, activeSubcategory]);
+  }, [slug, activeSubcategory, activeLat, activeLng]);
 
   const title = category?.name ?? (slug ? slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "Category");
 
@@ -220,9 +220,16 @@ export default function CategoryDetailsPage({
                     <h4 className="font-bold text-[10px] text-slate-900 leading-tight group-hover:text-purple-600 transition-colors line-clamp-1">
                       {r.name}
                     </h4>
-                    <div className="flex items-center gap-0.5 text-[8px] text-slate-500 mt-1">
-                      <MapPin className="w-2.5 h-2.5 text-slate-400 shrink-0" />
-                      <span className="truncate">{r.localityName ?? r.cityName}</span>
+                    <div className="flex items-center justify-between gap-1 text-[8.5px] text-slate-500 mt-1 overflow-hidden">
+                      <div className="flex items-center gap-0.5 min-w-0 flex-1 truncate">
+                        <MapPin className="w-2.5 h-2.5 text-slate-400 shrink-0" />
+                        <span className="truncate">{r.localityName ?? r.cityName}</span>
+                      </div>
+                      {r.distanceKm != null && (
+                        <span className="inline-flex items-center gap-0.5 text-[8px] font-extrabold text-purple-700 bg-purple-50 border border-purple-200/80 px-1 py-0.5 rounded shrink-0">
+                          {r.distanceKm < 1 ? `${Math.round(r.distanceKm * 1000)} m` : `${r.distanceKm.toFixed(1)} km`}
+                        </span>
+                      )}
                     </div>
                   </div>
                 </Link>
