@@ -109,9 +109,9 @@ export function useNearbyLocation() {
         clearStored();
         setLocation((prev) => ({
           ...prev,
-          lat: prev.lat ?? DEFAULT_CENTER.lat,
-          lng: prev.lng ?? DEFAULT_CENTER.lng,
-          addressName: prev.lat != null ? prev.addressName : `${DEFAULT_CENTER.addressName} (default)`,
+          lat: null,
+          lng: null,
+          addressName: "Location Disabled",
           status: "denied",
           error: msg,
           loading: false,
@@ -139,7 +139,8 @@ export function useNearbyLocation() {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) stored = JSON.parse(raw);
       } catch {}
-      if (!stored) {
+      if (!stored || (stored.lat === DEFAULT_CENTER.lat && stored.lng === DEFAULT_CENTER.lng)) {
+        clearStored();
         fetchFreshPosition({ silent: true });
         return;
       }
