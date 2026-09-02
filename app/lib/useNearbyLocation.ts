@@ -18,7 +18,7 @@ export interface UserLocationState {
 const DEFAULT_CENTER = {
   lat: 12.9716,
   lng: 77.5946,
-  addressName: "Koramangala, Bangalore",
+  addressName: "Bangalore",
 };
 
 const STORAGE_KEY = "hubigo_nearby_location";
