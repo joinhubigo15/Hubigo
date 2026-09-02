@@ -372,21 +372,6 @@ function SearchPageContent() {
 
         {/* Quick Action Toolbar Bar (Seamless single line without large gaps or ml-auto gaps) */}
         <div className="w-full flex items-center gap-1.5 px-3 pt-0.5 pb-1.5 bg-white overflow-x-auto scrollbar-none">
-          {/* GPS Location Button */}
-          <button
-            onClick={requestGPS}
-            className={cn(
-              "py-1 px-2.5 rounded-full text-[10px] sm:text-xs font-bold transition-all cursor-pointer border shadow-2xs shrink-0 flex items-center gap-1",
-              hasRealFix
-                ? "bg-purple-50 text-purple-700 border-purple-200 font-extrabold"
-                : "bg-amber-500 text-white border-amber-500 shadow-amber-500/20 font-extrabold"
-            )}
-            title={hasRealFix ? "Using exact GPS location" : "Click to detect exact GPS location"}
-          >
-            <MapPin className={cn("w-3 h-3 shrink-0", hasRealFix ? "text-purple-600" : "text-white")} />
-            <span>{hasRealFix ? (location.addressName || "GPS Active") : "📍 Use My Location"}</span>
-          </button>
-
           {/* All */}
           <button
             onClick={() => updateFilters({ tier: undefined, openNow: undefined, minRating: undefined })}
