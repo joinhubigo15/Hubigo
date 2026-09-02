@@ -8,6 +8,8 @@ interface LocationMatch {
   matchedLocalityId: string | null;
   matchedAreaPincodes: string[] | null;
   matchedName: string | null;
+  matchedCenterLat: number | null;
+  matchedCenterLng: number | null;
   phaseSubQuery: string | null;
   remainingQuery: string;
 }
@@ -80,7 +82,7 @@ async function getLocationNameCache(): Promise<CachedLocationName[]> {
 async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
   const trimmed = q.trim();
   if (!trimmed) {
-    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, phaseSubQuery: null, remainingQuery: "" };
+    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, matchedCenterLat: null, matchedCenterLng: null, phaseSubQuery: null, remainingQuery: "" };
   }
 
   const trimmedLower = trimmed.toLowerCase();
@@ -101,10 +103,23 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
   }
 
   if (!match && !phaseSubQuery) {
-    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, phaseSubQuery: null, remainingQuery: stripLocationStopwords(trimmed) };
+    return { matchedCityId: null, matchedLocalityId: null, matchedAreaPincodes: null, matchedName: null, matchedCenterLat: null, matchedCenterLng: null, phaseSubQuery: null, remainingQuery: stripLocationStopwords(trimmed) };
   }
 
   let matchedAreaPincodes: string[] | null = null;
+  let matchedCenterLat: number | null = null;
+  let matchedCenterLng: number | null = null;
+
+  if (match) {
+    const centerRows = await prisma.$queryRaw<{ center_lat: number | null; center_lng: number | null }[]>(
+      Prisma.sql`SELECT AVG(lat)::float8 AS center_lat, AVG(lng)::float8 AS center_lng FROM businesses WHERE address ILIKE '%' || ${match.name} || '%' AND lat IS NOT NULL AND lng IS NOT NULL`
+    );
+    if (centerRows[0]?.center_lat != null && centerRows[0]?.center_lng != null) {
+      matchedCenterLat = centerRows[0].center_lat;
+      matchedCenterLng = centerRows[0].center_lng;
+    }
+  }
+
   if (match && match.kind === "area") {
     const pincodeRows = await prisma.$queryRaw<{ pincode: string }[]>(
       Prisma.sql`SELECT DISTINCT pincode FROM pincode_areas WHERE name = ${match.name}`
@@ -117,6 +132,8 @@ async function resolveLocationFromQuery(q: string): Promise<LocationMatch> {
     matchedLocalityId: match ? (match.kind === "locality" ? match.id : null) : null,
     matchedAreaPincodes,
     matchedName: match ? match.name : null,
+    matchedCenterLat,
+    matchedCenterLng,
     phaseSubQuery,
     remainingQuery: stripLocationStopwords(withoutLocation),
   };
@@ -379,8 +396,8 @@ export async function searchBusinesses(params: SearchParams) {
   }
 
   const hasCoordinates = typeof params.lat === "number" && !isNaN(params.lat) && typeof params.lng === "number" && !isNaN(params.lng);
-  const userLat = hasCoordinates ? params.lat! : null;
-  const userLng = hasCoordinates ? params.lng! : null;
+  const userLat = hasCoordinates ? params.lat! : (location.matchedCenterLat ?? 12.9716);
+  const userLng = hasCoordinates ? params.lng! : (location.matchedCenterLng ?? 77.5946);
 
   const postFilters: Prisma.Sql[] = [];
   if (params.openNow) {
