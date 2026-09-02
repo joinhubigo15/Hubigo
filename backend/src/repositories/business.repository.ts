@@ -378,7 +378,7 @@ export async function searchBusinesses(params: SearchParams) {
     ) = ${params.amenitySlugs.length}`);
   }
 
-  const hasCoordinates = typeof params.lat === "number" && typeof params.lng === "number";
+  const hasCoordinates = typeof params.lat === "number" && !isNaN(params.lat) && typeof params.lng === "number" && !isNaN(params.lng);
   const userLat = hasCoordinates ? params.lat! : null;
   const userLng = hasCoordinates ? params.lng! : null;
 

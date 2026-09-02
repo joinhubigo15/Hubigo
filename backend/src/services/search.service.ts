@@ -5,7 +5,7 @@ import type { SearchQueryInput } from "../schemas/search.schema";
 import type { BusinessSummary, PaginatedResult, SearchParams } from "../types/search.types";
 
 function toSearchParams(input: SearchQueryInput): SearchParams {
-  const hasCoords = typeof input.lat === "number" && typeof input.lng === "number";
+  const hasCoords = typeof input.lat === "number" && !isNaN(input.lat) && typeof input.lng === "number" && !isNaN(input.lng);
   // Distance sort/radius only make sense with a real user location — fall back rather than 500.
   const sort = input.sort === "distance" && !hasCoords ? "best_match" : input.sort;
 
