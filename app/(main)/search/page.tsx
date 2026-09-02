@@ -314,12 +314,12 @@ function SearchPageContent() {
   // signal to conflict with there.
   const hasExplicitSort = searchParams.get("sort") != null;
   useEffect(() => {
-    if (filters.lat != null || filters.lng != null) return;
-    const activeLat = location.lat ?? 12.9716;
-    const activeLng = location.lng ?? 77.5946;
-    const patch: Partial<SearchFilters> = { lat: activeLat, lng: activeLng };
-    if (!hasExplicitSort && !filters.q) patch.sort = "distance";
-    updateFilters(patch);
+    if (location.lat == null || location.lng == null) return;
+    if (filters.lat !== location.lat || filters.lng !== location.lng) {
+      const patch: Partial<SearchFilters> = { lat: location.lat, lng: location.lng };
+      if (!hasExplicitSort && !filters.q) patch.sort = "distance";
+      updateFilters(patch);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasExplicitSort, location.lat, location.lng, filters.q]);
 

@@ -136,7 +136,7 @@ export default function BusinessResultCard({ business, className }: BusinessResu
             <span className="flex items-center gap-0.5 text-[11px] text-slate-500 font-medium truncate">
               <MapPin className="w-3 h-3 text-slate-400 shrink-0" />
               <span className="truncate">{locationLabel}</span>
-              {business.distanceKm != null && business.distanceKm < 50 && (
+              {business.distanceKm != null && (
                 <span className="text-purple-700 font-bold shrink-0 ml-1">
                   • {business.distanceKm < 1 ? `${Math.round(business.distanceKm * 1000)} m` : `${business.distanceKm.toFixed(1)} km`}
                 </span>
