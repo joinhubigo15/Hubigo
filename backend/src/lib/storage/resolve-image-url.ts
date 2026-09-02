@@ -11,6 +11,9 @@ const storage = getImageStorageAdapter();
  */
 export function resolveImageUrl(key: string | null | undefined, bucket: ImageBucket = "business"): string | null {
   if (!key) return null;
+  if (key.startsWith("http://") || key.startsWith("https://")) {
+    return key;
+  }
   return storage.resolveUrl(bucket, key);
 }
 
