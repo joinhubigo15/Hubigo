@@ -139,7 +139,10 @@ export function useNearbyLocation() {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) stored = JSON.parse(raw);
       } catch {}
-      if (!stored) return;
+      if (!stored) {
+        fetchFreshPosition({ silent: true });
+        return;
+      }
 
       const isFresh = typeof stored.savedAt === "number" && Date.now() - stored.savedAt < LOCATION_TTL_MS;
       if (!isFresh) {

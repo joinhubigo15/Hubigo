@@ -320,10 +320,6 @@ function SearchPageContent() {
         if (!hasExplicitSort && !filters.q) patch.sort = "distance";
         updateFilters(patch);
       }
-    } else if (!hasRealFix && (filters.lat == null || filters.lng == null)) {
-      const patch: Partial<SearchFilters> = { lat: 12.9716, lng: 77.5946 };
-      if (!hasExplicitSort && !filters.q) patch.sort = "distance";
-      updateFilters(patch);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasExplicitSort, hasRealFix, location.lat, location.lng, filters.q]);

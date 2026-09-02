@@ -30,8 +30,8 @@ export default function CategoryDetailsPage({
   initialFeatured: BusinessSummary[];
 }) {
   const { location } = useNearbyLocation();
-  const activeLat = location.lat ?? 12.9716;
-  const activeLng = location.lng ?? 77.5946;
+  const activeLat = location.lat ?? undefined;
+  const activeLng = location.lng ?? undefined;
 
   const [category] = useState<CategoryOption | null>(initialCategory);
   const [loadingCategory] = useState(false);
