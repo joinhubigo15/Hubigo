@@ -314,9 +314,10 @@ function SearchPageContent() {
   // signal to conflict with there.
   const hasExplicitSort = searchParams.get("sort") != null;
   useEffect(() => {
-    if (location.lat == null || location.lng == null) return;
-    if (filters.lat !== location.lat || filters.lng !== location.lng) {
-      const patch: Partial<SearchFilters> = { lat: location.lat, lng: location.lng };
+    const activeLat = location.lat ?? 12.9716;
+    const activeLng = location.lng ?? 77.5946;
+    if (filters.lat !== activeLat || filters.lng !== activeLng) {
+      const patch: Partial<SearchFilters> = { lat: activeLat, lng: activeLng };
       if (!hasExplicitSort && !filters.q) patch.sort = "distance";
       updateFilters(patch);
     }
