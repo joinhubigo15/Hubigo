@@ -12,7 +12,20 @@ async function submitSitemapToSearchEngines() {
   const domain = "findhubigo.com";
   const baseUrl = `https://${domain}`;
   const sitemapUrl = `${baseUrl}/sitemap.xml`;
-  console.log(`📡 Target Sitemap URL: ${sitemapUrl}`);
+  console.log(`📡 Target Sitemap Index URL: ${sitemapUrl}`);
+
+  const sitemapUrls = [
+    sitemapUrl,
+    `${baseUrl}/sitemap-static.xml`,
+    `${baseUrl}/sitemap-categories.xml`,
+    `${baseUrl}/sitemap-pseo.xml`,
+    `${baseUrl}/sitemap-businesses-1.xml`,
+    `${baseUrl}/sitemap-businesses-2.xml`,
+    `${baseUrl}/sitemap-businesses-3.xml`,
+    `${baseUrl}/sitemap-businesses-4.xml`,
+    `${baseUrl}/sitemap-businesses-5.xml`,
+    `${baseUrl}/sitemap-businesses-6.xml`,
+  ];
 
   const mainUrls = [
     `${baseUrl}/`,
@@ -29,10 +42,10 @@ async function submitSitemapToSearchEngines() {
     `${baseUrl}/category/physiotherapy`,
     `${baseUrl}/category/veterinary`,
     `${baseUrl}/category/medical-equipment`,
-    `${sitemapUrl}`,
+    ...sitemapUrls,
   ];
 
-  console.log(`⚡ Requesting instant indexing for ${mainUrls.length} main pages on ${domain}...`);
+  console.log(`⚡ Requesting instant indexing for ${mainUrls.length} pages & sitemaps on ${domain}...`);
 
   // IndexNow API Submission
   try {
