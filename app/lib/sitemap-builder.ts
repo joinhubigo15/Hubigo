@@ -188,3 +188,21 @@ export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: 
 
   return indexEntries;
 }
+
+export function createBusinessChunkHandler(chunkIndex: number) {
+  return async function GET() {
+    try {
+      const entries = await getBusinessChunkSitemapEntries(chunkIndex);
+      const xml = buildSitemapXml(entries);
+      return new Response(xml, {
+        headers: {
+          "Content-Type": "application/xml; charset=utf-8",
+          "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400",
+        },
+      });
+    } catch (err: any) {
+      console.error(`Error generating business sitemap chunk ${chunkIndex + 1}:`, err);
+      return new Response("Internal Server Error", { status: 500 });
+    }
+  };
+}
