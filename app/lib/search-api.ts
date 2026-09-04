@@ -300,7 +300,14 @@ export function compareNearby(input: { subcategory?: string; category?: string; 
 
 export interface BusinessDetailCategory {
   isPrimary: boolean;
-  category: { id: string; name: string; slug: string; icon: string | null };
+  category: {
+    id: string;
+    name: string;
+    slug: string;
+    icon: string | null;
+    parentId?: string | null;
+    parent?: { id: string; name: string; slug: string; icon: string | null } | null;
+  };
 }
 
 export interface BusinessDetailAmenity {

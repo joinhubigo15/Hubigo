@@ -43,7 +43,7 @@ export const getBusinessBySlug = asyncHandler(async (req: Request, res: Response
     include: {
       city: true,
       locality: true,
-      categories: { include: { category: true } },
+      categories: { include: { category: { include: { parent: true } } } },
       amenities: { include: { amenity: true } },
       services: true,
       hours: true,

@@ -16,9 +16,15 @@ const NEARBY_COUNT = 3;
 // is just a rotating sample of decent listings, not a real "nearest to you" feature — /nearby is.
 const SAMPLE_POOL_SIZE = 24;
 
-export default function NearbyBusinessesSection() {
-  const [businesses, setBusinesses] = useState<BusinessSummary[]>([]);
-  const [loading, setLoading] = useState(true);
+interface NearbyBusinessesSectionProps {
+  initialBusinesses?: BusinessSummary[];
+}
+
+export default function NearbyBusinessesSection({ initialBusinesses }: NearbyBusinessesSectionProps) {
+  const [businesses, setBusinesses] = useState<BusinessSummary[]>(
+    initialBusinesses && initialBusinesses.length > 0 ? initialBusinesses.slice(0, NEARBY_COUNT) : []
+  );
+  const [loading, setLoading] = useState(!initialBusinesses || initialBusinesses.length === 0);
 
   useEffect(() => {
     let cancelled = false;
@@ -26,11 +32,13 @@ export default function NearbyBusinessesSection() {
     searchBusinesses({ sort: "rating", limit: SAMPLE_POOL_SIZE })
       .then((result) => {
         if (cancelled) return;
-        const shuffled = [...result.items].sort(() => Math.random() - 0.5);
-        setBusinesses(shuffled.slice(0, NEARBY_COUNT));
+        if (result.items.length > 0) {
+          const shuffled = [...result.items].sort(() => Math.random() - 0.5);
+          setBusinesses(shuffled.slice(0, NEARBY_COUNT));
+        }
       })
       .catch(() => {
-        if (!cancelled) setBusinesses([]);
+        // Keep initialBusinesses if client fetch fails
       })
       .finally(() => {
         if (!cancelled) setLoading(false);

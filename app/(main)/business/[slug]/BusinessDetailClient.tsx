@@ -32,6 +32,7 @@ import {
   UtensilsCrossed,
   RefreshCw,
   Package,
+  Building2,
 } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
@@ -383,9 +384,69 @@ export default function AdaptiveBusinessDetailsPage({
     () => (business?.media ?? []).filter((m) => m.type === "image"),
     [business],
   );
-  // The importer never populates a real uploaded logo — logoUrl is essentially always null.
-  // A category badge icon (BusinessMedia type "badge") is assigned instead, so use it as the
-  // avatar image so the circle doesn't fall back to a bare initial letter for every business.
+  // Compile all healthcare subcategories, specializations, departments, and services
+  const derivedSubcategories = useMemo(() => {
+    if (!business) return [];
+    const set = new Set<string>();
+
+    // 1. Attached categories (non-primary or parent's child)
+    business.categories.forEach((c) => {
+      if (c.category.parent) {
+        set.add(c.category.name);
+      } else if (!c.isPrimary) {
+        set.add(c.category.name);
+      }
+    });
+
+    // 2. Keywords attached to business
+    if (business.keywords) {
+      business.keywords.forEach((kw) => {
+        if (kw && kw.trim()) set.add(kw.trim());
+      });
+    }
+
+    // 3. Services attached to business
+    if (business.services) {
+      business.services.forEach((s) => {
+        if (s.name && s.name.trim()) set.add(s.name.trim());
+      });
+    }
+
+    // 4. Extract healthcare specialties from name & description
+    const text = `${business.name} ${business.description || ""}`.toLowerCase();
+    const specialtyMap: [RegExp, string][] = [
+      [/dental|dentist|teeth|orthodont/i, "Dental & Oral Care"],
+      [/pediatr|child|infant|baby/i, "Pediatrics & Child Health"],
+      [/eye|ophthalm|vision|cataract/i, "Eye Care & Ophthalmology"],
+      [/gynaec|gynec|obstetr|pcod|pregnancy|women|maternity/i, "Obstetrics & Gynaecology"],
+      [/orthoped|bone|joint|spine/i, "Orthopedics & Joint Care"],
+      [/derma|skin|hair|cosmet/i, "Dermatology & Skin Care"],
+      [/cardio|heart/i, "Cardiology & Heart Care"],
+      [/ent|ear|nose|throat/i, "ENT (Ear, Nose, Throat)"],
+      [/neuro|brain|nerve/i, "Neurology & Brain Health"],
+      [/physio|rehab|physical therapy/i, "Physiotherapy & Rehabilitation"],
+      [/ayurved|panchakarma/i, "Ayurvedic Medicine"],
+      [/homeopath/i, "Homeopathy"],
+      [/diagnost|lab|scan|x-ray|ultrasound|mri|blood test/i, "Diagnostic & Pathology Labs"],
+      [/surge|operat/i, "Surgical Care"],
+      [/cancer|oncol/i, "Oncology & Cancer Care"],
+      [/psychiat|mental|counsel/i, "Mental Health & Psychiatry"],
+      [/emergenc|icu|casualty|24\/?7/i, "24/7 Emergency & ICU Care"],
+      [/general physician|clinic|opd|consultant/i, "General Medicine & Consultation"],
+      [/diabetes|endocrin/i, "Diabetology & Endocrinology"],
+      [/gastro|liver|digest/i, "Gastroenterology"],
+      [/urolog|kidney|dialysis|nephro/i, "Urology & Nephrology"],
+    ];
+
+    for (const [regex, label] of specialtyMap) {
+      if (regex.test(text)) {
+        set.add(label);
+      }
+    }
+
+    return Array.from(set);
+  }, [business]);
+
   const avatarImageUrl = business?.logoUrl ?? business?.media.find((m) => m.type === "badge")?.url ?? null;
 
   useEffect(() => {
@@ -567,10 +628,17 @@ export default function AdaptiveBusinessDetailsPage({
               )}
             </div>
 
-            {/* Category Label */}
-            <p className="text-xs font-semibold text-slate-500">
-              {primaryCategory?.name ?? "Business"}
-            </p>
+            {/* Category & Sector Header Badge */}
+            <div className="flex items-center gap-1.5 flex-wrap">
+              <span className="inline-flex items-center gap-1 text-[11px] font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-lg border border-purple-200/80">
+                <Building2 className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+                <span>
+                  {primaryCategory?.parent
+                    ? `${primaryCategory.parent.name} • ${primaryCategory.name}`
+                    : primaryCategory?.name ?? "Healthcare Service"}
+                </span>
+              </span>
+            </div>
 
             {/* Rating & Locality Row */}
             <div className="flex items-center gap-2 text-xs font-bold text-slate-600 flex-wrap">
@@ -903,45 +971,62 @@ export default function AdaptiveBusinessDetailsPage({
                 </div>
               </div>
 
-              {/* Primary Category & Subcategory List */}
+              {/* Primary Category, Sector & Healthcare Subcategories List */}
               <div className="space-y-4 pt-1">
-                {/* Primary Category */}
                 {(() => {
-                  const primaryCat = business.categories.find((c) => c.isPrimary);
-                  const subCats = business.categories.filter((c) => !c.isPrimary);
+                  const primaryCat = business.categories.find((c) => c.isPrimary) ?? business.categories[0];
+                  const parentCategory = primaryCat?.category?.parent;
 
                   return (
-                    <div className="space-y-3">
-                      {primaryCat && (
-                        <div>
-                          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
-                            Primary Healthcare Sector
-                          </h3>
-                          <Link
-                            href={`/category/${primaryCat.category.slug}`}
-                            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-black bg-purple-600 text-white shadow-xs hover:bg-purple-700 transition-colors"
-                          >
-                            <span>{primaryCat.category.name}</span>
-                            <span className="text-[9px] bg-white/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Primary</span>
-                          </Link>
-                        </div>
-                      )}
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-3">
+                        {/* Parent Sector if exists */}
+                        {parentCategory && (
+                          <div>
+                            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                              Healthcare Sector
+                            </h3>
+                            <Link
+                              href={`/category/${parentCategory.slug}`}
+                              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-black bg-purple-600 text-white shadow-xs hover:bg-purple-700 transition-colors"
+                            >
+                              <span>{parentCategory.name}</span>
+                              <span className="text-[9px] bg-white/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Sector</span>
+                            </Link>
+                          </div>
+                        )}
 
-                      {/* Subcategories */}
-                      {subCats.length > 0 && (
+                        {/* Primary Category */}
+                        {primaryCat && (
+                          <div>
+                            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1.5">
+                              {parentCategory ? "Primary Healthcare Subcategory" : "Primary Category"}
+                            </h3>
+                            <Link
+                              href={`/category/${primaryCat.category.slug}`}
+                              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-black bg-emerald-600 text-white shadow-xs hover:bg-emerald-700 transition-colors"
+                            >
+                              <span>{primaryCat.category.name}</span>
+                              <span className="text-[9px] bg-white/20 px-2 py-0.5 rounded-md uppercase tracking-wider">Primary</span>
+                            </Link>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Subcategories & Specializations Chips */}
+                      {derivedSubcategories.length > 0 && (
                         <div>
                           <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                            Healthcare Subcategories & Specializations ({subCats.length})
+                            Healthcare Subcategories & Specializations ({derivedSubcategories.length})
                           </h3>
                           <div className="flex flex-wrap items-center gap-2">
-                            {subCats.map((c) => (
-                              <Link
-                                key={c.category.id}
-                                href={`/category/${c.category.slug}`}
-                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200/90 hover:bg-emerald-100 hover:border-emerald-300 transition-all shadow-2xs"
+                            {derivedSubcategories.map((sub) => (
+                              <span
+                                key={sub}
+                                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-50 text-emerald-800 border border-emerald-200/90 shadow-2xs"
                               >
-                                <span>{c.category.name}</span>
-                              </Link>
+                                <span>{sub}</span>
+                              </span>
                             ))}
                           </div>
                         </div>
@@ -949,25 +1034,7 @@ export default function AdaptiveBusinessDetailsPage({
                     </div>
                   );
                 })()}
-
-                {/* Subcategories & Specializations Chips */}
-                {business.keywords && business.keywords.length > 0 && (
-                  <div className="pt-2">
-                    <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
-                      Subcategories & Medical Services
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5">
-                      {business.keywords.map((kw) => (
-                        <span
-                          key={kw}
-                          className="px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200/80 text-slate-700 text-xs font-semibold"
-                        >
-                          {kw}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+              </div>
 
                 {/* Scraped Place ID & Verification Data Badge */}
                 {business.externalPlaceId && (
@@ -981,7 +1048,6 @@ export default function AdaptiveBusinessDetailsPage({
                     </span>
                   </div>
                 )}
-              </div>
             </section>
 
 
