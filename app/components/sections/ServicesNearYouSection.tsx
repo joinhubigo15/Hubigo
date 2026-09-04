@@ -5,12 +5,12 @@ import { ArrowRight, Pill, Stethoscope, HeartPulse, Activity, Sparkles, TestTube
 import { cn } from "@/app/lib/utils";
 
 const services = [
-  { name: "Emergency Care", slug: "emergency-hospital", icon: HeartPulse, bgColor: "bg-rose-100", iconColor: "text-rose-600" },
-  { name: "24/7 Pharmacies", slug: "pharmacy", icon: Pill, bgColor: "bg-emerald-100", iconColor: "text-emerald-600" },
-  { name: "Specialist Doctors", slug: "general-physician", icon: Stethoscope, bgColor: "bg-sky-100", iconColor: "text-sky-600" },
-  { name: "Diagnostic Labs", slug: "pathology-lab", icon: TestTube, bgColor: "bg-purple-100", iconColor: "text-purple-600" },
-  { name: "Physiotherapy", slug: "physiotherapy-clinic", icon: Activity, bgColor: "bg-orange-100", iconColor: "text-orange-600" },
-  { name: "Dental Clinics", slug: "dental-clinic", icon: Sparkles, bgColor: "bg-amber-100", iconColor: "text-amber-600" },
+  { name: "Hospitals & Care", href: "/category/hospitals", icon: HeartPulse, bgColor: "bg-rose-100", iconColor: "text-rose-600" },
+  { name: "24/7 Pharmacies", href: "/category/pharmacies", icon: Pill, bgColor: "bg-emerald-100", iconColor: "text-emerald-600" },
+  { name: "Specialist Doctors", href: "/category/doctors-clinics", icon: Stethoscope, bgColor: "bg-sky-100", iconColor: "text-sky-600" },
+  { name: "Diagnostic Labs", href: "/category/diagnostic-labs", icon: TestTube, bgColor: "bg-purple-100", iconColor: "text-purple-600" },
+  { name: "Physiotherapy", href: "/category/physiotherapy", icon: Activity, bgColor: "bg-orange-100", iconColor: "text-orange-600" },
+  { name: "Dental Clinics", href: "/category/dentists", icon: Sparkles, bgColor: "bg-amber-100", iconColor: "text-amber-600" },
 ];
 
 export default function ServicesNearYouSection() {
@@ -21,7 +21,7 @@ export default function ServicesNearYouSection() {
         <div className="flex items-center justify-between mb-2">
           <h2 className="text-xs sm:text-sm lg:text-base font-bold text-slate-900">Services Near You</h2>
           <Link
-            href="/search?q=Services"
+            href="/category"
             className="text-[10px] sm:text-[11px] lg:text-xs font-semibold text-purple-600 hover:text-purple-700 flex items-center gap-0.5 transition-colors"
           >
             <span>View More</span>
@@ -34,8 +34,8 @@ export default function ServicesNearYouSection() {
             const Icon = svc.icon;
             return (
               <Link
-                key={svc.slug}
-                href={`/search?subcategory=${svc.slug}`}
+                key={svc.href}
+                href={svc.href}
                 className={cn(
                   "group flex flex-col items-center gap-1.5 p-1 rounded-lg hover:bg-slate-50 lg:hover:bg-transparent transition-all duration-200 text-center w-full",
                   idx === 5 ? "hidden lg:flex" : "flex"
