@@ -306,6 +306,8 @@ export async function searchBusinesses(params: SearchParams) {
           c_sub.slug = ${params.subcategorySlug}
           OR c_sub.parent_id = (SELECT parent_id FROM categories WHERE slug = ${params.subcategorySlug})
           OR c_sub.parent_id = (SELECT id FROM categories WHERE slug = ${params.subcategorySlug})
+          OR c_sub.id = (SELECT parent_id FROM categories WHERE slug = ${params.subcategorySlug})
+          OR c_sub.slug ILIKE '%' || ${params.subcategorySlug} || '%'
         )
       )
     )`);
@@ -317,6 +319,8 @@ export async function searchBusinesses(params: SearchParams) {
         WHERE bc_cat.business_id = b.id AND (
           c_cat.slug = ${params.categorySlug}
           OR c_cat.parent_id = (SELECT id FROM categories WHERE slug = ${params.categorySlug})
+          OR c_cat.id = (SELECT parent_id FROM categories WHERE slug = ${params.categorySlug})
+          OR c_cat.slug ILIKE '%' || ${params.categorySlug} || '%'
         )
       )
     )`);

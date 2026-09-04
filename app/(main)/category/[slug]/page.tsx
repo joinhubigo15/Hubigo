@@ -64,7 +64,7 @@ export default async function CategoryDetailsPage({
 
   const [platformStats, featuredResult] = await Promise.all([
     request<PlatformStats>("/api/v1/stats").catch(() => null),
-    searchBusinesses({ category: slug, sort: "rating", limit: 6 }).catch(() => null),
+    searchBusinesses({ category: slug, sort: "rating", limit: 24 }).catch(() => null),
   ]);
 
   const breadcrumbItems = [

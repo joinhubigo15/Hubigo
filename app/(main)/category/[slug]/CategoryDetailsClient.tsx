@@ -3,14 +3,30 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Store, Star, MapPin, ChevronRight, ArrowRight, UtensilsCrossed, HeartPulse, Stethoscope, Hospital, GraduationCap, Wrench, Car } from "lucide-react";
+import {
+  Store,
+  Star,
+  MapPin,
+  ChevronRight,
+  ArrowRight,
+  HeartPulse,
+  Stethoscope,
+  Hospital,
+  Building2,
+  Phone,
+  MessageSquare,
+  SlidersHorizontal,
+  Activity,
+  Sparkles,
+  TestTube,
+  Pill,
+} from "lucide-react";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
 import {
   searchBusinesses,
   type CategoryOption,
   type BusinessSummary,
 } from "@/app/lib/search-api";
-
 import { useNearbyLocation } from "@/app/lib/useNearbyLocation";
 
 interface PlatformStats {
@@ -34,46 +50,64 @@ export default function CategoryDetailsPage({
   const activeLng = location.lng ?? undefined;
 
   const [category] = useState<CategoryOption | null>(initialCategory);
-  const [loadingCategory] = useState(false);
   const [activeSubcategory, setActiveSubcategory] = useState<string | null>(null);
-  const [featured, setFeatured] = useState<BusinessSummary[]>(initialFeatured);
-  const [loadingFeatured, setLoadingFeatured] = useState(false);
+  const [businesses, setBusinesses] = useState<BusinessSummary[]>(initialFeatured);
+  const [loading, setLoading] = useState(false);
 
-  const featuredSectionRef = useRef<HTMLDivElement | null>(null);
+  const listingsSectionRef = useRef<HTMLDivElement | null>(null);
+
   function selectSubcategory(subSlug: string | null) {
     setActiveSubcategory(subSlug);
-    if (typeof window !== "undefined" && window.innerWidth < 1024) {
+    if (typeof window !== "undefined") {
       requestAnimationFrame(() => {
-        featuredSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        listingsSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
   }
 
-  const [platformStats] = useState<PlatformStats | null>(initialPlatformStats);
-
   useEffect(() => {
-    setLoadingFeatured(true);
+    setLoading(true);
     searchBusinesses({
       category: activeSubcategory ? undefined : slug,
       subcategory: activeSubcategory ?? undefined,
       lat: activeLat,
       lng: activeLng,
       sort: "rating",
-      limit: 6,
+      limit: 24,
     })
-      .then((res) => setFeatured(res.items))
-      .catch(() => setFeatured([]))
-      .finally(() => setLoadingFeatured(false));
+      .then((res) => {
+        setBusinesses(res.items);
+      })
+      .catch(() => {
+        if (!initialFeatured || initialFeatured.length === 0) {
+          setBusinesses([]);
+        }
+      })
+      .finally(() => setLoading(false));
   }, [slug, activeSubcategory, activeLat, activeLng]);
 
-  const title = category?.name ?? (slug ? slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "Category");
+  const title = category?.name ?? (slug ? slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "Healthcare Category");
 
-  const CategoryIcon = (slug === "health-and-medicine" || slug === "healthcare" || slug === "healthcare-and-medical") ? HeartPulse :
-                       slug === "hospitals" ? Hospital :
-                       slug === "clinics" ? Stethoscope :
-                       HeartPulse;
+  const CategoryIcon =
+    slug === "health-and-medicine" || slug === "healthcare" || slug === "healthcare-and-medical"
+      ? HeartPulse
+      : slug === "hospitals"
+      ? Hospital
+      : slug === "clinics" || slug === "doctors-clinics"
+      ? Stethoscope
+      : slug === "pharmacies"
+      ? Pill
+      : slug === "diagnostic-labs"
+      ? TestTube
+      : slug === "physiotherapy"
+      ? Activity
+      : slug === "dentists"
+      ? Sparkles
+      : HeartPulse;
 
-  if (!loadingCategory && !category) {
+  const activeSubcategoryObj = category?.subcategories.find((sc) => sc.slug === activeSubcategory);
+
+  if (!category) {
     return (
       <div className="bg-slate-50/60 min-h-screen flex items-center justify-center px-4">
         <div className="text-center space-y-3">
@@ -87,159 +121,245 @@ export default function CategoryDetailsPage({
   }
 
   return (
-    <div className="bg-slate-50/60 min-h-screen px-0 lg:px-0 pt-0 pb-4 lg:py-0 flex flex-col gap-0 lg:gap-0 w-full">
+    <div className="bg-slate-50/60 min-h-screen pb-12 w-full space-y-4 sm:space-y-6">
       {/* Category Hero Block */}
-      <div className="bg-white rounded-none lg:rounded-none border-y lg:border-b lg:border-x-0 lg:border-t-0 border-slate-100 py-4 px-4 lg:p-6 lg:px-6 shadow-xs lg:shadow-none relative overflow-hidden flex flex-row items-center justify-between gap-4">
-        <div className="absolute right-0 top-0 w-24 h-24 bg-emerald-50 rounded-full blur-2xl opacity-70" />
+      <div className="bg-white border-b border-slate-200/80 py-6 px-4 lg:px-8 shadow-2xs relative overflow-hidden">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <div className="space-y-2 max-w-2xl">
+            <div className="flex items-center gap-2">
+              <span className="text-[10px] font-black text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200/80 uppercase tracking-wider">
+                Healthcare Category
+              </span>
+              {category.businessCount > 0 && (
+                <span className="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-md">
+                  {category.businessCount.toLocaleString("en-IN")} Providers
+                </span>
+              )}
+            </div>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-900 leading-tight">
+              {title}
+            </h1>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+              Find verified {title.toLowerCase()} providers, clinics, diagnostic centers, and medical specialists across India. Compare ratings, addresses, and OPD hours.
+            </p>
+          </div>
 
-        <div className="space-y-1.5 z-10 flex-1 min-w-0 pr-2">
-          <h1 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-900 leading-tight truncate">{title}</h1>
-          <p className="text-xs text-slate-500 max-w-md leading-relaxed font-medium mt-0.5 truncate sm:whitespace-normal">
-            Find top-rated {title.toLowerCase()} providers, clinics, and specialists near you. Compare ratings, reviews, and contact info.
-          </p>
-        </div>
-
-        <div className="flex w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-emerald-50 text-emerald-600 items-center justify-center shrink-0 z-10 shadow-2xs border border-emerald-100">
-          <CategoryIcon className="w-6 h-6 lg:w-8 lg:h-8" />
+          <div className="w-14 h-14 lg:w-20 lg:h-20 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 shadow-xs border border-emerald-100">
+            <CategoryIcon className="w-7 h-7 lg:w-10 lg:h-10" />
+          </div>
         </div>
       </div>
 
-      {/* Subcategory scroll pills bar */}
-      {category && category.subcategories.length > 0 && (
-        <div className="hidden lg:flex items-center gap-2 overflow-x-auto px-4 lg:px-6 pb-1.5 lg:pb-3 lg:py-3 lg:bg-white lg:border-b lg:border-slate-100 scrollbar-none shrink-0">
-          <button
-            onClick={() => selectSubcategory(null)}
-            className={
-              activeSubcategory === null
-                ? "px-4 py-1.5 bg-purple-600 text-white text-xs font-bold rounded-none lg:rounded-none shadow-sm whitespace-nowrap"
-                : "px-4 py-1.5 bg-white text-slate-600 border border-slate-200 text-xs font-semibold rounded-none lg:rounded-none hover:bg-slate-50 transition-colors whitespace-nowrap"
-            }
-          >
-            All
-          </button>
-          {category.subcategories.map((sc) => (
-            <button
-              key={sc.id}
-              onClick={() => selectSubcategory(sc.slug)}
-              className={
-                activeSubcategory === sc.slug
-                  ? "px-4 py-1.5 bg-purple-600 text-white text-xs font-bold rounded-none lg:rounded-none shadow-sm whitespace-nowrap"
-                  : "px-4 py-1.5 bg-white text-slate-600 border border-slate-200 text-xs font-semibold rounded-none lg:rounded-none hover:bg-slate-50 transition-colors whitespace-nowrap"
-              }
-            >
-              {sc.name}
-            </button>
-          ))}
+      {/* Subcategory Scroll Filter Bar (Mobile & Desktop) */}
+      {category.subcategories.length > 0 && (
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className="bg-white rounded-xl border border-slate-200/80 p-2 sm:p-3 shadow-2xs">
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-none">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider shrink-0 flex items-center gap-1 pr-1 border-r border-slate-100">
+                <SlidersHorizontal className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Subcategories:</span>
+              </span>
+
+              <button
+                onClick={() => selectSubcategory(null)}
+                className={`px-3.5 py-1.5 rounded-lg text-xs font-extrabold transition-all shrink-0 cursor-pointer ${
+                  activeSubcategory === null
+                    ? "bg-purple-600 text-white shadow-xs"
+                    : "bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/70"
+                }`}
+              >
+                All {title} ({category.businessCount || businesses.length})
+              </button>
+
+              {category.subcategories.map((sc) => {
+                const isActive = activeSubcategory === sc.slug;
+                return (
+                  <button
+                    key={sc.id}
+                    onClick={() => selectSubcategory(sc.slug)}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all shrink-0 flex items-center gap-1.5 cursor-pointer ${
+                      isActive
+                        ? "bg-purple-600 text-white shadow-xs"
+                        : "bg-slate-50 text-slate-700 hover:bg-slate-100 border border-slate-200/70"
+                    }`}
+                  >
+                    <span>{sc.name}</span>
+                    {sc.businessCount > 0 && (
+                      <span
+                        className={`text-[9px] px-1.5 py-0.2 rounded-full ${
+                          isActive ? "bg-white/20 text-white" : "bg-slate-200 text-slate-600"
+                        }`}
+                      >
+                        {sc.businessCount}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       )}
 
-      {/* Main Grid Content */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-0 items-start lg:items-stretch">
-        {/* Left Column: Subcategories list */}
-        <div className="lg:col-span-6 bg-white rounded-none lg:rounded-none border-b lg:border-r lg:border-t-0 lg:border-b-0 lg:border-l-0 border-slate-100 -mt-[1px] lg:mt-0 p-4 sm:p-5 lg:p-6 shadow-xs lg:shadow-none space-y-4">
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider font-semibold">Subcategories</h3>
-          {category && category.subcategories.length > 0 ? (
-            <div className="divide-y divide-slate-100">
-              {category.subcategories.map((sc) => (
-                <button
-                  key={sc.id}
-                  onClick={() => selectSubcategory(sc.slug)}
-                  className="w-full flex items-center justify-between py-3.5 hover:bg-slate-50/50 rounded-none lg:rounded-none px-2 transition-all cursor-pointer group text-left"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-none lg:rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
-                      <Store className="w-4 h-4" />
-                    </div>
-                    <span className="text-xs font-bold text-slate-800 group-hover:text-purple-600 transition-colors">
-                      {sc.name}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-1.5">
-                    <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-purple-600 transition-colors" />
-                  </div>
-                </button>
-              ))}
-            </div>
-          ) : (
-            <p className="text-xs text-slate-500 font-medium">No subcategories listed.</p>
-          )}
-        </div>
-
-        {/* Right Column: Featured Section */}
-        <div ref={featuredSectionRef} className="lg:col-span-6 bg-white rounded-none lg:rounded-none border-b lg:border-0 border-slate-100 -mt-[1px] lg:mt-0 p-4 sm:p-5 lg:p-6 shadow-xs lg:shadow-none space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">Featured {title}</h3>
-            <Link
-              href={`/search?${activeSubcategory ? `subcategory=${activeSubcategory}` : `category=${slug}`}`}
-              className="text-[11px] font-semibold text-purple-600 flex items-center gap-0.5"
-            >
-              <span>View All</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+      {/* Main Business Listings Grid Section */}
+      <div ref={listingsSectionRef} className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 space-y-4">
+        {/* Section Header */}
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900">
+              {activeSubcategoryObj ? activeSubcategoryObj.name : `Top Verified ${title}`}
+            </h2>
+            <p className="text-xs text-slate-500 font-medium">
+              Showing {businesses.length} verified listings in this category
+            </p>
           </div>
 
-          {loadingFeatured ? (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="h-32 bg-slate-100 rounded-none lg:rounded-none animate-pulse" />
-              ))}
+          <Link
+            href={`/search?${activeSubcategory ? `subcategory=${activeSubcategory}` : `category=${slug}`}`}
+            className="text-xs font-bold text-purple-600 hover:text-purple-700 flex items-center gap-1 transition-colors bg-purple-50 px-3 py-1.5 rounded-lg border border-purple-200/70"
+          >
+            <span>Search Filter</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
+        </div>
+
+        {/* Listings Grid */}
+        {loading ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="h-56 bg-slate-200/70 rounded-xl animate-pulse" />
+            ))}
+          </div>
+        ) : businesses.length > 0 ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-5">
+            {businesses.map((b) => (
+              <CategoryBusinessCard key={b.id} b={b} />
+            ))}
+          </div>
+        ) : (
+          <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center space-y-4 my-4 shadow-2xs">
+            <div className="w-14 h-14 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mx-auto">
+              <Building2 className="w-7 h-7" />
             </div>
-          ) : featured.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-              {featured.map((r) => (
-                <Link
-                  key={r.id}
-                  href={`/business/${r.slug}`}
-                  className="group bg-slate-50 border border-slate-200/40 rounded-none lg:rounded-none overflow-hidden shadow-2xs hover:shadow-xs transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative h-20 w-full overflow-hidden bg-slate-200 shrink-0">
-                    {r.coverImageUrl ? (
-                      <Image
-                        src={r.coverImageUrl}
-                        alt={`${r.name} in ${r.cityName}`}
-                        fill
-                        sizes="(min-width: 640px) 33vw, 100vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center text-slate-400">
-                        <Store className="w-6 h-6" />
-                      </div>
-                    )}
-                    <div className="absolute top-1 left-1 bg-purple-600 text-white text-[9px] font-bold px-1.5 py-0.5 rounded-none lg:rounded-none flex items-center gap-0.5">
-                      <Star className="w-2.5 h-2.5 fill-current" />
-                      <span>{r.avgRating.toFixed(1)}</span>
-                    </div>
-                    {r.isVerified && (
-                      <div className="absolute top-1 right-1">
-                        <VerifiedBadge size="xs" iconOnly />
-                      </div>
-                    )}
-                  </div>
-                  <div className="p-2.5 flex-1 flex flex-col justify-between">
-                    <h4 className="font-bold text-[10px] text-slate-900 leading-tight group-hover:text-purple-600 transition-colors line-clamp-1">
-                      {r.name}
-                    </h4>
-                    <div className="flex items-center justify-between gap-1 text-[8.5px] text-slate-500 mt-1 overflow-hidden">
-                      <div className="flex items-center gap-0.5 min-w-0 flex-1 truncate">
-                        <MapPin className="w-2.5 h-2.5 text-slate-400 shrink-0" />
-                        <span className="truncate">{r.localityName ?? r.cityName}</span>
-                      </div>
-                      {r.distanceKm != null && (
-                        <span className="inline-flex items-center gap-0.5 text-[8px] font-extrabold text-purple-700 bg-purple-50 border border-purple-200/80 px-1 py-0.5 rounded shrink-0">
-                          {r.distanceKm < 1 ? `${Math.round(r.distanceKm * 1000)} m` : `${r.distanceKm.toFixed(1)} km`}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              ))}
+            <div className="space-y-1 max-w-md mx-auto">
+              <h3 className="text-base font-bold text-slate-900">No listings found in this specific filter</h3>
+              <p className="text-xs text-slate-500">
+                Try clearing the subcategory filter to view all verified healthcare listings in {title}.
+              </p>
             </div>
+            <button
+              onClick={() => selectSubcategory(null)}
+              className="px-4 py-2 bg-purple-600 text-white text-xs font-bold rounded-xl shadow-xs hover:bg-purple-700 transition-colors"
+            >
+              Show All {title}
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Subcategories Explorer Card Grid (At bottom) */}
+      {category.subcategories.length > 0 && (
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8 pt-4">
+          <div className="bg-white rounded-2xl border border-slate-200/90 p-4 sm:p-6 space-y-4 shadow-2xs">
+            <div>
+              <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Explore Healthcare Subcategories & Specializations
+              </h3>
+              <p className="text-xs text-slate-500 font-medium">
+                Browse departments and specialized medical services in {title}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
+              {category.subcategories.map((sc) => {
+                const isActive = activeSubcategory === sc.slug;
+                return (
+                  <button
+                    key={sc.id}
+                    onClick={() => selectSubcategory(sc.slug)}
+                    className={`flex items-center justify-between p-3 rounded-xl border text-left transition-all cursor-pointer group ${
+                      isActive
+                        ? "bg-purple-50 border-purple-300 shadow-2xs"
+                        : "bg-slate-50/70 border-slate-200/80 hover:bg-purple-50/50 hover:border-purple-200"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div className="w-7 h-7 rounded-lg bg-white text-purple-600 flex items-center justify-center shrink-0 border border-slate-200/80 group-hover:border-purple-200 shadow-2xs">
+                        <Store className="w-3.5 h-3.5 text-purple-600" />
+                      </div>
+                      <span className="text-xs font-extrabold text-slate-800 group-hover:text-purple-600 transition-colors truncate">
+                        {sc.name}
+                      </span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-purple-600 shrink-0" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CategoryBusinessCard({ b }: { b: BusinessSummary }) {
+  return (
+    <Link
+      href={`/business/${b.slug}`}
+      className="group bg-white rounded-xl border border-slate-200/80 shadow-2xs hover:shadow-md transition-all duration-300 overflow-hidden flex flex-col justify-between"
+    >
+      <div>
+        {/* Cover Photo */}
+        <div className="relative w-full h-24 sm:h-28 lg:h-32 bg-slate-100 overflow-hidden">
+          {b.coverImageUrl ? (
+            <Image
+              src={b.coverImageUrl}
+              alt={`${b.name} in ${b.cityName}`}
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
           ) : (
-            <p className="text-xs text-slate-500 font-medium">No businesses found in this category yet.</p>
+            <div className="w-full h-full flex items-center justify-center text-slate-300">
+              <Building2 className="w-6 h-6" />
+            </div>
+          )}
+
+          {/* Rating Badge */}
+          <div className="absolute bottom-1.5 left-1.5 bg-purple-600/90 backdrop-blur-md text-white text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-0.5 shadow-xs">
+            <Star className="w-2.5 h-2.5 fill-current text-white" />
+            <span>{b.avgRating.toFixed(1)}</span>
+          </div>
+
+          {/* Verified Badge */}
+          {b.isVerified && (
+            <div className="absolute top-1.5 left-1.5">
+              <VerifiedBadge size="xs" iconOnly />
+            </div>
           )}
         </div>
+
+        {/* Info */}
+        <div className="p-2.5 sm:p-3 space-y-1">
+          <span className="text-[9px] font-bold text-slate-400 block truncate">
+            {b.primaryCategoryName || "Healthcare Provider"}
+          </span>
+          <h3 className="font-extrabold text-xs sm:text-sm text-slate-900 group-hover:text-purple-600 transition-colors line-clamp-1 leading-snug">
+            {b.name}
+          </h3>
+          <div className="flex items-center gap-1 text-[10px] font-semibold text-slate-500 pt-0.5">
+            <MapPin className="w-3 h-3 text-purple-600 shrink-0" />
+            <span className="truncate">{[b.areaName || b.localityName, b.cityName].filter(Boolean).join(", ")}</span>
+          </div>
+        </div>
       </div>
-    </div>
+
+      {/* Footer link */}
+      <div className="p-2.5 sm:p-3 pt-0 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-purple-600 mt-2">
+        <span>View Details</span>
+        <ChevronRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+      </div>
+    </Link>
   );
 }
