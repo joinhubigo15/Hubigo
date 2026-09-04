@@ -140,7 +140,7 @@ export default function CategoryDetailsPage({
               {title}
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
-              Find verified {title.toLowerCase()} providers, clinics, diagnostic centers, and medical specialists across India. Compare ratings, addresses, and OPD hours.
+              Find {title.toLowerCase()} providers, clinics, diagnostic centers, and medical specialists across India. Compare ratings, addresses, and OPD hours.
             </p>
           </div>
 
@@ -207,10 +207,10 @@ export default function CategoryDetailsPage({
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-sm sm:text-base lg:text-lg font-black text-slate-900">
-              {activeSubcategoryObj ? activeSubcategoryObj.name : `Top Verified ${title}`}
+              {activeSubcategoryObj ? activeSubcategoryObj.name : `All ${title} Providers`}
             </h2>
             <p className="text-xs text-slate-500 font-medium">
-              Showing {businesses.length} verified listings in this category
+              Showing {businesses.length} healthcare listings in this category
             </p>
           </div>
 
@@ -244,7 +244,7 @@ export default function CategoryDetailsPage({
             <div className="space-y-1 max-w-md mx-auto">
               <h3 className="text-base font-bold text-slate-900">No listings found in this specific filter</h3>
               <p className="text-xs text-slate-500">
-                Try clearing the subcategory filter to view all verified healthcare listings in {title}.
+                Try clearing the subcategory filter to view all healthcare listings in {title}.
               </p>
             </div>
             <button

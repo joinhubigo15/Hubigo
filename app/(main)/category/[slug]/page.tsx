@@ -26,10 +26,10 @@ export async function generateMetadata({
   const isHealthcare = category.name.toLowerCase().includes("health") || category.name.toLowerCase().includes("medical") || category.name.toLowerCase().includes("doctor") || category.name.toLowerCase().includes("clinic") || category.name.toLowerCase().includes("lab") || category.name.toLowerCase().includes("hospital") || category.name.toLowerCase().includes("pharmacy");
 
   const title = isHealthcare
-    ? `Top ${category.name} in India | Verified Clinics & Doctors | Hubigo`
+    ? `Top ${category.name} in India | Clinics & Doctors | Hubigo`
     : `${category.name} in India | Hubigo`;
   const description = isHealthcare
-    ? `Find ${category.businessCount.toLocaleString("en-IN")} verified ${category.name} on Hubigo Healthcare. Compare ratings, addresses, phone numbers, and OPD hours.`
+    ? `Find ${category.businessCount.toLocaleString("en-IN")} ${category.name} on Hubigo Healthcare. Compare ratings, addresses, phone numbers, and OPD hours.`
     : `Find ${category.businessCount.toLocaleString("en-IN")} ${category.name} listed on Hubigo across India.`;
   const canonical = `/category/${slug}`;
   const keywords = generateHealthcareKeywords(category.name);
