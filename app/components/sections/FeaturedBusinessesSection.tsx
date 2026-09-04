@@ -152,6 +152,11 @@ function BusinessCard({
           <h3 className={cn("font-bold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight line-clamp-1", compact ? "text-[9px]" : "text-[11px] sm:text-xs")}>
             {b.name}
           </h3>
+          {b.description && (
+            <p className={cn("text-slate-500 line-clamp-1 leading-tight font-normal", compact ? "text-[7.5px]" : "text-[8.5px] sm:text-[9.5px]")}>
+              {b.description}
+            </p>
+          )}
           <div className={cn("flex items-center gap-0.5 text-slate-500", compact ? "text-[8px]" : "text-[9px] sm:text-[10px]")}>
             <MapPin className={cn("text-slate-400 shrink-0", compact ? "w-2 h-2" : "w-2.5 h-2.5")} />
             <span className="truncate">{[b.areaName ?? b.localityName, b.cityName].filter(Boolean).join(", ")}</span>

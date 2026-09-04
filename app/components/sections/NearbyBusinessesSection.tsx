@@ -127,6 +127,11 @@ function NearbyCard({ b }: { b: BusinessSummary }) {
           <h3 className="font-bold text-slate-900 group-hover:text-purple-600 transition-colors leading-tight line-clamp-1 text-[9px] lg:text-xs">
             {b.name}
           </h3>
+          {b.description && (
+            <p className="text-[8px] lg:text-[10px] text-slate-500 line-clamp-1 lg:line-clamp-2 leading-tight font-normal">
+              {b.description}
+            </p>
+          )}
           <div className={cn("flex items-center gap-0.5 text-slate-500 text-[10px] lg:text-[10px]")}>
             <MapPin className="text-slate-400 shrink-0 w-2 h-2 lg:w-3 lg:h-3" />
             <span className="truncate">{[b.areaName ?? b.localityName, b.cityName].filter(Boolean).join(", ")}</span>

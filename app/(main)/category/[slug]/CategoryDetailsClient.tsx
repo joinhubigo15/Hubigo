@@ -348,6 +348,11 @@ function CategoryBusinessCard({ b }: { b: BusinessSummary }) {
           <h3 className="font-extrabold text-xs sm:text-sm text-slate-900 group-hover:text-purple-600 transition-colors line-clamp-1 leading-snug">
             {b.name}
           </h3>
+          {b.description && (
+            <p className="text-[10px] text-slate-500 line-clamp-2 leading-relaxed font-normal pt-0.5">
+              {b.description}
+            </p>
+          )}
           <div className="flex items-center gap-1 text-[10px] font-semibold text-slate-500 pt-0.5">
             <MapPin className="w-3 h-3 text-purple-600 shrink-0" />
             <span className="truncate">{[b.areaName || b.localityName, b.cityName].filter(Boolean).join(", ")}</span>

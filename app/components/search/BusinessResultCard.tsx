@@ -144,10 +144,16 @@ export default function BusinessResultCard({ business, className }: BusinessResu
             )}
           </div>
 
-          <div className="flex items-center gap-1 flex-wrap text-[11px]">
+          <div className="flex items-center gap-1 text-[11px]">
             <Star className="w-3 h-3 fill-current text-amber-500" />
             <span className="font-bold text-slate-700">{business.avgRating.toFixed(1)}</span>
           </div>
+
+          {business.description && (
+            <p className="text-[10px] text-slate-500 line-clamp-1 leading-tight font-normal">
+              {business.description}
+            </p>
+          )}
 
           <div className="flex items-center gap-2 mt-0.5">
             {business.isOpenNow != null && (
@@ -229,6 +235,12 @@ export default function BusinessResultCard({ business, className }: BusinessResu
                 </span>
               )}
             </p>
+
+            {business.description && (
+              <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed font-normal pt-1">
+                {business.description}
+              </p>
+            )}
           </div>
 
           <div className="flex flex-wrap items-center gap-x-2 gap-y-1 pt-1.5 border-t border-slate-100 mt-2">
