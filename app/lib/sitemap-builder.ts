@@ -150,11 +150,23 @@ export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
   }));
 }
 
+const NON_HEALTHCARE_SLUG_EXCLUSIONS = [
+  "hotel", "restaurant", "resort", "cafe", "bakery", "saree", "textile", "jewell",
+  "electronics", "auto", "motors", "travels", "cabs", "real estate", "furniture",
+  "footwear", "tailor", "bar", "pub", "wine", "liquor", "supermarket", "grocery",
+  "hair-fixing", "hair-weaving", "wig", "karnataka", "narachi", "proposed-sub-centre"
+];
+
 export async function getBusinessChunkSitemapEntries(chunkIndex: number): Promise<SitemapUrlEntry[]> {
-  const businessSlugs = await getBusinessSitemapSlugs();
+  const allSlugs = await getBusinessSitemapSlugs();
+  const filtered = allSlugs.filter((b) => {
+    const s = b.slug.toLowerCase();
+    return !NON_HEALTHCARE_SLUG_EXCLUSIONS.some((kw) => s.includes(kw));
+  });
+
   const start = chunkIndex * CHUNK_SIZE;
   const end = start + CHUNK_SIZE;
-  const chunk = businessSlugs.slice(start, end);
+  const chunk = filtered.slice(start, end);
 
   return chunk.map((b) => ({
     url: `${SITE_URL}/business/${b.slug}`,
@@ -165,8 +177,13 @@ export async function getBusinessChunkSitemapEntries(chunkIndex: number): Promis
 }
 
 export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: string }[]> {
-  const businessSlugs = await getBusinessSitemapSlugs();
-  const totalBusinesses = businessSlugs.length;
+  const allSlugs = await getBusinessSitemapSlugs();
+  const filtered = allSlugs.filter((b) => {
+    const s = b.slug.toLowerCase();
+    return !NON_HEALTHCARE_SLUG_EXCLUSIONS.some((kw) => s.includes(kw));
+  });
+
+  const totalBusinesses = filtered.length;
   const businessChunksCount = Math.max(1, Math.ceil(totalBusinesses / CHUNK_SIZE));
   const nowISO = new Date().toISOString();
 
@@ -178,7 +195,7 @@ export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: 
 
   for (let i = 1; i <= businessChunksCount; i++) {
     const chunkStart = (i - 1) * CHUNK_SIZE;
-    const firstItemInChunk = businessSlugs[chunkStart];
+    const firstItemInChunk = filtered[chunkStart];
     const chunkLastMod = firstItemInChunk?.lastmod ?? nowISO;
     indexEntries.push({
       url: `${SITE_URL}/sitemap-businesses-${i}.xml`,

@@ -38,13 +38,52 @@ export interface PseoCandidate {
   lastmod: string | null;
 }
 
+const NON_HEALTHCARE_EXCLUSION_KEYWORDS = [
+  "hotel", "restaurant", "resort", "cafe", "bakery", "saree", "textile", "jewell",
+  "electronics", "auto", "motors", "travels", "cabs", "real estate", "furniture",
+  "footwear", "tailor", "bar", "pub", "wine", "liquor", "supermarket", "grocery",
+  "hair fixing", "hair weaving", "wig", "karnataka", "narachi", "proposed sub centre"
+];
+
 export async function getAllBusinessSlugsForSitemap() {
   const rows = await prisma.business.findMany({
-    where: { status: "approved", deletedAt: null },
-    select: { slug: true, updatedAt: true },
+    where: {
+      status: "approved",
+      deletedAt: null,
+      categories: {
+        some: {
+          category: {
+            OR: [
+              { slug: { in: ["hospitals", "diagnostic-labs", "doctors-clinics", "pharmacies", "dentists", "eye-care", "physiotherapy", "veterinary", "medical-equipment"] } },
+              { name: { contains: "Health", mode: "insensitive" } },
+              { name: { contains: "Medical", mode: "insensitive" } },
+              { name: { contains: "Hospital", mode: "insensitive" } },
+              { name: { contains: "Clinic", mode: "insensitive" } },
+              { name: { contains: "Doctor", mode: "insensitive" } },
+              { name: { contains: "Pharmacy", mode: "insensitive" } },
+              { name: { contains: "Lab", mode: "insensitive" } },
+              { name: { contains: "Dentist", mode: "insensitive" } },
+              { name: { contains: "Physio", mode: "insensitive" } },
+              { name: { contains: "Eye", mode: "insensitive" } },
+            ]
+          }
+        }
+      }
+    },
+    select: { name: true, slug: true, updatedAt: true },
     orderBy: { avgRating: "desc" },
   });
-  return rows.map((r) => ({
+
+  const filtered = rows.filter((r) => {
+    const lowerName = r.name.toLowerCase();
+    const lowerSlug = r.slug.toLowerCase();
+    const isExcluded = NON_HEALTHCARE_EXCLUSION_KEYWORDS.some(
+      (kw) => lowerName.includes(kw) || lowerSlug.includes(kw)
+    );
+    return !isExcluded;
+  });
+
+  return filtered.map((r) => ({
     slug: r.slug,
     lastmod: r.updatedAt ? r.updatedAt.toISOString() : null,
   }));
