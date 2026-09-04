@@ -34,6 +34,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      { source: "/sitemap.xml", destination: "/sitemap-index" },
+      { source: "/sitemap-static.xml", destination: "/sitemap-static" },
+      { source: "/sitemap-categories.xml", destination: "/sitemap-categories" },
+      { source: "/sitemap-pseo.xml", destination: "/sitemap-pseo" },
+      { source: "/sitemap-businesses-:id.xml", destination: "/sitemap-businesses/:id" },
+    ];
+  },
 };
 
 // Without SENTRY_AUTH_TOKEN (an org-level CI/build credential, separate from the DSN — not set up
