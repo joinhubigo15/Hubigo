@@ -5,7 +5,7 @@ import { jwtVerify } from "jose";
 const COOKIE_NAME = "hubigo_admin_session";
 const PUBLIC_ADMIN_ROUTES = new Set(["/admin/login", "/admin/forgot-password", "/admin/reset-password"]);
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
 
   // www.findhubigo.com canonical redirect
