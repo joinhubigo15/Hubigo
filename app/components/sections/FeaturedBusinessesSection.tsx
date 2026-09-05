@@ -19,8 +19,8 @@ export default function FeaturedBusinessesSection({
   const [favorites, setFavorites] = useState<string[]>([]);
 
   useEffect(() => {
-    // page.tsx (server) already fetched and picked these — skip the redundant client fetch.
-    if (initialBusinesses) return;
+    // page.tsx (server) already fetched and picked these — skip the redundant client fetch if non-empty.
+    if (initialBusinesses && initialBusinesses.length > 0) return;
 
     let cancelled = false;
 
