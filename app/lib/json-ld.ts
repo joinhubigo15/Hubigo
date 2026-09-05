@@ -31,6 +31,25 @@ export function generateHealthcareKeywords(
   const areaSuffix = areaName ? `${areaName} ${cityName}` : cityName;
   const sLower = sub.toLowerCase();
 
+  const domainKeywords: string[] = [];
+  if (sLower.includes("dent")) {
+    domainKeywords.push("root canal treatment", "dental implants", "clear aligners", "teeth whitening", "orthodontic braces", "pediatric dentistry");
+  } else if (sLower.includes("eye") || sLower.includes("ophthalm") || sLower.includes("cataract")) {
+    domainKeywords.push("cataract surgery", "lasik vision correction", "glaucoma treatment", "retina care", "eye checkup");
+  } else if (sLower.includes("child") || sLower.includes("pediatr")) {
+    domainKeywords.push("child vaccination", "pediatric OPD", "newborn care", "infant specialist", "child growth tracking");
+  } else if (sLower.includes("lab") || sLower.includes("diagnost") || sLower.includes("patholog")) {
+    domainKeywords.push("blood test home collection", "full body health checkup", "digital x-ray", "ultrasound scan USG", "ECG test");
+  } else if (sLower.includes("hospital")) {
+    domainKeywords.push("24/7 emergency care", "ICU beds", "cashless TPA insurance", "operation theatre", "multispecialty OPD");
+  } else if (sLower.includes("skin") || sLower.includes("derma")) {
+    domainKeywords.push("acne scar treatment", "laser hair removal", "dermatology OPD", "chemical peels", "anti aging treatment");
+  } else if (sLower.includes("ortho")) {
+    domainKeywords.push("knee joint replacement", "arthritis care", "fracture treatment", "spine specialist", "physiotherapy");
+  } else if (sLower.includes("gynaec") || sLower.includes("women") || sLower.includes("maternity")) {
+    domainKeywords.push("pregnancy care", "normal C-section delivery", "PCOS PCOD treatment", "IVF consultation", "antenatal OPD");
+  }
+
   return Array.from(
     new Set([
       // Broad & High Intent Search Phrases
@@ -50,16 +69,18 @@ export function generateHealthcareKeywords(
       `consultation fee ${sLower} ${areaSuffix}`,
       `doctor appointment ${sLower} ${areaSuffix}`,
       `book appointment ${sLower} ${areaSuffix}`,
-      `blood test home collection ${areaSuffix}`,
-      `diagnostic testing ${areaSuffix}`,
-      `full body health checkup ${areaSuffix}`,
-      `nearest medical center ${areaSuffix}`,
       `verified ${sLower} ${areaSuffix}`,
+      `doctors list ${sLower} ${areaSuffix}`,
+      `cashless insurance ${sLower} ${areaSuffix}`,
       
+      ...domainKeywords.map(k => `${k} ${areaSuffix}`),
+      ...domainKeywords,
+
       // Platform Brand & Directory Intent
       "Hubigo Healthcare",
+      "findhubigo.com",
       "medical directory India",
-      "healthcare services Bangalore",
+      `healthcare services ${cityName}`,
     ])
   );
 }

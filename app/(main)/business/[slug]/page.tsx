@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { isNotFoundError } from "@/app/lib/api";
 import { getBusinessBySlug, type BusinessDetail } from "@/app/lib/search-api";
-import { buildBreadcrumbJsonLd, buildLocalBusinessJsonLd, buildFaqJsonLd } from "@/app/lib/json-ld";
+import { buildBreadcrumbJsonLd, buildLocalBusinessJsonLd, buildFaqJsonLd, generateHealthcareKeywords } from "@/app/lib/json-ld";
 import { deriveBusinessFaqs } from "@/app/lib/business-faqs";
 import JsonLd from "@/app/components/seo/JsonLd";
 import BusinessDetailClient from "./BusinessDetailClient";
@@ -50,13 +50,19 @@ export async function generateMetadata({
   });
   if (!business) notFound();
 
-  const title = `${business.name} in ${business.city.name}`;
+  const primaryCategory = business.categories.find((c) => c.isPrimary)?.category.name || business.categories?.[0]?.category.name || "Healthcare";
+  const localityName = business.locality?.name || "";
+  const locationClause = localityName ? `${localityName}, ${business.city.name}` : business.city.name;
+
+  const title = `${business.name} | ${primaryCategory} in ${locationClause} | Contact & OPD Hours | Hubigo`;
   const description = buildDescription(business);
   const canonical = `/business/${slug}`;
+  const keywords = generateHealthcareKeywords(primaryCategory, undefined, business.city.name, business.locality?.name);
 
   return {
     title,
     description,
+    keywords,
     alternates: { canonical },
     openGraph: {
       title,

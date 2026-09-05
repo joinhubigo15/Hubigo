@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { searchBusinesses, getCategories, getArea, type CategoryOption } from "@/app/lib/search-api";
 import { isNotFoundError } from "@/app/lib/api";
-import { buildBreadcrumbJsonLd } from "@/app/lib/json-ld";
+import { buildBreadcrumbJsonLd, generateHealthcareKeywords } from "@/app/lib/json-ld";
 import JsonLd from "@/app/components/seo/JsonLd";
 import PseoBusinessGrid from "@/app/components/pseo/PseoBusinessGrid";
 import { evaluatePseoGate, pseoRobotsMeta, PSEO_DISPLAY_LIMIT, PSEO_MAX_EXPOSED } from "@/app/lib/pseo-thresholds";
@@ -52,15 +52,17 @@ export async function generateMetadata({
     notFound();
   }
 
-  const title = `Top ${categoryName} in ${area.name}, ${area.cityName}`;
-  const description = `Discover the top-rated ${categoryName} in ${area.name}, ${area.cityName} — ${result.total.toLocaleString("en-IN")} businesses ranked by rating and reviews on Hubigo.`;
+  const title = `Top ${categoryName} in ${area.name}, ${area.cityName} | OPD Hours & Phone | Hubigo`;
+  const description = `Discover top-rated ${categoryName} in ${area.name}, ${area.cityName} — ${result.total.toLocaleString("en-IN")} listings with ratings, contact numbers, addresses, and OPD timings on Hubigo.`;
   // Self-canonical, nested under the city segment — this is distinct, substantive content
   // (gated by the pSEO exist floor), not a duplicate of /category/{slug}/{citySlug}.
   const canonical = `/category/${slug}/${citySlug}/${areaSlug}`;
+  const keywords = generateHealthcareKeywords(categoryName, undefined, area.cityName, area.name);
 
   return {
     title,
     description,
+    keywords,
     alternates: { canonical },
     robots: pseoRobotsMeta(gate.indexable),
     openGraph: { title, description, url: canonical, type: "website" },
