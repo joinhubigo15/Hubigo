@@ -1,6 +1,6 @@
 import type { BusinessDetail } from "@/app/lib/search-api";
 
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://findhubigo.com";
 
 export interface BreadcrumbItem {
   name: string;

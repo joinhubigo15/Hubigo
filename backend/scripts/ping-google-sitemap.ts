@@ -47,24 +47,33 @@ async function submitSitemapToSearchEngines() {
 
   console.log(`⚡ Requesting instant indexing for ${mainUrls.length} pages & sitemaps on ${domain}...`);
 
-  // IndexNow API Submission
-  try {
-    const indexNowPayload = {
-      host: domain,
-      key: "findhubigo-healthcare-sitemap-key",
-      keyLocation: `${baseUrl}/findhubigo-healthcare-sitemap-key.txt`,
-      urlList: mainUrls,
-    };
+  const apiKey = "c74e8b9a1f2d3c4e5f6a7b8c9d0e1f2a";
+  const keyLocation = `${baseUrl}/${apiKey}.txt`;
 
-    const res = await fetch("https://api.indexnow.org/indexnow", {
-      method: "POST",
-      headers: { "Content-Type": "application/json; charset=utf-8" },
-      body: JSON.stringify(indexNowPayload),
-    });
+  const indexNowPayload = {
+    host: domain,
+    key: apiKey,
+    keyLocation: keyLocation,
+    urlList: mainUrls,
+  };
 
-    console.log(`✅ IndexNow Instant Indexing Response (${domain}): ${res.status} ${res.statusText}`);
-  } catch (err: any) {
-    console.warn(`⚠️ IndexNow ping note:`, err.message);
+  const endpoints = [
+    "https://api.indexnow.org/indexnow",
+    "https://www.bing.com/indexnow",
+    "https://yandex.com/indexnow",
+  ];
+
+  for (const endpoint of endpoints) {
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: JSON.stringify(indexNowPayload),
+      });
+      console.log(`✅ IndexNow Endpoint (${endpoint}): HTTP ${res.status} ${res.statusText}`);
+    } catch (err: any) {
+      console.warn(`⚠️ IndexNow Endpoint (${endpoint}) note:`, err.message);
+    }
   }
 
   console.log(`\n🎉 INSTANT INDEXING REQUEST COMPLETED FOR FINDHUBIGO.COM!`);
