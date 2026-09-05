@@ -27,24 +27,86 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+import { prisma } from "@/app/lib/db";
+
+async function getPlatformStatsDirect(): Promise<PlatformStats> {
+  try {
+    const [totalBusinesses, totalCategories, totalCities, totalLocalities] = await Promise.all([
+      prisma.business.count({ where: { status: "approved", deletedAt: null } }),
+      prisma.category.count(),
+      prisma.city.count(),
+      prisma.locality.count(),
+    ]);
+    return {
+      businessCount: totalBusinesses || 27830,
+      userCount: 11,
+      cityCount: totalCities || 6,
+      reviewCount: 0,
+      categoryCount: totalCategories || 115,
+    };
+  } catch {
+    return {
+      businessCount: 27830,
+      userCount: 11,
+      cityCount: 6,
+      reviewCount: 0,
+      categoryCount: 115,
+    };
+  }
+}
+
+async function getFeaturedBusinessesDirect(limit = 40) {
+  try {
+    const items = await prisma.business.findMany({
+      where: { status: "approved", deletedAt: null },
+      take: limit,
+      include: {
+        city: true,
+        locality: true,
+        categories: { include: { category: true } },
+      },
+      orderBy: { avgRating: "desc" },
+    });
+
+    const formattedItems = items.map((b: any) => ({
+      id: b.id,
+      slug: b.slug,
+      name: b.name,
+      description: b.description,
+      coverImageUrl: b.coverImageUrl,
+      planTier: b.planTier,
+      isVerified: b.isVerified,
+      isTrusted: b.isTrusted,
+      avgRating: Number(b.avgRating),
+      reviewCount: b.reviewCount,
+      priceRange: b.priceRange,
+      address: b.address,
+      citySlug: b.city?.slug ?? "",
+      cityName: b.city?.name ?? "",
+      localitySlug: b.locality?.slug ?? null,
+      localityName: b.locality?.name ?? null,
+      areaSlug: null,
+      areaName: null,
+      lat: b.lat != null ? Number(b.lat) : null,
+      lng: b.lng != null ? Number(b.lng) : null,
+      distanceKm: null,
+      primaryCategoryName: b.categories[0]?.category?.name ?? null,
+      primaryCategorySlug: b.categories[0]?.category?.slug ?? null,
+      isOpenNow: true,
+      hasActiveOffer: false,
+      score: 100,
+    }));
+
+    return { items: formattedItems, page: 1, limit, total: items.length, totalPages: 1 };
+  } catch {
+    return { items: [], page: 1, limit, total: 0, totalPages: 0 };
+  }
+}
+
 export default async function HomePage() {
   const [statsResult, featuredResult] = await Promise.all([
-    request<PlatformStats>("/api/v2/stats").catch(() => ({
-      totalListings: 27830,
-      totalCategories: 115,
-      totalCities: 6,
-      totalLocalities: 17,
-      totalPincodes: 183,
-      totalReviews: 0,
-    })),
-    searchBusinesses({ sort: "rating", limit: 40 }).catch(() => ({
-      items: [],
-      page: 1,
-      limit: 40,
-      total: 0,
-      totalPages: 0,
-      hasVerifiedMatches: false,
-    })),
+    getPlatformStatsDirect(),
+    getFeaturedBusinessesDirect(40),
   ]);
   const initialStats = statsResult;
   const initialBusinesses = pickDistinctCategories(featuredResult.items, FEATURED_COUNT);
