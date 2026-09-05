@@ -2,7 +2,7 @@ import { getCategories, getCities, getPseoSitemapCandidates, getBusinessSitemapS
 import { evaluatePseoGate } from "@/app/lib/pseo-thresholds";
 import { SITE_URL } from "@/app/lib/json-ld";
 
-export const CHUNK_SIZE = 5000;
+export const CHUNK_SIZE = 2500;
 
 export interface SitemapUrlEntry {
   url: string;
