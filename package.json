@@ -7,6 +7,7 @@
     "dev:frontend": "next dev",
     "dev:backend": "npm --prefix backend run dev",
     "build": "next build",
+    "postinstall": "prisma generate --schema=backend/prisma/schema.prisma",
     "start": "next start",
     "lint": "eslint",
     "test:e2e": "playwright test",
@@ -15,7 +16,7 @@
     "test:e2e:report": "playwright show-report"
   },
   "dependencies": {
-    "@prisma/client": "^7.10.0",
+    "@prisma/client": "^6.3.0",
     "@sentry/nextjs": "^10.70.0",
     "@supabase/ssr": "^0.12.6",
     "@supabase/supabase-js": "^2.115.0",
@@ -34,7 +35,7 @@
     "concurrently": "^9.2.4",
     "eslint": "^9",
     "eslint-config-next": "16.2.12",
-    "prisma": "^8.0.0-rc.13",
+    "prisma": "^6.3.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
