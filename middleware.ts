@@ -8,19 +8,7 @@ const PUBLIC_ADMIN_ROUTES = new Set(["/admin/login", "/admin/forgot-password", "
 export async function middleware(request: NextRequest) {
   const { pathname, hostname } = request.nextUrl;
 
- // Block any request starting with /api/v1/ that uses the 'node' user agent
-  const userAgent = request.headers.get("user-agent") || "";
-  const isNodeAgent = userAgent.toLowerCase().includes("node");
-
-  if (pathname.startsWith('/api/v1') && isNodeAgent) {
-    return new NextResponse('Forbidden', { status: 403 });
-  }
-
-  // Block requests to /api/v1/ that don't include Cloudflare headers
-  if (pathname.startsWith('/api/v1') && !request.headers.get('cf-connecting-ip')) {
-    return new NextResponse('Forbidden', { status: 403 });
-  }
-  // www.findhubigo.com now serves the app directly (Railway custom domain + cert), but the
+  // www.findhubigo.com canonical redirect
   // canonical host everywhere else (SITE_URL, sitemap, JSON-LD) is the bare apex — redirect here
   // so Google never sees the same content under two hostnames.
   if (hostname === "www.findhubigo.com") {

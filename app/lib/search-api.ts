@@ -173,7 +173,7 @@ export interface CategoryOption {
 }
 
 export function getCategories() {
-  return request<CategoryOption[]>("/api/v1/categories");
+  return request<CategoryOption[]>("/api/v1/categories").catch(() => []);
 }
 
 export interface CityOption {
@@ -190,7 +190,7 @@ export interface CityOption {
 }
 
 export function getCities() {
-  return request<CityOption[]>("/api/v1/cities");
+  return request<CityOption[]>("/api/v1/cities").catch(() => []);
 }
 
 export interface LocalityOption {
@@ -202,7 +202,7 @@ export interface LocalityOption {
 }
 
 export function getLocalities(citySlug: string) {
-  return request<LocalityOption[]>(`/api/v1/cities/${citySlug}/localities`);
+  return request<LocalityOption[]>(`/api/v1/cities/${citySlug}/localities`).catch(() => []);
 }
 
 export interface AreaOption {
@@ -213,7 +213,7 @@ export interface AreaOption {
 }
 
 export function getArea(citySlug: string, areaSlug: string) {
-  return request<AreaOption>(`/api/v1/cities/${citySlug}/areas/${areaSlug}`);
+  return request<AreaOption>(`/api/v1/cities/${citySlug}/areas/${areaSlug}`).catch(() => null as any);
 }
 
 export interface PseoSitemapCandidate {
@@ -227,7 +227,7 @@ export interface PseoSitemapCandidate {
  * see CANDIDATE_FLOOR in pseo.service.ts) — the sitemap builder still has to apply the real
  * MIN_INDEXABLE gate itself via evaluatePseoGate() before using these. */
 export function getPseoSitemapCandidates() {
-  return request<PseoSitemapCandidate[]>("/api/v1/pseo/sitemap-entries");
+  return request<PseoSitemapCandidate[]>("/api/v1/pseo/sitemap-entries").catch(() => []);
 }
 
 export interface AmenityOption {

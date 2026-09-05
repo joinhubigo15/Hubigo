@@ -5,7 +5,7 @@ import { PrismaClient, PlanTier, PriceRange } from "@prisma/client";
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 
-const connectionString = process.env.DATABASE_URL || "postgresql://postgres:yXJkwPJENxaoDmItvsqmtdNcmvQKpSQn@altaria.proxy.rlwy.net:31400/railway?connection_limit=20&pool_timeout=30";
+const connectionString = process.env.DATABASE_URL || "postgresql://postgres:Hubigo%400001@db.qqprflamdzviyteqnzht.supabase.co:5432/postgres";
 const prisma = new PrismaClient({ datasources: { db: { url: connectionString } } });
 
 interface CleanMasterRecord {
