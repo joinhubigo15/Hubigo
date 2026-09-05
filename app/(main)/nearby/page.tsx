@@ -97,7 +97,7 @@ function NearbyPageContent() {
   const [categories, setCategories] = useState<CategoryChip[]>([]);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/v1/categories`)
+    fetch(`${API_URL}/api/v2/categories`)
       .then((res) => (res.ok ? res.json() : Promise.reject(new Error("Failed to load categories"))))
       .then((data) => {
         const list: { name: string; slug: string; icon: string | null }[] = Array.isArray(data?.data) ? data.data : [];
@@ -136,7 +136,7 @@ function NearbyPageContent() {
       if (offersOnly) params.set("offers", "true");
       if (minRating) params.set("minRating", minRating.toString());
 
-      const res = await fetch(`${API_URL}/api/v1/nearby?${params.toString()}`);
+      const res = await fetch(`${API_URL}/api/v2/nearby?${params.toString()}`);
       if (!res.ok) {
         throw new Error("Failed to load nearby listings.");
       }

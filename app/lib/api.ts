@@ -1,15 +1,13 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
 
-// Server-side (SSR/build-time) requests go over Railway's private network when available,
-// bypassing Cloudflare entirely — the build's rapid-fire static-generation requests were getting
-// flagged and blocked by Cloudflare's edge protections even with Bot Fight Mode off, since some
-// other layer (e.g. API abuse detection) was still catching that traffic pattern. A browser can
-// never reach this address, so client-side requests always use the public API_URL regardless.
 function resolveBaseUrl(): string {
-  if (typeof window === "undefined" && process.env.INTERNAL_API_URL) {
-    return process.env.INTERNAL_API_URL;
+  if (typeof window === "undefined") {
+    if (process.env.INTERNAL_API_URL) return process.env.INTERNAL_API_URL;
+    if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+    if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+    return "http://localhost:3000";
   }
-  return API_URL;
+  return process.env.NEXT_PUBLIC_API_URL || "";
 }
 
 export type Role = "user" | "business_owner" | "admin" | "super_admin";

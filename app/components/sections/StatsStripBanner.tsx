@@ -28,7 +28,7 @@ export default function StatsStripBanner({
   useEffect(() => {
     // page.tsx (server) already fetched this — skip the redundant client fetch.
     if (initialStats !== undefined) return;
-    request<PlatformStats>("/api/v1/stats")
+    request<PlatformStats>("/api/v2/stats")
       .then(setStats)
       .catch(() => setStats(null));
     // eslint-disable-next-line react-hooks/exhaustive-deps -- initialStats is only read once, to decide whether to skip this effect entirely
