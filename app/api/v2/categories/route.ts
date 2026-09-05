@@ -12,7 +12,7 @@ export async function GET() {
     });
     return NextResponse.json({ success: true, data: categories });
   } catch (error: any) {
-    console.error("Error in GET /api/v1/categories:", error);
+    console.error("Error in GET /api/v2/categories:", error);
     return NextResponse.json({ success: false, message: error.message || "Failed to fetch categories" }, { status: 500 });
   }
 }

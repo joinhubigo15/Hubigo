@@ -13,7 +13,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://findhubigo.com";
+const SITE_URL = rawSiteUrl.startsWith("http") ? rawSiteUrl : `https://${rawSiteUrl}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

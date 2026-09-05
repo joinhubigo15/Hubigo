@@ -11,7 +11,7 @@ export async function GET() {
     });
     return NextResponse.json({ success: true, data: cities });
   } catch (error: any) {
-    console.error("Error in GET /api/v1/cities:", error);
+    console.error("Error in GET /api/v2/cities:", error);
     return NextResponse.json({ success: false, message: error.message || "Failed to fetch cities" }, { status: 500 });
   }
 }
