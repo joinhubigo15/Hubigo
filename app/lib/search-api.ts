@@ -104,7 +104,7 @@ function buildQueryString(filters: SearchFilters): string {
 
 export function searchBusinesses(filters: SearchFilters) {
   const qs = buildQueryString(filters);
-  return request<PaginatedResult<BusinessSummary>>(`/api/v1/search${qs ? `?${qs}` : ""}`);
+  return request<PaginatedResult<BusinessSummary>>(`/api/v2/search${qs ? `?${qs}` : ""}`);
 }
 
 export interface Suggestion {
@@ -117,11 +117,11 @@ export interface Suggestion {
 
 export function getSuggestions(q: string, limit = 8) {
   if (!q.trim()) return Promise.resolve<Suggestion[]>([]);
-  return request<Suggestion[]>(`/api/v1/search/suggestions?q=${encodeURIComponent(q)}&limit=${limit}`);
+  return request<Suggestion[]>(`/api/v2/search/suggestions?q=${encodeURIComponent(q)}&limit=${limit}`);
 }
 
 export function getPopularSearches(limit = 8) {
-  return request<string[]>(`/api/v1/search/popular?limit=${limit}`);
+  return request<string[]>(`/api/v2/search/popular?limit=${limit}`);
 }
 
 export interface BusinessSitemapSlug {
@@ -130,14 +130,14 @@ export interface BusinessSitemapSlug {
 }
 
 export function getBusinessSitemapSlugs() {
-  return request<BusinessSitemapSlug[]>("/api/v1/pseo/business-slugs").catch(() => []);
+  return request<BusinessSitemapSlug[]>("/api/v2/pseo/business-slugs").catch(() => []);
 }
 
 /** For a "top {category} in {location}" query, returns the matching pSEO page path (e.g.
  * "/category/hotels/bangalore/whitefield"), or null if the phrasing doesn't match or resolves to
  * no qualifying page — callers should fall back to a normal search in either case. */
 export function resolveTopSearch(q: string): Promise<string | null> {
-  return request<{ path: string | null }>(`/api/v1/pseo/resolve-search?q=${encodeURIComponent(q)}`).then((r) => r.path);
+  return request<{ path: string | null }>(`/api/v2/pseo/resolve-search?q=${encodeURIComponent(q)}`).then((r) => r.path);
 }
 
 // Cheap client-side pre-check so the resolve-search API call only ever fires for text that could
@@ -173,7 +173,7 @@ export interface CategoryOption {
 }
 
 export function getCategories() {
-  return request<CategoryOption[]>("/api/v1/categories").catch(() => []);
+  return request<CategoryOption[]>("/api/v2/categories").catch(() => []);
 }
 
 export interface CityOption {
@@ -190,7 +190,7 @@ export interface CityOption {
 }
 
 export function getCities() {
-  return request<CityOption[]>("/api/v1/cities").catch(() => []);
+  return request<CityOption[]>("/api/v2/cities").catch(() => []);
 }
 
 export interface LocalityOption {
@@ -202,7 +202,7 @@ export interface LocalityOption {
 }
 
 export function getLocalities(citySlug: string) {
-  return request<LocalityOption[]>(`/api/v1/cities/${citySlug}/localities`).catch(() => []);
+  return request<LocalityOption[]>(`/api/v2/cities/${citySlug}/localities`).catch(() => []);
 }
 
 export interface AreaOption {
@@ -213,7 +213,7 @@ export interface AreaOption {
 }
 
 export function getArea(citySlug: string, areaSlug: string) {
-  return request<AreaOption>(`/api/v1/cities/${citySlug}/areas/${areaSlug}`).catch(() => null as any);
+  return request<AreaOption>(`/api/v2/cities/${citySlug}/areas/${areaSlug}`).catch(() => null as any);
 }
 
 export interface PseoSitemapCandidate {
@@ -227,7 +227,7 @@ export interface PseoSitemapCandidate {
  * see CANDIDATE_FLOOR in pseo.service.ts) — the sitemap builder still has to apply the real
  * MIN_INDEXABLE gate itself via evaluatePseoGate() before using these. */
 export function getPseoSitemapCandidates() {
-  return request<PseoSitemapCandidate[]>("/api/v1/pseo/sitemap-entries").catch(() => []);
+  return request<PseoSitemapCandidate[]>("/api/v2/pseo/sitemap-entries").catch(() => []);
 }
 
 export interface AmenityOption {
@@ -238,7 +238,7 @@ export interface AmenityOption {
 }
 
 export function getAmenities() {
-  return request<AmenityOption[]>("/api/v1/amenities");
+  return request<AmenityOption[]>("/api/v2/amenities");
 }
 
 export interface CompareBusiness {
@@ -274,7 +274,7 @@ export function compareBusinesses(slugs: string[], lat?: number, lng?: number) {
   const params = new URLSearchParams({ slugs: slugs.join(",") });
   if (lat != null) params.set("lat", String(lat));
   if (lng != null) params.set("lng", String(lng));
-  return request<CompareBusiness[]>(`/api/v1/businesses/compare?${params.toString()}`);
+  return request<CompareBusiness[]>(`/api/v2/businesses/compare?${params.toString()}`);
 }
 
 export interface ResolvedAddress {
@@ -287,7 +287,7 @@ export interface ResolvedAddress {
 /** Resolves free text or a pincode to real coordinates using our own City/Locality data only —
  * throws ApiClientError (404) if the location isn't in a currently-supported city. */
 export function geocodeLocalAddress(q: string) {
-  return request<ResolvedAddress>(`/api/v1/cities/geocode?q=${encodeURIComponent(q)}`);
+  return request<ResolvedAddress>(`/api/v2/cities/geocode?q=${encodeURIComponent(q)}`);
 }
 
 export function compareNearby(input: { subcategory?: string; category?: string; lat: number; lng: number; limit?: number }) {
@@ -295,7 +295,7 @@ export function compareNearby(input: { subcategory?: string; category?: string; 
   if (input.subcategory) params.set("subcategory", input.subcategory);
   if (input.category) params.set("category", input.category);
   if (input.limit != null) params.set("limit", String(input.limit));
-  return request<CompareBusiness[]>(`/api/v1/businesses/compare/nearby?${params.toString()}`);
+  return request<CompareBusiness[]>(`/api/v2/businesses/compare/nearby?${params.toString()}`);
 }
 
 export interface BusinessDetailCategory {
@@ -407,12 +407,12 @@ export interface BusinessDetail {
 }
 
 export function getBusinessBySlug(slug: string, accessToken?: string) {
-  return request<BusinessDetail>(`/api/v1/businesses/${slug}`, accessToken ? { accessToken } : {});
+  return request<BusinessDetail>(`/api/v2/businesses/${slug}`, accessToken ? { accessToken } : {});
 }
 
 /** Publishes immediately — there is no admin moderation queue for customer-submitted reviews. */
 export function postBusinessReview(businessId: string, rating: number, comment: string, accessToken: string) {
-  return request<BusinessDetailReview>(`/api/v1/businesses/${businessId}/reviews`, {
+  return request<BusinessDetailReview>(`/api/v2/businesses/${businessId}/reviews`, {
     method: "POST",
     body: JSON.stringify({ rating, comment }),
     accessToken,
@@ -422,7 +422,7 @@ export function postBusinessReview(businessId: string, rating: number, comment: 
 /** Fire-and-forget: lets the backend attribute a Call/WhatsApp click to the logged-in visitor
  * for competitor-lead routing. Anonymous visitors can call this too — it just no-ops server-side. */
 export function trackBusinessInteraction(slug: string, type: "CALL" | "WHATSAPP", accessToken?: string) {
-  return request<null>(`/api/v1/businesses/${slug}/interactions`, {
+  return request<null>(`/api/v2/businesses/${slug}/interactions`, {
     method: "POST",
     body: JSON.stringify({ type }),
     accessToken,

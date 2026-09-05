@@ -63,7 +63,7 @@ export default async function CategoryDetailsPage({
   if (!category) notFound();
 
   const [platformStats, featuredResult] = await Promise.all([
-    request<PlatformStats>("/api/v1/stats").catch(() => null),
+    request<PlatformStats>("/api/v2/stats").catch(() => null),
     searchBusinesses({ category: slug, sort: "rating", limit: 24 }).catch(() => null),
   ]);
 

@@ -33,7 +33,7 @@ export default async function HomePage() {
   // that for an hour. Letting it propagate means a failed revalidation just keeps serving the last
   // good render instead.
   const [statsResult, featuredResult] = await Promise.all([
-    request<PlatformStats>("/api/v1/stats"),
+    request<PlatformStats>("/api/v2/stats"),
     searchBusinesses({ sort: "rating", limit: 40 }),
   ]);
   const initialStats = statsResult;
