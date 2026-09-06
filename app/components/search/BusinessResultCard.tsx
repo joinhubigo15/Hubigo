@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Star, MapPin, Heart, Crown, Tag, Phone } from "lucide-react";
-import { cn } from "@/app/lib/utils";
+import { cn, resolveImageUrl } from "@/app/lib/utils";
 import { useAuth, ApiClientError } from "@/app/lib/auth-context";
 import { saveBusinessRequest, removeSavedBusinessRequest, getSavedBusinessesRequest } from "@/app/lib/api";
 import { formatDisplayArea, type BusinessSummary } from "@/app/lib/search-api";
@@ -99,9 +99,9 @@ export default function BusinessResultCard({ business, className }: BusinessResu
       <div className="flex lg:hidden items-center gap-3 p-3">
         {/* Thumbnail (100% Full Clean Image, no overlay cuts) */}
         <div className="relative w-20 h-20 shrink-0 overflow-hidden bg-slate-100 rounded-lg">
-          {business.coverImageUrl ? (
+          {resolveImageUrl(business.coverImageUrl) ? (
             <Image
-              src={business.coverImageUrl}
+              src={resolveImageUrl(business.coverImageUrl)!}
               alt={`${business.name} in ${business.cityName}`}
               fill
               sizes="80px"
@@ -182,9 +182,9 @@ export default function BusinessResultCard({ business, className }: BusinessResu
       <div className="hidden lg:flex">
         {/* Image (100% Full Clean Image, no overlay cuts) */}
         <div className="relative w-28 sm:w-40 shrink-0 overflow-hidden bg-slate-100">
-          {business.coverImageUrl ? (
+          {resolveImageUrl(business.coverImageUrl) ? (
             <Image
-              src={business.coverImageUrl}
+              src={resolveImageUrl(business.coverImageUrl)!}
               alt={`${business.name} in ${business.cityName}`}
               fill
               sizes="(min-width: 1024px) 160px, 112px"

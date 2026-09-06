@@ -63,3 +63,17 @@ export function getInitials(name: string): string {
     .join("")
     .toUpperCase();
 }
+
+/**
+ * Resolve relative image key or URL to a full R2 CDN URL.
+ */
+const R2_BUSINESS_BUCKET_URL = "https://pub-7ff0fd1aef1643d39fabab82a94d5d66.r2.dev";
+
+export function resolveImageUrl(url?: string | null): string | null {
+  if (!url) return null;
+  if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("/")) {
+    return url;
+  }
+  return `${R2_BUSINESS_BUCKET_URL}/${url}`;
+}
+

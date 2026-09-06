@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/app/lib/db";
+import { resolveImageUrl } from "@/app/lib/utils";
 
 export async function GET(req: NextRequest) {
   try {
@@ -56,7 +57,7 @@ export async function GET(req: NextRequest) {
       slug: b.slug,
       name: b.name,
       description: b.description,
-      coverImageUrl: b.coverImageUrl,
+      coverImageUrl: resolveImageUrl(b.coverImageUrl),
       planTier: b.planTier,
       isVerified: b.isVerified,
       isTrusted: b.isTrusted,

@@ -28,14 +28,14 @@ export const metadata: Metadata = {
 };
 
 import { prisma } from "@/app/lib/db";
+import { resolveImageUrl } from "@/app/lib/utils";
 
 async function getPlatformStatsDirect(): Promise<PlatformStats> {
   try {
-    const [totalBusinesses, totalCategories, totalCities, totalLocalities] = await Promise.all([
+    const [totalBusinesses, totalCategories, totalCities] = await Promise.all([
       prisma.business.count({ where: { status: "approved", deletedAt: null } }),
       prisma.category.count(),
       prisma.city.count(),
-      prisma.locality.count(),
     ]);
     return {
       businessCount: totalBusinesses || 27830,
@@ -55,7 +55,7 @@ async function getPlatformStatsDirect(): Promise<PlatformStats> {
   }
 }
 
-async function getFeaturedBusinessesDirect(limit = 40) {
+async function getFeaturedBusinessesDirect(limit = 12) {
   try {
     const items = await prisma.business.findMany({
       where: { status: "approved", deletedAt: null },
@@ -73,7 +73,7 @@ async function getFeaturedBusinessesDirect(limit = 40) {
       slug: b.slug,
       name: b.name,
       description: b.description,
-      coverImageUrl: b.coverImageUrl,
+      coverImageUrl: resolveImageUrl(b.coverImageUrl),
       planTier: b.planTier,
       isVerified: b.isVerified,
       isTrusted: b.isTrusted,

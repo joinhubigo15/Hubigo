@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Star, MapPin, ArrowRight, Building2 } from "lucide-react";
-import { cn } from "@/app/lib/utils";
+import { cn, resolveImageUrl } from "@/app/lib/utils";
 import { searchBusinesses, type BusinessSummary } from "@/app/lib/search-api";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
 
@@ -92,9 +92,9 @@ function NearbyCard({ b }: { b: BusinessSummary }) {
     >
       {/* Image */}
       <div className="relative w-full overflow-hidden bg-slate-100 h-16 sm:h-20 lg:h-30">
-        {b.coverImageUrl ? (
+        {resolveImageUrl(b.coverImageUrl) ? (
           <Image
-            src={b.coverImageUrl}
+            src={resolveImageUrl(b.coverImageUrl)!}
             alt={`${b.name} in ${b.cityName}`}
             fill
             sizes="33vw"

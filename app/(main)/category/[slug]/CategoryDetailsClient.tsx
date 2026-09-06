@@ -22,6 +22,7 @@ import {
   Pill,
 } from "lucide-react";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
+import { resolveImageUrl } from "@/app/lib/utils";
 import {
   searchBusinesses,
   type CategoryOption,
@@ -312,9 +313,9 @@ function CategoryBusinessCard({ b }: { b: BusinessSummary }) {
       <div>
         {/* Cover Photo */}
         <div className="relative w-full h-24 sm:h-28 lg:h-32 bg-slate-100 overflow-hidden">
-          {b.coverImageUrl ? (
+          {resolveImageUrl(b.coverImageUrl) ? (
             <Image
-              src={b.coverImageUrl}
+              src={resolveImageUrl(b.coverImageUrl)!}
               alt={`${b.name} in ${b.cityName}`}
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"

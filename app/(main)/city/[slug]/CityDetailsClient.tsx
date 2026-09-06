@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Star, MapPin, ArrowRight, Store, Building2 } from "lucide-react";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
 import CategoryStrip from "@/app/components/sections/CategoryStrip";
+import { cn, resolveImageUrl } from "@/app/lib/utils";
 import {
   searchBusinesses,
   type CityOption,
@@ -139,9 +140,9 @@ export default function CityDetailsPage({
               >
                 {/* Image */}
                 <div className="relative h-18 lg:h-28 w-full overflow-hidden bg-slate-100">
-                  {b.coverImageUrl ? (
+                  {resolveImageUrl(b.coverImageUrl) ? (
                     <Image
-                      src={b.coverImageUrl}
+                      src={resolveImageUrl(b.coverImageUrl)!}
                       alt={`${b.name} in ${b.cityName}`}
                       fill
                       sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"

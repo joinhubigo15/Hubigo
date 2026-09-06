@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Star, MapPin, Heart, ArrowRight, Store } from "lucide-react";
-import { cn } from "@/app/lib/utils";
+import { cn, resolveImageUrl } from "@/app/lib/utils";
 import { searchBusinesses, type BusinessSummary } from "@/app/lib/search-api";
 import { FEATURED_COUNT, pickDistinctCategories } from "@/app/lib/featured-businesses";
 import VerifiedBadge from "@/app/components/ui/VerifiedBadge";
@@ -112,9 +112,9 @@ function BusinessCard({
     >
       {/* Image */}
       <div className={cn("relative w-full overflow-hidden bg-slate-100", compact ? "h-12 sm:h-14" : "h-16 sm:h-18 lg:h-20")}>
-        {b.coverImageUrl ? (
+        {resolveImageUrl(b.coverImageUrl) ? (
           <Image
-            src={b.coverImageUrl}
+            src={resolveImageUrl(b.coverImageUrl)!}
             alt={`${b.name} in ${b.cityName}`}
             fill
             sizes="(min-width: 1024px) 200px, 33vw"
