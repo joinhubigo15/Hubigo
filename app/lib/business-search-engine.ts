@@ -28,6 +28,24 @@ const KEYWORD_ALIASES: Record<string, string[]> = {
   doctor: ["doctor", "physician", "consultant", "specialist"],
 };
 
+const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
+  "hospitals": ["hospital", "nursing home", "medical center", "healthcare"],
+  "dental-clinics": ["dental", "dentist", "teeth", "orthodontic"],
+  "eye-clinics": ["eye", "ophthalm", "optician", "vision", "cataract"],
+  "diagnostic-labs": ["lab", "diagnostic", "pathology", "blood test", "scan", "ultrasound", "x-ray", "mri"],
+  "physiotherapy": ["physio", "rehab", "physical therapy", "posture", "spine"],
+  "pharmacies": ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  "home-healthcare": ["home care", "nursing", "home health", "elder care"],
+  "ayurvedic": ["ayurved", "homeopath", "unani", "naturopath", "panchakarma"],
+  "emergency-services": ["emergency", "ambulance", "24/7", "trauma", "icu"],
+  "dermatology": ["dermatol", "skin", "cosmetol", "laser", "hair"],
+  "pediatrics": ["pediatr", "child", "baby", "kid"],
+  "gynecology": ["gynaec", "gynec", "maternity", "obstetric", "women", "fertility", "ivf"],
+  "cardiology": ["cardiol", "heart"],
+  "orthopedics": ["orthoped", "bone", "joint"],
+  "neurology": ["neurol", "brain"],
+};
+
 export function calculateDistanceKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
   const R = 6371;
   const dLat = (lat2 - lat1) * (Math.PI / 180);
@@ -100,14 +118,20 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   }
 
   if (filters.city) {
-    where.city = { slug: filters.city };
+    andConditions.push({
+      OR: [
+        { city: { slug: filters.city } },
+        { address: { contains: filters.city.replace(/-/g, " "), mode: "insensitive" } },
+      ],
+    });
   }
 
   if (filters.locality) {
+    const cleanLoc = filters.locality.replace(/-/g, " ");
     andConditions.push({
       OR: [
         { locality: { slug: filters.locality } },
-        { address: { contains: filters.locality.replace(/-/g, " "), mode: "insensitive" } },
+        { address: { contains: cleanLoc, mode: "insensitive" } },
       ],
     });
   }
@@ -121,22 +145,18 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     });
   }
 
-  if (filters.category) {
-    where.categories = {
-      some: {
-        category: {
-          OR: [{ slug: filters.category }, { parent: { slug: filters.category } }],
-        },
-      },
-    };
-  }
-
-  if (filters.subcategory) {
-    where.categories = {
-      some: {
-        category: { slug: filters.subcategory },
-      },
-    };
+  const categorySlug = filters.subcategory || filters.category;
+  if (categorySlug) {
+    const terms = CATEGORY_SEARCH_MAP[categorySlug] || [categorySlug.replace(/-/g, " ")];
+    andConditions.push({
+      OR: [
+        { categories: { some: { category: { OR: [{ slug: categorySlug }, { parent: { slug: categorySlug } }] } } } },
+        ...terms.flatMap((term) => [
+          { name: { contains: term, mode: "insensitive" } },
+          { description: { contains: term, mode: "insensitive" } },
+        ]),
+      ],
+    });
   }
 
   if (filters.verified) {
