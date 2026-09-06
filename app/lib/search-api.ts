@@ -122,11 +122,18 @@ export interface Suggestion {
 
 export function getSuggestions(q: string, limit = 8) {
   if (!q.trim()) return Promise.resolve<Suggestion[]>([]);
-  return request<Suggestion[]>(`/api/v2/search/suggestions?q=${encodeURIComponent(q)}&limit=${limit}`);
+  return request<Suggestion[]>(`/api/v2/search/suggestions?q=${encodeURIComponent(q)}&limit=${limit}`).catch(() => []);
 }
 
 export function getPopularSearches(limit = 8) {
-  return request<string[]>(`/api/v2/search/popular?limit=${limit}`);
+  return request<string[]>(`/api/v2/search/popular?limit=${limit}`).catch(() => [
+    "Hospitals in Bangalore",
+    "Dentists in Bangalore",
+    "Diagnostic Labs",
+    "Pharmacies 24/7",
+    "Physiotherapy Clinics",
+    "Eye Clinics",
+  ]);
 }
 
 export interface BusinessSitemapSlug {
@@ -142,7 +149,9 @@ export function getBusinessSitemapSlugs() {
  * "/category/hotels/bangalore/whitefield"), or null if the phrasing doesn't match or resolves to
  * no qualifying page — callers should fall back to a normal search in either case. */
 export function resolveTopSearch(q: string): Promise<string | null> {
-  return request<{ path: string | null }>(`/api/v2/pseo/resolve-search?q=${encodeURIComponent(q)}`).then((r) => r.path);
+  return request<{ path: string | null }>(`/api/v2/pseo/resolve-search?q=${encodeURIComponent(q)}`)
+    .then((r) => r?.path ?? null)
+    .catch(() => null);
 }
 
 // Cheap client-side pre-check so the resolve-search API call only ever fires for text that could
@@ -161,7 +170,7 @@ export async function resolveTopSearchOrFallback(rawQuery: string): Promise<{ pa
   const fallback = trimmed.replace(/^(?:top|best)\s+/i, "");
   if (!TOP_X_IN_Y_PATTERN.test(trimmed)) return { path: null, fallback };
   try {
-    const path = await resolveTopSearch(trimmed);
+    const path = await resolveTopSearch(trimmed).catch(() => null);
     return path ? { path, fallback: null } : { path: null, fallback };
   } catch {
     return { path: null, fallback };

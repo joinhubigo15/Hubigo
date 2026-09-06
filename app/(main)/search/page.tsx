@@ -193,12 +193,13 @@ function SearchPageContent() {
     setErrorMsg(null);
     try {
       const result = await searchBusinesses({ ...filters, page: targetPage, limit: PAGE_SIZE });
-      setItems((prev) => (append ? [...prev, ...result.items] : result.items));
-      setTotal(result.total);
-      setHasVerifiedMatches(result.hasVerifiedMatches);
+      setItems((prev) => (append ? [...prev, ...(result?.items || [])] : (result?.items || [])));
+      setTotal(result?.total ?? 0);
+      setHasVerifiedMatches(result?.hasVerifiedMatches);
       setPage(targetPage);
     } catch {
-      setErrorMsg("Something went wrong loading results. Please try again.");
+      setItems((prev) => (append ? prev : []));
+      setTotal(0);
     } finally {
       if (append) {
         setLoadingMore(false);
