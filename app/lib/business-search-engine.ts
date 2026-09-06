@@ -34,10 +34,39 @@ const AREA_ALIASES: Record<string, string> = {
   brookefield: "Brookefield",
   doddaballapura: "Doddaballapura",
   hoskote: "Hoskote",
+  domlur: "Domlur",
+  "old airport road": "Old Airport Road",
+};
+
+const COMPOUND_KEYWORDS: Record<string, string[]> = {
+  "medical store": ["pharmacy", "chemist", "medical store", "drugstore", "medicine", "medicals"],
+  "medical shop": ["pharmacy", "chemist", "medical store", "drugstore", "medicine", "medicals"],
+  "medical center": ["medical center", "clinic", "hospital", "medical centre", "medicals"],
+  "medical centre": ["medical center", "clinic", "hospital", "medical centre", "medicals"],
+  "skin hospital": ["skin", "dermatol", "cosmetol", "derma"],
+  "skin clinic": ["skin", "dermatol", "cosmetol", "derma"],
+  "skin doctor": ["skin", "dermatol", "cosmetol", "derma"],
+  "dental clinic": ["dentist", "dental", "dentistry", "teeth", "orthodontic"],
+  "dental hospital": ["dentist", "dental", "dentistry", "teeth"],
+  "eye clinic": ["eye", "ophthalm", "optician", "vision", "cataract"],
+  "eye hospital": ["eye", "ophthalm", "optician", "vision", "cataract"],
+  "eye doctor": ["eye", "ophthalm", "optician", "vision"],
+  "diagnostic center": ["lab", "laboratory", "diagnostic", "pathology", "scan", "ultrasound", "mri", "blood test"],
+  "diagnostic lab": ["lab", "laboratory", "diagnostic", "pathology", "scan", "blood test"],
+  "child doctor": ["child", "pediatric", "paediatric", "baby", "infant"],
+  "pediatric clinic": ["child", "pediatric", "paediatric", "baby"],
+  "orthopedic hospital": ["ortho", "orthoped", "orthopaed", "bone", "joint"],
+  "physiotherapy center": ["physio", "rehab", "physical therapy", "physiotherapy"],
 };
 
 const KEYWORD_STEMS: Record<string, string[]> = {
-  skin: ["skin", "dermatol", "cosmetol"],
+  medical: ["medical", "pharmacy", "chemist", "medical store", "medicine", "medicals"],
+  medicals: ["medical", "pharmacy", "chemist", "medical store", "medicine", "medicals"],
+  pharmacy: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  pharmacies: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  chemist: ["chemist", "pharmacy", "medical store", "drugstore", "medicine"],
+  chemists: ["chemist", "pharmacy", "medical store", "drugstore", "medicine"],
+  skin: ["skin", "dermatol", "cosmetol", "derma"],
   dermatologist: ["dermatol", "skin", "cosmetol"],
   dermatology: ["dermatol", "skin", "cosmetol"],
   hospital: ["hospital", "hospitals", "nursing home", "clinic", "center"],
@@ -46,15 +75,19 @@ const KEYWORD_STEMS: Record<string, string[]> = {
   clinics: ["clinic", "clinics", "center", "centre"],
   dentist: ["dentist", "dental", "dentistry", "teeth"],
   dentists: ["dentist", "dental", "dentistry", "teeth"],
-  pharmacy: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
-  pharmacies: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  dental: ["dentist", "dental", "dentistry", "teeth"],
   lab: ["lab", "laboratory", "diagnostic", "pathology", "blood test", "scan"],
   labs: ["lab", "laboratory", "diagnostic", "pathology", "blood test", "scan"],
+  diagnostic: ["lab", "laboratory", "diagnostic", "pathology", "blood test", "scan"],
   doctor: ["doctor", "physician", "consultant", "specialist"],
   doctors: ["doctor", "physician", "consultant", "specialist"],
   eye: ["eye", "ophthalm", "optician", "vision"],
   physio: ["physio", "rehab", "physical therapy"],
   physiotherapy: ["physio", "rehab", "physical therapy"],
+  orthopedic: ["ortho", "orthoped", "orthopaed", "bone", "joint"],
+  orthopaedics: ["ortho", "orthoped", "orthopaed", "bone", "joint"],
+  pediatric: ["child", "pediatric", "paediatric", "baby"],
+  pediatrician: ["child", "pediatric", "paediatric", "baby"],
 };
 
 const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
@@ -81,13 +114,22 @@ export function calculateDistanceKm(lat1: number, lon1: number, lat2: number, lo
 }
 
 function parseTokenizedQuery(q: string) {
-  const words = q.trim().toLowerCase().split(/\s+/);
+  const lowerQ = q.trim().toLowerCase();
+  const words = lowerQ.split(/\s+/);
   let locationTerm: string | null = null;
-  const keywordWords: string[] = [];
+  const stems: string[] = [];
 
+  // 1. Check multi-word compound terms first
+  for (const [compound, compStems] of Object.entries(COMPOUND_KEYWORDS)) {
+    if (lowerQ.includes(compound)) {
+      stems.push(...compStems);
+    }
+  }
+
+  // 2. Tokenize words for locations and individual stems
   for (let i = 0; i < words.length; i++) {
     const word = words[i];
-    if (word === "in" || word === "near" || word === "at" || word === "around" || word === "of" || word === "for") continue;
+    if (["in", "near", "at", "around", "of", "for", "store", "shop"].includes(word)) continue;
 
     if (i < words.length - 1) {
       const twoWords = `${words[i]} ${words[i + 1]}`;
@@ -100,12 +142,16 @@ function parseTokenizedQuery(q: string) {
 
     if (AREA_ALIASES[word]) {
       locationTerm = AREA_ALIASES[word];
-    } else {
-      keywordWords.push(word);
+    } else if (KEYWORD_STEMS[word] && stems.length === 0) {
+      stems.push(...KEYWORD_STEMS[word]);
     }
   }
 
-  return { locationTerm, keywordWords };
+  if (stems.length === 0) {
+    stems.push(...words.filter((w) => !["in", "near", "at", "around", "of", "for"].includes(w)));
+  }
+
+  return { locationTerm, stems };
 }
 
 export async function executeSearch(filters: SearchFilters): Promise<PaginatedResult<BusinessSummary>> {
@@ -119,23 +165,24 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   };
 
   const andConditions: any[] = [];
+  let parsedLocation: string | null = null;
+  let parsedStems: string[] = [];
 
   // Intelligent tokenized free-text query parsing
   if (filters.q && filters.q.trim()) {
-    const { locationTerm, keywordWords } = parseTokenizedQuery(filters.q);
+    const { locationTerm, stems } = parseTokenizedQuery(filters.q);
+    parsedLocation = locationTerm;
+    parsedStems = stems;
 
-    for (const kw of keywordWords) {
-      const terms = KEYWORD_STEMS[kw] || [kw];
+    if (stems.length > 0) {
       andConditions.push({
-        OR: [
-          ...terms.flatMap((term) => [
-            { name: { contains: term, mode: "insensitive" } },
-            { description: { contains: term, mode: "insensitive" } },
-            { address: { contains: term, mode: "insensitive" } },
-            { categories: { some: { category: { name: { contains: term, mode: "insensitive" } } } } },
-            { categories: { some: { category: { slug: { contains: term, mode: "insensitive" } } } } },
-          ]),
-        ],
+        OR: stems.flatMap((term) => [
+          { name: { contains: term, mode: "insensitive" } },
+          { description: { contains: term, mode: "insensitive" } },
+          { address: { contains: term, mode: "insensitive" } },
+          { categories: { some: { category: { name: { contains: term, mode: "insensitive" } } } } },
+          { categories: { some: { category: { slug: { contains: term, mode: "insensitive" } } } } },
+        ]),
       });
     }
 
@@ -213,7 +260,11 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     where.AND = andConditions;
   }
 
-  // Determine sort order
+  // Fetch candidates (fetch up to 300 to perform relevance scoring if free-text search is active)
+  const isFreeTextSearch = Boolean(filters.q && filters.q.trim());
+  const fetchLimit = isFreeTextSearch ? 300 : limit;
+  const fetchSkip = isFreeTextSearch ? 0 : skip;
+
   let orderBy: any = { avgRating: "desc" };
   if (filters.sort === "rating") {
     orderBy = { avgRating: "desc" };
@@ -226,8 +277,8 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   const [items, total] = await Promise.all([
     prisma.business.findMany({
       where,
-      take: filters.sort === "distance" && filters.lat && filters.lng ? 100 : limit,
-      skip: filters.sort === "distance" && filters.lat && filters.lng ? 0 : skip,
+      take: fetchLimit,
+      skip: fetchSkip,
       include: {
         city: true,
         locality: true,
@@ -238,13 +289,43 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     prisma.business.count({ where }),
   ]);
 
-  let formattedItems: BusinessSummary[] = items.map((b: any) => {
+  const primaryStems = parsedStems.slice(0, 3);
+
+  let formattedItems: (BusinessSummary & { _relevanceScore?: number })[] = items.map((b: any) => {
     let distanceKm: number | null = null;
     const bLat = b.lat != null ? Number(b.lat) : null;
     const bLng = b.lng != null ? Number(b.lng) : null;
 
     if (filters.lat != null && filters.lng != null && bLat != null && bLng != null) {
       distanceKm = calculateDistanceKm(filters.lat, filters.lng, bLat, bLng);
+    }
+
+    let relevanceScore = 0;
+    const nameLower = (b.name || "").toLowerCase();
+    const descLower = (b.description || "").toLowerCase();
+    const primaryCat = (b.categories[0]?.category?.name || "").toLowerCase();
+    const primarySlug = (b.categories[0]?.category?.slug || "").toLowerCase();
+
+    if (isFreeTextSearch && parsedStems.length > 0) {
+      for (const pTerm of primaryStems) {
+        if (nameLower.includes(pTerm)) relevanceScore += 800;
+        if (primaryCat.includes(pTerm) || primarySlug.includes(pTerm)) relevanceScore += 400;
+      }
+
+      for (const term of parsedStems) {
+        if (nameLower.includes(term)) relevanceScore += 200;
+        if (primaryCat.includes(term) || primarySlug.includes(term)) relevanceScore += 100;
+        if (descLower.includes(term)) relevanceScore += 30;
+      }
+
+      if (parsedLocation) {
+        const locLower = parsedLocation.toLowerCase();
+        if ((b.locality?.name || "").toLowerCase().includes(locLower)) relevanceScore += 400;
+        else if ((b.address || "").toLowerCase().includes(locLower)) relevanceScore += 300;
+      }
+
+      relevanceScore += Number(b.avgRating || 0) * 5;
+      if (b.isVerified) relevanceScore += 10;
     }
 
     return {
@@ -274,11 +355,14 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
       isOpenNow: true,
       hasActiveOffer: false,
       score: 100,
+      _relevanceScore: relevanceScore,
     };
   });
 
-  // Sort by distance if distance sort requested and location coordinates available
-  if (filters.sort === "distance" && filters.lat != null && filters.lng != null) {
+  if (isFreeTextSearch && (!filters.sort || filters.sort === "rating")) {
+    formattedItems.sort((a, b) => (b._relevanceScore ?? 0) - (a._relevanceScore ?? 0));
+    formattedItems = formattedItems.slice(skip, skip + limit);
+  } else if (filters.sort === "distance" && filters.lat != null && filters.lng != null) {
     formattedItems.sort((a, b) => {
       if (a.distanceKm == null) return 1;
       if (b.distanceKm == null) return -1;
@@ -288,7 +372,7 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   }
 
   return {
-    items: formattedItems,
+    items: formattedItems.map(({ _relevanceScore, ...rest }) => rest),
     page,
     limit,
     total,
@@ -296,3 +380,4 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     hasVerifiedMatches: total > 0,
   };
 }
+
