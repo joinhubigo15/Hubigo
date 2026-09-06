@@ -42,13 +42,26 @@ const popularBrands = [
     ),
   },
   {
-    name: "SRL Diagnostics",
-    query: "SRL",
-    bgColor: "bg-purple-700",
-    borderColor: "border-purple-700",
+    name: "Narayana Health",
+    query: "Narayana",
+    bgColor: "bg-cyan-700",
+    borderColor: "border-cyan-700",
     logo: (
-      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[8px] sm:text-[10px] tracking-widest">
-        SRL
+      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center text-white font-black">
+        <span className="text-[7px] sm:text-[9px] tracking-tight leading-none">NARAYANA</span>
+        <span className="text-[5px] font-semibold uppercase tracking-widest leading-none mt-0.5">HEALTH</span>
+      </div>
+    ),
+  },
+  {
+    name: "Aster Hospitals",
+    query: "Aster",
+    bgColor: "bg-teal-600",
+    borderColor: "border-teal-600",
+    logo: (
+      <div aria-hidden="true" className="w-full h-full flex flex-col items-center justify-center p-0.5 text-center text-white font-black">
+        <span className="text-[8px] sm:text-[10px] tracking-wider leading-none">ASTER</span>
+        <span className="text-[5px] font-semibold uppercase tracking-widest leading-none mt-0.5">HOSPITALS</span>
       </div>
     ),
   },
@@ -60,17 +73,6 @@ const popularBrands = [
     logo: (
       <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-wider">
         CLOUD9
-      </div>
-    ),
-  },
-  {
-    name: "MedPlus Pharmacy",
-    query: "MedPlus",
-    bgColor: "bg-red-600",
-    borderColor: "border-red-600",
-    logo: (
-      <div aria-hidden="true" className="w-full h-full flex items-center justify-center text-white font-black text-[7px] sm:text-[9px] tracking-wider">
-        MEDPLUS
       </div>
     ),
   },

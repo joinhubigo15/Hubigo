@@ -138,11 +138,11 @@ export default async function HomePage() {
           {/* Popular Businesses Section (Brand Logos) */}
           <PopularBusinessesSection />
 
-          {/* Nearby Businesses Section (3 Cards, same style as Featured Businesses) */}
-          <NearbyBusinessesSection initialBusinesses={featuredResult.items.slice(4, 7)} />
+          {/* Nearby Businesses Section (3 Cards, distinct from Featured) */}
+          <NearbyBusinessesSection initialBusinesses={featuredResult.items.slice(3, 6)} />
 
           {/* Services Near You Section (5 Service Icons + 3 Live Cards) */}
-          <ServicesNearYouSection initialBusinesses={featuredResult.items.slice(7, 10)} />
+          <ServicesNearYouSection initialBusinesses={featuredResult.items.slice(6, 9)} />
 
           {/* "Are you a business owner?" CTA Banner */}
           <BusinessOwnerCTASection />

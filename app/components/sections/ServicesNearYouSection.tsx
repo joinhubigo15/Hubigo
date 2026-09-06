@@ -28,13 +28,14 @@ export default function ServicesNearYouSection({ initialBusinesses }: ServicesNe
   const [loading, setLoading] = useState(!initialBusinesses || initialBusinesses.length === 0);
 
   useEffect(() => {
+    if (initialBusinesses && initialBusinesses.length > 0) return;
     let cancelled = false;
 
     searchBusinesses({ sort: "rating", limit: 12 })
       .then((res: any) => {
         if (cancelled) return;
         if (res.items.length > 0) {
-          setBusinesses(res.items.slice(0, 3));
+          setBusinesses(res.items.slice(6, 9));
         }
       })
       .catch(() => {
@@ -47,7 +48,7 @@ export default function ServicesNearYouSection({ initialBusinesses }: ServicesNe
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [initialBusinesses]);
 
   return (
     <section className="px-2 sm:px-4 lg:px-6 mt-5 sm:mt-8 mb-2 shrink-0">

@@ -260,10 +260,13 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     where.AND = andConditions;
   }
 
-  // Fetch candidates (fetch up to 300 to perform relevance scoring if free-text search is active)
+  // Fetch candidates (fetch up to 300 to perform relevance scoring if free-text search or category filter is active)
   const isFreeTextSearch = Boolean(filters.q && filters.q.trim());
-  const fetchLimit = isFreeTextSearch ? 300 : limit;
-  const fetchSkip = isFreeTextSearch ? 0 : skip;
+  const isCategorySearch = Boolean(categorySlug);
+  const shouldPerformRelevanceScoring = isFreeTextSearch || isCategorySearch;
+
+  const fetchLimit = shouldPerformRelevanceScoring ? 300 : limit;
+  const fetchSkip = shouldPerformRelevanceScoring ? 0 : skip;
 
   let orderBy: any = { avgRating: "desc" };
   if (filters.sort === "rating") {
@@ -290,6 +293,9 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   ]);
 
   const primaryStems = parsedStems.slice(0, 3);
+  const categoryTerms = categorySlug
+    ? CATEGORY_SEARCH_MAP[categorySlug] || [categorySlug.replace(/-/g, " ")]
+    : [];
 
   let formattedItems: (BusinessSummary & { _relevanceScore?: number })[] = items.map((b: any) => {
     let distanceKm: number | null = null;
@@ -323,10 +329,18 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
         if ((b.locality?.name || "").toLowerCase().includes(locLower)) relevanceScore += 400;
         else if ((b.address || "").toLowerCase().includes(locLower)) relevanceScore += 300;
       }
-
-      relevanceScore += Number(b.avgRating || 0) * 5;
-      if (b.isVerified) relevanceScore += 10;
     }
+
+    if (isCategorySearch && categoryTerms.length > 0) {
+      for (const term of categoryTerms) {
+        if (nameLower.includes(term)) relevanceScore += 800;
+        if (primaryCat.includes(term) || primarySlug.includes(term)) relevanceScore += 500;
+        if (descLower.includes(term)) relevanceScore += 50;
+      }
+    }
+
+    relevanceScore += Number(b.avgRating || 0) * 5;
+    if (b.isVerified) relevanceScore += 10;
 
     return {
       id: b.id,
@@ -359,7 +373,7 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     };
   });
 
-  if (isFreeTextSearch && (!filters.sort || filters.sort === "rating")) {
+  if (shouldPerformRelevanceScoring && (!filters.sort || filters.sort === "rating")) {
     formattedItems.sort((a, b) => (b._relevanceScore ?? 0) - (a._relevanceScore ?? 0));
     formattedItems = formattedItems.slice(skip, skip + limit);
   } else if (filters.sort === "distance" && filters.lat != null && filters.lng != null) {

@@ -27,14 +27,14 @@ export default function NearbyBusinessesSection({ initialBusinesses }: NearbyBus
   const [loading, setLoading] = useState(!initialBusinesses || initialBusinesses.length === 0);
 
   useEffect(() => {
+    if (initialBusinesses && initialBusinesses.length > 0) return;
     let cancelled = false;
 
     searchBusinesses({ sort: "rating", limit: SAMPLE_POOL_SIZE })
       .then((result: any) => {
         if (cancelled) return;
         if (result.items.length > 0) {
-          const shuffled = [...result.items].sort(() => Math.random() - 0.5);
-          setBusinesses(shuffled.slice(0, NEARBY_COUNT));
+          setBusinesses(result.items.slice(3, 3 + NEARBY_COUNT));
         }
       })
       .catch(() => {
@@ -47,7 +47,7 @@ export default function NearbyBusinessesSection({ initialBusinesses }: NearbyBus
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [initialBusinesses]);
 
   if (!loading && businesses.length === 0) return null;
 
