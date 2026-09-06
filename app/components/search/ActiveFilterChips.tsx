@@ -39,11 +39,11 @@ export default function ActiveFilterChips({ filters, onChange }: ActiveFilterChi
     getCities().then(setCities).catch(() => { });
   }, []);
 
-  const categoryName = categories.find((c) => c.slug === filters.category)?.name;
-  const subcategoryName = categories
-    .flatMap((c) => c.subcategories)
-    .find((s) => s.slug === filters.subcategory)?.name;
-  const cityName = cities.find((c) => c.slug === filters.city)?.name;
+  const categoryName = (categories || []).find((c) => c && c.slug === filters.category)?.name;
+  const subcategoryName = (categories || [])
+    .flatMap((c) => c?.subcategories || [])
+    .find((s) => s && s.slug === filters.subcategory)?.name;
+  const cityName = (cities || []).find((c) => c && c.slug === filters.city)?.name;
 
   const chips: Chip[] = [];
 

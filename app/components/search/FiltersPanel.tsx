@@ -49,7 +49,7 @@ export default function FiltersPanel({ filters, onChange, onReset, hasVerifiedMa
     getLocalities(filters.city).then(setLocalities).catch(() => {});
   }, [filters.city]);
 
-  const selectedCategory = categories.find((c) => c.slug === filters.category);
+  const selectedCategory = (categories || []).find((c) => c && c.slug === filters.category);
   // Never disable a checkbox the user has already turned on — only gates newly enabling it.
   const verifiedDisabled = hasVerifiedMatches === false && !filters.verified;
 
@@ -73,7 +73,7 @@ export default function FiltersPanel({ filters, onChange, onReset, hasVerifiedMa
             className="w-full appearance-none px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-800 outline-none focus:border-purple-500 cursor-pointer pr-8"
           >
             <option value="">All Categories</option>
-            {categories.map((cat) => (
+            {(categories || []).filter((cat) => cat && cat.slug).map((cat) => (
               <option key={cat.slug} value={cat.slug}>
                 {cat.icon} {cat.name}
               </option>
@@ -83,10 +83,10 @@ export default function FiltersPanel({ filters, onChange, onReset, hasVerifiedMa
         </div>
       </Section>
 
-      {selectedCategory && selectedCategory.subcategories.length > 0 && (
+      {selectedCategory && (selectedCategory.subcategories || []).length > 0 && (
         <Section title="Subcategory">
           <div className="flex flex-wrap gap-1.5">
-            {selectedCategory.subcategories.map((sub) => (
+            {(selectedCategory.subcategories || []).filter((sub) => sub && sub.slug).map((sub) => (
               <button
                 key={sub.slug}
                 onClick={() =>
@@ -114,7 +114,7 @@ export default function FiltersPanel({ filters, onChange, onReset, hasVerifiedMa
             className="w-full appearance-none px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-800 outline-none focus:border-purple-500 cursor-pointer pr-8"
           >
             <option value="">All Cities</option>
-            {cities.map((city) => (
+            {(cities || []).filter((city) => city && city.slug).map((city) => (
               <option key={city.slug} value={city.slug}>
                 {city.name}
               </option>
@@ -123,15 +123,15 @@ export default function FiltersPanel({ filters, onChange, onReset, hasVerifiedMa
           <ChevronDown className="w-3.5 h-3.5 text-slate-400 absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none" />
         </div>
 
-        {displayLocalities.length > 0 && (
+        {filters.city && (displayLocalities || []).length > 0 && (
           <div className="relative mt-2">
             <select
               value={filters.locality ?? ""}
               onChange={(e) => onChange({ locality: e.target.value || undefined })}
               className="w-full appearance-none px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-medium text-slate-800 outline-none focus:border-purple-500 cursor-pointer pr-8"
             >
-              <option value="">All Areas</option>
-              {displayLocalities.map((loc) => (
+              <option value="">All Localities</option>
+              {(displayLocalities || []).filter((loc) => loc && loc.slug).map((loc) => (
                 <option key={loc.slug} value={loc.slug}>
                   {loc.name}
                 </option>

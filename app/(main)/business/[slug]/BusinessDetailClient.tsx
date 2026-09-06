@@ -450,11 +450,11 @@ export default function AdaptiveBusinessDetailsPage({
   const avatarImageUrl = business?.logoUrl ?? business?.media.find((m) => m.type === "badge")?.url ?? null;
 
   useEffect(() => {
-    if (!business) return;
+    if (!business || !business.city?.slug) return;
     const subcategorySlug = primaryCategory?.slug;
     if (!subcategorySlug) return;
     searchBusinesses({ subcategory: subcategorySlug, city: business.city.slug, limit: 4 })
-      .then((res: any) => setSimilarBusinesses(res.items.filter((b: any) => b.slug !== business.slug).slice(0, 3)))
+      .then((res: any) => setSimilarBusinesses((res?.items || []).filter((b: any) => b && b.slug && b.slug !== business.slug).slice(0, 3)))
       .catch(() => setSimilarBusinesses([]));
   }, [business, primaryCategory?.slug]);
 

@@ -214,11 +214,11 @@ const SearchInputBar = forwardRef<SearchInputBarHandle, SearchInputBarProps>(fun
               )}
             </>
           ) : displaySuggestions.length > 0 ? (
-            displaySuggestions.map((s, i) => {
-              const Icon = TYPE_ICON[s.type];
+            displaySuggestions.filter((s) => s && s.slug).map((s, i) => {
+              const Icon = TYPE_ICON[s.type] || Store;
               return (
                 <button
-                  key={`${s.type}-${s.slug}-${i}`}
+                  key={`${s.type || 's'}-${s.slug}-${i}`}
                   onClick={() => commit(s.label)}
                   className="w-full flex items-center gap-2.5 px-4 py-2 hover:bg-slate-50 text-left cursor-pointer"
                 >
