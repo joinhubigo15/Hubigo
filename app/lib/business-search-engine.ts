@@ -2,30 +2,59 @@ import { prisma } from "@/app/lib/db";
 import { resolveImageUrl } from "@/app/lib/utils";
 import type { BusinessSummary, PaginatedResult, SearchFilters } from "@/app/lib/search-api";
 
-const KNOWN_AREAS = [
-  "JP Nagar", "Indiranagar", "Whitefield", "HSR Layout", "Koramangala",
-  "Rajajinagar", "Jayanagar", "Hebbal", "Electronic City", "Banashankari",
-  "BTM Layout", "Marathahalli", "Yelahanka", "Malleshwaram", "Sarjapur",
-  "Bellandur", "Kammanahalli", "Brookefield", "Doddaballapura", "Hoskote",
-  "Banjara Hills", "Jubilee Hills", "Gachibowli", "Hitec City", "Madhapur",
-  "Kukatpally", "Secunderabad", "Kondapur", "Begumpet", "Ameerpet",
-  "T Nagar", "Anna Nagar", "Adyar", "Velachery", "Mylapore", "Nungambakkam",
-  "OMR", "Porur", "Vadapalani", "Tambaram"
-];
+const AREA_ALIASES: Record<string, string> = {
+  indranagar: "Indiranagar",
+  indiranagar: "Indiranagar",
+  jpnagar: "JP Nagar",
+  "jp nagar": "JP Nagar",
+  "j.p. nagar": "JP Nagar",
+  hsr: "HSR Layout",
+  "hsr layout": "HSR Layout",
+  btm: "BTM Layout",
+  "btm layout": "BTM Layout",
+  whitefield: "Whitefield",
+  "white field": "Whitefield",
+  koramangala: "Koramangala",
+  kormangala: "Koramangala",
+  marathahalli: "Marathahalli",
+  marathalli: "Marathahalli",
+  malleswaram: "Malleshwaram",
+  malleshwaram: "Malleshwaram",
+  rajajinagar: "Rajajinagar",
+  "rajaji nagar": "Rajajinagar",
+  jayanagar: "Jayanagar",
+  hebbal: "Hebbal",
+  "electronic city": "Electronic City",
+  "elec city": "Electronic City",
+  banashankari: "Banashankari",
+  yelahanka: "Yelahanka",
+  sarjapur: "Sarjapur",
+  bellandur: "Bellandur",
+  kammanahalli: "Kammanahalli",
+  brookefield: "Brookefield",
+  doddaballapura: "Doddaballapura",
+  hoskote: "Hoskote",
+};
 
-const KEYWORD_ALIASES: Record<string, string[]> = {
-  hospitals: ["hospital", "hospitals", "nursing home", "clinic"],
-  hospital: ["hospital", "hospitals", "nursing home"],
-  clinics: ["clinic", "clinics", "center", "centre"],
+const KEYWORD_STEMS: Record<string, string[]> = {
+  skin: ["skin", "dermatol", "cosmetol"],
+  dermatologist: ["dermatol", "skin", "cosmetol"],
+  dermatology: ["dermatol", "skin", "cosmetol"],
+  hospital: ["hospital", "hospitals", "nursing home", "clinic", "center"],
+  hospitals: ["hospital", "hospitals", "nursing home", "clinic", "center"],
   clinic: ["clinic", "clinics", "center", "centre"],
-  dentists: ["dentist", "dental", "dentistry", "teeth"],
+  clinics: ["clinic", "clinics", "center", "centre"],
   dentist: ["dentist", "dental", "dentistry", "teeth"],
-  pharmacies: ["pharmacy", "chemist", "medical store", "drugstore"],
-  pharmacy: ["pharmacy", "chemist", "medical store", "drugstore"],
-  labs: ["lab", "laboratory", "diagnostic", "pathology", "blood test"],
-  lab: ["lab", "laboratory", "diagnostic", "pathology", "blood test"],
-  doctors: ["doctor", "physician", "consultant", "specialist"],
+  dentists: ["dentist", "dental", "dentistry", "teeth"],
+  pharmacy: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  pharmacies: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  lab: ["lab", "laboratory", "diagnostic", "pathology", "blood test", "scan"],
+  labs: ["lab", "laboratory", "diagnostic", "pathology", "blood test", "scan"],
   doctor: ["doctor", "physician", "consultant", "specialist"],
+  doctors: ["doctor", "physician", "consultant", "specialist"],
+  eye: ["eye", "ophthalm", "optician", "vision"],
+  physio: ["physio", "rehab", "physical therapy"],
+  physiotherapy: ["physio", "rehab", "physical therapy"],
 };
 
 const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
@@ -38,12 +67,6 @@ const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
   "home-healthcare": ["home care", "nursing", "home health", "elder care"],
   "ayurvedic": ["ayurved", "homeopath", "unani", "naturopath", "panchakarma"],
   "emergency-services": ["emergency", "ambulance", "24/7", "trauma", "icu"],
-  "dermatology": ["dermatol", "skin", "cosmetol", "laser", "hair"],
-  "pediatrics": ["pediatr", "child", "baby", "kid"],
-  "gynecology": ["gynaec", "gynec", "maternity", "obstetric", "women", "fertility", "ivf"],
-  "cardiology": ["cardiol", "heart"],
-  "orthopedics": ["orthoped", "bone", "joint"],
-  "neurology": ["neurol", "brain"],
 };
 
 export function calculateDistanceKm(lat1: number, lon1: number, lat2: number, lon2: number): number {
@@ -57,20 +80,32 @@ export function calculateDistanceKm(lat1: number, lon1: number, lat2: number, lo
   return Math.round(R * c * 10) / 10;
 }
 
-function parseSearchQuery(q: string) {
+function parseTokenizedQuery(q: string) {
+  const words = q.trim().toLowerCase().split(/\s+/);
   let locationTerm: string | null = null;
-  let keywordTerm = q.trim();
+  const keywordWords: string[] = [];
 
-  for (const area of KNOWN_AREAS) {
-    const reg = new RegExp(`(?:in|near|at|around)?\\s*\\b${area}\\b`, "i");
-    if (reg.test(q)) {
-      locationTerm = area;
-      keywordTerm = q.replace(reg, "").trim();
-      break;
+  for (let i = 0; i < words.length; i++) {
+    const word = words[i];
+    if (word === "in" || word === "near" || word === "at" || word === "around" || word === "of" || word === "for") continue;
+
+    if (i < words.length - 1) {
+      const twoWords = `${words[i]} ${words[i + 1]}`;
+      if (AREA_ALIASES[twoWords]) {
+        locationTerm = AREA_ALIASES[twoWords];
+        i++;
+        continue;
+      }
+    }
+
+    if (AREA_ALIASES[word]) {
+      locationTerm = AREA_ALIASES[word];
+    } else {
+      keywordWords.push(word);
     }
   }
 
-  return { locationTerm, keywordTerm };
+  return { locationTerm, keywordWords };
 }
 
 export async function executeSearch(filters: SearchFilters): Promise<PaginatedResult<BusinessSummary>> {
@@ -85,17 +120,15 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
 
   const andConditions: any[] = [];
 
-  // Free-text query parsing
+  // Intelligent tokenized free-text query parsing
   if (filters.q && filters.q.trim()) {
-    const { locationTerm, keywordTerm } = parseSearchQuery(filters.q);
-    const searchKeyword = keywordTerm || filters.q.trim();
+    const { locationTerm, keywordWords } = parseTokenizedQuery(filters.q);
 
-    if (searchKeyword) {
-      const lower = searchKeyword.toLowerCase();
-      const aliases = KEYWORD_ALIASES[lower] || [searchKeyword];
+    for (const kw of keywordWords) {
+      const terms = KEYWORD_STEMS[kw] || [kw];
       andConditions.push({
         OR: [
-          ...aliases.flatMap((term) => [
+          ...terms.flatMap((term) => [
             { name: { contains: term, mode: "insensitive" } },
             { description: { contains: term, mode: "insensitive" } },
             { address: { contains: term, mode: "insensitive" } },
@@ -118,16 +151,17 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   }
 
   if (filters.city) {
+    const cleanCity = filters.city.replace(/-/g, " ");
     andConditions.push({
       OR: [
         { city: { slug: filters.city } },
-        { address: { contains: filters.city.replace(/-/g, " "), mode: "insensitive" } },
+        { address: { contains: cleanCity, mode: "insensitive" } },
       ],
     });
   }
 
   if (filters.locality) {
-    const cleanLoc = filters.locality.replace(/-/g, " ");
+    const cleanLoc = AREA_ALIASES[filters.locality.toLowerCase()] || filters.locality.replace(/-/g, " ");
     andConditions.push({
       OR: [
         { locality: { slug: filters.locality } },
