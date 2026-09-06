@@ -103,8 +103,8 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
     }));
 
   const categoryEntries: SitemapUrlEntry[] = categories
-    .filter((c) => isHealthcareItem(c.slug) || isHealthcareItem(c.name) || (c.businessCount ?? 0) > 0)
-    .flatMap((c) => {
+    .filter((c: any) => isHealthcareItem(c.slug) || isHealthcareItem(c.name) || (c.businessCount ?? 0) > 0)
+    .flatMap((c: any) => {
       const isCatHealthcare = isHealthcareItem(c.slug) || isHealthcareItem(c.name);
       const priority = isCatHealthcare ? 0.9 : 0.8;
 
@@ -115,7 +115,7 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
           changefreq: "daily" as const,
           priority: priority,
         },
-        ...c.subcategories.map((s) => {
+        ...c.subcategories.map((s: any) => {
           const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
           return {
             url: `${SITE_URL}/category/${s.slug}`,

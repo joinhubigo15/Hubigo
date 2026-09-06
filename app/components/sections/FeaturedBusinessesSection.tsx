@@ -31,7 +31,7 @@ export default function FeaturedBusinessesSection({
     // final outcome. Pool is wider than FEATURED_COUNT so pickDistinctCategories has real variety
     // to choose from.
     searchBusinesses({ sort: "rating", limit: 40 })
-      .then((res) => {
+      .then((res: any) => {
         if (!cancelled) setBusinesses(pickDistinctCategories(res.items, FEATURED_COUNT));
       })
       .catch(() => {

@@ -20,7 +20,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const categories = await getCategories();
-  const category = categories.find((c) => c.slug === slug) ?? null;
+  const category = categories.find((c: any) => c.slug === slug) ?? null;
   if (!category) notFound();
 
   const isHealthcare = category.name.toLowerCase().includes("health") || category.name.toLowerCase().includes("medical") || category.name.toLowerCase().includes("doctor") || category.name.toLowerCase().includes("clinic") || category.name.toLowerCase().includes("lab") || category.name.toLowerCase().includes("hospital") || category.name.toLowerCase().includes("pharmacy");
@@ -59,7 +59,7 @@ export default async function CategoryDetailsPage({
   // "no categories exist", which would otherwise 404 every category page and cache that for an
   // hour. Only "list loaded fine, slug just isn't in it" is a genuine not-found case.
   const categories = await getCategories();
-  const category = categories.find((c) => c.slug === slug) ?? null;
+  const category = categories.find((c: any) => c.slug === slug) ?? null;
   if (!category) notFound();
 
   const [platformStats, featuredResult] = await Promise.all([

@@ -31,7 +31,7 @@ export default function ServicesNearYouSection({ initialBusinesses }: ServicesNe
     let cancelled = false;
 
     searchBusinesses({ sort: "rating", limit: 12 })
-      .then((res) => {
+      .then((res: any) => {
         if (cancelled) return;
         if (res.items.length > 0) {
           setBusinesses(res.items.slice(0, 3));

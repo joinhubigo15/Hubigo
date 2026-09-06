@@ -454,7 +454,7 @@ export default function AdaptiveBusinessDetailsPage({
     const subcategorySlug = primaryCategory?.slug;
     if (!subcategorySlug) return;
     searchBusinesses({ subcategory: subcategorySlug, city: business.city.slug, limit: 4 })
-      .then((res) => setSimilarBusinesses(res.items.filter((b) => b.slug !== business.slug).slice(0, 3)))
+      .then((res: any) => setSimilarBusinesses(res.items.filter((b: any) => b.slug !== business.slug).slice(0, 3)))
       .catch(() => setSimilarBusinesses([]));
   }, [business, primaryCategory?.slug]);
 

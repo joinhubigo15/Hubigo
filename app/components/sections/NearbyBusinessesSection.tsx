@@ -30,7 +30,7 @@ export default function NearbyBusinessesSection({ initialBusinesses }: NearbyBus
     let cancelled = false;
 
     searchBusinesses({ sort: "rating", limit: SAMPLE_POOL_SIZE })
-      .then((result) => {
+      .then((result: any) => {
         if (cancelled) return;
         if (result.items.length > 0) {
           const shuffled = [...result.items].sort(() => Math.random() - 0.5);

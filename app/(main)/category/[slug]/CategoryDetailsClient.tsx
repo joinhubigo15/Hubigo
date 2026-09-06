@@ -76,7 +76,7 @@ export default function CategoryDetailsPage({
       sort: "rating",
       limit: 24,
     })
-      .then((res) => {
+      .then((res: any) => {
         setBusinesses(res.items);
       })
       .catch(() => {

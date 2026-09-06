@@ -49,7 +49,7 @@ export default function CityDetailsPage({
     setLoadingTop(true);
     setHeroImageExt("webp");
     searchBusinesses({ city: slug, sort: "rating", limit: TOP_BUSINESSES_LIMIT })
-      .then((res) => setTopBusinesses(res.items))
+      .then((res: any) => setTopBusinesses(res.items))
       .catch(() => setTopBusinesses([]))
       .finally(() => setLoadingTop(false));
   }, [slug]);

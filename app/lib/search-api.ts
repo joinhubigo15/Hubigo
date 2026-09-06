@@ -103,6 +103,11 @@ function buildQueryString(filters: SearchFilters): string {
 }
 
 export function searchBusinesses(filters: SearchFilters) {
+  if (typeof window === "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { searchBusinessesDirect } = require("./business-direct");
+    return searchBusinessesDirect(filters);
+  }
   const qs = buildQueryString(filters);
   return request<PaginatedResult<BusinessSummary>>(`/api/v2/search${qs ? `?${qs}` : ""}`);
 }
@@ -173,6 +178,11 @@ export interface CategoryOption {
 }
 
 export function getCategories() {
+  if (typeof window === "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { getCategoriesDirect } = require("./business-direct");
+    return getCategoriesDirect();
+  }
   return request<CategoryOption[]>("/api/v2/categories").catch(() => []);
 }
 
@@ -406,7 +416,18 @@ export interface BusinessDetail {
   externalPlaceId?: string;
 }
 
-export function getBusinessBySlug(slug: string, accessToken?: string) {
+export async function getBusinessBySlug(slug: string, accessToken?: string): Promise<BusinessDetail> {
+  if (typeof window === "undefined" && !accessToken) {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { getBusinessBySlugDirect } = require("./business-direct");
+    const business = await getBusinessBySlugDirect(slug);
+    if (!business) {
+      const err: any = new Error("Business not found");
+      err.status = 404;
+      throw err;
+    }
+    return business;
+  }
   return request<BusinessDetail>(`/api/v2/businesses/${slug}`, accessToken ? { accessToken } : {});
 }
 
