@@ -130,9 +130,9 @@ export async function request<T>(
     credentials: "include",
   });
 
-  const body = (await res.json().catch(() => null)) as ApiEnvelope<T> | null;
+  const body = (await res.json().catch(() => null)) as any;
 
-  if (!res.ok || !body || !body.success) {
+  if (!res.ok) {
     let message = body?.message ?? "Something went wrong. Please try again.";
     if (message === "Validation failed" && body?.error?.details && typeof body.error.details === "object") {
       const detailsObj = body.error.details as { fieldErrors?: Record<string, string[]> };
@@ -152,7 +152,25 @@ export async function request<T>(
     );
   }
 
-  return body.data;
+  if (!body) {
+    return null as T;
+  }
+
+  if (typeof body === "object" && body !== null) {
+    if (body.success === false) {
+      throw new ApiClientError(
+        res.status,
+        body.error?.code ?? "UNKNOWN_ERROR",
+        body.message ?? "Something went wrong. Please try again.",
+        body.error?.details
+      );
+    }
+    if (body.success === true && "data" in body) {
+      return body.data as T;
+    }
+  }
+
+  return body as T;
 }
 
 async function requestForm<T>(
@@ -168,9 +186,9 @@ async function requestForm<T>(
     credentials: "include",
   });
 
-  const body = (await res.json().catch(() => null)) as ApiEnvelope<T> | null;
+  const body = (await res.json().catch(() => null)) as any;
 
-  if (!res.ok || !body || !body.success) {
+  if (!res.ok) {
     throw new ApiClientError(
       res.status,
       body?.error?.code ?? "UNKNOWN_ERROR",
@@ -179,7 +197,25 @@ async function requestForm<T>(
     );
   }
 
-  return body.data;
+  if (!body) {
+    return null as T;
+  }
+
+  if (typeof body === "object" && body !== null) {
+    if (body.success === false) {
+      throw new ApiClientError(
+        res.status,
+        body.error?.code ?? "UNKNOWN_ERROR",
+        body.message ?? "Something went wrong. Please try again.",
+        body.error?.details
+      );
+    }
+    if (body.success === true && "data" in body) {
+      return body.data as T;
+    }
+  }
+
+  return body as T;
 }
 
 export interface AuthSession {
