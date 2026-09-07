@@ -2,6 +2,21 @@ import { prisma } from "@/app/lib/db";
 import { resolveImageUrl } from "@/app/lib/utils";
 import type { BusinessSummary, PaginatedResult, SearchFilters } from "@/app/lib/search-api";
 
+const CITY_ALIASES: Record<string, string[]> = {
+  bengaluru: ["bangalore", "bengaluru"],
+  bangalore: ["bangalore", "bengaluru"],
+  mumbai: ["mumbai", "bombay"],
+  bombay: ["mumbai", "bombay"],
+  delhi: ["delhi", "new delhi"],
+  "new delhi": ["delhi", "new delhi"],
+  chennai: ["chennai", "madras"],
+  madras: ["chennai", "madras"],
+  pune: ["pune", "poona"],
+  poona: ["pune", "poona"],
+  hyderabad: ["hyderabad", "secunderabad"],
+  secunderabad: ["hyderabad", "secunderabad"],
+};
+
 const AREA_ALIASES: Record<string, string> = {
   indranagar: "Indiranagar",
   indiranagar: "Indiranagar",
@@ -198,11 +213,15 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
   }
 
   if (filters.city) {
-    const cleanCity = filters.city.replace(/-/g, " ");
+    const rawCity = filters.city.toLowerCase().replace(/-/g, " ");
+    const cityTerms = CITY_ALIASES[rawCity] || [rawCity, filters.city];
     andConditions.push({
       OR: [
-        { city: { slug: filters.city } },
-        { address: { contains: cleanCity, mode: "insensitive" } },
+        { city: { slug: { in: cityTerms } } },
+        ...cityTerms.flatMap((term) => [
+          { address: { contains: term, mode: "insensitive" } },
+          { city: { name: { contains: term, mode: "insensitive" } } },
+        ]),
       ],
     });
   }

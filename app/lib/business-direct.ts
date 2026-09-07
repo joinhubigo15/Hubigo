@@ -1,6 +1,6 @@
 import { prisma } from "@/app/lib/db";
 import { resolveImageUrl } from "@/app/lib/utils";
-import type { BusinessDetail, CategoryOption, BusinessSummary, PaginatedResult, SearchFilters } from "@/app/lib/search-api";
+import type { BusinessDetail, CategoryOption, CityOption, BusinessSummary, PaginatedResult, SearchFilters } from "@/app/lib/search-api";
 
 export async function getBusinessBySlugDirect(slug: string): Promise<BusinessDetail | null> {
   try {
@@ -109,6 +109,31 @@ export async function getCategoriesDirect(): Promise<CategoryOption[]> {
     });
   } catch (err) {
     console.error("Error in getCategoriesDirect:", err);
+    return [];
+  }
+}
+
+export async function getCitiesDirect(): Promise<CityOption[]> {
+  try {
+    const cities: any[] = await prisma.city.findMany({
+      include: {
+        _count: { select: { businesses: true } },
+      },
+      orderBy: { name: "asc" },
+    });
+
+    return cities.map((c: any) => ({
+      id: c.id,
+      name: c.name,
+      slug: c.slug,
+      state: c.state || "Karnataka",
+      lat: c.lat != null ? Number(c.lat) : null,
+      lng: c.lng != null ? Number(c.lng) : null,
+      businessCount: c._count?.businesses || 0,
+      pincodeCount: 15,
+    }));
+  } catch (err) {
+    console.error("Error in getCitiesDirect:", err);
     return [];
   }
 }

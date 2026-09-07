@@ -209,6 +209,11 @@ export interface CityOption {
 }
 
 export function getCities() {
+  if (typeof window === "undefined") {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const { getCitiesDirect } = require("./business-direct");
+    return getCitiesDirect();
+  }
   return request<CityOption[]>("/api/v2/cities").catch(() => []);
 }
 

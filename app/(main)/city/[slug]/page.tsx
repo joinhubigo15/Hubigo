@@ -18,7 +18,7 @@ export async function generateMetadata({
   // No .catch() — the list itself failing to load must propagate rather than being treated as
   // "no cities exist", which would otherwise 404 every city page and cache that for an hour.
   const cities = await getCities();
-  const city = cities.find((c) => c.slug === slug) ?? null;
+  const city = cities.find((c: any) => c.slug === slug) ?? null;
   if (!city) notFound();
 
   const title = `${city.name} Business Directory`;
@@ -44,7 +44,7 @@ export default async function CityDetailsPage({
   // No .catch() — the list itself failing to load must propagate rather than being treated as
   // "no cities exist", which would otherwise 404 every city page and cache that for an hour.
   const cities = await getCities();
-  const city = cities.find((c) => c.slug === slug) ?? null;
+  const city = cities.find((c: any) => c.slug === slug) ?? null;
   if (!city) notFound();
 
   const topResult = await searchBusinesses({
