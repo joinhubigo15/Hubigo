@@ -139,36 +139,61 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
   }
 }
 
+const BANGALORE_AREA_SLUGS = [
+  "indiranagar",
+  "koramangala",
+  "hsr-layout",
+  "btm-layout",
+  "whitefield",
+  "marathahalli",
+  "malleshwaram",
+  "rajajinagar",
+  "jayanagar",
+  "hebbal",
+  "electronic-city",
+  "banashankari",
+  "yelahanka",
+  "sarjapur",
+  "bellandur",
+  "kammanahalli",
+  "brookefield",
+  "domlur",
+  "jp-nagar",
+];
+
 export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
   const nowISO = new Date().toISOString();
   try {
-    const [categories, cities, localities] = await Promise.all([
+    const [categories, activeCities] = await Promise.all([
       prisma.category.findMany({ select: { slug: true, name: true } }),
-      prisma.city.findMany({ select: { slug: true, name: true } }),
-      prisma.locality.findMany({ select: { slug: true, name: true, city: { select: { slug: true } } } }),
+      prisma.city.findMany({
+        where: { businesses: { some: { status: "approved", deletedAt: null } } },
+        select: { slug: true, name: true },
+      }),
     ]);
 
     const entries: SitemapUrlEntry[] = [];
     for (const cat of categories) {
       if (!isHealthcareItem(cat.slug) && !isHealthcareItem(cat.name)) continue;
 
-      for (const city of cities) {
+      for (const city of activeCities) {
         entries.push({
           url: `${SITE_URL}/category/${cat.slug}/${city.slug}`,
           lastmod: nowISO,
           changefreq: "weekly" as const,
-          priority: 0.6,
+          priority: 0.7,
         });
-      }
 
-      for (const loc of localities) {
-        if (!loc.city?.slug) continue;
-        entries.push({
-          url: `${SITE_URL}/category/${cat.slug}/${loc.city.slug}/${loc.slug}`,
-          lastmod: nowISO,
-          changefreq: "weekly" as const,
-          priority: 0.5,
-        });
+        if (city.slug === "bangalore" || city.slug === "bengaluru") {
+          for (const areaSlug of BANGALORE_AREA_SLUGS) {
+            entries.push({
+              url: `${SITE_URL}/category/${cat.slug}/bangalore/${areaSlug}`,
+              lastmod: nowISO,
+              changefreq: "weekly" as const,
+              priority: 0.6,
+            });
+          }
+        }
       }
     }
     return entries;
