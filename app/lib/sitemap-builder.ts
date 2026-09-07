@@ -1,5 +1,4 @@
-import { getCategories, getCities, getPseoSitemapCandidates, getBusinessSitemapSlugs } from "@/app/lib/search-api";
-import { evaluatePseoGate } from "@/app/lib/pseo-thresholds";
+import { prisma } from "@/app/lib/db";
 import { SITE_URL } from "@/app/lib/json-ld";
 
 export const CHUNK_SIZE = 2500;
@@ -90,64 +89,78 @@ function isHealthcareItem(nameOrSlug: string): boolean {
 }
 
 export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
-  const [cities, categories] = await Promise.all([getCities(), getCategories()]);
   const nowISO = new Date().toISOString();
 
-  const cityEntries: SitemapUrlEntry[] = cities
-    .filter((c) => (c.businessCount ?? 1) > 0)
-    .map((c) => ({
-      url: `${SITE_URL}/city/${c.slug}`,
-      lastmod: nowISO,
-      changefreq: "weekly" as const,
-      priority: 0.6,
-    }));
+  try {
+    const [cities, categories] = await Promise.all([
+      prisma.city.findMany({ select: { slug: true, _count: { select: { businesses: true } } } }).catch(() => []),
+      prisma.category.findMany({
+        include: { children: true, _count: { select: { businessCategories: true } } },
+      }).catch(() => []),
+    ]);
 
-  const categoryEntries: SitemapUrlEntry[] = categories
-    .filter((c: any) => isHealthcareItem(c.slug) || isHealthcareItem(c.name) || (c.businessCount ?? 0) > 0)
-    .flatMap((c: any) => {
-      const isCatHealthcare = isHealthcareItem(c.slug) || isHealthcareItem(c.name);
-      const priority = isCatHealthcare ? 0.9 : 0.8;
+    const cityEntries: SitemapUrlEntry[] = cities
+      .filter((c) => (c._count?.businesses ?? 1) > 0)
+      .map((c) => ({
+        url: `${SITE_URL}/city/${c.slug}`,
+        lastmod: nowISO,
+        changefreq: "weekly" as const,
+        priority: 0.6,
+      }));
 
-      return [
-        {
-          url: `${SITE_URL}/category/${c.slug}`,
-          lastmod: nowISO,
-          changefreq: "daily" as const,
-          priority: priority,
-        },
-        ...c.subcategories.map((s: any) => {
-          const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
-          return {
-            url: `${SITE_URL}/category/${s.slug}`,
+    const categoryEntries: SitemapUrlEntry[] = categories
+      .filter((c: any) => isHealthcareItem(c.slug) || isHealthcareItem(c.name) || (c._count?.businessCategories ?? 0) > 0)
+      .flatMap((c: any) => {
+        const isCatHealthcare = isHealthcareItem(c.slug) || isHealthcareItem(c.name);
+        const priority = isCatHealthcare ? 0.9 : 0.8;
+
+        return [
+          {
+            url: `${SITE_URL}/category/${c.slug}`,
             lastmod: nowISO,
             changefreq: "daily" as const,
-            priority: isSubcatHealthcare ? 0.85 : 0.7,
-          };
-        }),
-      ];
-    });
+            priority: priority,
+          },
+          ...(c.children || []).map((s: any) => {
+            const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
+            return {
+              url: `${SITE_URL}/category/${s.slug}`,
+              lastmod: nowISO,
+              changefreq: "daily" as const,
+              priority: isSubcatHealthcare ? 0.85 : 0.7,
+            };
+          }),
+        ];
+      });
 
-  return [...cityEntries, ...categoryEntries];
+    return [...cityEntries, ...categoryEntries];
+  } catch {
+    return [];
+  }
 }
 
 export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
-  const candidates = await getPseoSitemapCandidates();
-  const sorted = candidates
-    .filter((c) => {
-      const gate = evaluatePseoGate(c.count);
-      return gate.exists && gate.indexable;
-    })
-    .sort((a, b) => {
-      if (b.count !== a.count) return b.count - a.count;
-      return a.path.localeCompare(b.path);
-    });
+  const nowISO = new Date().toISOString();
+  try {
+    const categories = await prisma.category.findMany({ select: { slug: true, name: true } });
+    const cities = await prisma.city.findMany({ select: { slug: true, name: true } });
 
-  return sorted.map((c) => ({
-    url: `${SITE_URL}${c.path}`,
-    lastmod: c.lastmod ?? new Date().toISOString(),
-    changefreq: "weekly" as const,
-    priority: c.count >= 50 ? 0.6 : 0.5,
-  }));
+    const entries: SitemapUrlEntry[] = [];
+    for (const cat of categories) {
+      if (!isHealthcareItem(cat.slug) && !isHealthcareItem(cat.name)) continue;
+      for (const city of cities) {
+        entries.push({
+          url: `${SITE_URL}/category/${cat.slug}/${city.slug}`,
+          lastmod: nowISO,
+          changefreq: "weekly" as const,
+          priority: 0.6,
+        });
+      }
+    }
+    return entries;
+  } catch {
+    return [];
+  }
 }
 
 const NON_HEALTHCARE_SLUG_EXCLUSIONS = [
@@ -157,8 +170,24 @@ const NON_HEALTHCARE_SLUG_EXCLUSIONS = [
   "hair-fixing", "hair-weaving", "wig", "karnataka", "narachi", "proposed-sub-centre"
 ];
 
+export async function getBusinessSitemapSlugsDirect(): Promise<{ slug: string; lastmod: string }[]> {
+  try {
+    const items = await prisma.business.findMany({
+      where: { status: "approved", deletedAt: null },
+      select: { slug: true, updatedAt: true },
+      take: 10000,
+    });
+    return items.map((i) => ({
+      slug: i.slug,
+      lastmod: i.updatedAt ? i.updatedAt.toISOString() : new Date().toISOString(),
+    }));
+  } catch {
+    return [];
+  }
+}
+
 export async function getBusinessChunkSitemapEntries(chunkIndex: number): Promise<SitemapUrlEntry[]> {
-  const allSlugs = await getBusinessSitemapSlugs();
+  const allSlugs = await getBusinessSitemapSlugsDirect();
   const filtered = allSlugs.filter((b) => {
     const s = b.slug.toLowerCase();
     return !NON_HEALTHCARE_SLUG_EXCLUSIONS.some((kw) => s.includes(kw));
@@ -177,7 +206,7 @@ export async function getBusinessChunkSitemapEntries(chunkIndex: number): Promis
 }
 
 export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: string }[]> {
-  const allSlugs = await getBusinessSitemapSlugs();
+  const allSlugs = await getBusinessSitemapSlugsDirect();
   const filtered = allSlugs.filter((b) => {
     const s = b.slug.toLowerCase();
     return !NON_HEALTHCARE_SLUG_EXCLUSIONS.some((kw) => s.includes(kw));
