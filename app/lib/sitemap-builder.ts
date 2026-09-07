@@ -142,18 +142,32 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
 export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
   const nowISO = new Date().toISOString();
   try {
-    const categories = await prisma.category.findMany({ select: { slug: true, name: true } });
-    const cities = await prisma.city.findMany({ select: { slug: true, name: true } });
+    const [categories, cities, localities] = await Promise.all([
+      prisma.category.findMany({ select: { slug: true, name: true } }),
+      prisma.city.findMany({ select: { slug: true, name: true } }),
+      prisma.locality.findMany({ select: { slug: true, name: true, city: { select: { slug: true } } } }),
+    ]);
 
     const entries: SitemapUrlEntry[] = [];
     for (const cat of categories) {
       if (!isHealthcareItem(cat.slug) && !isHealthcareItem(cat.name)) continue;
+
       for (const city of cities) {
         entries.push({
           url: `${SITE_URL}/category/${cat.slug}/${city.slug}`,
           lastmod: nowISO,
           changefreq: "weekly" as const,
           priority: 0.6,
+        });
+      }
+
+      for (const loc of localities) {
+        if (!loc.city?.slug) continue;
+        entries.push({
+          url: `${SITE_URL}/category/${cat.slug}/${loc.city.slug}/${loc.slug}`,
+          lastmod: nowISO,
+          changefreq: "weekly" as const,
+          priority: 0.5,
         });
       }
     }
@@ -175,7 +189,7 @@ export async function getBusinessSitemapSlugsDirect(): Promise<{ slug: string; l
     const items = await prisma.business.findMany({
       where: { status: "approved", deletedAt: null },
       select: { slug: true, updatedAt: true },
-      take: 10000,
+      orderBy: { updatedAt: "desc" },
     });
     return items.map((i) => ({
       slug: i.slug,
