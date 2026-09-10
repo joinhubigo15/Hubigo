@@ -21,7 +21,7 @@ import {
   Hospital,
 } from "lucide-react";
 import { cn } from "@/app/lib/utils";
-import { API_URL } from "@/app/lib/api";
+import { API_URL, getApiBaseUrl } from "@/app/lib/api";
 import { useAuth } from "@/app/lib/auth-context";
 import { safeNextPath } from "@/app/lib/safe-next-path";
 
@@ -110,7 +110,8 @@ function LoginPageInner() {
     }
     setErrorMsg(null);
     const selectedRole = role === "business" ? "business_owner" : "user";
-    window.location.href = `${API_URL}/api/v1/auth/google?role=${selectedRole}`;
+    const baseUrl = getApiBaseUrl();
+    window.location.href = `${baseUrl}/api/v1/auth/google?role=${selectedRole}`;
   };
 
   if (initializing || user) {

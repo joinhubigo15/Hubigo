@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { User, Building2, ShieldCheck } from "lucide-react";
 import { cn } from "@/app/lib/utils";
 import { useAuth } from "@/app/lib/auth-context";
-import { API_URL } from "@/app/lib/api";
+import { API_URL, getApiBaseUrl } from "@/app/lib/api";
 import { safeNextPath } from "@/app/lib/safe-next-path";
 
 function GoogleIcon() {
@@ -55,7 +55,8 @@ function RegisterPageInner() {
     }
     setErrorMsg(null);
     const selectedRole = role === "business" ? "business_owner" : "user";
-    window.location.href = `${API_URL}/api/v1/auth/google?role=${selectedRole}`;
+    const baseUrl = getApiBaseUrl();
+    window.location.href = `${baseUrl}/api/v1/auth/google?role=${selectedRole}`;
   };
 
   if (initializing || user) {
