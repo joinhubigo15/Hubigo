@@ -7,8 +7,32 @@ async function proxyV1Request(req: NextRequest, paramsPromise: Promise<{ path: s
   const rawBackend = (
     process.env.INTERNAL_API_URL ||
     process.env.NEXT_PUBLIC_API_URL ||
-    "http://localhost:4000"
+    ""
   ).trim();
+
+  const currentOrigin = req.nextUrl.origin;
+  const isVercel = process.env.VERCEL === "1";
+
+  // Prevent self-referencing infinite loops if backend URL is not set or points back to this frontend
+  const isSelfReferencing =
+    !rawBackend ||
+    rawBackend.includes(req.nextUrl.hostname) ||
+    rawBackend.startsWith("/") ||
+    (isVercel && rawBackend.includes("localhost"));
+
+  if (isSelfReferencing) {
+    if (path[0] === "auth" && path[1] === "google") {
+      return NextResponse.redirect(new URL("/login?error=google_auth_failed", currentOrigin));
+    }
+    return NextResponse.json(
+      {
+        success: false,
+        message: "Backend API service URL is not configured.",
+        error: { code: "BACKEND_NOT_CONFIGURED" },
+      },
+      { status: 503 }
+    );
+  }
 
   const backendOrigin = rawBackend.replace(/\/$/, "");
   const targetUrl = `${backendOrigin}/api/v1/${path.join("/")}${req.nextUrl.search}`;
@@ -40,7 +64,6 @@ async function proxyV1Request(req: NextRequest, paramsPromise: Promise<{ path: s
       const location = backendRes.headers.get("location");
       if (location) {
         const redirectRes = NextResponse.redirect(new URL(location, req.url), backendRes.status);
-        // Forward any set-cookie headers from backend redirect
         const setCookie = backendRes.headers.get("set-cookie");
         if (setCookie) {
           redirectRes.headers.set("set-cookie", setCookie);
@@ -49,7 +72,6 @@ async function proxyV1Request(req: NextRequest, paramsPromise: Promise<{ path: s
       }
     }
 
-    // Build response headers to return
     const resHeaders = new Headers();
     backendRes.headers.forEach((val, key) => {
       if (key.toLowerCase() !== "transfer-encoding") {
@@ -66,7 +88,6 @@ async function proxyV1Request(req: NextRequest, paramsPromise: Promise<{ path: s
   } catch (error) {
     console.error(`[/api/v1 proxy error] ${req.method} ${targetUrl}:`, error);
 
-    // If Google OAuth endpoint is called and backend is unavailable
     if (path[0] === "auth" && path[1] === "google") {
       return NextResponse.redirect(new URL("/login?error=google_auth_failed", req.url));
     }
