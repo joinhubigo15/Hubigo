@@ -1,24 +1,20 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { buildSitemapXml, getBusinessChunkSitemapEntries } from "@/app/lib/sitemap-builder";
 
 export const revalidate = 86400;
 
 export async function GET(
-  _request: Request,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = await params;
-  const chunkNumber = parseInt(id, 10);
-
-  if (isNaN(chunkNumber) || chunkNumber < 1) {
-    return new NextResponse("Not Found", { status: 404 });
-  }
-
   try {
-    const entries = await getBusinessChunkSitemapEntries(chunkNumber - 1);
-    if (entries.length === 0) {
+    const { id } = await params;
+    const chunkNum = parseInt(id.replace(/\.xml$/, ""), 10);
+    if (isNaN(chunkNum) || chunkNum < 1) {
       return new NextResponse("Not Found", { status: 404 });
     }
+
+    const entries = await getBusinessChunkSitemapEntries(chunkNum - 1);
     const xml = buildSitemapXml(entries);
     return new NextResponse(xml, {
       headers: {
@@ -27,7 +23,7 @@ export async function GET(
       },
     });
   } catch (err: any) {
-    console.error(`Error generating sitemap businesses chunk ${id}:`, err);
+    console.error("Error generating business sitemap chunk:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

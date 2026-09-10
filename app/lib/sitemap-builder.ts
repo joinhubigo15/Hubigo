@@ -266,7 +266,7 @@ export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: 
     const firstItemInChunk = filtered[chunkStart];
     const chunkLastMod = firstItemInChunk?.lastmod ?? nowISO;
     indexEntries.push({
-      url: `${SITE_URL}/sitemap-businesses-${i}.xml`,
+      url: `${SITE_URL}/sitemap-businesses/${i}`,
       lastmod: chunkLastMod,
     });
   }

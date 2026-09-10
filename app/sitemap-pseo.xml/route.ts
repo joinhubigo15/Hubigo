@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
-import { buildSitemapXml, getStaticSitemapEntries } from "@/app/lib/sitemap-builder";
+import { buildSitemapXml, getPseoSitemapEntries } from "@/app/lib/sitemap-builder";
 
 export const revalidate = 86400;
 
 export async function GET() {
   try {
-    const entries = await getStaticSitemapEntries();
+    const entries = await getPseoSitemapEntries();
     const xml = buildSitemapXml(entries);
     return new NextResponse(xml, {
       headers: {
@@ -14,7 +14,7 @@ export async function GET() {
       },
     });
   } catch (err: any) {
-    console.error("Error generating sitemap static:", err);
+    console.error("Error generating pSEO sitemap:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

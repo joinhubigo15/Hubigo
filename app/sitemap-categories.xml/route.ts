@@ -14,7 +14,7 @@ export async function GET() {
       },
     });
   } catch (err: any) {
-    console.error("Error generating sitemap categories:", err);
+    console.error("Error generating categories sitemap:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
