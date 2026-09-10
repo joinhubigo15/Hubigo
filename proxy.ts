@@ -6,16 +6,8 @@ const COOKIE_NAME = "hubigo_admin_session";
 const PUBLIC_ADMIN_ROUTES = new Set(["/admin/login", "/admin/forgot-password", "/admin/reset-password"]);
 
 export async function proxy(request: NextRequest) {
-  const { pathname, hostname } = request.nextUrl;
+  const { pathname } = request.nextUrl;
 
-  // www.findhubigo.com canonical redirect
-  // canonical host everywhere else (SITE_URL, sitemap, JSON-LD) is the bare apex — redirect here
-  // so Google never sees the same content under two hostnames.
-  if (hostname === "www.findhubigo.com") {
-    const url = request.nextUrl.clone();
-    url.hostname = "findhubigo.com";
-    return NextResponse.redirect(url, 301);
-  }
   if (!pathname.startsWith("/admin")) return NextResponse.next();
 
   const token = request.cookies.get(COOKIE_NAME)?.value;
@@ -49,5 +41,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/admin/:path*"],
 };
