@@ -229,6 +229,28 @@ export function getLocalities(citySlug: string) {
   return request<LocalityOption[]>(`/api/v2/cities/${citySlug}/localities`).catch(() => []);
 }
 
+const KNOWN_AREAS: Record<string, { name: string; slug: string; citySlug: string; cityName: string }> = {
+  indiranagar: { name: "Indiranagar", slug: "indiranagar", citySlug: "bangalore", cityName: "Bangalore" },
+  koramangala: { name: "Koramangala", slug: "koramangala", citySlug: "bangalore", cityName: "Bangalore" },
+  "hsr-layout": { name: "HSR Layout", slug: "hsr-layout", citySlug: "bangalore", cityName: "Bangalore" },
+  "btm-layout": { name: "BTM Layout", slug: "btm-layout", citySlug: "bangalore", cityName: "Bangalore" },
+  whitefield: { name: "Whitefield", slug: "whitefield", citySlug: "bangalore", cityName: "Bangalore" },
+  marathahalli: { name: "Marathahalli", slug: "marathahalli", citySlug: "bangalore", cityName: "Bangalore" },
+  malleshwaram: { name: "Malleshwaram", slug: "malleshwaram", citySlug: "bangalore", cityName: "Bangalore" },
+  rajajinagar: { name: "Rajajinagar", slug: "rajajinagar", citySlug: "bangalore", cityName: "Bangalore" },
+  jayanagar: { name: "Jayanagar", slug: "jayanagar", citySlug: "bangalore", cityName: "Bangalore" },
+  hebbal: { name: "Hebbal", slug: "hebbal", citySlug: "bangalore", cityName: "Bangalore" },
+  "electronic-city": { name: "Electronic City", slug: "electronic-city", citySlug: "bangalore", cityName: "Bangalore" },
+  banashankari: { name: "Banashankari", slug: "banashankari", citySlug: "bangalore", cityName: "Bangalore" },
+  yelahanka: { name: "Yelahanka", slug: "yelahanka", citySlug: "bangalore", cityName: "Bangalore" },
+  sarjapur: { name: "Sarjapur", slug: "sarjapur", citySlug: "bangalore", cityName: "Bangalore" },
+  bellandur: { name: "Bellandur", slug: "bellandur", citySlug: "bangalore", cityName: "Bangalore" },
+  kammanahalli: { name: "Kammanahalli", slug: "kammanahalli", citySlug: "bangalore", cityName: "Bangalore" },
+  brookefield: { name: "Brookefield", slug: "brookefield", citySlug: "bangalore", cityName: "Bangalore" },
+  domlur: { name: "Domlur", slug: "domlur", citySlug: "bangalore", cityName: "Bangalore" },
+  "jp-nagar": { name: "JP Nagar", slug: "jp-nagar", citySlug: "bangalore", cityName: "Bangalore" },
+};
+
 export interface AreaOption {
   name: string;
   slug: string;
@@ -236,8 +258,23 @@ export interface AreaOption {
   cityName: string;
 }
 
-export function getArea(citySlug: string, areaSlug: string) {
-  return request<AreaOption>(`/api/v2/cities/${citySlug}/areas/${areaSlug}`).catch(() => null as any);
+export async function getArea(citySlug: string, areaSlug: string): Promise<AreaOption | null> {
+  const key = areaSlug.toLowerCase();
+  const known = KNOWN_AREAS[key];
+  if (known) return known;
+
+  const formattedName = areaSlug
+    .split("-")
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(" ");
+  const formattedCity = citySlug.charAt(0).toUpperCase() + citySlug.slice(1);
+
+  return {
+    name: formattedName,
+    slug: areaSlug,
+    citySlug: citySlug,
+    cityName: formattedCity,
+  };
 }
 
 export interface PseoSitemapCandidate {
