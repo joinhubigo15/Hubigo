@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import UserRegisterPage from "@/app/(main)/register/user/page";
+import UserRegisterPage from "@/app/register/user/page";
 import { SITE_URL } from "@/app/lib/json-ld";
 
 // Same form as /register/user, kept live under this URL too (the natural post-signup redirect
