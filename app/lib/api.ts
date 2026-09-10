@@ -1,13 +1,13 @@
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || "";
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 function resolveBaseUrl(): string {
   if (typeof window === "undefined") {
     if (process.env.INTERNAL_API_URL) return process.env.INTERNAL_API_URL;
     if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
     if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
-    return "https://findhubigo.com";
+    return process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
   }
-  return process.env.NEXT_PUBLIC_API_URL || "";
+  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 }
 
 export type Role = "user" | "business_owner" | "admin" | "super_admin";

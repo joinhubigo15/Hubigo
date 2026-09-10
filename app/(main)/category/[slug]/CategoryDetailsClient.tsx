@@ -66,18 +66,28 @@ export default function CategoryDetailsPage({
     }
   }
 
+  const isFirstMount = useRef(true);
+
   useEffect(() => {
+    // Skip initial refetch if activeSubcategory is null and we already have server-rendered initialFeatured items
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      if (activeSubcategory === null && initialFeatured && initialFeatured.length > 0) {
+        return;
+      }
+    }
+
     setLoading(true);
     searchBusinesses({
       category: activeSubcategory ? undefined : slug,
       subcategory: activeSubcategory ?? undefined,
-      lat: activeLat,
-      lng: activeLng,
       sort: "rating",
       limit: 24,
     })
       .then((res: any) => {
-        setBusinesses(res.items);
+        if (res && Array.isArray(res.items)) {
+          setBusinesses(res.items);
+        }
       })
       .catch(() => {
         if (!initialFeatured || initialFeatured.length === 0) {
@@ -85,7 +95,7 @@ export default function CategoryDetailsPage({
         }
       })
       .finally(() => setLoading(false));
-  }, [slug, activeSubcategory, activeLat, activeLng]);
+  }, [slug, activeSubcategory]);
 
   const title = category?.name ?? (slug ? slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()) : "Healthcare Category");
 

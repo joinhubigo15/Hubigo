@@ -2,19 +2,29 @@ import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/app/lib/json-ld";
 
 export default function robots(): MetadataRoute.Robots {
+  const disallowedPaths = [
+    "/admin/",
+    "/business-dashboard/",
+    "/api/",
+    "/login",
+    "/register",
+    "/verify-email",
+    "/account-suspended",
+    "/messages",
+    "/saved",
+    "/profile",
+    "/compare",
+    "/oauth/",
+    "/_next/image",
+    "/_next/data/",
+  ];
+
   return {
     rules: [
       {
-        userAgent: "Googlebot",
-        allow: "/",
-      },
-      {
-        userAgent: "Bingbot",
-        allow: "/",
-      },
-      {
         userAgent: "*",
         allow: "/",
+        disallow: disallowedPaths,
       },
       {
         userAgent: "GPTBot",
@@ -32,3 +42,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
+
