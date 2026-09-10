@@ -106,14 +106,24 @@ const KEYWORD_STEMS: Record<string, string[]> = {
 };
 
 const CATEGORY_SEARCH_MAP: Record<string, string[]> = {
-  "hospitals": ["hospital", "nursing home", "medical center", "healthcare"],
+  hospitals: ["hospital", "nursing home", "medical center", "healthcare"],
+  hospital: ["hospital", "nursing home", "medical center", "healthcare"],
+  clinics: ["clinic", "medical center", "healthcare"],
+  clinic: ["clinic", "medical center", "healthcare"],
+  doctors: ["doctor", "physician", "consultant", "specialist"],
+  doctor: ["doctor", "physician", "consultant", "specialist"],
   "dental-clinics": ["dental", "dentist", "teeth", "orthodontic"],
+  dentist: ["dental", "dentist", "teeth", "orthodontic"],
+  dentists: ["dental", "dentist", "teeth", "orthodontic"],
   "eye-clinics": ["eye", "ophthalm", "optician", "vision", "cataract"],
   "diagnostic-labs": ["lab", "diagnostic", "pathology", "blood test", "scan", "ultrasound", "x-ray", "mri"],
-  "physiotherapy": ["physio", "rehab", "physical therapy", "posture", "spine"],
-  "pharmacies": ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  lab: ["lab", "diagnostic", "pathology", "blood test", "scan"],
+  labs: ["lab", "diagnostic", "pathology", "blood test", "scan"],
+  physiotherapy: ["physio", "rehab", "physical therapy", "posture", "spine"],
+  pharmacies: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
+  pharmacy: ["pharmacy", "chemist", "medical store", "drugstore", "medicine"],
   "home-healthcare": ["home care", "nursing", "home health", "elder care"],
-  "ayurvedic": ["ayurved", "homeopath", "unani", "naturopath", "panchakarma"],
+  ayurvedic: ["ayurved", "homeopath", "unani", "naturopath", "panchakarma"],
   "emergency-services": ["emergency", "ambulance", "24/7", "trauma", "icu"],
 };
 
@@ -226,11 +236,12 @@ export async function executeSearch(filters: SearchFilters): Promise<PaginatedRe
     });
   }
 
-  if (filters.locality) {
-    const cleanLoc = AREA_ALIASES[filters.locality.toLowerCase()] || filters.locality.replace(/-/g, " ");
+  const targetArea = filters.area || filters.locality;
+  if (targetArea) {
+    const cleanLoc = AREA_ALIASES[targetArea.toLowerCase()] || targetArea.replace(/-/g, " ");
     andConditions.push({
       OR: [
-        { locality: { slug: filters.locality } },
+        { locality: { slug: targetArea } },
         { address: { contains: cleanLoc, mode: "insensitive" } },
       ],
     });
