@@ -105,10 +105,10 @@ function parseOpenHoursRaw(raw: string | null): { day: string; text: string }[] 
  * hours actually exist; otherwise the UI falls back to showing the raw text. */
 function useTodayHours(hours: BusinessDetail["hours"]) {
   return useMemo(() => {
-    if (hours.length === 0) return { isOpenNow: null as boolean | null, closesAt: null as string | null, sorted: [] };
+    if (!hours || hours.length === 0) return { isOpenNow: null as boolean | null, closesAt: null as string | null, sorted: [] };
     const now = new Date();
     const todayKey = DAY_ORDER[(now.getDay() + 6) % 7]; // JS: 0=Sun -> align to Monday-first
-    const todayRow = hours.find((h) => h.day.toLowerCase() === todayKey);
+    const todayRow = hours.find((h) => (h?.day || (h as any)?.dayOfWeek || "").toLowerCase() === todayKey);
     let isOpenNow: boolean | null = null;
     let closesAt: string | null = null;
     if (todayRow && !todayRow.isClosed && todayRow.openTime && todayRow.closeTime) {
@@ -120,7 +120,7 @@ function useTodayHours(hours: BusinessDetail["hours"]) {
     } else if (todayRow?.isClosed) {
       isOpenNow = false;
     }
-    const sorted = DAY_ORDER.map((key) => hours.find((h) => h.day.toLowerCase() === key)).filter(
+    const sorted = DAY_ORDER.map((key) => hours.find((h) => (h?.day || (h as any)?.dayOfWeek || "").toLowerCase() === key)).filter(
       (h): h is BusinessDetail["hours"][number] => Boolean(h),
     );
     return { isOpenNow, closesAt, sorted };

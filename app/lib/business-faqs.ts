@@ -39,14 +39,15 @@ function parseOpenHoursRaw(raw: string | null): { day: string; text: string }[] 
 /** Prefers structured BusinessHours rows (most reliable), falls back to the scraped raw-text
  * hours, matching the same precedence BusinessDetailClient uses for the visible hours widget. */
 function buildHoursSentence(business: BusinessDetail): string | null {
-  if (business.hours.length > 0) {
-    const sorted = DAY_ORDER.map((key) => business.hours.find((h) => h.day.toLowerCase() === key)).filter(
-      (h): h is BusinessDetail["hours"][number] => Boolean(h),
-    );
+  if (business.hours && business.hours.length > 0) {
+    const sorted = DAY_ORDER.map((key) =>
+      business.hours.find((h) => (h?.day || (h as any)?.dayOfWeek || "").toLowerCase() === key)
+    ).filter((h): h is BusinessDetail["hours"][number] => Boolean(h));
     if (sorted.length === 0) return null;
     const parts = sorted.map((h) => {
+      const dayName = h.day || (h as any).dayOfWeek || "";
       const text = h.isClosed ? "Closed" : `${formatTime(h.openTime) ?? "—"}–${formatTime(h.closeTime) ?? "—"}`;
-      return `${dayLabel(h.day)}: ${text}`;
+      return `${dayLabel(dayName)}: ${text}`;
     });
     const caveat = business.hoursInferredFromSingleDay
       ? " Hours are based on the data available and may vary by day — please call ahead to confirm."

@@ -90,7 +90,9 @@ export class ApiClientError extends Error {
 // specific case and let everything else propagate, so ISR keeps serving the last good cache
 // instead of overwriting it with a broken one.
 export function isNotFoundError(err: unknown): boolean {
-  return err instanceof ApiClientError && err.status === 404;
+  if (!err || typeof err !== "object") return false;
+  if (err instanceof ApiClientError && err.status === 404) return true;
+  return (err as any).status === 404 || (err as any).statusCode === 404 || (err as any).code === "NOT_FOUND";
 }
 
 function sleep(ms: number) {

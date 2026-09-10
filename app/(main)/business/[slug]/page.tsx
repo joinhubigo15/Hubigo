@@ -22,15 +22,16 @@ function truncate(text: string, maxLength: number): string {
 function buildDescription(business: BusinessDetail): string {
   if (business.description) return truncate(business.description, DESCRIPTION_MAX_LENGTH);
 
-  const primaryCategoryName = business.categories.find((c) => c.isPrimary)?.category.name ?? null;
+  const primaryCategoryName = business.categories?.find((c) => c.isPrimary)?.category?.name ?? business.categories?.[0]?.category?.name ?? null;
   const kind = primaryCategoryName ?? "business";
+  const cityName = business.city?.name || "Bangalore";
   const ratingClause =
     business.reviewCount > 0
       ? ` Rated ${business.avgRating.toFixed(1)}/5 from ${business.reviewCount.toLocaleString("en-IN")} reviews.`
       : "";
 
   return truncate(
-    `${business.name} is a ${kind} in ${business.city.name}. Find contact details, address, and reviews on Hubigo.${ratingClause}`,
+    `${business.name} is a ${kind} in ${cityName}. Find contact details, address, and reviews on Hubigo.${ratingClause}`,
     DESCRIPTION_MAX_LENGTH,
   );
 }
@@ -50,14 +51,15 @@ export async function generateMetadata({
   });
   if (!business) notFound();
 
-  const primaryCategory = business.categories.find((c) => c.isPrimary)?.category.name || business.categories?.[0]?.category.name || "Healthcare";
+  const primaryCategory = business.categories?.find((c) => c.isPrimary)?.category?.name || business.categories?.[0]?.category?.name || "Healthcare";
+  const cityName = business.city?.name || "Bangalore";
   const localityName = business.locality?.name || "";
-  const locationClause = localityName ? `${localityName}, ${business.city.name}` : business.city.name;
+  const locationClause = localityName ? `${localityName}, ${cityName}` : cityName;
 
   const title = `${business.name} | ${primaryCategory} in ${locationClause} | Contact & OPD Hours | Hubigo`;
   const description = buildDescription(business);
   const canonical = `/business/${slug}`;
-  const keywords = generateHealthcareKeywords(primaryCategory, undefined, business.city.name, business.locality?.name);
+  const keywords = generateHealthcareKeywords(primaryCategory, undefined, cityName, business.locality?.name);
 
   return {
     title,

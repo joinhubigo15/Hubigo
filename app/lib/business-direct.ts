@@ -55,21 +55,25 @@ export async function getBusinessBySlugDirect(slug: string): Promise<BusinessDet
       lng: business.lng != null ? Number(business.lng) : null,
       coverImageUrl: resolveImageUrl(business.coverImageUrl),
       logoUrl: resolveImageUrl(business.logoUrl),
-      categories: business.categories.map((bc: any) => ({
-        isPrimary: bc.isPrimary,
-        category: { id: bc.category.id, name: bc.category.name, slug: bc.category.slug },
-      })),
-      amenities: business.amenities.map((a: any) => ({ id: a.amenity.id, name: a.amenity.name, slug: a.amenity.slug, icon: a.amenity.icon })),
-      services: business.services.map((s: any) => ({ id: s.id, name: s.name, description: s.description, price: s.price ? Number(s.price) : null })),
-      hours: business.hours.map((h: any) => ({ dayOfWeek: h.dayOfWeek, openTime: h.openTime, closeTime: h.closeTime, isClosed: h.isClosed })),
-      media: business.media.map((m: any) => ({ id: m.id, type: m.type, url: resolveImageUrl(m.url)!, caption: m.caption })),
+      categories: (business.categories || [])
+        .filter((bc: any) => Boolean(bc?.category))
+        .map((bc: any) => ({
+          isPrimary: Boolean(bc.isPrimary),
+          category: { id: bc.category.id, name: bc.category.name, slug: bc.category.slug },
+        })),
+      amenities: (business.amenities || [])
+        .filter((a: any) => Boolean(a?.amenity))
+        .map((a: any) => ({ id: a.amenity.id, name: a.amenity.name, slug: a.amenity.slug, icon: a.amenity.icon })),
+      services: (business.services || []).map((s: any) => ({ id: s.id, name: s.name, description: s.description ?? null, price: s.price ? Number(s.price) : null })),
+      hours: (business.hours || []).map((h: any) => ({ day: h.day || h.dayOfWeek || "", openTime: h.openTime ?? null, closeTime: h.closeTime ?? null, isClosed: Boolean(h.isClosed) })),
+      media: (business.media || []).map((m: any) => ({ id: m.id, type: m.type, url: resolveImageUrl(m.url)!, caption: m.caption ?? null })),
       offers: [],
       products: [],
       reviews: (business.reviews || []).map((r: any) => ({
         id: r.id,
-        rating: Number(r.rating),
-        comment: r.comment,
-        createdAt: r.createdAt.toISOString(),
+        rating: Number(r.rating || 0),
+        comment: r.comment ?? null,
+        createdAt: r.createdAt ? new Date(r.createdAt).toISOString() : new Date().toISOString(),
         userName: r.user?.name || "Anonymous Patient",
         userAvatarUrl: resolveImageUrl(r.user?.avatarUrl),
       })),

@@ -1,4 +1,4 @@
-import { request } from "@/app/lib/api";
+import { request, ApiClientError } from "@/app/lib/api";
 
 export type SortOption = "best_match" | "distance" | "rating" | "reviews" | "newest" | "alphabetical";
 export type PriceRange = "budget" | "moderate" | "premium" | "luxury";
@@ -473,9 +473,7 @@ export async function getBusinessBySlug(slug: string, accessToken?: string): Pro
     const { getBusinessBySlugDirect } = require("./business-direct");
     const business = await getBusinessBySlugDirect(slug);
     if (!business) {
-      const err: any = new Error("Business not found");
-      err.status = 404;
-      throw err;
+      throw new ApiClientError(404, "NOT_FOUND", "Business not found");
     }
     return business;
   }
