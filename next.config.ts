@@ -30,15 +30,26 @@ const nextConfig: NextConfig = {
     ];
   },
   async rewrites() {
-    const backendBase = process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
-    return [
+    const rawSiteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://findhubigo.com";
+    const siteHost = rawSiteUrl.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    const backendBase = (process.env.INTERNAL_API_URL || process.env.NEXT_PUBLIC_API_URL || "").trim();
+
+    const rules = [
       { source: "/sitemap.xml", destination: "/sitemap-index" },
       { source: "/sitemap-static.xml", destination: "/sitemap-static" },
       { source: "/sitemap-categories.xml", destination: "/sitemap-categories" },
       { source: "/sitemap-pseo.xml", destination: "/sitemap-pseo" },
       { source: "/sitemap-businesses-:id.xml", destination: "/sitemap-businesses/:id" },
-      { source: "/api/v1/:path*", destination: `${backendBase}/api/v1/:path*` },
     ];
+
+    if (backendBase && !backendBase.includes(siteHost) && backendBase.startsWith("http")) {
+      rules.push({
+        source: "/api/v1/:path*",
+        destination: `${backendBase.replace(/\/$/, "")}/api/v1/:path*`,
+      });
+    }
+
+    return rules;
   },
 };
 
