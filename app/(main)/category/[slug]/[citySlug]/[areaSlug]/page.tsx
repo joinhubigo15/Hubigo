@@ -6,7 +6,7 @@ import { isNotFoundError } from "@/app/lib/api";
 import { buildBreadcrumbJsonLd, generateHealthcareKeywords } from "@/app/lib/json-ld";
 import JsonLd from "@/app/components/seo/JsonLd";
 import PseoBusinessGrid from "@/app/components/pseo/PseoBusinessGrid";
-import { evaluatePseoGate, pseoRobotsMeta, PSEO_DISPLAY_LIMIT, PSEO_MAX_EXPOSED } from "@/app/lib/pseo-thresholds";
+import { pseoRobotsMeta, PSEO_DISPLAY_LIMIT, PSEO_MAX_EXPOSED } from "@/app/lib/pseo-thresholds";
 
 export const revalidate = 3600;
 
@@ -72,7 +72,7 @@ export async function generateMetadata({
   const categoryName = category.name;
   const targetCategorySlug = category.slug;
 
-  const result = await searchBusinesses({
+  let result = await searchBusinesses({
     category: targetCategorySlug,
     city: citySlug,
     area: areaSlug,
@@ -80,8 +80,16 @@ export async function generateMetadata({
     limit: PSEO_DISPLAY_LIMIT,
   });
 
-  const gate = evaluatePseoGate(result.total);
-  if (!gate.exists || result.items.length === 0) {
+  if (result.items.length === 0) {
+    result = await searchBusinesses({
+      category: targetCategorySlug,
+      city: citySlug,
+      sort: "rating",
+      limit: PSEO_DISPLAY_LIMIT,
+    });
+  }
+
+  if (result.items.length === 0) {
     notFound();
   }
 
@@ -95,7 +103,7 @@ export async function generateMetadata({
     description,
     keywords,
     alternates: { canonical },
-    robots: pseoRobotsMeta(gate.indexable),
+    robots: pseoRobotsMeta(true),
     openGraph: { title, description, url: canonical, type: "website" },
     twitter: { card: "summary", title, description },
   };
@@ -121,7 +129,7 @@ export default async function CategoryCityAreaPage({
   const categoryName = category.name;
   const targetCategorySlug = category.slug;
 
-  const result = await searchBusinesses({
+  let result = await searchBusinesses({
     category: targetCategorySlug,
     city: citySlug,
     area: areaSlug,
@@ -129,8 +137,16 @@ export default async function CategoryCityAreaPage({
     limit: PSEO_DISPLAY_LIMIT,
   });
 
-  const gate = evaluatePseoGate(result.total);
-  if (!gate.exists || result.items.length === 0) {
+  if (result.items.length === 0) {
+    result = await searchBusinesses({
+      category: targetCategorySlug,
+      city: citySlug,
+      sort: "rating",
+      limit: PSEO_DISPLAY_LIMIT,
+    });
+  }
+
+  if (result.items.length === 0) {
     notFound();
   }
 
