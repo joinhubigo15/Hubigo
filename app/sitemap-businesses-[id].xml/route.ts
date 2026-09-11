@@ -23,7 +23,7 @@ export async function GET(
       },
     });
   } catch (err: any) {
-    console.error("Error generating business sitemap chunk:", err);
+    console.error("Error generating legacy hyphenated business sitemap chunk:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

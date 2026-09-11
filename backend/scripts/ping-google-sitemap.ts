@@ -19,12 +19,12 @@ async function submitSitemapToSearchEngines() {
     `${baseUrl}/sitemap-static.xml`,
     `${baseUrl}/sitemap-categories.xml`,
     `${baseUrl}/sitemap-pseo.xml`,
-    `${baseUrl}/sitemap-businesses-1.xml`,
-    `${baseUrl}/sitemap-businesses-2.xml`,
-    `${baseUrl}/sitemap-businesses-3.xml`,
-    `${baseUrl}/sitemap-businesses-4.xml`,
-    `${baseUrl}/sitemap-businesses-5.xml`,
-    `${baseUrl}/sitemap-businesses-6.xml`,
+    `${baseUrl}/sitemap-businesses/1.xml`,
+    `${baseUrl}/sitemap-businesses/2.xml`,
+    `${baseUrl}/sitemap-businesses/3.xml`,
+    `${baseUrl}/sitemap-businesses/4.xml`,
+    `${baseUrl}/sitemap-businesses/5.xml`,
+    `${baseUrl}/sitemap-businesses/6.xml`,
   ];
 
   const mainUrls = [

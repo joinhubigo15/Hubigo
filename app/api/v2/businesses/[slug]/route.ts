@@ -53,6 +53,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ slug
       return NextResponse.json({ success: false, message: "Business listing not found" }, { status: 404 });
     }
 
+    prisma.business
+      .update({
+        where: { id: business.id },
+        data: { viewCount: { increment: 1 } },
+      })
+      .catch((err) => console.error("Failed to increment viewCount in API route:", err));
+
     const primaryBc = business.categories.find((c: any) => c.isPrimary) ?? business.categories[0];
     const category = primaryBc?.category;
     const parentCategory = category?.parent ?? null;

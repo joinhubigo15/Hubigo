@@ -57,11 +57,24 @@ export function buildSitemapIndexXml(sitemaps: { url: string; lastmod?: string }
 
 const STATIC_PATHS = ["/", "/city", "/category", "/search", "/nearby"];
 
+async function getLatestSystemLastmod(): Promise<string> {
+  try {
+    const latest = await prisma.business.findFirst({
+      where: { status: "approved", deletedAt: null },
+      select: { updatedAt: true },
+      orderBy: { updatedAt: "desc" },
+    });
+    return latest?.updatedAt ? latest.updatedAt.toISOString() : new Date().toISOString();
+  } catch {
+    return new Date().toISOString();
+  }
+}
+
 export async function getStaticSitemapEntries(): Promise<SitemapUrlEntry[]> {
-  const nowISO = new Date().toISOString();
+  const lastmod = await getLatestSystemLastmod();
   return STATIC_PATHS.map((path) => ({
     url: `${SITE_URL}${path}`,
-    lastmod: nowISO,
+    lastmod: lastmod,
     changefreq: (path === "/" ? "daily" : "weekly") as "daily" | "weekly",
     priority: path === "/" ? 1.0 : 0.7,
   }));
@@ -89,7 +102,7 @@ function isHealthcareItem(nameOrSlug: string): boolean {
 }
 
 export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
-  const nowISO = new Date().toISOString();
+  const systemLastmod = await getLatestSystemLastmod();
 
   try {
     const [cities, categories] = await Promise.all([
@@ -103,7 +116,7 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
       .filter((c) => (c._count?.businesses ?? 1) > 0)
       .map((c) => ({
         url: `${SITE_URL}/city/${c.slug}`,
-        lastmod: nowISO,
+        lastmod: systemLastmod,
         changefreq: "weekly" as const,
         priority: 0.6,
       }));
@@ -117,7 +130,7 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
         return [
           {
             url: `${SITE_URL}/category/${c.slug}`,
-            lastmod: nowISO,
+            lastmod: systemLastmod,
             changefreq: "daily" as const,
             priority: priority,
           },
@@ -125,7 +138,7 @@ export async function getCategorySitemapEntries(): Promise<SitemapUrlEntry[]> {
             const isSubcatHealthcare = isCatHealthcare || isHealthcareItem(s.slug) || isHealthcareItem(s.name);
             return {
               url: `${SITE_URL}/category/${s.slug}`,
-              lastmod: nowISO,
+              lastmod: systemLastmod,
               changefreq: "daily" as const,
               priority: isSubcatHealthcare ? 0.85 : 0.7,
             };
@@ -162,7 +175,7 @@ const BANGALORE_AREA_SLUGS = [
 ];
 
 export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
-  const nowISO = new Date().toISOString();
+  const systemLastmod = await getLatestSystemLastmod();
   try {
     const [categories, activeCities] = await Promise.all([
       prisma.category.findMany({ select: { slug: true, name: true } }),
@@ -179,7 +192,7 @@ export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
       for (const city of activeCities) {
         entries.push({
           url: `${SITE_URL}/category/${cat.slug}/${city.slug}`,
-          lastmod: nowISO,
+          lastmod: systemLastmod,
           changefreq: "weekly" as const,
           priority: 0.7,
         });
@@ -188,7 +201,7 @@ export async function getPseoSitemapEntries(): Promise<SitemapUrlEntry[]> {
           for (const areaSlug of BANGALORE_AREA_SLUGS) {
             entries.push({
               url: `${SITE_URL}/category/${cat.slug}/bangalore/${areaSlug}`,
-              lastmod: nowISO,
+              lastmod: systemLastmod,
               changefreq: "weekly" as const,
               priority: 0.6,
             });
@@ -213,12 +226,12 @@ export async function getBusinessSitemapSlugsDirect(): Promise<{ slug: string; l
   try {
     const items = await prisma.business.findMany({
       where: { status: "approved", deletedAt: null },
-      select: { slug: true, updatedAt: true },
-      orderBy: { updatedAt: "desc" },
+      select: { slug: true, updatedAt: true, createdAt: true },
+      orderBy: { createdAt: "asc" },
     });
     return items.map((i) => ({
       slug: i.slug,
-      lastmod: i.updatedAt ? i.updatedAt.toISOString() : new Date().toISOString(),
+      lastmod: (i.updatedAt || i.createdAt || new Date()).toISOString(),
     }));
   } catch {
     return [];
@@ -245,7 +258,11 @@ export async function getBusinessChunkSitemapEntries(chunkIndex: number): Promis
 }
 
 export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: string }[]> {
-  const allSlugs = await getBusinessSitemapSlugsDirect();
+  const [allSlugs, systemLastmod] = await Promise.all([
+    getBusinessSitemapSlugsDirect(),
+    getLatestSystemLastmod(),
+  ]);
+
   const filtered = allSlugs.filter((b) => {
     const s = b.slug.toLowerCase();
     return !NON_HEALTHCARE_SLUG_EXCLUSIONS.some((kw) => s.includes(kw));
@@ -253,21 +270,33 @@ export async function getSitemapIndexEntries(): Promise<{ url: string; lastmod: 
 
   const totalBusinesses = filtered.length;
   const businessChunksCount = Math.max(1, Math.ceil(totalBusinesses / CHUNK_SIZE));
-  const nowISO = new Date().toISOString();
 
   const indexEntries = [
-    { url: `${SITE_URL}/sitemap-static.xml`, lastmod: nowISO },
-    { url: `${SITE_URL}/sitemap-categories.xml`, lastmod: nowISO },
-    { url: `${SITE_URL}/sitemap-pseo.xml`, lastmod: nowISO },
+    { url: `${SITE_URL}/sitemap-static.xml`, lastmod: systemLastmod },
+    { url: `${SITE_URL}/sitemap-categories.xml`, lastmod: systemLastmod },
+    { url: `${SITE_URL}/sitemap-pseo.xml`, lastmod: systemLastmod },
   ];
 
   for (let i = 1; i <= businessChunksCount; i++) {
     const chunkStart = (i - 1) * CHUNK_SIZE;
-    const firstItemInChunk = filtered[chunkStart];
-    const chunkLastMod = firstItemInChunk?.lastmod ?? nowISO;
+    const chunkEnd = chunkStart + CHUNK_SIZE;
+    const chunkItems = filtered.slice(chunkStart, chunkEnd);
+
+    let latestInChunk = systemLastmod;
+    if (chunkItems.length > 0) {
+      let maxTime = 0;
+      for (const item of chunkItems) {
+        const t = new Date(item.lastmod).getTime();
+        if (!isNaN(t) && t > maxTime) {
+          maxTime = t;
+          latestInChunk = item.lastmod;
+        }
+      }
+    }
+
     indexEntries.push({
-      url: `${SITE_URL}/sitemap-businesses/${i}`,
-      lastmod: chunkLastMod,
+      url: `${SITE_URL}/sitemap-businesses/${i}.xml`,
+      lastmod: latestInChunk,
     });
   }
 

@@ -20,6 +20,14 @@ export async function getBusinessBySlugDirect(slug: string): Promise<BusinessDet
 
     if (!business) return null;
 
+    // Fire and forget viewCount increment so page views are counted in the database
+    prisma.business
+      .update({
+        where: { id: business.id },
+        data: { viewCount: { increment: 1 } },
+      })
+      .catch((err) => console.error("Failed to increment viewCount direct:", err));
+
     const primaryBc = business.categories.find((c: any) => c.isPrimary) ?? business.categories[0];
     const category = primaryBc?.category;
     const parentCategory = category?.parent ?? null;

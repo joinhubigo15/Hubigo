@@ -70,8 +70,8 @@ export async function getAllBusinessSlugsForSitemap() {
         }
       }
     },
-    select: { name: true, slug: true, updatedAt: true },
-    orderBy: { avgRating: "desc" },
+    select: { name: true, slug: true, updatedAt: true, createdAt: true },
+    orderBy: { createdAt: "asc" },
   });
 
   const filtered = rows.filter((r) => {
